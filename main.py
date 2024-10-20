@@ -1,10 +1,13 @@
 import random
 import socket
+import sys
 import threading
 import pickle
 import time
 import hashlib
 import math
+from collections import deque
+
 from utils.messages import *
 
 ROOT_PEER_PORT = 6000  # The port where the root peer listens
@@ -17,7 +20,7 @@ class Neighbour:
         pass
 
 class Peer:
-    def __init__(self, peer_id, role, neighbors,  port, ip_address = 'localhost', item=None, test = True, cache_size = math.inf):
+    def __init__(self, peer_id, role, neighbors,  port, ip_address = 'localhost', item=None, test = True, cache_size = math.inf, hop_count=3, max_distance=3):
         self.peer_id = peer_id
         self.role = role  # buyer or seller
         self.neighbors = neighbors
@@ -32,12 +35,16 @@ class Peer:
         self.running = True
         self.test = test
         self.cache = {}
+        self.looked_up_items = set()
+        self.hop_count = hop_count
+        self.max_distance = max_distance
+        self.available_items = ["fish","salt","boar"]
         self.cache_size = cache_size
 
 
     def start_peer(self):
         """Start listening for messages from other peers."""
-        print(f"Peer {self.peer_id} ({self.role}) listening on port {self.port}...")
+        print(f"Peer {self.peer_id} ({self.role})  with item {self.item} listening on port {self.port}...")
         threading.Thread(target=self.listen_for_messages).start()
         # self.send_status_to_root()
 
@@ -57,6 +64,8 @@ class Peer:
                 self.handle_buy(message, addr)
             elif message.get('type') == 'buy_confirmation':
                 self.handle_buy_confirmation(message)
+            elif message.get('type') == 'no_seller':
+                self.handle_no_seller(message)
 
     def send_message(self, neighbor, message):
         """Send a message to a neighbor."""
@@ -92,7 +101,7 @@ class Peer:
             self.cache[req_id] = message
             buyer_id = message['buyer_id']
             product_name = message['product_name']
-            hopcount = message['hopcount']
+            hopcount = message['hop_count']
             search_path = message['search_path']
 
             # If this peer is a seller and has the requested product, reply to the buyer
@@ -124,6 +133,19 @@ class Peer:
                                                     ).to_dict()
                         print(f"[{self.peer_id}] Forwarding lookup for {product_name} to Peer {neighbor.peer_id}")
                         self.send_message(neighbor, lookup_message)
+            elif hopcount==0:
+                print(
+                    f"[{self.peer_id}] Hopcount 0 reached. No sellers found for {product_name}. Informing buyer {buyer_id}.")
+                #buyer_addr = self.get_neighbor_info(buyer_id)
+                buyer_addr = self.ip_address, self.port
+                no_seller_message = {
+                    'type': 'no_seller',
+                    'buyer_id': buyer_id,
+                    'product_name': product_name,
+                    'request_id': req_id,
+                    'message': "No sellers found for the requested product. Please select another item."
+                }
+                self.socket.sendto(pickle.dumps(no_seller_message), buyer_addr)
 
     def get_neighbor_info(self, neighbor_id):
         """Return the IP address and port of the specified neighbor ID."""
@@ -141,7 +163,7 @@ class Peer:
             addr = self.get_neighbor_info(search_path[-1])
             reply_message["reply_path"] = search_path[:-1] 
             self.socket.sendto(pickle.dumps(reply_message), addr)
-            print(f"[{self.peer_id}] Sent reply to peer {search_path[-1]} for item {reply_message["product_name"]} with id {reply_message['request_id']}")
+            print(f"[{self.peer_id}] Sent reply to peer {search_path[-1]} for item {reply_message['product_name']} with id {reply_message['request_id']}")
         else:
             if self.role == 'buyer':
                 # As a buyer, decide to buy the item (you can add logic here to choose if you'd like)
@@ -204,7 +226,7 @@ class Peer:
                 'type': 'lookup',
                 'buyer_id': self.peer_id,
                 'product_name': product_name,
-                'hopcount': hopcount,
+                'hop_count': hopcount,
                 'search_path': [self.peer_id]
             }
             print(lookup_message)
@@ -218,21 +240,98 @@ class Peer:
         neighbor_ids = [neighbor.peer_id for neighbor in self.neighbors]
         print(f"Peer {self.peer_id} connected to peers {neighbor_ids}")
 
-def main():
-    num_peers = 2  # Exactly two peers: one buyer and one seller
+    def shutdown_peer(self):
+        """Shutdown the peer."""
+        print(f"[{self.peer_id}] Shutting down peer.")
+        exit(0)  # Exits the program
+
+    def handle_no_seller(self, message):
+        print(f"[{self.peer_id}] No seller found for {message['product_name']}. Selecting another item...")
+        self.looked_up_items.add(message['product_name'])
+        print(f"Length of gone through items {len(self.looked_up_items)}")
+        # Check if all products have been looked up
+        if len(self.looked_up_items) == len(self.available_items):
+            print(f"[{self.peer_id}] All items have been looked up. No sellers found. Shutting down...")
+            self.running =False
+            self.shutdown_peer()  # Call the method to shutdown the peer
+            return
+        remaining_items = [item for item in self.available_items if item not in self.looked_up_items]
+        new_product = random.choice(remaining_items)
+        print(f"[{self.peer_id}] Searching for a new product: {new_product}")
+
+        self.lookup_item(new_product,self.max_distance)
+
+
+def bfs_paths(start_peer, peers):
+    distances = {peer.peer_id: float('inf') for peer in peers}
+    distances[start_peer.peer_id]=0
+    queue = deque([start_peer])
+    while queue:
+        peer = queue.popleft()
+        for neighbor in peer.neighbors:
+            if distances[neighbor.peer_id] == float('inf'):
+                distances[neighbor.peer_id] = distances[peer.peer_id]+1
+                queue.append(neighbor)
+    return distances
+
+
+def graph_diameter(peers):
+    max_distance = 0
+    for peer in peers:
+        distances = bfs_paths(peer,peers)
+        furthest_peer = max(distances.values())
+        max_distance = max(max_distance,furthest_peer)
+    return max_distance
+
+
+def main(N):
+    num_peers = N
     peers = []
-    ports = [5000, 5001]  # Assign unique ports for the two peers
+    # ports = [5000, 5001]  # Assign unique ports for the two peers
+    ports = [5000+i for i in range(num_peers)] # Assign unique ports for all the peers
+    roles = ["buyer","seller"]
+    items = ["fish","salt","boar"]
 
     # Step 1: Create one buyer and one seller
-    buyer = Peer(peer_id=0, role='buyer', neighbors=[], port=ports[0])
-    seller = Peer(peer_id=1, role='seller', neighbors=[], port=ports[1], item='salt')
+    # buyer = Peer(peer_id=0, role='buyer', neighbors=[], port=ports[0]) # Each peer having a random role
+    # seller = Peer(peer_id=1, role='seller', neighbors=[], port=ports[1], item='salt')
+    # every peer should be either a buyer or a seller and create a network in which a peer has atmost 3 neighbours
 
-    peers.append(buyer)
-    peers.append(seller)
+    for i in range(num_peers):
+        role = random.choice(roles)
+        item = None
+        if role =="seller":
+            item = random.choice(items)
+        peer = Peer(peer_id=i, role=role, neighbors=[], item= item, port=ports[i])
+        peers.append(peer)
 
-    # Step 2: Connect buyer and seller as neighbors
-    buyer.neighbors = [seller]
-    seller.neighbors = [buyer]
+
+    # peers.append(buyer)
+    # peers.append(seller)
+
+    # Step 2: Connect buyer and seller as neighbors # Change this network
+    # buyer.neighbors = [seller]
+    # seller.neighbors = [buyer]
+
+    for i in range(num_peers):
+        next_peer = (i + 1) % num_peers  # Connect to the next peer in a circular fashion
+        # neighbor_ids = [neighbor.peer_id for neighbor in peers[i].neighbors]
+        # print(neighbor_ids)
+        if peers[next_peer] not in peers[i].neighbors:
+            peers[i].neighbors.append(peers[next_peer])
+            peers[next_peer].neighbors.append(peers[i])
+
+    # Step 3: Add random neighbors to ensure no more than 3 neighbors per peer
+    max_neighbors = min(3, num_peers - 1)
+    for peer in peers:
+        retries=0
+        while len(peer.neighbors) < max_neighbors and retries<10:
+            neighbor = random.choice(peers)
+            if neighbor.peer_id != peer.peer_id and neighbor not in peer.neighbors and len(neighbor.neighbors) < max_neighbors:
+                peer.neighbors.append(neighbor)
+                neighbor.neighbors.append(peer)
+            else:
+                retries+=1
 
     # Step 3: Display the network structure
     print("Network structure initialized:")
@@ -240,17 +339,40 @@ def main():
         peer.display_network()
 
     # Step 4: Start the peers to listen for messages
+
+    buyers = [peer for peer in peers if peer.role == 'buyer']
+    diameter = graph_diameter(peers)
+    for peer in peers:
+        peer.max_distance = diameter
+        peer.hop_count = diameter
+
     for peer in peers:
         peer.start_peer()
 
-    # Start the buyer peer to initiate a lookup for an apple
-    print(f"Buyer {buyer.peer_id} is initiating a lookup for salt")
-    buyer.lookup_item(product_name='salt', hopcount=1)
+    if buyers:
+        # random_buyer = random.choice(buyers)
+        item = random.choice(items)
+        # print(f"Buyer {random_buyer.peer_id} is initiating a lookup for {item}")
+        max_search_distance = max(1,diameter)
+        for buyer in buyers:
+            item = random.choice(items)
+            print(f"Buyer {buyer.peer_id} is initiating a lookup for {item}")
+            print(f"The max hopcount is {max_search_distance}")
+            threading.Thread(target=buyer.lookup_item, args=(item, max_search_distance)).start()
 
-    print("The peer-to-peer network with one buyer and one seller has been set up successfully!")
+        # random_buyer.lookup_item(product_name=item, hopcount=max_search_distance)
+
+    # print("The peer-to-peer network with one buyer and one seller has been set up successfully!")
 
 if __name__ == '__main__':
-    main()
+    if len(sys.argv) != 2:
+        print("Need to give the correct commands")
+        sys.exit(1)
+    N = int(sys.argv[1])
+    # if N<2:
+    #     print("Need atleast 2 peers")
+    #     sys.exit(1)
+    main(N)
 
 
 # def main():
