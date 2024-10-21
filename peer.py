@@ -1,5 +1,5 @@
 # peer.py
-
+import datetime
 import threading
 import socket
 import pickle
@@ -15,7 +15,9 @@ BUY_PROBABILITY = config.BUY_PROBABILITY
 SELLER_STOCK = config.SELLER_STOCK
 
 class Peer:
-    def __init__(self, peer_id, role, neighbors, port, ip_address='localhost', item=None, hop_count=3, max_distance=3):
+    def __init__(self, peer_id, role, neighbors, port, ip_address='localhost', item=None, cache_size=math.inf, hop_count=3, max_distance=3):
+        self.cache = {}
+        self.cache_size = cache_size
         self.peer_id = peer_id
         self.role = role  # 'buyer' or 'seller'
         self.neighbors = neighbors
@@ -28,7 +30,6 @@ class Peer:
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.socket.bind((self.ip_address, port))
         self.running = True
-        # self.cache = {}
         self.looked_up_items = set()
         self.hop_count = hop_count
         self.max_distance = max_distance
@@ -101,53 +102,53 @@ class Peer:
     def handle_lookup(self, message, addr):
         """Handle a lookup request from a buyer or peer."""
         req_id = message['request_id']
-        # if req_id not in self.cache:
-        #     if len(self.cache) > self.cache_size:
-        #         # Evict the first item
-        #         first_key = next(iter(self.cache))
-        #         del self.cache[first_key]
-        #
-        #     self.cache[req_id] = message
-        buyer_id = message['buyer_id']
-        product_name = message['product_name']
-        hopcount = message['hop_count']
-        search_path = message['search_path']
+        if req_id not in self.cache:
+            if len(self.cache) > self.cache_size:
+                # Evict the first item
+                first_key = next(iter(self.cache))
+                del self.cache[first_key]
 
-        # If this peer is a seller and has the requested product, reply to the buyer
-        if self.role == 'seller' and self.item == product_name and self.stock > 0:
-            next_peer_info = search_path[-1]
-            addr = (next_peer_info[1], next_peer_info[2])
-            reply_message = ReplyMessage(
-                self.peer_id,
-                reply_path=search_path[:-1],
-                seller_addr=(self.ip_address, self.port),
-                product_name=product_name,
-                request_id=req_id
-            ).to_dict()
-
-            self.send_message(addr, reply_message)
-            print(f"[{self.peer_id}] Sent reply for {req_id} to peer {next_peer_info[0]} for item {product_name}")
-
-        # If hopcount > 0, propagate the lookup to neighbors
-        elif hopcount > 0:
-            search_path.append((self.peer_id, self.ip_address, self.port))
-            hopcount_new = hopcount - 1
-            for neighbor in self.neighbors:
-                # Avoid sending the message back to the peer it came from
-                if neighbor.peer_id != message.get('last_peer_id', -1):
-                    lookup_message = LookupMessage(
-                        req_id,
-                        buyer_id,
-                        product_name,
-                        hopcount_new,
-                        search_path.copy()
-                    ).to_dict()
-                    lookup_message['last_peer_id'] = self.peer_id
-                    print(f"[{self.peer_id}] Forwarding lookup for {product_name} to Peer {neighbor.peer_id}")
-                    self.send_message((neighbor.ip_address, neighbor.port), lookup_message)
-        elif hopcount == 0:
-            print(f"[{self.peer_id}] Hopcount 0 reached for request {req_id}. Discarding message.")
-                # Discard the message without sending 'no_seller' back
+            self.cache[req_id] = message
+            buyer_id = message['buyer_id']
+            product_name = message['product_name']
+            hopcount = message['hop_count']
+            search_path = message['search_path']
+    
+            # If this peer is a seller and has the requested product, reply to the buyer
+            if self.role == 'seller' and self.item == product_name and self.stock > 0:
+                next_peer_info = search_path[-1]
+                addr = (next_peer_info[1], next_peer_info[2])
+                reply_message = ReplyMessage(
+                    self.peer_id,
+                    reply_path=search_path[:-1],
+                    seller_addr=(self.ip_address, self.port),
+                    product_name=product_name,
+                    request_id=req_id
+                ).to_dict()
+    
+                self.send_message(addr, reply_message)
+                print(f"[{self.peer_id}] Sent reply for {req_id} to peer {next_peer_info[0]} for item {product_name}")
+    
+            # If hopcount > 0, propagate the lookup to neighbors
+            elif hopcount > 0:
+                search_path.append((self.peer_id, self.ip_address, self.port))
+                hopcount_new = hopcount - 1
+                for neighbor in self.neighbors:
+                    # Avoid sending the message back to the peer it came from
+                    if neighbor.peer_id != message.get('last_peer_id', -1):
+                        lookup_message = LookupMessage(
+                            req_id,
+                            buyer_id,
+                            product_name,
+                            hopcount_new,
+                            search_path.copy()
+                        ).to_dict()
+                        lookup_message['last_peer_id'] = self.peer_id
+                        print(f"[{self.peer_id}] Forwarding lookup for {product_name} to Peer {neighbor.peer_id}")
+                        self.send_message((neighbor.ip_address, neighbor.port), lookup_message)
+            elif hopcount == 0:
+                print(f"[{self.peer_id}] Hopcount 0 reached for request {req_id}. Discarding message.")
+                    # Discard the message without sending 'no_seller' back
 
     def handle_reply(self, message):
         """Handle a reply recursively."""
@@ -217,7 +218,8 @@ class Peer:
         if confirmation_message.buyer_id == self.peer_id:
             if confirmation_message.status:
                 # Purchase was successful
-                print(f"[{self.peer_id}] Purchase of {confirmation_message.product_name} from seller {confirmation_message.seller_id} was successful.")
+                timestamp = datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S.%f")[:-3]
+                print(f"{timestamp} [{self.peer_id}] bought product {confirmation_message.product_name} from seller {confirmation_message.seller_id}")
 
                 # Decide whether to continue buying based on probability
                 if random.random() < BUY_PROBABILITY:
@@ -244,7 +246,7 @@ class Peer:
         """Buyers can send lookup messages to their neighbors."""
         if product_name is None:
             remaining_items = [item for item in self.available_items if item not in self.looked_up_items]
-            if not remaining_items:
+            if not remaining_items: # Incase the buyer can not find any sellers for any products [In this case would not happen]
                 print(f"[{self.peer_id}] No more items to look up. Shutting down.")
                 self.shutdown_peer()
                 return
@@ -265,7 +267,9 @@ class Peer:
                 'search_path': [(self.peer_id, self.ip_address, self.port)],
                 'last_peer_id': self.peer_id
             }
-            print(f"[{self.peer_id}] Initiating lookup for {product_name}")
+
+            timestamp = datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S.%f")[:-3]
+            print(f"{timestamp} [{self.peer_id}] Initiating lookup for {product_name}")
             for neighbor in self.neighbors:
                 print(f"[{self.peer_id}] Looking for {product_name} with neighbor {neighbor.peer_id}")
                 self.send_message((neighbor.ip_address, neighbor.port), lookup_message)
