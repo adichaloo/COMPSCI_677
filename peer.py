@@ -36,14 +36,16 @@ class Peer:
         self.hop_count = hop_count
         self.max_distance = max_distance
         self.available_items = ["fish", "salt", "boar"]
-        self.max_transactions = MAX_TRANSACTIONS
         self.items_bought = 0
-        self.start = time.time()
 
         # For buyer timeout handling
         self.pending_requests = {}
         self.timeout = TIMEOUT  # seconds
-        self.average_rtt = 0
+        if self.role == 'buyer':
+            self.start_time = None
+            self.end_time = None
+            self.average_rtt = time.time()
+            self.max_transactions = MAX_TRANSACTIONS
 
 
 
@@ -102,8 +104,11 @@ class Peer:
 
     def send_message(self, addr, message):
         """Send a message to a specific address."""
-        data = pickle.dumps(message)
-        self.socket.sendto(data, addr)
+        try:
+            serialized_message = pickle.dumps(message)
+            self.socket.sendto(serialized_message, addr)
+        except Exception as e:
+            print(f"[{self.peer_id}] Error sending message to {addr}: {e}")
 
     def handle_lookup(self, message, addr):
         """Handle a lookup request from a buyer or peer."""
@@ -229,10 +234,11 @@ class Peer:
                 print(f"{timestamp} [{self.peer_id}] bought product {confirmation_message.product_name} from seller {confirmation_message.seller_id}")
 
                 if self.items_bought == self.max_transactions:
-                    end = time.time()
-                    average_rtt = (end - self.start)/self.max_transactions
+                    self.end_time = time.time()
+                    # average_rtt =  (self.end_time - self.start_time)/self.max_transactions
+                    average_rtt = (self.end_time - self.start_time)/self.max_transactions
+                    print(f"[{self.peer_id}] Max transactions reached with average rtt {average_rtt:.4f}.\nShutting down peer.")
                     self.average_rtt = average_rtt
-                    print(f"[{self.peer_id}] Max transactions reached with average rtt {average_rtt}.\nShutting down peer.")
                     self.shutdown_peer()
                 elif random.random() < BUY_PROBABILITY:
                     print(f"[{self.peer_id}] Buyer decided to continue looking for another item.")
@@ -282,6 +288,8 @@ class Peer:
 
             timestamp = datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S.%f")[:-3]
             print(f"{timestamp} [{self.peer_id}] Initiating lookup for {product_name}")
+            if self.start_time is None:
+                self.start_time = time.time()
             for neighbor in self.neighbors:
                 print(f"[{self.peer_id}] Looking for {product_name} with neighbor {neighbor.peer_id}")
                 self.send_message((neighbor.ip_address, neighbor.port), lookup_message)

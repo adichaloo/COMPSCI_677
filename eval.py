@@ -52,7 +52,8 @@ def main(N):
         retries = 0
         while len(peer.neighbors) < max_neighbors and retries < 10:
             neighbor = random.choice(peers)
-            if neighbor.peer_id != peer.peer_id and neighbor not in peer.neighbors and len(neighbor.neighbors) < max_neighbors:
+            if neighbor.peer_id != peer.peer_id and neighbor not in peer.neighbors and len(
+                    neighbor.neighbors) < max_neighbors:
                 peer.neighbors.append(neighbor)
                 neighbor.neighbors.append(peer)
             else:
@@ -77,52 +78,56 @@ def main(N):
         peer.max_distance = hopcount
         peer.hop_count = hopcount
 
-    rtt = []  # Initialize an empty dictionary to store average RTTs
-
-# Have every buyer initiate a lookup
+    # Have every buyer initiate a lookup
     if buyers:
         threads = []  # List to hold thread references
         for buyer in buyers:
             item = random.choice(items)
             print(f"Buyer {buyer.peer_id} is initiating a lookup for {item} with hopcount {hopcount}")
-        
+
             # Start the thread and pass the buyer's ID to the target function to avoid overwriting
             thread = threading.Thread(target=buyer.lookup_item, args=(item, hopcount))
             threads.append(thread)  # Store the thread reference
             thread.start()  # Start the thread
-		# Collect the average RTTs for each buyer after all threads have completed
-        for buyer in buyers:
-            rtt.append(buyer.average_rtt)
-        # Now join all threads to ensure they complete before moving on
+
+        # Join all threads to ensure they initiate their lookups
         for thread in threads:
             thread.join()
 
-          # Use buyer's ID as the key
+        # Wait until all buyers have completed their transactions
+        while True:
+            alive_buyers = [buyer for buyer in buyers if buyer.running]
+            if not alive_buyers:
+                print("All buyers have shut down. Shutting down sellers and exiting program.")
+                # Shut down all seller peers
+                for seller in sellers:
+                    seller.running = False
+                    seller.socket.close()
+                break
+            time.sleep(1)  # Sleep before checking again
 
-        print("RTT for each buyer:", rtt)
+        # Collect the average RTTs for each buyer after all transactions are complete
+        rtt = []  # Initialize the RTT list
+        for buyer in buyers:
+            rtt.append({
+                'buyer_id': buyer.peer_id,
+                'average_rtt': buyer.average_rtt
+            })
 
-
-    # print("The peer-to-peer network has been set up successfully!")
-
-    # Monitor buyers and shut down sellers when buyers are done [Incase if we do not have an evolving network]
-    while True:
-        alive_buyers = [buyer for buyer in buyers if buyer.running]
-        if not alive_buyers:
-            print("All buyers have shut down. Shutting down sellers and exiting program.")
-            # Shut down all seller peers
-            for seller in sellers:
-                seller.running = False
-                seller.socket.close()
-            break
-        time.sleep(1)  # Sleep before checking again
+        # Print the RTT data
+        print("\nRTT for each buyer:")
+        for data in rtt:
+            print(f"Buyer {data['buyer_id']} average RTT: {data['average_rtt']:.4f} seconds")
 
     # Wait for all peer threads to finish
     for peer in peers:
-        peer.thread.join()
+        if peer.thread.is_alive():
+            peer.thread.join()
+
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
-        print("Usage: python eval.py <number_of_peers>")
+        print("Usage: python main.py <number_of_peers>")
         sys.exit(1)
     N = int(sys.argv[1])
     main(N)
