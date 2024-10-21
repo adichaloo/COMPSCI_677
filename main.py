@@ -36,8 +36,8 @@ class Peer:
         self.test = test
         self.cache = {}
         self.looked_up_items = set()
-        self.hop_count = hop_count
         self.max_distance = max_distance
+        self.hop_count = hop_count
         self.available_items = ["fish","salt","boar"]
         self.cache_size = cache_size
 
@@ -101,7 +101,8 @@ class Peer:
             self.cache[req_id] = message
             buyer_id = message['buyer_id']
             product_name = message['product_name']
-            hopcount = message['hop_count']
+            # hopcount = message['hop_count']
+            print(f"Message hopcount {self.hop_count}")
             search_path = message['search_path']
 
             # If this peer is a seller and has the requested product, reply to the buyer
@@ -118,9 +119,10 @@ class Peer:
                 print(f"[{self.peer_id}] Sent reply for {req_id} to peer {addr[1]} for item {product_name}")
 
                 # If hopcount > 0, propagate the lookup to neighbors
-            elif hopcount > 0:
+            elif self.hop_count > 0:
                 search_path.append(self.peer_id)
-                hopcount_new = hopcount - 1
+                # hopcount_new = hopcount - 1
+                self.hop_count-=1
                 for neighbor in self.neighbors:
                     # Avoid sending the message back to the peer it came from
                     if neighbor.peer_id not in search_path:
@@ -128,12 +130,13 @@ class Peer:
                                                         req_id, 
                                                         buyer_id, 
                                                         product_name, 
-                                                        hopcount_new, 
+                                                        # hopcount_new,
+                                                        self.hop_count,
                                                         search_path.copy()
                                                     ).to_dict()
                         print(f"[{self.peer_id}] Forwarding lookup for {product_name} to Peer {neighbor.peer_id}")
                         self.send_message(neighbor, lookup_message)
-            elif hopcount==0:
+            elif self.hop_count==0:
                 print(
                     f"[{self.peer_id}] Hopcount 0 reached. No sellers found for {product_name}. Informing buyer {buyer_id}.")
                 #buyer_addr = self.get_neighbor_info(buyer_id)
@@ -243,7 +246,7 @@ class Peer:
     def shutdown_peer(self):
         """Shutdown the peer."""
         print(f"[{self.peer_id}] Shutting down peer.")
-        exit(0)  # Exits the program
+        self.socket.close()
 
     def handle_no_seller(self, message):
         print(f"[{self.peer_id}] No seller found for {message['product_name']}. Selecting another item...")
@@ -350,15 +353,14 @@ def main(N):
         peer.start_peer()
 
     if buyers:
-        # random_buyer = random.choice(buyers)
+        buyer = random.choice(buyers)
         item = random.choice(items)
         # print(f"Buyer {random_buyer.peer_id} is initiating a lookup for {item}")
-        max_search_distance = max(1,diameter)
-        for buyer in buyers:
-            item = random.choice(items)
-            print(f"Buyer {buyer.peer_id} is initiating a lookup for {item}")
-            print(f"The max hopcount is {max_search_distance}")
-            threading.Thread(target=buyer.lookup_item, args=(item, max_search_distance)).start()
+        # max_search_distance = max(1,diameter)
+        item = random.choice(items)
+        print(f"Buyer {buyer.peer_id} is initiating a lookup for {item}")
+        print(f"The max hopcount is {buyer.max_distance}")
+        threading.Thread(target=buyer.lookup_item, args=(item, buyer.max_distance)).start()
 
         # random_buyer.lookup_item(product_name=item, hopcount=max_search_distance)
 
