@@ -13,6 +13,8 @@ import config
 
 BUY_PROBABILITY = config.BUY_PROBABILITY
 SELLER_STOCK = config.SELLER_STOCK
+MAX_TRANSACTIONS = config.MAX_TRANSACTIONS
+TIMEOUT = config.TIMEOUT
 
 class Peer:
     def __init__(self, peer_id, role, neighbors, port, ip_address='localhost', item=None, cache_size=math.inf, hop_count=3, max_distance=3):
@@ -34,10 +36,14 @@ class Peer:
         self.hop_count = hop_count
         self.max_distance = max_distance
         self.available_items = ["fish", "salt", "boar"]
+        self.max_transactions = MAX_TRANSACTIONS
+        self.items_bought = 0
+        self.start = time.time()
 
         # For buyer timeout handling
         self.pending_requests = {}
-        self.timeout = 5  # seconds
+        self.timeout = TIMEOUT  # seconds
+        self.average_rtt = 0
 
 
 
@@ -55,7 +61,7 @@ class Peer:
                 self.socket.settimeout(1.0)
                 data, addr = self.socket.recvfrom(1024)
                 message = pickle.loads(data)
-                print(f"[{self.peer_id}] Received Message: {message}")
+                # print(f"[{self.peer_id}] Received Message: {message}")
                 if message.get('type') == 'lookup':
                     self.handle_lookup(message, addr)
                 elif message.get('type') == 'reply':
@@ -218,11 +224,17 @@ class Peer:
         if confirmation_message.buyer_id == self.peer_id:
             if confirmation_message.status:
                 # Purchase was successful
+                self.items_bought += 1
                 timestamp = datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S.%f")[:-3]
                 print(f"{timestamp} [{self.peer_id}] bought product {confirmation_message.product_name} from seller {confirmation_message.seller_id}")
 
-                # Decide whether to continue buying based on probability
-                if random.random() < BUY_PROBABILITY:
+                if self.items_bought == self.max_transactions:
+                    end = time.time()
+                    average_rtt = (end - self.start)/self.max_transactions
+                    self.average_rtt = average_rtt
+                    print(f"[{self.peer_id}] Max transactions reached with average rtt {average_rtt}.\nShutting down peer.")
+                    self.shutdown_peer()
+                elif random.random() < BUY_PROBABILITY:
                     print(f"[{self.peer_id}] Buyer decided to continue looking for another item.")
                     remaining_items = [item for item in self.available_items if item != confirmation_message.product_name]
                     new_product = random.choice(remaining_items)

@@ -77,12 +77,30 @@ def main(N):
         peer.max_distance = hopcount
         peer.hop_count = hopcount
 
-    # Have every buyer initiate a lookup
+    rtt = []  # Initialize an empty dictionary to store average RTTs
+
+# Have every buyer initiate a lookup
     if buyers:
+        threads = []  # List to hold thread references
         for buyer in buyers:
             item = random.choice(items)
             print(f"Buyer {buyer.peer_id} is initiating a lookup for {item} with hopcount {hopcount}")
-            threading.Thread(target=buyer.lookup_item, args=(item, hopcount)).start()
+        
+            # Start the thread and pass the buyer's ID to the target function to avoid overwriting
+            thread = threading.Thread(target=buyer.lookup_item, args=(item, hopcount))
+            threads.append(thread)  # Store the thread reference
+            thread.start()  # Start the thread
+		# Collect the average RTTs for each buyer after all threads have completed
+        for buyer in buyers:
+            rtt.append(buyer.average_rtt)
+        # Now join all threads to ensure they complete before moving on
+        for thread in threads:
+            thread.join()
+
+          # Use buyer's ID as the key
+
+        print("RTT for each buyer:", rtt)
+
 
     # print("The peer-to-peer network has been set up successfully!")
 
@@ -104,7 +122,7 @@ def main(N):
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
-        print("Usage: python main.py <number_of_peers>")
+        print("Usage: python eval.py <number_of_peers>")
         sys.exit(1)
     N = int(sys.argv[1])
     main(N)
