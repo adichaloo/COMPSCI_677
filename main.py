@@ -65,7 +65,7 @@ class BuyConfirmationMessage:
         return BuyConfirmationMessage(d['request_id'], d['product_name'], d['buyer_id'], d['seller_id'], d['status'])
 
 ROOT_PEER_PORT = 6000  # The port where the root peer listens
-BUY_PROBABILITY = 1  # Probability (50%) that a buyer will continue to buy after a successful purchase
+BUY_PROBABILITY = 1  # Set to 1 to always continue buying after a purchase
 
 class Peer:
     def __init__(self, peer_id, role, neighbors, port, ip_address='localhost', item=None, test=True, cache_size=math.inf, hop_count=3, max_distance=3):
@@ -95,7 +95,9 @@ class Peer:
     def start_peer(self):
         """Start listening for messages from other peers."""
         print(f"Peer {self.peer_id} ({self.role}) with item {self.item} listening on port {self.port}...")
-        threading.Thread(target=self.listen_for_messages).start()
+        t = threading.Thread(target=self.listen_for_messages)
+        t.start()
+        self.thread = t  # Keep a reference to the thread
 
     def listen_for_messages(self):
         """Continuously listen for incoming messages."""
@@ -116,8 +118,10 @@ class Peer:
                 elif message.get('type') == 'no_seller':
                     self.handle_no_seller(message)
             except socket.timeout:
-                pass  # Timeout occurred, can be used to check pending requests
-
+                pass  # Timeout occurred
+            except OSError:
+                # Socket has been closed
+                break
             # For buyers, check for timeouts on pending requests
             if self.role == 'buyer':
                 self.check_pending_requests()
@@ -285,6 +289,8 @@ class Peer:
                 return
             product_name = random.choice(remaining_items)
             self.looked_up_items.add(product_name)
+        else:
+            self.looked_up_items.add(product_name)
 
         id_string = str(self.peer_id) + product_name + str(time.time())
         if self.role == 'buyer':
@@ -315,7 +321,7 @@ class Peer:
         print(f"[{self.peer_id}] Shutting down peer.")
         self.running = False
         self.socket.close()
-        exit(0)  # Exits the program
+        # The thread will exit when the method returns
 
     def handle_no_seller(self, message):
         """Handle the 'no_seller' message, which should not occur since we discard messages at hopcount zero."""
@@ -351,7 +357,7 @@ def main(N):
     buyers = []
     sellers = []
 
-    # Create peers with random roles and items, ensuring at least one buyer
+    # Create peers with random roles and items, ensuring at least one buyer and one seller
     for i in range(num_peers):
         if i == num_peers - 2 and len(buyers) == 0:
             # Ensure at least one buyer exists before the last peer
@@ -411,20 +417,32 @@ def main(N):
 
     # Have every buyer initiate a lookup
     if buyers:
-        # for buyer in buyers:
-        buyer = random.choice(buyers)
-        item = random.choice(items)
-        print(f"Buyer {buyer.peer_id} is initiating a lookup for {item} with hopcount {hopcount}")
-        threading.Thread(target=buyer.lookup_item, args=(item, hopcount)).start()
+        for buyer in buyers:
+            item = random.choice(items)
+            print(f"Buyer {buyer.peer_id} is initiating a lookup for {item} with hopcount {hopcount}")
+            threading.Thread(target=buyer.lookup_item, args=(item, hopcount)).start()
 
     print("The peer-to-peer network has been set up successfully!")
 
+    # Monitor buyers and shut down sellers when buyers are done
+    while True:
+        alive_buyers = [buyer for buyer in buyers if buyer.running]
+        if not alive_buyers:
+            print("All buyers have shut down. Shutting down sellers and exiting program.")
+            # Shut down all seller peers
+            for seller in sellers:
+                seller.running = False
+                seller.socket.close()
+            break
+        time.sleep(1)  # Sleep before checking again
+
+    # Wait for all peer threads to finish
+    for peer in peers:
+        peer.thread.join()
+
 if __name__ == '__main__':
     if len(sys.argv) != 2:
-        print("Need to give the correct commands")
+        print("Usage: python script.py <number_of_peers>")
         sys.exit(1)
     N = int(sys.argv[1])
-    # if N<2:
-    #     print("Need atleast 2 peers")
-    #     sys.exit(1)
     main(N)
