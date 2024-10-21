@@ -132,12 +132,13 @@ class Peer:
         for request_id, (product_name, timestamp) in self.pending_requests.items():
             if current_time - timestamp > self.timeout:
                 print(f"[{self.peer_id}] No response received for {product_name}. Timing out and selecting another item.")
-                self.looked_up_items.add(product_name)
-                remaining_items = [item for item in self.available_items if item not in self.looked_up_items]
-                if not remaining_items:
-                    print(f"[{self.peer_id}] No more items to look up. Shutting down.")
-                    self.shutdown_peer()
-                    return
+                # self.looked_up_items.add(product_name)
+                # remaining_items = [item for item in self.available_items if item not in self.looked_up_items]
+                remaining_items = [item for item in self.available_items if item != product_name]
+                # if not remaining_items:
+                #     print(f"[{self.peer_id}] No more items to look up. Shutting down.")
+                #     self.shutdown_peer()
+                #     return
                 new_product = random.choice(remaining_items)
                 print(f"[{self.peer_id}] Searching for a new product: {new_product}")
                 threading.Thread(target=self.lookup_item, args=(new_product, self.max_distance)).start()
@@ -244,6 +245,12 @@ class Peer:
                     status=True
                 ).to_dict()
                 self.send_message(addr, buy_confirmation_reply)
+            if self.stock == 0:
+                # Seller picks another item at random
+                previous_item = self.item
+                self.item = random.choice(self.available_items)
+                self.stock = random.randint(1, 5)  # Reset stock to SELLER_STOCK
+                print(f"[{self.peer_id}] Sold out of {previous_item}. Now selling {self.item}")
             else:
                 buy_confirmation_reply = BuyConfirmationMessage(
                     message["request_id"],
@@ -267,7 +274,9 @@ class Peer:
                 # Decide whether to continue buying based on probability
                 if random.random() < BUY_PROBABILITY:
                     print(f"[{self.peer_id}] Buyer decided to continue looking for another item.")
-                    threading.Thread(target=self.lookup_item, args=(None, self.max_distance)).start()
+                    remaining_items = [item for item in self.available_items if item != confirmation_message.product_name]
+                    new_product = random.choice(remaining_items)
+                    threading.Thread(target=self.lookup_item, args=(new_product, self.max_distance)).start()
                 else:
                     print(f"[{self.peer_id}] Buyer is satisfied and stops buying.")
                     self.shutdown_peer()
