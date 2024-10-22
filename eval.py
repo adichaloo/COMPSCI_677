@@ -29,6 +29,7 @@ def main(N):
             role = 'seller'
         else:
             role = random.choice(roles)
+            # role = 'seller'
         item = None
         if role == "seller":
             item = random.choice(items)
@@ -123,6 +124,9 @@ def main(N):
     for peer in peers:
         if peer.thread.is_alive():
             peer.thread.join()
+
+    for peer in peers:
+        peer.display_network()
 
 
 if __name__ == '__main__':

@@ -288,6 +288,7 @@ class Peer:
 
             timestamp = datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S.%f")[:-3]
             print(f"{timestamp} [{self.peer_id}] Initiating lookup for {product_name}")
+            # print(f"[{self.peer_id} Lookup Message: {look}]")
             if self.start_time is None:
                 self.start_time = time.time()
             for neighbor in self.neighbors:
