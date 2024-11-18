@@ -3,37 +3,77 @@ import sys
 import threading
 import time
 
+from inventory import *
 from peer import Peer, Leader
-# from utils.network_utils import graph_diameter
+import config
 
+is_election_in_progress = threading.Event()
+is_election_in_progress.clear()
+
+peers = []
+buyers = []
+sellers = []
+
+
+def monitor_leader(leader, time_quantum):
+	"""Monitors the leader status and initiates a new election if the leader fails."""
+	global peers, buyers, sellers
+	i = 0
+	while True:
+		print("printing",i)
+		i += 1
+		time.sleep(time_quantum)
+		if leader.leader_id is not None:
+			# Check if the leader dies with probability p
+			if random.random() < config.LEADER_FAILURE_PROBABILITY:
+				print(f"[Leader {leader.leader_id}] Leader failed with probability {config.LEADER_FAILURE_PROBABILITY}. Initiating new election.")
+				leader_failure_message = {}
+				for peer in peers:
+					peer.halt_operations()
+					peer.leader == None #reset the leader for all peers
+
+				failed_leader = next(peer for peer in peers if peer.role == 'leader')
+				inventory = failed_leader.inventory
+				assert isinstance(inventory, Inventory)
+				peers.remove(failed_leader)
+				print("Number of peers", len(peers))
+				_ = start_election()
+				print("Election Ended")
+		else:
+			print("No leader found. Initiating new election.")
+			start_election()
+
+def start_election():
+	"""Starts the election process for all peers."""
+	global peers
+	peer = random.choice(peers)
+	while peer.running == False:
+		peer = random.choice(peer)
+	print(f"Peer with {peer.peer_id} started election. ")
+	threading.Thread(target=peer.start_election).start()
+	return peer.leader
 
 def main(N):
-	num_peers = N  # Number of peers in the network
-	peers = []
-	ports = [5000 + i for i in range(num_peers)]  # Assign unique ports for all the peers
+	global peers, buyers, sellers
+	num_peers = N
+
+	ports = [5000 + i for i in range(num_peers)]
 	roles = ["buyer", "seller"]
 	items = ["fish", "salt", "boar"]
 
-	buyers = []
-	sellers = []
 
-	# Randomly select one peer to be the leader (trader)
 	leader_id = 0
 
-	# Create peers with random roles and items, ensuring at least one buyer and one seller
 	for i in range(num_peers):
 		if i == leader_id:
-			# Assign the leader role to this peer
 			role = 'leader'
 			item = None
 			print(f"Peer {i} is assigned as the leader (trader).")
 			leader = Leader(leader_id, 'localhost', ports[i])
 		elif i == num_peers - 2 and len(buyers) == 0:
-			# Ensure at least one buyer exists before the last peer
 			role = 'buyer'
 			item = None
 		elif i == num_peers - 1 and len(sellers) == 0:
-			# Ensure at least one seller exists
 			role = 'seller'
 			item = random.choice(items)
 		else:
@@ -47,37 +87,23 @@ def main(N):
 		elif role == 'seller':
 			sellers.append(peer)
 
-	# Fully connect the network: each peer is a neighbor of every other peer
 	for i in range(num_peers):
 		for j in range(num_peers):
 			if i != j and peers[j] not in peers[i].neighbors:
 				peers[i].neighbors.append(peers[j])
 				peers[j].neighbors.append(peers[i])
 
-	# Display the network structure
 	print("Network structure initialized (Fully Connected):")
 	for peer in peers:
 		peer.display_network()
 
-	# Start the peers to listen for messages
 	for peer in peers:
 		peer.start_peer()
 
-	# Calculate network diameter
-	# diameter = graph_diameter(peers)
-	# print(f"Network diameter is {diameter}")
-
-	# # Set the hopcount to be lower than the diameter
-	# hopcount = max(1, diameter - 1)
-	# for peer in peers:
-	#     peer.max_distance = hopcount
-	#     peer.hop_count = hopcount
-
-	# Have every buyer initiate a lookup
 	if sellers:
 		for seller in sellers:
 			print(f"Seller {seller.peer_id} is sending its inventory for {seller.item}")
-			threading.Thread(target=seller.send_update_inventory, args=()).start()
+			threading.Thread(target=seller.send_update_inventory).start()
 	print("Inventory Established with Leader")
 	time.sleep(2)
 	if buyers:
@@ -87,22 +113,22 @@ def main(N):
 			print(f"Buyer {buyer.peer_id} is initiating a buy for {item}")
 			threading.Thread(target=buyer.buy_item, args=(item, quantity)).start()
 
-	# Monitor buyers and shut down sellers when buyers are done
+	# Start monitoring the leader status with the time quantum
+	time_quantum = config.TIME_QUANTUM
+	threading.Thread(target=monitor_leader, args=(leader, time_quantum)).start()
+
 	while True:
 		alive_buyers = [buyer for buyer in buyers if buyer.running]
 		if not alive_buyers:
 			print("All buyers have shut down. Shutting down sellers and exiting program.")
-			# Shut down all seller peers
 			for seller in sellers:
 				seller.running = False
 				seller.socket.close()
 			break
-		time.sleep(1)  # Sleep before checking again
+		time.sleep(1)
 
-	# Wait for all peer threads to finish
 	for peer in peers:
 		peer.thread.join()
-
 
 if __name__ == '__main__':
 	if len(sys.argv) != 2:

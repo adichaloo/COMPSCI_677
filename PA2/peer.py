@@ -17,7 +17,7 @@ SELLER_STOCK = config.SELLER_STOCK
 MAX_TRANSACTIONS = config.MAX_TRANSACTIONS
 TIMEOUT = config.TIMEOUT
 PRICE = config.PRICE
-COMMISSION = config.COMMISSION
+COMMISSION = config.COMMISSION  ## add logic for comission
 '''
 MESSAGES
 1) UPDATE INVENTORY MESSAGE seller -> Trader
@@ -49,6 +49,8 @@ class Leader:
 		self.ip_address = ip_address
 		self.port = port
 		self.address = (self.ip_address, self.port)
+		self.is_active = True
+
 
 class Peer:
 	def __init__(self, peer_id, role, neighbors, port, leader, ip_address='localhost', item=None):
@@ -72,6 +74,7 @@ class Peer:
 		self.inventory = Inventory() if self.role == 'leader' else None
 		self.leader = leader if self.role != 'leader' else None
 		self.inventory_lock = threading.Lock()
+		self.operations_lock = threading.Lock()
 
 		# For buyer timeout handling
 		self.pending_requests = {}
@@ -91,6 +94,19 @@ class Peer:
 		self.election_timer_thread = None	
 
 
+	def halt_operations(self):
+		"""Halt all operations during an election."""
+		print(f"[{self.peer_id}] Halting all operations due to election.")
+		self.operations_lock.acquire()
+
+	def resume_operations(self):
+		"""Resume all operations after the election."""
+
+		if self.operations_lock.locked():
+			self.operations_lock.release()
+		print(f"[{self.peer_id}] Resuming all operations after election.")
+
+
 
 	def start_peer(self):
 		"""Start listening for messages from other peers."""
@@ -98,7 +114,7 @@ class Peer:
 		t = threading.Thread(target=self.listen_for_messages)
 		t.start()
 		self.thread = t
-		self.start_election_timer()
+		# self.start_election_timer()
 		
 
 	def listen_for_messages(self):
@@ -166,11 +182,13 @@ class Peer:
 		''' Seller creates this message and send to the leader'''
 		if self.role != 'seller':
 			return
-		update_inventory_message = UpdateInventoryMessage(self.peer_id, self.address, self.item, self.stock)
+		
+		with self.operations_lock:
+			update_inventory_message = UpdateInventoryMessage(self.peer_id, self.address, self.item, self.stock)
 
-		leader_addr = (self.leader.ip_address, self.leader.port)
-		self.send_message(leader_addr, update_inventory_message.to_dict())
-		print(f"[{self.peer_id}] Sent inventory update to leader [{self.leader.leader_id}]")
+			leader_addr = (self.leader.ip_address, self.leader.port)
+			self.send_message(leader_addr, update_inventory_message.to_dict())
+			print(f"[{self.peer_id}] Sent inventory update to leader [{self.leader.leader_id}]")
 
 	def handle_update_inventory(self, message:UpdateInventoryMessage):
 		'''When seller sends a update inventory message'''
@@ -188,45 +206,48 @@ class Peer:
 
 		if self.role != 'buyer':
 			return
-		if product_name is None:
-			remaining_items = [item for item in self.available_items if item not in self.looked_up_items]
-			if not remaining_items: # Incase the buyer can not find any sellers for any products [In this case would not happen]
-				print(f"[{self.peer_id}] No more items to look up. Shutting down.")
-				self.shutdown_peer()
-				return
-			product_name = random.choice(remaining_items)
-			self.looked_up_items.add(product_name)
-		else:
-			self.looked_up_items.add(product_name)
 		
-		if quantity is None:
-			quantity = random.randint(1, 5)
+		with self.operations_lock:
+		
+			if product_name is None:
+				remaining_items = [item for item in self.available_items if item not in self.looked_up_items]
+				if not remaining_items: # Incase the buyer can not find any sellers for any products [In this case would not happen]
+					print(f"[{self.peer_id}] No more items to look up. Shutting down.")
+					self.shutdown_peer()
+					return
+				product_name = random.choice(remaining_items)
+				self.looked_up_items.add(product_name)
+			else:
+				self.looked_up_items.add(product_name)
+			
+			if quantity is None:
+				quantity = random.randint(1, 5)
 
-		id_string = str(self.peer_id) + product_name + str(time.time())
-		if self.role == 'buyer':
-			request_id = hashlib.sha256(id_string.encode('utf-8')).hexdigest()
-			buy_message = BuyMessage(request_id, self.peer_id, self.address, product_name, quantity)
+			id_string = str(self.peer_id) + product_name + str(time.time())
+			if self.role == 'buyer':
+				request_id = hashlib.sha256(id_string.encode('utf-8')).hexdigest()
+				buy_message = BuyMessage(request_id, self.peer_id, self.address, product_name, quantity)
 
-			timestamp = datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S.%f")[:-3]
-			print(f"{timestamp} [{self.peer_id}] Initiating buy with trader for {product_name}")
-			# print(f"[{self.peer_id} Lookup Message: {look}]")
-			if self.start_time is None:
-				self.start_time = time.time()
-			# for neighbor in self.neighbors:
-			# 	print(f"[{self.peer_id}] Looking for {product_name} with neighbor {neighbor.peer_id}")
-			# 	self.send_message((neighbor.ip_address, neighbor.port), lookup_message)
-			print(self.leader.address)
-			self.send_message(self.leader.address, buy_message.to_dict())
-			# # Add to pending requests with a timestamp
-			with self.pending_requests_lock:
-				self.pending_requests[request_id] = (product_name, time.time())
+				timestamp = datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S.%f")[:-3]
+				print(f"{timestamp} [{self.peer_id}] Initiating buy with trader for {product_name}")
+				# print(f"[{self.peer_id} Lookup Message: {look}]")
+				if self.start_time is None:
+					self.start_time = time.time()
+				# for neighbor in self.neighbors:
+				# 	print(f"[{self.peer_id}] Looking for {product_name} with neighbor {neighbor.peer_id}")
+				# 	self.send_message((neighbor.ip_address, neighbor.port), lookup_message)
+				print(self.leader.address)
+				self.send_message(self.leader.address, buy_message.to_dict())
+				# # Add to pending requests with a timestamp
+				with self.pending_requests_lock:
+					self.pending_requests[request_id] = (product_name, time.time())
 
 	def handle_buy(self, message:BuyMessage):
 		"""Handle a buy request from a buyer."""
 		#[(message.seller_id, message.address, message.product_name, message.stock), ... ]product_list structure tuple
 		if self.role != 'leader':
 			return 
-		
+
 		message = BuyMessage.from_dict(message)
 		with self.sell_confirmation_lock:
 			print(self.inventory.inventory)
@@ -319,9 +340,24 @@ class Peer:
 		"""Initiate the election process."""
 		if self.in_election:
 			return
+
 		print(f"[{self.peer_id}] Initiating election...")
 		self.in_election = True
+		# self.halt_operations()  # Pause all operations during the election
+		self.ok_received = False  # Flag to track if an OK message is received
 		self.send_election_messages()
+
+		# Start a timer to wait for OK messages
+		threading.Thread(target=self.wait_for_ok_response).start()
+
+	def wait_for_ok_response(self):
+		"""Wait for OK messages and declare leader if no response is received."""
+		time.sleep(config.OK_TIMEOUT)  # Wait for a specified timeout
+		if not self.ok_received:
+			print(f"[{self.peer_id}] No OK response received. Declaring self as leader.")
+			self.declare_leader()
+		else:
+			print(f"[{self.peer_id}] OK response received. Election process will continue.")
 
 	def send_election_messages(self):
 		"""Send election message to peers with higher IDs."""
@@ -332,6 +368,7 @@ class Peer:
 		for neighbor in self.neighbors:
 			if neighbor.peer_id > self.peer_id:
 				self.send_message((neighbor.ip_address, neighbor.port), election_message)
+
 
 	def handle_election(self, message):
 		"""Handle an election message."""
@@ -359,7 +396,10 @@ class Peer:
 	def handle_election_OK(self, message):
 		"""Handle an OK message."""
 		print(f"[{self.peer_id}] Received OK message from {message['peer_id']}.")
-		self.in_election = False  # Another peer will take over the election
+		self.ok_received = True
+		self.in_election = False  # Stop the election as a higher peer exists
+		# self.resume_operations()  # Resume normal operations
+
 
 	def declare_leader(self):
 		"""Declare this peer as the new leader."""
@@ -404,7 +444,11 @@ class Peer:
 				print(f"[{self.peer_id}] Time quantum expired. Checking leader status.")
 				self.start_election()
 
-
+	def update_leader(self, new_leader):
+		"""Update the leader reference after an election."""
+		self.leader = new_leader
+		if self.role != 'leader':
+			print(f"Peer {self.peer_id} updated its leader to Peer {new_leader.leader_id}.")
 
 	def display_network(self):
 		"""Print network structure for this peer."""
