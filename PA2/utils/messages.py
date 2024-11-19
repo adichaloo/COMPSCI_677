@@ -1,11 +1,43 @@
+# messages.py
+
+class UpdateInventoryMessage:
+    def __init__(self, seller_id, address, product_name, stock, vector_clock):
+        self.type = "update_inventory"
+        self.seller_id = seller_id
+        self.address = address
+        self.product_name = product_name
+        self.stock = stock
+        self.vector_clock = vector_clock
+
+    def to_dict(self):
+        return {
+            "type": self.type,
+            "seller_id": self.seller_id,
+            "address": self.address,
+            "product_name": self.product_name,
+            "stock": self.stock,
+            "vector_clock": self.vector_clock
+        }
+
+    @staticmethod
+    def from_dict(data):
+        return UpdateInventoryMessage(
+            data["seller_id"],
+            data["address"],
+            data["product_name"],
+            data["stock"],
+            data["vector_clock"]
+        )
+
 class BuyMessage:
-    def __init__(self, request_id, buyer_id, address,  product_name, quantity):
+    def __init__(self, request_id, buyer_id, buyer_address, product_name, quantity, vector_clock):
         self.type = "buy"
         self.request_id = request_id
         self.buyer_id = buyer_id
-        self.buyer_address = address
+        self.buyer_address = buyer_address
         self.product_name = product_name
         self.quantity = quantity
+        self.vector_clock = vector_clock
 
     def to_dict(self):
         return {
@@ -14,7 +46,8 @@ class BuyMessage:
             "buyer_id": self.buyer_id,
             "buyer_address": self.buyer_address,
             "product_name": self.product_name,
-            "quantity": self.quantity
+            "quantity": self.quantity,
+            "vector_clock": self.vector_clock
         }
 
     @staticmethod
@@ -24,18 +57,19 @@ class BuyMessage:
             data["buyer_id"],
             data["buyer_address"],
             data["product_name"],
-            data["quantity"]
+            data["quantity"],
+            data["vector_clock"]
         )
 
-
 class BuyConfirmationMessage:
-    def __init__(self, request_id, buyer_id, product_name, status, quantity):
+    def __init__(self, request_id, buyer_id, product_name, status, quantity, vector_clock):
         self.type = "buy_confirmation"
         self.request_id = request_id
         self.buyer_id = buyer_id
         self.product_name = product_name
-        self.status = status  # True for success, False for failure
-        self.quantity = quantity  # Quantity confirmed or rejected
+        self.status = status
+        self.quantity = quantity
+        self.vector_clock = vector_clock
 
     def to_dict(self):
         return {
@@ -44,7 +78,8 @@ class BuyConfirmationMessage:
             "buyer_id": self.buyer_id,
             "product_name": self.product_name,
             "status": self.status,
-            "quantity": self.quantity
+            "quantity": self.quantity,
+            "vector_clock": self.vector_clock
         }
 
     @staticmethod
@@ -54,17 +89,19 @@ class BuyConfirmationMessage:
             data["buyer_id"],
             data["product_name"],
             data["status"],
-            data["quantity"]
+            data["quantity"],
+            data["vector_clock"]
         )
 
 class SellConfirmationMessage:
-    def __init__(self, request_id, buyer_id, product_name, status, quantity):
+    def __init__(self, request_id, buyer_id, product_name, status, quantity, vector_clock):
         self.type = "sell_confirmation"
         self.request_id = request_id
         self.buyer_id = buyer_id
         self.product_name = product_name
-        self.status = status  # True for success, False for failure
-        self.quantity = quantity  # Quantity confirmed or rejected
+        self.status = status
+        self.quantity = quantity
+        self.vector_clock = vector_clock
 
     def to_dict(self):
         return {
@@ -73,7 +110,8 @@ class SellConfirmationMessage:
             "buyer_id": self.buyer_id,
             "product_name": self.product_name,
             "status": self.status,
-            "quantity": self.quantity
+            "quantity": self.quantity,
+            "vector_clock": self.vector_clock
         }
 
     @staticmethod
@@ -83,96 +121,6 @@ class SellConfirmationMessage:
             data["buyer_id"],
             data["product_name"],
             data["status"],
-            data["quantity"]
+            data["quantity"],
+            data["vector_clock"]
         )
-
-class UpdateInventoryMessage:
-    def __init__(self, seller_id, address, product_name, stock):
-        self.type = "update_inventory"
-        self.seller_id = seller_id
-        self.address = address
-        self.product_name = product_name
-        self.stock = stock
-
-    
-
-    def to_dict(self):
-        return {
-            "type": self.type,
-            "seller_id": self.seller_id,
-            "address": self.address,
-            "product_name": self.product_name,
-            "stock": self.stock
-        }
-
-    @staticmethod
-    def from_dict(data):
-        return UpdateInventoryMessage(
-            data["seller_id"],
-            data["address"],
-            data["product_name"],
-            data["stock"]
-        )
-
-
-class ElectionMessage:
-    def __init__(self, sender_id,):
-        self.type = "election"
-        self.sender_id = sender_id
-
-    def to_dict(self):
-        return {
-            "type": self.type,
-            "sender_id": self.sender_id,
-        }
-
-    @staticmethod
-    def from_dict(data):
-        return ElectionMessage(
-            data["sender_id"],
-            data["election_round"]
-        )
-
-
-class OKMessage:
-    def __init__(self, sender_id):
-        self.type = "OK"
-        self.sender_id = sender_id
-
-    def to_dict(self):
-        return {
-            "type": self.type,
-            "sender_id": self.sender_id
-        }
-
-    @staticmethod
-    def from_dict(data):
-        return OKMessage(
-            data["sender_id"]
-        )
-
-
-class LeaderMessage:
-    def __init__(self, leader_id, ip_address, port):
-        self.type = "leader"
-        self.leader_id = leader_id
-        self.ip_address = ip_address
-        self.port = port
-
-    def to_dict(self):
-        return {
-            "type": self.type,
-            "leader_id": self.leader_id,
-            "ip_address": self.ip_address,
-            "port": self.port
-        }
-
-    @staticmethod
-    def from_dict(data):
-        return LeaderMessage(
-            data["leader_id"],
-            data["ip_address"],
-            data["port"]
-        )
-
-
