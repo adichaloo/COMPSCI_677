@@ -23,3 +23,7 @@ def load_leader_state():
     else:
         print("[Load] No inventory state found. Starting with empty inventory.")
         return {}
+
+
+###################
+    # Election-related methods (remain the same, ensure leader initializes the processing thread)

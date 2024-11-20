@@ -79,16 +79,21 @@ class Peer:
     def save_market_state(self):
         """Save the market state to disk."""
         if self.is_leader:
-            with self.inventory_lock:
+            # No need to acquire inventory_lock here; it's already held
+            try:
                 self.inventory.save_to_disk()
                 print(f"[{self.peer_id}] Market state saved to disk.")
+            except Exception as e:
+                print(f"[{self.peer_id}] Error saving market state: {e}")
 
     def load_market_state(self):
         """Load the market state from disk."""
         if self.is_leader:
-            with self.inventory_lock:
+            try:
                 self.inventory.load_from_disk()
-                print(f"[{self.peer_id}] Market state Loaded disk.")
+                print(f"[{self.peer_id}] Market state loaded from disk.")
+            except Exception as e:
+                print(f"[{self.peer_id}] Error loading market state: {e}")
 
     def increment_vector_clock(self):
         """Increment the vector clock for this peer."""
@@ -136,20 +141,20 @@ class Peer:
                     self.handle_update_inventory(message)
                 elif message.get('type') == 'sell_confirmation':
                     self.handle_sell_confirmation(message)
-                elif message.get('type') == 'election':
-                    self.handle_election(message)
-                elif message.get('type') == 'OK':
-                    self.handle_election_OK(message)
-                elif message.get('type') == 'leader':
-                    self.handle_leader(message)
+                # elif message.get('type') == 'election':
+                #     self.handle_election(message)
+                # elif message.get('type') == 'OK':
+                #     self.handle_election_OK(message)
+                # elif message.get('type') == 'leader':
+                #     self.handle_leader(message)
             except socket.timeout:
                 pass  # Timeout occurred
             except OSError:
                 # Socket has been closed
                 break
             # For buyers, check for timeouts on pending requests
-            if 'buyer' in self.role:
-                self.check_pending_requests()
+            # if 'buyer' in self.role:
+            #     self.check_pending_requests()
 
     def check_pending_requests(self):
         current_time = time.time()
@@ -376,7 +381,51 @@ class Peer:
             print(f"[{self.peer_id}] Stock reached 0. Restocking {self.item} and sending update to leader.")
             threading.Thread(target=self.send_update_inventory).start()
 
-    # Election-related methods (remain the same, ensure leader initializes the processing thread)
+
+    def display_network(self):
+        """Print network structure for this peer."""
+        neighbor_ids = [neighbor.peer_id for neighbor in self.neighbors]
+        print(f"Peer {self.peer_id} ({self.role}) connected to peers {neighbor_ids}")
+
+    def shutdown_peer(self):
+        """Shutdown the peer."""
+        print(f"[{self.peer_id}] Shutting down peer.")
+        self.running = False
+        self.socket.close()
+
+    # Comparison functions for vector clocks
+
+    @staticmethod
+    def compare_vector_clocks(vc1, vc2):
+        """Compare two vector clocks."""
+        less = False
+        greater = False
+        for v1, v2 in zip(vc1, vc2):
+            if v1 < v2:
+                less = True
+            elif v1 > v2:
+                greater = True
+        if less and not greater:
+            return -1
+        elif greater and not less:
+            return 1
+        else:
+            return 0  # Concurrent
+    @staticmethod
+    def compare_buy_requests(buy_request1, buy_request2):
+        comp = Peer.compare_vector_clocks(buy_request1.vector_clock, buy_request2.vector_clock)
+        if comp == -1:
+            return -1
+        elif comp == 1:
+            return 1
+        else:
+            # If concurrent, break ties using buyer IDs
+            if buy_request1.buyer_id < buy_request2.buyer_id:
+                return -1
+            elif buy_request1.buyer_id > buy_request2.buyer_id:
+                return 1
+            else:
+                return 0
 
     def start_election(self):
         """Initiate the election process."""
@@ -492,47 +541,3 @@ class Peer:
             threading.Thread(target=self.process_pending_buy_requests_thread, daemon=True).start()
         self.in_election = False
 
-    def display_network(self):
-        """Print network structure for this peer."""
-        neighbor_ids = [neighbor.peer_id for neighbor in self.neighbors]
-        print(f"Peer {self.peer_id} ({self.role}) connected to peers {neighbor_ids}")
-
-    def shutdown_peer(self):
-        """Shutdown the peer."""
-        print(f"[{self.peer_id}] Shutting down peer.")
-        self.running = False
-        self.socket.close()
-
-    # Comparison functions for vector clocks
-
-    @staticmethod
-    def compare_vector_clocks(vc1, vc2):
-        """Compare two vector clocks."""
-        less = False
-        greater = False
-        for v1, v2 in zip(vc1, vc2):
-            if v1 < v2:
-                less = True
-            elif v1 > v2:
-                greater = True
-        if less and not greater:
-            return -1
-        elif greater and not less:
-            return 1
-        else:
-            return 0  # Concurrent
-    @staticmethod
-    def compare_buy_requests(buy_request1, buy_request2):
-        comp = Peer.compare_vector_clocks(buy_request1.vector_clock, buy_request2.vector_clock)
-        if comp == -1:
-            return -1
-        elif comp == 1:
-            return 1
-        else:
-            # If concurrent, break ties using buyer IDs
-            if buy_request1.buyer_id < buy_request2.buyer_id:
-                return -1
-            elif buy_request1.buyer_id > buy_request2.buyer_id:
-                return 1
-            else:
-                return 0
