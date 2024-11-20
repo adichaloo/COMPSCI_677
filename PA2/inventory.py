@@ -2,11 +2,12 @@
 
 import threading
 import functools
+import pickle
 
 class Inventory:
     def __init__(self):
         self.inventory = {}  # Dictionary to store items and their seller info
-        self.inventory_lock = threading.Lock()
+        self.inventory_lock = threading.RLock()
 
     def add_inventory(self, seller_id, address, item_name, quantity, vector_clock):
         """Add or update inventory for a seller."""
@@ -27,24 +28,6 @@ class Inventory:
                 'quantity': quantity,
                 'vector_clock': vector_clock
             })
-
-    def update_inventory(self, seller_id, item_name, new_quantity, vector_clock):
-        """Update the quantity of an existing item for a specific seller."""
-        with self.inventory_lock:
-            if item_name not in self.inventory:
-                print(f"Error: Item '{item_name}' not found in inventory.")
-                return
-
-            for seller_info in self.inventory[item_name]:
-                if seller_info['seller_id'] == seller_id:
-                    if new_quantity > 0:
-                        seller_info['quantity'] = new_quantity
-                        seller_info['vector_clock'] = vector_clock
-                    else:
-                        self.inventory[item_name].remove(seller_info)
-                    return
-
-            print(f"Error: Seller '{seller_id}' not found for item '{item_name}'.")
 
     def reduce_stock(self, item_name, quantity):
         """
@@ -82,63 +65,25 @@ class Inventory:
             print(f"Stock reduced: {quantity} units of '{item_name}' sold by {seller_id} ({address}).")
             return seller_id, address, True
 
-    def get_item_stock(self, item_name):
-        """Retrieve the total stock of an item across all sellers."""
-        with self.inventory_lock:
-            if item_name not in self.inventory:
-                return 0
+    def save_to_disk(self, filename='market_state.pkl'):
+        """Save the inventory to a file."""
+        try:
+            with open(filename, 'wb') as f:
+                pickle.dump(self.inventory, f)
+            print("Inventory saved to disk.")
+        except Exception as e:
+            print(f"Error saving inventory to disk: {e}")
 
-            return sum(seller_info['quantity'] for seller_info in self.inventory[item_name])
-
-    def get_sellers_for_item(self, item_name):
-        """Get a list of sellers who have the item in stock."""
-        with self.inventory_lock:
-            if item_name not in self.inventory:
-                return []
-
-            return [seller_info for seller_info in self.inventory[item_name] if seller_info['quantity'] > 0]
-
-    def remove_seller_inventory(self, seller_id, item_name):
-        """Remove a seller's stock of a particular item."""
-        with self.inventory_lock:
-            if item_name not in self.inventory:
-                print(f"Error: Item '{item_name}' not found in inventory.")
-                return
-
-            for seller_info in self.inventory[item_name]:
-                if seller_info['seller_id'] == seller_id:
-                    self.inventory[item_name].remove(seller_info)
-                    return
-
-            print(f"Error: Seller '{seller_id}' not found for item '{item_name}'.")
-
-    def remove_item(self, item_name):
-        """Remove an entire item from the inventory."""
-        with self.inventory_lock:
-            if item_name in self.inventory:
-                del self.inventory[item_name]
-            else:
-                print(f"Error: Item '{item_name}' not found in inventory.")
-
-    def get_inventory(self):
-        """Get the entire inventory data."""
-        with self.inventory_lock:
-            return self.inventory.copy()
-
-    def __str__(self):
-        """String representation of the inventory."""
-        with self.inventory_lock:
-            return str(self.inventory)
-
-    def get_seller_address(self, seller_id):
-        """Get the address of a seller given the seller_id."""
-        with self.inventory_lock:
-            for item_list in self.inventory.values():
-                for seller_info in item_list:
-                    if seller_info['seller_id'] == seller_id:
-                        return seller_info['address']
-            print(f"Error: Address for seller '{seller_id}' not found.")
-            return None
+    def load_from_disk(self, filename='market_state.pkl'):
+        """Load the inventory from a file."""
+        # with self.inventory_lock:
+        try:
+            with open(filename, 'rb') as f:
+                self.inventory = pickle.load(f)
+            print("Inventory loaded from disk.")
+        except FileNotFoundError:
+            print("No existing market state found. Starting with empty inventory.")
+            self.inventory = {}
 
 def compare_vector_clocks(vc1, vc2):
     """Compare two vector clocks."""
@@ -172,6 +117,7 @@ def compare_sellers(seller1, seller2):
             return 1
         else:
             return 0
+
 
 
 

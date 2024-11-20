@@ -1,141 +1,326 @@
 Peer 0 is assigned as the leader (trader).
+Peer 0 is assigned as the leader (trader).
+No existing market state found. Starting with empty inventory.
 Network structure initialized (Fully Connected):
-Peer 0 (leader) connected to peers [1, 2, 3, 4]
-Peer 1 (buyer) connected to peers [0, 2, 3, 4]
-Peer 2 (buyer) connected to peers [0, 1, 3, 4]
-Peer 3 (seller) connected to peers [0, 1, 2, 4]
-Peer 4 (buyer) connected to peers [0, 1, 2, 3]
+Peer 0 (leader) connected to peers [1, 2, 3, 4, 5]
+Peer 1 (buyer) connected to peers [0, 2, 3, 4, 5]
+Peer 2 (buyer) connected to peers [0, 1, 3, 4, 5]
+Peer 3 (seller) connected to peers [0, 1, 2, 4, 5]
+Peer 4 (buyer) connected to peers [0, 1, 2, 3, 5]
+Peer 5 (seller) connected to peers [0, 1, 2, 3, 4]
 Peer 0 (leader) with item None listening on port 5000...
 Peer 1 (buyer) with item None listening on port 5001...
 Peer 2 (buyer) with item None listening on port 5002...
-Peer 3 (seller) with item salt listening on port 5003...
+Peer 3 (seller) with item boar listening on port 5003...
 Peer 4 (buyer) with item None listening on port 5004...
-Seller 3 is sending its inventory for salt
-[3] Incremented vector clock: [0, 0, 0, 1, 0]
+Peer 5 (seller) with item boar listening on port 5005...
+Seller 3 is sending its inventory for boar
+[3] Incremented vector clock: [0, 0, 0, 1, 0, 0]
+[3] Sending UpdateInventoryMessage to leader 0:
+    Seller ID: 3
+    Address: ('localhost', 5003)
+    Product Name: boar
+    Stock: 10
+    Vector Clock: [0, 0, 0, 1, 0, 0]
+[3] Incremented vector clock: [0, 0, 0, 2, 0, 0]
+Seller 5 is sending its inventory for boar
+[5] Incremented vector clock: [0, 0, 0, 0, 0, 1]
+[5] Sending UpdateInventoryMessage to leader 0:
+    Seller ID: 5
+    Address: ('localhost', 5005)
+    Product Name: boar
+    Stock: 10
+    Vector Clock: [0, 0, 0, 0, 0, 1]
+[5] Incremented vector clock: [0, 0, 0, 0, 0, 2]
 Inventory Established with Leader
+[5] Sent inventory update to leader [0]
 [3] Sent inventory update to leader [0]
-[0] Updated vector clock from [0, 0, 0, 0, 0] to [1, 0, 0, 1, 0] after receiving [0, 0, 0, 1, 0]
-Update Inventory Message {'type': 'update_inventory', 'seller_id': 3, 'address': ('localhost', 5003), 'product_name': 'salt', 'stock': 10, 'vector_clock': [0, 0, 0, 1, 0]}
-Inventory is  {'salt': [{'seller_id': 3, 'address': ('localhost', 5003), 'quantity': 10, 'vector_clock': [0, 0, 0, 1, 0]}]}
+[0] Updated vector clock from [0, 0, 0, 0, 0, 0] to [1, 0, 0, 0, 0, 2] after receiving [0, 0, 0, 0, 0, 2]
+[0] Updated inventory with seller 5 for product boar
 Buyer 1 is initiating a buy for boar
-[1] Incremented vector clock: [0, 1, 0, 0, 0]
-19.11.2024 03:18:29.141 [1] Initiating buy with trader for boar
-('localhost', 5000)
-Buyer 2 is initiating a buy for fish
-[2] Incremented vector clock: [0, 0, 1, 0, 0]
-19.11.2024 03:18:29.141 [2] Initiating buy with trader for fish
-('localhost', 5000)
+[1] Incremented vector clock: [0, 1, 0, 0, 0, 0]
+19.11.2024 18:55:05.184 [1] Initiating buy with trader for boar
+[1] Incremented vector clock: [0, 2, 0, 0, 0, 0]
+Buyer 2 is initiating a buy for salt
+[2] Incremented vector clock: [0, 0, 1, 0, 0, 0]
+19.11.2024 18:55:05.185 [2] Initiating buy with trader for salt
+[2] Incremented vector clock: [0, 0, 2, 0, 0, 0]
 Buyer 4 is initiating a buy for salt
-[4] Incremented vector clock: [0, 0, 0, 0, 1]
-19.11.2024 03:18:29.141 [4] Initiating buy with trader for salt
-('localhost', 5000)
-printing 0
-[0] Updated vector clock from [1, 0, 0, 1, 0] to [2, 0, 0, 1, 1] after receiving [0, 0, 0, 0, 1]
-{'salt': [{'seller_id': 3, 'address': ('localhost', 5003), 'quantity': 10, 'vector_clock': [0, 0, 0, 1, 0]}]}
-Stock reduced: 1 units of 'salt' sold by 3 (('localhost', 5003)).
-[0] Sold item to buyer 4.
-[4] Updated vector clock from [0, 0, 0, 0, 1] to [2, 0, 0, 1, 2] after receiving [2, 0, 0, 1, 1]
-19.11.2024 03:18:29.143 [4] bought product salt from trader.
-[4] Updated vector clock from [2, 0, 0, 1, 2] to [2, 0, 0, 1, 3] after receiving [2, 0, 0, 1, 1]
-[4] Buyer decided to continue looking for another item.
-[4] Incremented vector clock: [2, 0, 0, 1, 4]
-19.11.2024 03:18:29.143 [4] Initiating buy with trader for boar
-('localhost', 5000)
-[0] Updated vector clock from [2, 0, 0, 1, 1] to [3, 0, 1, 1, 1] after receiving [0, 0, 1, 0, 0]
-{'salt': [{'seller_id': 3, 'address': ('localhost', 5003), 'quantity': 9, 'vector_clock': [0, 0, 0, 1, 0]}]}
+[4] Incremented vector clock: [0, 0, 0, 0, 1, 0]
+19.11.2024 18:55:05.185 [4] Initiating buy with trader for salt
+[4] Incremented vector clock: [0, 0, 0, 0, 2, 0]
+[4] No response received for salt. Timing out and selecting another item.
+[4] Searching for a new product: boar
+[2] No response received for salt. Timing out and selecting another item.
+[2] Searching for a new product: boar
+[2] Incremented vector clock: [0, 0, 3, 0, 0, 0]
+19.11.2024 18:55:10.188 [2] Initiating buy with trader for boar
+[2] Incremented vector clock: [0, 0, 4, 0, 0, 0]
+[4] Incremented vector clock: [0, 0, 0, 0, 3, 0]
+19.11.2024 18:55:10.189 [4] Initiating buy with trader for boar
+[4] Incremented vector clock: [0, 0, 0, 0, 4, 0]
+[1] No response received for boar. Timing out and selecting another item.
+[1] Searching for a new product: salt
+[1] Incremented vector clock: [0, 3, 0, 0, 0, 0]
+19.11.2024 18:55:10.189 [1] Initiating buy with trader for salt
+[1] Incremented vector clock: [0, 4, 0, 0, 0, 0]
+[Leader 0] Leader failed with probability 1.
+[0] Shutting down peer.
+Leader 0 has failed. Initiating new election.
+Peer 1 is initiating the election.
+[1] Initiating election...
+[1] Incremented vector clock: [0, 5, 0, 0, 0, 0]
+[4] No response received for boar. Timing out and selecting another item.
+[4] Searching for a new product: salt
+[4] No leader available. Waiting for a leader to be elected.
+[1] No response received for salt. Timing out and selecting another item.
+[1] Searching for a new product: fish
+[1] No leader available. Waiting for a leader to be elected.
+[2] No response received for boar. Timing out and selecting another item.
+[2] Searching for a new product: fish
+[2] No leader available. Waiting for a leader to be elected.
+[1] Incremented vector clock: [0, 6, 0, 0, 0, 0]
+[2] Updated vector clock from [0, 0, 4, 0, 0, 0] to [0, 5, 5, 0, 0, 0] after receiving [0, 5, 0, 0, 0, 0]
+[2] Received election message from 1.
+[2] Sending OK message to 1.
+[2] Incremented vector clock: [0, 5, 6, 0, 0, 0]
+[1] Incremented vector clock: [0, 7, 0, 0, 0, 0]
+[3] Updated vector clock from [0, 0, 0, 2, 0, 0] to [0, 6, 0, 3, 0, 0] after receiving [0, 6, 0, 0, 0, 0]
+[3] Received election message from 1.
+[3] Sending OK message to 1.
+[3] Incremented vector clock: [0, 6, 0, 4, 0, 0]
+[3] Initiating election...
+[3] Incremented vector clock: [0, 6, 0, 5, 0, 0]
+[1] Incremented vector clock: [0, 8, 0, 0, 0, 0]
+[1] Updated vector clock from [0, 8, 0, 0, 0, 0] to [0, 9, 0, 4, 0, 0] after receiving [0, 6, 0, 4, 0, 0]
+[1] Received OK message from 3.
+[1] Updated vector clock from [0, 9, 0, 4, 0, 0] to [0, 10, 6, 4, 0, 0] after receiving [0, 5, 6, 0, 0, 0]
+[1] Received OK message from 2.
+[2] Initiating election...
+[2] Incremented vector clock: [0, 5, 7, 0, 0, 0]
+[4] Updated vector clock from [0, 0, 0, 0, 4, 0] to [0, 7, 0, 0, 5, 0] after receiving [0, 7, 0, 0, 0, 0]
+[4] Received election message from 1.
+[4] Sending OK message to 1.
+[4] Incremented vector clock: [0, 7, 0, 0, 6, 0]
+[3] Incremented vector clock: [0, 6, 0, 6, 0, 0]
+[2] Incremented vector clock: [0, 5, 8, 0, 0, 0]
+[3] Updated vector clock from [0, 6, 0, 6, 0, 0] to [0, 6, 7, 7, 0, 0] after receiving [0, 5, 7, 0, 0, 0]
+[3] Received election message from 2.
+[3] Sending OK message to 2.
+[3] Incremented vector clock: [0, 6, 7, 8, 0, 0]
+[5] Updated vector clock from [0, 0, 0, 0, 0, 2] to [0, 6, 0, 6, 0, 3] after receiving [0, 6, 0, 6, 0, 0]
+[5] Received election message from 3.
+[5] Sending OK message to 3.
+[5] Incremented vector clock: [0, 6, 0, 6, 0, 4]
+[4] Initiating election...
+[4] Incremented vector clock: [0, 7, 0, 0, 7, 0]
+[2] Incremented vector clock: [0, 5, 9, 0, 0, 0]
+[1] Updated vector clock from [0, 10, 6, 4, 0, 0] to [0, 11, 6, 4, 6, 0] after receiving [0, 7, 0, 0, 6, 0]
+[1] Received OK message from 4.
+[4] Updated vector clock from [0, 7, 0, 0, 7, 0] to [0, 7, 0, 5, 8, 0] after receiving [0, 6, 0, 5, 0, 0]
+[4] Received election message from 3.
+[4] Sending OK message to 3.
+[4] Incremented vector clock: [0, 7, 0, 5, 9, 0]
+[5] Initiating election...
+[5] Updated vector clock from [0, 6, 0, 6, 0, 4] to [0, 8, 0, 6, 0, 5] after receiving [0, 8, 0, 0, 0, 0]
+[5] Received election message from 1.
+[5] Sending OK message to 1.
+[5] Incremented vector clock: [0, 8, 0, 6, 0, 6]
+[5] Updated vector clock from [0, 8, 0, 6, 0, 6] to [0, 8, 0, 6, 7, 7] after receiving [0, 7, 0, 0, 7, 0]
+[5] Received election message from 4.
+[5] Sending OK message to 4.
+[5] Incremented vector clock: [0, 8, 0, 6, 7, 8]
+[3] Updated vector clock from [0, 6, 7, 8, 0, 0] to [0, 6, 7, 9, 0, 4] after receiving [0, 6, 0, 6, 0, 4]
+[3] Received OK message from 5.
+[3] Updated vector clock from [0, 6, 7, 9, 0, 4] to [0, 7, 7, 10, 9, 4] after receiving [0, 7, 0, 5, 9, 0]
+[3] Received OK message from 4.
+[1] Updated vector clock from [0, 11, 6, 4, 6, 0] to [0, 12, 6, 6, 6, 6] after receiving [0, 8, 0, 6, 0, 6]
+[1] Received OK message from 5.
+[4] Updated vector clock from [0, 7, 0, 5, 9, 0] to [0, 7, 8, 5, 10, 0] after receiving [0, 5, 8, 0, 0, 0]
+[4] Received election message from 2.
+[4] Sending OK message to 2.
+[4] Incremented vector clock: [0, 7, 8, 5, 11, 0]
+[2] Updated vector clock from [0, 5, 9, 0, 0, 0] to [0, 6, 10, 8, 0, 0] after receiving [0, 6, 7, 8, 0, 0]
+[2] Received OK message from 3.
+[5] Updated vector clock from [0, 8, 0, 6, 7, 8] to [0, 8, 9, 6, 7, 9] after receiving [0, 5, 9, 0, 0, 0]
+[5] Received election message from 2.
+[5] Sending OK message to 2.
+[5] Incremented vector clock: [0, 8, 9, 6, 7, 10]
+[4] Updated vector clock from [0, 7, 8, 5, 11, 0] to [0, 8, 8, 6, 12, 8] after receiving [0, 8, 0, 6, 7, 8]
+[4] Received OK message from 5.
+[2] Updated vector clock from [0, 6, 10, 8, 0, 0] to [0, 8, 11, 8, 7, 10] after receiving [0, 8, 9, 6, 7, 10]
+[2] Received OK message from 5.
+[2] Updated vector clock from [0, 8, 11, 8, 7, 10] to [0, 8, 12, 8, 11, 10] after receiving [0, 7, 8, 5, 11, 0]
+[2] Received OK message from 4.
+[4] OK response received. Election process will continue.
+[2] OK response received. Election process will continue.
+[1] OK response received. Election process will continue.
+[3] OK response received. Election process will continue.
+[5] No OK response received. Declaring self as leader.
+[5] Declaring itself as the new leader.
+No existing market state found. Starting with empty inventory.
+[5] Incremented vector clock: [0, 8, 9, 6, 7, 11]
+[5] Incremented vector clock: [0, 8, 9, 6, 7, 12]
+[1] Updated vector clock from [0, 12, 6, 6, 6, 6] to [0, 13, 9, 6, 7, 11] after receiving [0, 8, 9, 6, 7, 11]
+[1] New leader announced: 5.
+[5] Incremented vector clock: [0, 8, 9, 6, 7, 13]
+[2] Updated vector clock from [0, 8, 12, 8, 11, 10] to [0, 8, 13, 8, 11, 12] after receiving [0, 8, 9, 6, 7, 12]
+[2] New leader announced: 5.
+[5] Incremented vector clock: [0, 8, 9, 6, 7, 14]
+[3] Updated vector clock from [0, 7, 7, 10, 9, 4] to [0, 8, 9, 11, 9, 13] after receiving [0, 8, 9, 6, 7, 13]
+[3] New leader announced: 5.
+[4] Updated vector clock from [0, 8, 8, 6, 12, 8] to [0, 8, 9, 6, 13, 14] after receiving [0, 8, 9, 6, 7, 14]
+[4] New leader announced: 5.
+[2] Incremented vector clock: [0, 8, 14, 8, 11, 12]
+19.11.2024 18:55:17.202 [2] Initiating buy with trader for fish
+[2] Incremented vector clock: [0, 8, 15, 8, 11, 12]
+[4] Incremented vector clock: [0, 8, 9, 6, 14, 14]
+19.11.2024 18:55:17.202 [4] Initiating buy with trader for salt
+[4] Incremented vector clock: [0, 8, 9, 6, 15, 14]
+[5] Updated vector clock from [0, 8, 9, 6, 7, 14] to [0, 8, 9, 6, 15, 15] after receiving [0, 8, 9, 6, 15, 14]
+[5] Updated vector clock from [0, 8, 9, 6, 15, 15] to [0, 8, 15, 8, 15, 16] after receiving [0, 8, 15, 8, 11, 12]
+[1] Incremented vector clock: [0, 14, 9, 6, 7, 11]
+19.11.2024 18:55:17.203 [1] Initiating buy with trader for fish
+[1] Incremented vector clock: [0, 15, 9, 6, 7, 11]
+[5] Updated vector clock from [0, 8, 15, 8, 15, 16] to [0, 15, 15, 8, 15, 17] after receiving [0, 15, 9, 6, 7, 11]
 Error: Item 'fish' not found or out of stock.
-[3] Updated vector clock from [0, 0, 0, 1, 0] to [2, 0, 0, 2, 1] after receiving [2, 0, 0, 1, 1]
-[3] Updated vector clock from [2, 0, 0, 2, 1] to [2, 0, 0, 3, 1] after receiving [2, 0, 0, 1, 1]
-[0] Updated vector clock from [3, 0, 1, 1, 1] to [4, 1, 1, 1, 1] after receiving [0, 1, 0, 0, 0]
-{'salt': [{'seller_id': 3, 'address': ('localhost', 5003), 'quantity': 9, 'vector_clock': [0, 0, 0, 1, 0]}]}
-Error: Item 'boar' not found or out of stock.
-[2] Updated vector clock from [0, 0, 1, 0, 0] to [3, 0, 2, 1, 1] after receiving [3, 0, 1, 1, 1]
+[5] Incremented vector clock: [0, 15, 15, 8, 15, 18]
+Error: Item 'fish' not found or out of stock.
+[5] Incremented vector clock: [0, 15, 15, 8, 15, 19]
+[1] Updated vector clock from [0, 15, 9, 6, 7, 11] to [0, 16, 15, 8, 15, 18] after receiving [0, 15, 15, 8, 15, 18]
+[1] Purchase of fish from trader failed.
+[1] Buyer will try a different item in 6 seconds.
+Error: Item 'salt' not found or out of stock.
+[5] Incremented vector clock: [0, 15, 15, 8, 15, 20]
+[2] Updated vector clock from [0, 8, 15, 8, 11, 12] to [0, 15, 16, 8, 15, 19] after receiving [0, 15, 15, 8, 15, 19]
 [2] Purchase of fish from trader failed.
-[2] Buyer will search for another item(boar).
-[2] Incremented vector clock: [3, 0, 3, 1, 1]
-19.11.2024 03:18:29.143 [2] Initiating buy with trader for boar
-('localhost', 5000)
-[1] Updated vector clock from [0, 1, 0, 0, 0] to [4, 2, 1, 1, 1] after receiving [4, 1, 1, 1, 1]
-[1] Purchase of boar from trader failed.
-[1] Buyer will search for another item(salt).
-[0] Updated vector clock from [4, 1, 1, 1, 1] to [5, 1, 1, 1, 4] after receiving [2, 0, 0, 1, 4]
-{'salt': [{'seller_id': 3, 'address': ('localhost', 5003), 'quantity': 9, 'vector_clock': [0, 0, 0, 1, 0]}]}
+[2] Buyer will try a different item in 10 seconds.
+[4] Updated vector clock from [0, 8, 9, 6, 15, 14] to [0, 15, 15, 8, 16, 20] after receiving [0, 15, 15, 8, 15, 20]
+[4] Purchase of salt from trader failed.
+[4] Buyer will try a different item in 9 seconds.
+[1] Incremented vector clock: [0, 17, 15, 8, 15, 18]
+19.11.2024 18:55:23.210 [1] Initiating buy with trader for salt
+[1] Incremented vector clock: [0, 18, 15, 8, 15, 18]
+[5] Updated vector clock from [0, 15, 15, 8, 15, 20] to [0, 18, 15, 8, 15, 21] after receiving [0, 18, 15, 8, 15, 18]
+Error: Item 'salt' not found or out of stock.
+[5] Incremented vector clock: [0, 18, 15, 8, 15, 22]
+[1] Updated vector clock from [0, 18, 15, 8, 15, 18] to [0, 19, 15, 8, 15, 22] after receiving [0, 18, 15, 8, 15, 22]
+[1] Purchase of salt from trader failed.
+[1] Buyer will try a different item in 10 seconds.
+[4] Incremented vector clock: [0, 15, 15, 8, 17, 20]
+19.11.2024 18:55:26.209 [4] Initiating buy with trader for boar
+[4] Incremented vector clock: [0, 15, 15, 8, 18, 20]
+[5] Updated vector clock from [0, 18, 15, 8, 15, 22] to [0, 18, 15, 8, 18, 23] after receiving [0, 15, 15, 8, 18, 20]
 Error: Item 'boar' not found or out of stock.
-[1] Incremented vector clock: [4, 3, 1, 1, 1]
-19.11.2024 03:18:29.144 [1] Initiating buy with trader for salt
-('localhost', 5000)
-[4] Updated vector clock from [2, 0, 0, 1, 4] to [5, 1, 1, 1, 5] after receiving [5, 1, 1, 1, 4]
+[5] Incremented vector clock: [0, 18, 15, 8, 18, 24]
+[4] Updated vector clock from [0, 15, 15, 8, 18, 20] to [0, 18, 15, 8, 19, 24] after receiving [0, 18, 15, 8, 18, 24]
 [4] Purchase of boar from trader failed.
-[4] Buyer will search for another item(fish).
-[0] Updated vector clock from [5, 1, 1, 1, 4] to [6, 1, 3, 1, 4] after receiving [3, 0, 3, 1, 1]
-{'salt': [{'seller_id': 3, 'address': ('localhost', 5003), 'quantity': 9, 'vector_clock': [0, 0, 0, 1, 0]}]}
+[4] Buyer will try a different item in 10 seconds.
+[2] Incremented vector clock: [0, 15, 17, 8, 15, 19]
+19.11.2024 18:55:27.206 [2] Initiating buy with trader for boar
+[2] Incremented vector clock: [0, 15, 18, 8, 15, 19]
+[5] Updated vector clock from [0, 18, 15, 8, 18, 24] to [0, 18, 18, 8, 18, 25] after receiving [0, 15, 18, 8, 15, 19]
 Error: Item 'boar' not found or out of stock.
-[4] Incremented vector clock: [5, 1, 1, 1, 6]
-19.11.2024 03:18:29.144 [4] Initiating buy with trader for fish
-('localhost', 5000)
-[0] Updated vector clock from [6, 1, 3, 1, 4] to [7, 3, 3, 1, 4] after receiving [4, 3, 1, 1, 1]
-{'salt': [{'seller_id': 3, 'address': ('localhost', 5003), 'quantity': 9, 'vector_clock': [0, 0, 0, 1, 0]}]}
-Stock reduced: 2 units of 'salt' sold by 3 (('localhost', 5003)).
-[0] Sold item to buyer 1.
-[2] Updated vector clock from [3, 0, 3, 1, 1] to [6, 1, 4, 1, 4] after receiving [6, 1, 3, 1, 4]
+[5] Incremented vector clock: [0, 18, 18, 8, 18, 26]
+[2] Updated vector clock from [0, 15, 18, 8, 15, 19] to [0, 18, 19, 8, 18, 26] after receiving [0, 18, 18, 8, 18, 26]
 [2] Purchase of boar from trader failed.
-[2] Buyer will search for another item(fish).
-[2] Incremented vector clock: [6, 1, 5, 1, 4]
-19.11.2024 03:18:29.144 [2] Initiating buy with trader for fish
-('localhost', 5000)
-[1] Updated vector clock from [4, 3, 1, 1, 1] to [7, 4, 3, 1, 4] after receiving [7, 3, 3, 1, 4]
-19.11.2024 03:18:29.144 [1] bought product salt from trader.
-[1] Updated vector clock from [7, 4, 3, 1, 4] to [7, 5, 3, 1, 4] after receiving [7, 3, 3, 1, 4]
-[1] Buyer is satisfied and stops buying.
-[1] Shutting down peer.
-[0] Updated vector clock from [7, 3, 3, 1, 4] to [8, 3, 3, 1, 6] after receiving [5, 1, 1, 1, 6]
-{'salt': [{'seller_id': 3, 'address': ('localhost', 5003), 'quantity': 7, 'vector_clock': [0, 0, 0, 1, 0]}]}
+[2] Buyer will try a different item in 5 seconds.
+[2] Incremented vector clock: [0, 18, 20, 8, 18, 26]
+19.11.2024 18:55:32.228 [2] Initiating buy with trader for fish
+[2] Incremented vector clock: [0, 18, 21, 8, 18, 26]
+[5] Updated vector clock from [0, 18, 18, 8, 18, 26] to [0, 18, 21, 8, 18, 27] after receiving [0, 18, 21, 8, 18, 26]
 Error: Item 'fish' not found or out of stock.
-[3] Updated vector clock from [2, 0, 0, 3, 1] to [7, 3, 3, 4, 4] after receiving [7, 3, 3, 1, 4]
-[3] Updated vector clock from [7, 3, 3, 4, 4] to [7, 3, 3, 5, 4] after receiving [7, 3, 3, 1, 4]
-[4] Updated vector clock from [5, 1, 1, 1, 6] to [8, 3, 3, 1, 7] after receiving [8, 3, 3, 1, 6]
-[4] Purchase of fish from trader failed.
-[4] Buyer will search for another item(boar).
-[0] Updated vector clock from [8, 3, 3, 1, 6] to [9, 3, 5, 1, 6] after receiving [6, 1, 5, 1, 4]
-{'salt': [{'seller_id': 3, 'address': ('localhost', 5003), 'quantity': 7, 'vector_clock': [0, 0, 0, 1, 0]}]}
-Error: Item 'fish' not found or out of stock.
-[4] Incremented vector clock: [8, 3, 3, 1, 8]
-19.11.2024 03:18:29.145 [4] Initiating buy with trader for boar
-('localhost', 5000)
-[0] Updated vector clock from [9, 3, 5, 1, 6] to [10, 3, 5, 1, 8] after receiving [8, 3, 3, 1, 8]
-{'salt': [{'seller_id': 3, 'address': ('localhost', 5003), 'quantity': 7, 'vector_clock': [0, 0, 0, 1, 0]}]}
-Error: Item 'boar' not found or out of stock.
-[2] Updated vector clock from [6, 1, 5, 1, 4] to [9, 3, 6, 1, 6] after receiving [9, 3, 5, 1, 6]
+[5] Incremented vector clock: [0, 18, 21, 8, 18, 28]
+[2] Updated vector clock from [0, 18, 21, 8, 18, 26] to [0, 18, 22, 8, 18, 28] after receiving [0, 18, 21, 8, 18, 28]
 [2] Purchase of fish from trader failed.
-[2] Buyer will search for another item(salt).
-[2] Incremented vector clock: [9, 3, 7, 1, 6]
-19.11.2024 03:18:29.145 [2] Initiating buy with trader for salt
-('localhost', 5000)
-[4] Updated vector clock from [8, 3, 3, 1, 8] to [10, 3, 5, 1, 9] after receiving [10, 3, 5, 1, 8]
+[2] Buyer will try a different item in 6 seconds.
+[1] Incremented vector clock: [0, 20, 15, 8, 15, 22]
+19.11.2024 18:55:33.222 [1] Initiating buy with trader for fish
+[1] Incremented vector clock: [0, 21, 15, 8, 15, 22]
+[5] Updated vector clock from [0, 18, 21, 8, 18, 28] to [0, 21, 21, 8, 18, 29] after receiving [0, 21, 15, 8, 15, 22]
+Error: Item 'fish' not found or out of stock.
+[5] Incremented vector clock: [0, 21, 21, 8, 18, 30]
+[1] Updated vector clock from [0, 21, 15, 8, 15, 22] to [0, 22, 21, 8, 18, 30] after receiving [0, 21, 21, 8, 18, 30]
+[1] Purchase of fish from trader failed.
+[1] Buyer will try a different item in 7 seconds.
+[4] Incremented vector clock: [0, 18, 15, 8, 20, 24]
+19.11.2024 18:55:36.227 [4] Initiating buy with trader for fish
+[4] Incremented vector clock: [0, 18, 15, 8, 21, 24]
+[5] Updated vector clock from [0, 21, 21, 8, 18, 30] to [0, 21, 21, 8, 21, 31] after receiving [0, 18, 15, 8, 21, 24]
+Error: Item 'fish' not found or out of stock.
+[5] Incremented vector clock: [0, 21, 21, 8, 21, 32]
+[4] Updated vector clock from [0, 18, 15, 8, 21, 24] to [0, 21, 21, 8, 22, 32] after receiving [0, 21, 21, 8, 21, 32]
+[4] Purchase of fish from trader failed.
+[4] Buyer will try a different item in 5 seconds.
+[2] Incremented vector clock: [0, 18, 23, 8, 18, 28]
+19.11.2024 18:55:38.249 [2] Initiating buy with trader for fish
+[2] Incremented vector clock: [0, 18, 24, 8, 18, 28]
+[5] Updated vector clock from [0, 21, 21, 8, 21, 32] to [0, 21, 24, 8, 21, 33] after receiving [0, 18, 24, 8, 18, 28]
+Error: Item 'fish' not found or out of stock.
+[5] Incremented vector clock: [0, 21, 24, 8, 21, 34]
+[2] Updated vector clock from [0, 18, 24, 8, 18, 28] to [0, 21, 25, 8, 21, 34] after receiving [0, 21, 24, 8, 21, 34]
+[2] Purchase of fish from trader failed.
+[2] Buyer will try a different item in 6 seconds.
+[1] Incremented vector clock: [0, 23, 21, 8, 18, 30]
+19.11.2024 18:55:40.252 [1] Initiating buy with trader for fish
+[1] Incremented vector clock: [0, 24, 21, 8, 18, 30]
+[5] Updated vector clock from [0, 21, 24, 8, 21, 34] to [0, 24, 24, 8, 21, 35] after receiving [0, 24, 21, 8, 18, 30]
+Error: Item 'fish' not found or out of stock.
+[5] Incremented vector clock: [0, 24, 24, 8, 21, 36]
+[1] Updated vector clock from [0, 24, 21, 8, 18, 30] to [0, 25, 24, 8, 21, 36] after receiving [0, 24, 24, 8, 21, 36]
+[1] Purchase of fish from trader failed.
+[1] Buyer will try a different item in 5 seconds.
+[4] Incremented vector clock: [0, 21, 21, 8, 23, 32]
+19.11.2024 18:55:41.266 [4] Initiating buy with trader for boar
+[4] Incremented vector clock: [0, 21, 21, 8, 24, 32]
+[5] Updated vector clock from [0, 24, 24, 8, 21, 36] to [0, 24, 24, 8, 24, 37] after receiving [0, 21, 21, 8, 24, 32]
+Error: Item 'boar' not found or out of stock.
+[5] Incremented vector clock: [0, 24, 24, 8, 24, 38]
+[4] Updated vector clock from [0, 21, 21, 8, 24, 32] to [0, 24, 24, 8, 25, 38] after receiving [0, 24, 24, 8, 24, 38]
 [4] Purchase of boar from trader failed.
-[4] Buyer will search for another item(salt).
-[4] Incremented vector clock: [10, 3, 5, 1, 10]
-19.11.2024 03:18:29.146 [4] Initiating buy with trader for salt
-('localhost', 5000)
-[0] Updated vector clock from [10, 3, 5, 1, 8] to [11, 3, 7, 1, 8] after receiving [9, 3, 7, 1, 6]
-{'salt': [{'seller_id': 3, 'address': ('localhost', 5003), 'quantity': 7, 'vector_clock': [0, 0, 0, 1, 0]}]}
-Stock reduced: 5 units of 'salt' sold by 3 (('localhost', 5003)).
-[0] Sold item to buyer 2.
-[2] Updated vector clock from [9, 3, 7, 1, 6] to [11, 3, 8, 1, 8] after receiving [11, 3, 7, 1, 8]
-19.11.2024 03:18:29.146 [2] bought product salt from trader.
-[2] Updated vector clock from [11, 3, 8, 1, 8] to [11, 3, 9, 1, 8] after receiving [11, 3, 7, 1, 8]
-[2] Max transactions reached with average rtt 0.0009.
-Shutting down peer.
-[2] Shutting down peer.
-[3] Updated vector clock from [7, 3, 3, 5, 4] to [11, 3, 7, 6, 8] after receiving [11, 3, 7, 1, 8]
-[3] Updated vector clock from [11, 3, 7, 6, 8] to [11, 3, 7, 7, 8] after receiving [11, 3, 7, 1, 8]
-[4] Updated vector clock from [10, 3, 5, 1, 10] to [12, 3, 7, 1, 11] after receiving [12, 3, 7, 1, 10]
-19.11.2024 03:18:29.146 [4] bought product salt from trader.
-[4] Updated vector clock from [12, 3, 7, 1, 11] to [12, 3, 7, 1, 12] after receiving [12, 3, 7, 1, 10]
-[4] Buyer is satisfied and stops buying.
-[4] Shutting down peer.
-[3] Updated vector clock from [11, 3, 7, 7, 8] to [12, 3, 7, 8, 10] after receiving [12, 3, 7, 1, 10]
-[3] Updated vector clock from [12, 3, 7, 8, 10] to [12, 3, 7, 9, 10] after receiving [12, 3, 7, 1, 10]
-All buyers have shut down. Shutting down sellers and exiting program.
-printing 1
-                                                                                                                                                                                                                                                                                          ç               ç    
+[4] Buyer will try a different item in 8 seconds.
+[2] Incremented vector clock: [0, 21, 26, 8, 21, 34]
+19.11.2024 18:55:44.280 [2] Initiating buy with trader for salt
+[2] Incremented vector clock: [0, 21, 27, 8, 21, 34]
+[5] Updated vector clock from [0, 24, 24, 8, 24, 38] to [0, 24, 27, 8, 24, 39] after receiving [0, 21, 27, 8, 21, 34]
+Error: Item 'salt' not found or out of stock.
+[5] Incremented vector clock: [0, 24, 27, 8, 24, 40]
+[2] Updated vector clock from [0, 21, 27, 8, 21, 34] to [0, 24, 28, 8, 24, 40] after receiving [0, 24, 27, 8, 24, 40]
+[2] Purchase of salt from trader failed.
+[2] Buyer will try a different item in 7 seconds.
+[1] Incremented vector clock: [0, 26, 24, 8, 21, 36]
+19.11.2024 18:55:45.286 [1] Initiating buy with trader for fish
+[1] Incremented vector clock: [0, 27, 24, 8, 21, 36]
+[5] Updated vector clock from [0, 24, 27, 8, 24, 40] to [0, 27, 27, 8, 24, 41] after receiving [0, 27, 24, 8, 21, 36]
+Error: Item 'fish' not found or out of stock.
+[5] Incremented vector clock: [0, 27, 27, 8, 24, 42]
+[1] Updated vector clock from [0, 27, 24, 8, 21, 36] to [0, 28, 27, 8, 24, 42] after receiving [0, 27, 27, 8, 24, 42]
+[1] Purchase of fish from trader failed.
+[1] Buyer will try a different item in 7 seconds.
+[4] Incremented vector clock: [0, 24, 24, 8, 26, 38]
+19.11.2024 18:55:49.291 [4] Initiating buy with trader for salt
+[4] Incremented vector clock: [0, 24, 24, 8, 27, 38]
+[5] Updated vector clock from [0, 27, 27, 8, 24, 42] to [0, 27, 27, 8, 27, 43] after receiving [0, 24, 24, 8, 27, 38]
+Error: Item 'salt' not found or out of stock.
+[5] Incremented vector clock: [0, 27, 27, 8, 27, 44]
+[4] Updated vector clock from [0, 24, 24, 8, 27, 38] to [0, 27, 27, 8, 28, 44] after receiving [0, 27, 27, 8, 27, 44]
+[4] Purchase of salt from trader failed.
+[4] Buyer will try a different item in 5 seconds.
+[2] Incremented vector clock: [0, 24, 29, 8, 24, 40]
+19.11.2024 18:55:51.302 [2] Initiating buy with trader for fish
+[2] Incremented vector clock: [0, 24, 30, 8, 24, 40]
+[5] Updated vector clock from [0, 27, 27, 8, 27, 44] to [0, 27, 30, 8, 27, 45] after receiving [0, 24, 30, 8, 24, 40]
+Error: Item 'fish' not found or out of stock.
+[5] Incremented vector clock: [0, 27, 30, 8, 27, 46]
+[2] Updated vector clock from [0, 24, 30, 8, 24, 40] to [0, 27, 31, 8, 27, 46] after receiving [0, 27, 30, 8, 27, 46]
+[2] Purchase of fish from trader failed.
+[2] Buyer will try a different item in 10 seconds.
+[1] Incremented vector clock: [0, 29, 27, 8, 24, 42]
+19.11.2024 18:55:52.304 [1] Initiating buy with trader for salt
+[1] Incremented vector clock: [0, 30, 27, 8, 24, 42]
+[5] Updated vector clock from [0, 27, 30, 8, 27, 46] to [0, 30, 30, 8, 27, 47] after receiving [0, 30, 27, 8, 24, 42]
+Error: Item 'salt' not found or out of stock.
+[5] Incremented vector clock: [0, 30, 30, 8, 27, 48]
+[1] Updated vector clock from [0, 30, 27, 8, 24, 42] to [0, 31, 30, 8, 27, 48] after receiving [0, 30, 30, 8, 27, 48]
+[1] Purchase of salt from trader failed.
+[1] Buyer will try a different item in 10 seconds.
