@@ -25,7 +25,7 @@ MAX_THREADS = 20  # Maximum number of threads in the pool
 class Peer:
     def __init__(self, peer_id, role, neighbors, port, leader=None, ip_address='localhost', item=None, previous_leaders= None, previous_leaders_lock=None):
         self.peer_id = peer_id
-        self.role = role  # Now a set: {'buyer'}, {'seller'}, {'buyer', 'seller'}, or {'leader'}
+        self.role = role  # Now a set: {'buyer'}, {'seller'}, {'leader', 'seller'}
         self.neighbors = neighbors  # List of other Peer instances
         self.ip_address = ip_address
         self.port = port
@@ -583,6 +583,7 @@ class Peer:
         self.is_leader = True
         self.leader = self
         self.leader_active = True
+        self.role.add('leader')  # Add 'leader' role
         # Initialize leader-specific attributes
         self.inventory = Inventory()
         self.pending_buy_requests = []
@@ -609,6 +610,9 @@ class Peer:
         leader_id = message['leader_id']
         print(f"[{self.peer_id}] New leader announced: {leader_id}.")
         if leader_id != self.peer_id:
+            if self.is_leader:
+                # Remove 'leader' role
+                self.role.discard('leader')
             self.is_leader = False
             self.leader_active = False # Leader is inactive
             # Update leader reference

@@ -98,29 +98,30 @@ def main(N):
 
     for i in range(num_peers):
         if i == leader_id:
-            role = 'leader'
-            item = None
+            # role = 'leader'
+            role = {random.choice(roles)}
+            role.add('leader')
+            item = random.choice(items) if 'seller' in role else None
             print(f"Peer {i} is assigned as the leader (trader).")
-            print(f"Peer {i} is assigned as the leader (trader).")
-            peer = Peer(peer_id=i, role=role, neighbors=[], port=ports[i], previous_leaders=previous_leaders, previous_leaders_lock= previous_leaders_lock, leader=None)
+            peer = Peer(peer_id=i, role=role, neighbors=[], port=ports[i], previous_leaders=previous_leaders, previous_leaders_lock= previous_leaders_lock, item=item, leader=None)
             leader = peer  # The leader is also a peer
             peers.append(peer)
             continue
         elif i == num_peers - 2 and len(buyers) == 0:
-            role = 'buyer'
+            role = {'buyer'}
             item = None
         elif i == num_peers - 1 and len(sellers) == 0:
-            role = 'seller'
+            role = {'seller'}
             item = random.choice(items)
         else:
-            role = random.choice(roles)
-            item = random.choice(items) if role == "seller" else None
+            role = {random.choice(roles)}
+            item = random.choice(items) if 'seller' in role else None
 
         peer = Peer(peer_id=i, role=role, neighbors=[], leader=leader, previous_leaders=previous_leaders, previous_leaders_lock=previous_leaders_lock, item=item, port=ports[i])
         peers.append(peer)
-        if role == 'buyer':
+        if 'buyer' in role:
             buyers.append(peer)
-        elif role == 'seller':
+        elif 'seller' in role:
             sellers.append(peer)
 
     for i in range(num_peers):
@@ -172,6 +173,10 @@ def main(N):
                 seller.socket.close()
             break
         time.sleep(1)
+
+    election_executor.shutdown(wait=False)
+    inventory_executor.shutdown(wait=False)
+    buy_executor.shutdown(wait=False)
 
     for peer in peers:
         peer.thread.join()
