@@ -2,6 +2,7 @@ import random
 import sys
 import threading
 import time
+from concurrent.futures import ThreadPoolExecutor
 
 from inventory import *
 from peer import Peer
@@ -14,7 +15,8 @@ peers = []
 buyers = []
 sellers = []
 leader = None
-
+previous_leaders = set()  # Keep track of previous leaders
+previous_leaders_lock = threading.Lock()
 
 def monitor_leader():
     """Monitors the leader status and initiates a new election if the leader fails."""
@@ -28,15 +30,26 @@ def monitor_leader():
             if random.random() < config.LEADER_FAILURE_PROBABILITY:
                 print(f"[Leader {leader.peer_id}] Leader failed with probability {config.LEADER_FAILURE_PROBABILITY}.")
                 # Simulate leader failure
-                leader.running = False
-                leader.shutdown_peer()
+                # leader.running = False
+                # leader.shutdown_peer()
                 # Reset leader reference in all peers
+                leader.leader_active = False
                 for peer in peers:
                     if peer != leader:
                         peer.leader = None
                 # Remove the leader from the peers list if desired
                 # peers.remove(leader)  # Optional
                 print(f"Leader {leader.peer_id} has failed. Initiating new election.")
+                with previous_leaders_lock:
+                    # previous_leaders.add(leader.peer_id)
+                    # Check if all peers have been leaders
+                    # if len(previous_leaders) == len(peers):
+                    #     print("All peers have been leaders. Resetting previous leaders list.")
+                    #     previous_leaders.clear()
+                    if previous_leaders:
+                        previous_leaders.clear()
+                    previous_leaders.add(leader.peer_id)
+
                 # Start a new election
                 start_election()
         else:
@@ -47,20 +60,29 @@ def monitor_leader():
 
 def start_election():
     """Starts the election process for all peers."""
-    global peers, leader
+    global peers, leader, previous_leaders
     # Choose a random peer to initiate the election
     initiating_peer = random.choice([peer for peer in peers if peer.running])
     print(f"Peer {initiating_peer.peer_id} is initiating the election.")
     # Start the election process
-    threading.Thread(target=initiating_peer.start_election).start()
+    threading.Thread(target=initiating_peer.start_election, args=(previous_leaders,)).start()
     # Wait for the election to complete
-    while leader is None or not leader.running:
+    time.sleep(2)
+    while True:
+        # Check if any peer has become the leader
+        for peer in peers:
+            if peer.is_leader:
+                leader = peer
+                print(f"Election ended. New leader is Peer {leader.peer_id}.")
+                # Update leader reference in all peers
+                for p in peers:
+                    p.leader = leader
+                return  # Exit the function after updating the leader
         time.sleep(1)
-    print(f"Election ended. New leader is Peer {leader.peer_id}.")
 
 
 def main(N):
-    global peers, buyers, sellers, leader
+    global peers, buyers, sellers, leader, previous_leaders, previous_leaders_lock
     num_peers = N
 
     ports = [5000 + i for i in range(num_peers)]
@@ -69,13 +91,18 @@ def main(N):
 
     leader_id = 0
 
+    # Initialize ThreadPoolExecutors
+    election_executor = ThreadPoolExecutor(max_workers=5)
+    inventory_executor = ThreadPoolExecutor(max_workers=10)
+    buy_executor = ThreadPoolExecutor(max_workers=20)
+
     for i in range(num_peers):
         if i == leader_id:
             role = 'leader'
             item = None
             print(f"Peer {i} is assigned as the leader (trader).")
             print(f"Peer {i} is assigned as the leader (trader).")
-            peer = Peer(peer_id=i, role=role, neighbors=[], port=ports[i], leader=None)
+            peer = Peer(peer_id=i, role=role, neighbors=[], port=ports[i], previous_leaders=previous_leaders, previous_leaders_lock= previous_leaders_lock, leader=None)
             leader = peer  # The leader is also a peer
             peers.append(peer)
             continue
@@ -89,7 +116,7 @@ def main(N):
             role = random.choice(roles)
             item = random.choice(items) if role == "seller" else None
 
-        peer = Peer(peer_id=i, role=role, neighbors=[], leader=leader, item=item, port=ports[i])
+        peer = Peer(peer_id=i, role=role, neighbors=[], leader=leader, previous_leaders=previous_leaders, previous_leaders_lock=previous_leaders_lock, item=item, port=ports[i])
         peers.append(peer)
         if role == 'buyer':
             buyers.append(peer)
@@ -116,33 +143,25 @@ def main(N):
     if sellers:
         for seller in sellers:
             print(f"Seller {seller.peer_id} is sending its inventory for {seller.item}")
-            threading.Thread(target=seller.send_update_inventory).start()
+            inventory_executor.submit(seller.send_update_inventory)
     print("Inventory Established with Leader")
-    time.sleep(2)
-    # Wait until the leader has updated inventory
+    time.sleep(2)  # Wait for inventory updates to reach the leader
 
-    # def wait_for_inventory():
-    #     global leader
-    #     while True:
-    #         with leader.inventory_lock:
-    #             if leader.inventory and leader.inventory.inventory:
-    #                 # Inventory is not empty
-    #                 break
-    #         time.sleep(0.5)
-    #     print("Inventory established with leader.")
-    #
-    # wait_for_inventory()
-
+    # Initiate buy operations
     if buyers:
         for buyer in buyers:
-            item = random.choice(items)
-            quantity = 1
-            print(f"Buyer {buyer.peer_id} is initiating a buy for {item}")
-            threading.Thread(target=buyer.buy_item, args=(item, quantity)).start()
+            def initiate_buy(buyer_instance):
+                while buyer_instance.running:
+                    item = random.choice(buyer_instance.available_items)
+                    quantity = random.randint(1, 5)
+                    print(f"Buyer {buyer_instance.peer_id} is initiating a buy for {item} (Quantity: {quantity})")
+                    buyer_instance.buy_item(item, quantity)
+                    # Random wait before next buy
+                    time.sleep(random.randint(5, 10))
+            buy_executor.submit(initiate_buy, buyer)
 
     # Start monitoring the leader status with the time quantum
-    time_quantum = config.TIME_QUANTUM
-    threading.Thread(target=monitor_leader).start()
+    threading.Thread(target=monitor_leader, daemon=True).start()
 
     while True:
         alive_buyers = [buyer for buyer in buyers if buyer.running]

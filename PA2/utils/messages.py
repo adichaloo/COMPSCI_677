@@ -94,7 +94,7 @@ class BuyConfirmationMessage:
         )
 
 class SellConfirmationMessage:
-    def __init__(self, request_id, buyer_id, product_name, status, quantity, vector_clock):
+    def __init__(self, request_id, buyer_id, product_name, status, quantity, vector_clock, payment_amount):
         self.type = "sell_confirmation"
         self.request_id = request_id
         self.buyer_id = buyer_id
@@ -102,6 +102,7 @@ class SellConfirmationMessage:
         self.status = status
         self.quantity = quantity
         self.vector_clock = vector_clock
+        self.payment_amount = payment_amount
 
     def to_dict(self):
         return {
@@ -111,7 +112,8 @@ class SellConfirmationMessage:
             "product_name": self.product_name,
             "status": self.status,
             "quantity": self.quantity,
-            "vector_clock": self.vector_clock
+            "vector_clock": self.vector_clock,
+            "payment_amount": self.payment_amount
         }
 
     @staticmethod
@@ -122,5 +124,6 @@ class SellConfirmationMessage:
             data["product_name"],
             data["status"],
             data["quantity"],
-            data["vector_clock"]
+            data["vector_clock"],
+            data["payment_amount"]
         )
