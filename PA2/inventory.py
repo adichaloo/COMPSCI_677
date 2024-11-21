@@ -65,25 +65,42 @@ class Inventory:
             print(f"Stock reduced: {quantity} units of '{item_name}' sold by {seller_id} ({address}).")
             return seller_id, address, True
 
-    def save_to_disk(self, filename='market_state.pkl'):
-        """Save the inventory to a file."""
-        try:
-            with open(filename, 'wb') as f:
-                pickle.dump(self.inventory, f)
-            print("Inventory saved to disk.")
-        except Exception as e:
-            print(f"Error saving inventory to disk: {e}")
+    # def save_to_disk(self, filename='market_state.pkl'):
+    #     """Save the inventory to a file."""
+    #     try:
+    #         with open(filename, 'wb') as f:
+    #             pickle.dump(self.inventory, f)
+    #         print("Inventory saved to disk.")
+    #     except Exception as e:
+    #         print(f"Error saving inventory to disk: {e}")
+    #
+    # def load_from_disk(self, filename='market_state.pkl'):
+    #     """Load the inventory from a file."""
+    #     # with self.inventory_lock:
+    #     try:
+    #         with open(filename, 'rb') as f:
+    #             self.inventory = pickle.load(f)
+    #         print("Inventory loaded from disk.")
+    #     except FileNotFoundError:
+    #         print("No existing market state found. Starting with empty inventory.")
+    #         self.inventory = {}
 
-    def load_from_disk(self, filename='market_state.pkl'):
-        """Load the inventory from a file."""
-        # with self.inventory_lock:
-        try:
-            with open(filename, 'rb') as f:
-                self.inventory = pickle.load(f)
-            print("Inventory loaded from disk.")
-        except FileNotFoundError:
-            print("No existing market state found. Starting with empty inventory.")
-            self.inventory = {}
+    def save_to_disk(self, earnings):
+        data = {
+            'inventory': self.inventory,
+            'earnings': earnings
+        }
+        with open('market_state.pkl', 'wb') as f:
+            pickle.dump(data, f)
+        print("Inventory saved to disk.")
+
+    def load_from_disk(self):
+        with open('market_state.pkl', 'rb') as f:
+            data = pickle.load(f)
+            self.inventory = data['inventory']
+            earnings = data.get('earnings', 0.0)
+        print("Inventory loaded from disk.")
+        return earnings
 
 def compare_vector_clocks(vc1, vc2):
     """Compare two vector clocks."""

@@ -51,6 +51,8 @@ class Peer:
         self.previous_leaders = previous_leaders
         self.previous_leaders_lock = previous_leaders_lock
         self.thread_pool = ThreadPoolExecutor(max_workers=MAX_THREADS)
+        self.earnings_lock = threading.Lock()
+        self.stock_lock = threading.Lock()
         # if self.previous_leaders is None:
         #     self.previous_leaders = set()
 
@@ -64,15 +66,13 @@ class Peer:
         if 'seller' in self.role:
             self.earnings = 0.0  # Initialize earnings to zero
 
-        if self.is_leader:
-            self.earnings = 0.0  # Leader's earnings from commissions
-
         # Initialize leader-specific attributes
         if self.is_leader:
             self.inventory = Inventory()
             self.pending_buy_requests = []
             self.pending_buy_requests_lock = threading.Lock()
             self.inventory_lock = threading.Lock()
+            self.earnings = 0.0  # Leader's earnings from commissions
             # Load market state from disk
             self.load_market_state()
             # Start the pending buy requests processing thread
@@ -95,7 +95,11 @@ class Peer:
         if self.is_leader:
             # No need to acquire inventory_lock here; it's already held
             try:
-                self.inventory.save_to_disk()
+            #     self.inventory.save_to_disk()
+            #     print(f"[{self.peer_id}] Market state saved to disk.")
+            # except Exception as e:
+            #     print(f"[{self.peer_id}] Error saving market state: {e}")
+                self.inventory.save_to_disk(self.earnings)
                 print(f"[{self.peer_id}] Market state saved to disk.")
             except Exception as e:
                 print(f"[{self.peer_id}] Error saving market state: {e}")
@@ -103,8 +107,13 @@ class Peer:
     def load_market_state(self):
         """Load the market state from disk."""
         if self.is_leader:
+            # try:
+            #     self.inventory.load_from_disk()
+            #     print(f"[{self.peer_id}] Market state loaded from disk.")
+            # except Exception as e:
+            #     print(f"[{self.peer_id}] Error loading market state: {e}")
             try:
-                self.inventory.load_from_disk()
+                self.earnings = self.inventory.load_from_disk()
                 print(f"[{self.peer_id}] Market state loaded from disk.")
             except Exception as e:
                 print(f"[{self.peer_id}] Error loading market state: {e}")
@@ -288,7 +297,8 @@ class Peer:
                 commission = COMMISSION * payment_amount
                 seller_payment = payment_amount - commission
                 # Update leader's earnings
-                self.earnings += commission
+                with self.earnings_lock:
+                    self.earnings += commission
             else:
                 print(f"[{self.peer_id}] Could not fulfill the order for buyer {message.buyer_id}.")
 
@@ -415,11 +425,14 @@ class Peer:
         if confirmation_message.product_name != self.item or confirmation_message.status == False:
             return
 
-        self.stock -= confirmation_message.quantity
+        with self.stock_lock:
+            self.stock -= confirmation_message.quantity
+
         self.update_vector_clock(confirmation_message.vector_clock)
 
         # Update seller's earnings
-        self.earnings += confirmation_message.payment_amount
+        with self.earnings_lock:
+            self.earnings += confirmation_message.payment_amount
         print(f"[{self.peer_id}] Received payment of {confirmation_message.payment_amount} for selling {confirmation_message.quantity} {confirmation_message.product_name}(s). Total earnings: {self.earnings}")
 
         if self.stock <= 0:
