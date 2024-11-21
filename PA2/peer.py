@@ -357,7 +357,8 @@ class Peer:
             message.product_name,
             status,
             message.quantity,
-            self.get_vector_clock()
+            self.get_vector_clock(),
+            seller_id=seller_id if status else None
         ).to_dict()
         self.send_message(message.buyer_address, buy_confirmation_reply)
 
@@ -518,7 +519,7 @@ class Peer:
                 # Purchase was successful
                 self.items_bought += confirmation_message.quantity
                 timestamp = datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S.%f")[:-3]
-                print(f"{timestamp} [{self.peer_id}] bought {confirmation_message.quantity} {confirmation_message.product_name}(s) from {confirmation_message.buyer_id}")
+                print(f"{timestamp} [{self.peer_id}] bought {confirmation_message.quantity} {confirmation_message.product_name}(s) from {confirmation_message.seller_id}")
                 # self.update_vector_clock(confirmation_message.vector_clock)
 
                 # Decide whether to continue buying

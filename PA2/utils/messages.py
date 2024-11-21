@@ -62,7 +62,7 @@ class BuyMessage:
         )
 
 class BuyConfirmationMessage:
-    def __init__(self, request_id, buyer_id, product_name, status, quantity, vector_clock, reason=None):
+    def __init__(self, request_id, buyer_id, product_name, status, quantity, vector_clock, seller_id= None, reason=None):
         self.type = "buy_confirmation"
         self.request_id = request_id
         self.buyer_id = buyer_id
@@ -70,6 +70,7 @@ class BuyConfirmationMessage:
         self.status = status
         self.quantity = quantity
         self.vector_clock = vector_clock
+        self.seller_id = seller_id
         self.reason = reason
 
     def to_dict(self):
@@ -81,6 +82,7 @@ class BuyConfirmationMessage:
             "status": self.status,
             "quantity": self.quantity,
             "vector_clock": self.vector_clock,
+            "seller_id": self.seller_id,
             "reason":self.reason
         }
 
@@ -93,7 +95,8 @@ class BuyConfirmationMessage:
             data["status"],
             data["quantity"],
             data["vector_clock"],
-            data["reason"]
+            data['seller_id'],
+            data["reason"],
         )
 
 class SellConfirmationMessage:

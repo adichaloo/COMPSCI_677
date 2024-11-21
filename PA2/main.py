@@ -106,6 +106,10 @@ def main(N):
             peer = Peer(peer_id=i, role=role, neighbors=[], port=ports[i], previous_leaders=previous_leaders, previous_leaders_lock= previous_leaders_lock, item=item, leader=None)
             leader = peer  # The leader is also a peer
             peers.append(peer)
+            if 'buyer' in role:
+                buyers.append(peer)
+            elif 'seller' in role:
+                sellers.append(peer)
             continue
         elif i == num_peers - 2 and len(buyers) == 0:
             role = {'buyer'}
