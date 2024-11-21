@@ -425,35 +425,8 @@ class Peer:
         # buyer_index = message.buyer_id
         buyer_vector_clock = message.vector_clock
 
-        # Compare the buyer's vector clock with the leader's vector clock
-        # with self.lock:
-        #     is_valid = True
-        #     print("#############")
-        #     print(f"Leader {self.vector_clock}")
-        #     print(f"Buyer {message.buyer_id} {message.vector_clock}")
-        #     print("#############")
-        #     for i in range(self.total_peers):
-        #         if i == buyer_index:
-        #             if message.vector_clock[i] != self.vector_clock[i] + 1:
-        #                 is_valid = False
-        #                 break
-        #         else:
-        #             if message.vector_clock[i] != self.vector_clock[i]:
-        #                 is_valid = False
-        #                 break
-        #     if is_valid:
-        #         # The buyer's clock is exactly +1 at buyer's index, and same at others
-        #         # Proceed to process the buy request
-        #         with self.pending_buy_requests_lock:
-        #             self.pending_buy_requests.append(message)
-        #         # Buy requests will be processed by the background thread
         with self.lock:
             comparison = compare_vector_clocks(self.vector_clock, buyer_vector_clock)
-            # print("#############")
-            # print(f"Leader {self.vector_clock}")
-            # print(f"Buyer {message.buyer_id} {buyer_vector_clock}")
-            # print(f"Comparison result: {comparison}")
-            # print("#############")
 
         if comparison == -1:
             # Buyer's vector clock is ahead (leader is behind)
@@ -632,11 +605,6 @@ class Peer:
     def wait_for_ok_response(self):
         """Wait for OK messages and declare leader if no response is received."""
         time.sleep(OK_TIMEOUT)  # Wait for a specified timeout
-        # print("################################")
-        # print(self.ok_received)
-        # print(self.peer_id)
-        # print(self.previous_leaders)
-        # print("################################")
         if not self.ok_received and self.peer_id not in self.previous_leaders:
         # if not self.ok_received and self.peer_id == self.previous_leaders:
             print(f"[{self.peer_id}] No OK response received. Declaring self as leader.")
@@ -655,30 +623,6 @@ class Peer:
             if neighbor.peer_id > self.peer_id and neighbor.running:
                 self.send_message((neighbor.ip_address, neighbor.port), election_message)
 
-    # def handle_election(self, message):
-    #     """Handle an election message."""
-    #     sender_id = message['peer_id']
-    #     print(f"[{self.peer_id}] Received election message from {sender_id}.")
-
-        # if self.previous_leaders is None:
-        #     # Log an error or warning if this should not happen
-        #     print(f"[{self.peer_id}] Warning: previous_leaders is None. Initializing to empty set.")
-        #     self.previous_leaders = set()
-
-        # with self.previous_leaders_lock:
-        #     # Check if self is eligible to be leader (not in previous leaders)
-        #     if self.peer_id not in self.previous_leaders:
-        #         if self.peer_id > sender_id:
-        #             self.send_ok_message(sender_id)
-        #             self.start_election(self.previous_leaders)
-        #         elif self.peer_id == sender_id:
-        #             # Tie-breaker: higher peer_id wins
-        #             if self.peer_id > sender_id:
-        #                 self.send_ok_message(sender_id)
-        #                 self.start_election(self.previous_leaders)
-        #     else:
-        #         # If self is not eligible, forward the election message
-        #         self.send_ok_message(sender_id)
 
     def handle_election(self, message):
         """Handle an election message."""

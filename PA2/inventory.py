@@ -65,26 +65,6 @@ class Inventory:
             print(f"Stock reduced: {quantity} units of '{item_name}' sold by {seller_id} ({address}).")
             return seller_id, address, True
 
-    # def save_to_disk(self, filename='market_state.pkl'):
-    #     """Save the inventory to a file."""
-    #     try:
-    #         with open(filename, 'wb') as f:
-    #             pickle.dump(self.inventory, f)
-    #         print("Inventory saved to disk.")
-    #     except Exception as e:
-    #         print(f"Error saving inventory to disk: {e}")
-    #
-    # def load_from_disk(self, filename='market_state.pkl'):
-    #     """Load the inventory from a file."""
-    #     # with self.inventory_lock:
-    #     try:
-    #         with open(filename, 'rb') as f:
-    #             self.inventory = pickle.load(f)
-    #         print("Inventory loaded from disk.")
-    #     except FileNotFoundError:
-    #         print("No existing market state found. Starting with empty inventory.")
-    #         self.inventory = {}
-
     def save_to_disk(self, earnings):
         data = {
             'inventory': self.inventory,
@@ -134,59 +114,3 @@ def compare_sellers(seller1, seller2):
             return 1
         else:
             return 0
-
-
-
-
-if __name__ == "__main__":
-    # Example Usage
-    inventory_manager = Inventory()
-
-    # Initialize vector clocks for sellers
-    # Assuming there are 3 sellers, vector clocks are lists of length 3
-    seller_ids = ["seller_1", "seller_2", "seller_3"]
-    vector_clocks = {
-        "seller_1": [1, 0, 0],
-        "seller_2": [0, 1, 0],
-        "seller_3": [0, 0, 1]
-    }
-
-    # Adding inventory
-    inventory_manager.add_inventory("seller_1", "192.168.1.1:5000", "fish", 10, vector_clocks["seller_1"])
-    inventory_manager.add_inventory("seller_3", "192.168.1.3:5000", "fish", 5, vector_clocks["seller_3"])
-    inventory_manager.add_inventory("seller_1", "192.168.1.1:5000", "salt", 5, vector_clocks["seller_1"])
-    inventory_manager.add_inventory("seller_2", "192.168.1.2:5000", "salt", 7, vector_clocks["seller_2"])
-
-    print("Initial Inventory:")
-    print(inventory_manager)
-
-    # Reducing stock
-    print("\nReducing stock of 'fish' by 5 units.")
-    seller_id, address, status = inventory_manager.reduce_stock("fish", 5)
-    print("After Reducing Stock:")
-    print(inventory_manager)
-
-    print("\nReducing stock of 'salt' by 10 units (insufficient stock).")
-    seller_id, address, status = inventory_manager.reduce_stock("salt", 10)
-
-    print("\nReducing stock of 'fish' by 3 units (completely used up).")
-    seller_id, address, status = inventory_manager.reduce_stock("fish", 3)
-    print("After Reducing Stock:")
-    print(inventory_manager)
-
-    # Getting total stock of an item
-    print("\nTotal stock of 'fish':", inventory_manager.get_item_stock("fish"))
-
-    # Getting sellers for an item
-    print("\nSellers for 'salt':", inventory_manager.get_sellers_for_item("salt"))
-
-    # Get seller address
-    address = inventory_manager.get_seller_address("seller_1")
-    print("\nAddress of 'seller_1':", address)
-
-    address = inventory_manager.get_seller_address("seller_2")
-    print("Address of 'seller_2':", address)
-
-    # Attempt to get address of a non-existent seller
-    address = inventory_manager.get_seller_address("seller_4")
-    print("Address of 'seller_4':", address)
