@@ -14,6 +14,7 @@ from utils.messages import *
 import config
 from inventory import *
 
+
 BUY_PROBABILITY = config.BUY_PROBABILITY
 SELLER_STOCK = config.SELLER_STOCK
 TIMEOUT = config.TIMEOUT
@@ -21,6 +22,7 @@ PRICE = config.PRICE
 COMMISSION = config.COMMISSION
 OK_TIMEOUT = config.OK_TIMEOUT
 MAX_THREADS = 20  # Maximum number of threads in the pool
+
 
 class Peer:
     def __init__(self, peer_id, role, neighbors, port, leader=None, ip_address='localhost', item=None, previous_leaders= None, previous_leaders_lock=None):
@@ -135,7 +137,7 @@ class Peer:
             old_vector_clock = self.vector_clock.copy()
             for i in range(self.total_peers):
                 self.vector_clock[i] = max(self.vector_clock[i], received_vector_clock[i])
-            self.vector_clock[self.peer_index] += 1  # Increment own clock after merging
+            # self.vector_clock[self.peer_index] += 1  # Increment own clock after merging
             print(
                 f"[{self.peer_id}] Updated vector clock from {old_vector_clock} to {self.vector_clock} after receiving {received_vector_clock}")
 
@@ -145,6 +147,23 @@ class Peer:
         t = threading.Thread(target=self.listen_for_messages)
         t.start()
         self.thread = t
+
+    def multicast_state_update(self):
+        """Multicast the updated state (including the new vector clock) to all peers."""
+        state_update_message = {
+            'type': 'state_update',
+            'vector_clock': self.get_vector_clock(),
+            # Include any other state information if necessary
+        }
+        for neighbor in self.neighbors:
+            if neighbor.running:
+                self.send_message((neighbor.ip_address, neighbor.port), state_update_message)
+
+    def handle_state_update(self, message):
+        """Handle state update messages from the leader."""
+        received_vector_clock = message['vector_clock']
+        self.update_vector_clock(received_vector_clock)
+        print(f"[{self.peer_id}] Updated vector clock after receiving state update")
 
     def listen_for_messages(self):
         """Continuously listen for incoming messages."""
@@ -163,8 +182,8 @@ class Peer:
     def handle_message(self, message, addr):
         """Handle incoming messages using thread pool."""
         message_type = message.get('type')
-        if 'vector_clock' in message:
-            self.update_vector_clock(message['vector_clock'])
+        # if 'vector_clock' in message:
+        #     self.update_vector_clock(message['vector_clock'])
 
         if message_type == 'buy':
             self.handle_buy(message)
@@ -180,6 +199,8 @@ class Peer:
             self.handle_election_OK(message)
         elif message_type == 'leader':
             self.handle_leader(message)
+        elif message_type == 'state_update':
+            self.handle_state_update(message)
 
 
     def check_pending_requests(self):
@@ -250,6 +271,16 @@ class Peer:
         if not self.is_leader:
             return
         message = UpdateInventoryMessage.from_dict(message)
+
+        with self.lock:
+            old_vector_clock = self.vector_clock.copy()
+            for i in range(self.total_peers):
+                if i != self.peer_index:
+                    self.vector_clock[i] = max(self.vector_clock[i], message.vector_clock[i])
+            self.vector_clock[self.peer_index] += 1
+            print(
+                f"[{self.peer_id}] Updated vector clock from {old_vector_clock} to {self.vector_clock} after processing inventory update.")
+
         with self.inventory_lock:
             self.inventory.add_inventory(
                 message.seller_id, message.address, message.product_name, message.stock, message.vector_clock
@@ -263,6 +294,8 @@ class Peer:
                 print(f"    Product: {product}")
                 for seller_info in sellers_info:
                     print(f"        Seller {seller_info['seller_id']}: Stock {seller_info['quantity']}, Address {seller_info['address']}, Vector Clock {seller_info['vector_clock']}")
+        # Multicast updated state to all peers
+        self.multicast_state_update()
         # After updating inventory, process pending buy requests
         self.thread_pool.submit(self.process_pending_buy_requests)
 
@@ -272,7 +305,7 @@ class Peer:
         while self.running and self.leader_active:
             self.process_pending_buy_requests()
             time.sleep(1)  # Adjust the sleep time as needed
-    #
+
     def process_pending_buy_requests(self):
         """Process pending buy requests by selecting the earliest based on vector clocks."""
         while True:
@@ -285,9 +318,24 @@ class Peer:
                 message = self.pending_buy_requests.pop(0)
             # Process the buy request
             self.thread_pool.submit(self.execute_buy_request, message)
-    #
+
     def execute_buy_request(self, message: BuyMessage):
         """Execute a buy request."""
+        buyer_vector_clock = message.vector_clock
+
+        with self.lock:
+            old_vector_clock = self.vector_clock.copy()
+            for i in range(self.total_peers):
+                if i != self.peer_index:
+                    self.vector_clock[i] = max(self.vector_clock[i], buyer_vector_clock[i])
+            self.vector_clock[self.peer_index] += 1
+            print(
+                f"[{self.peer_id}] Updated vector clock from {old_vector_clock} to {self.vector_clock} after processing buy request.")
+
+        # self.multicast_state_update()
+        # self.increment_vector_clock()
+
+        # Proceed with the transaction
         with self.inventory_lock:
             seller_id, seller_address, status = self.inventory.reduce_stock(message.product_name, message.quantity)
             if status:
@@ -302,6 +350,7 @@ class Peer:
             else:
                 print(f"[{self.peer_id}] Could not fulfill the order for buyer {message.buyer_id}.")
 
+        # Send buy confirmation to buyer
         buy_confirmation_reply = BuyConfirmationMessage(
             message.request_id,
             message.buyer_id,
@@ -310,8 +359,9 @@ class Peer:
             message.quantity,
             self.get_vector_clock()
         ).to_dict()
-
         self.send_message(message.buyer_address, buy_confirmation_reply)
+
+        # If successful, send sell confirmation to seller
         if status:
             sell_confirmation_reply = SellConfirmationMessage(
                 message.request_id,
@@ -323,7 +373,11 @@ class Peer:
                 seller_payment,
             ).to_dict()
             self.send_message(seller_address, sell_confirmation_reply)
-    #
+
+        # Multicast updated state to all peers
+        self.multicast_state_update()
+
+
     def buy_item(self, product_name=None, quantity=None):
         """Buyer initiates a buy for an item with the trader."""
         if 'buyer' not in self.role:
@@ -367,9 +421,86 @@ class Peer:
             return
 
         message = BuyMessage.from_dict(message)
-        with self.pending_buy_requests_lock:
-            self.pending_buy_requests.append(message)
-        # Buy requests will be processed by the background thread
+        # buyer_index = message.buyer_id
+        buyer_vector_clock = message.vector_clock
+
+        # Compare the buyer's vector clock with the leader's vector clock
+        # with self.lock:
+        #     is_valid = True
+        #     print("#############")
+        #     print(f"Leader {self.vector_clock}")
+        #     print(f"Buyer {message.buyer_id} {message.vector_clock}")
+        #     print("#############")
+        #     for i in range(self.total_peers):
+        #         if i == buyer_index:
+        #             if message.vector_clock[i] != self.vector_clock[i] + 1:
+        #                 is_valid = False
+        #                 break
+        #         else:
+        #             if message.vector_clock[i] != self.vector_clock[i]:
+        #                 is_valid = False
+        #                 break
+        #     if is_valid:
+        #         # The buyer's clock is exactly +1 at buyer's index, and same at others
+        #         # Proceed to process the buy request
+        #         with self.pending_buy_requests_lock:
+        #             self.pending_buy_requests.append(message)
+        #         # Buy requests will be processed by the background thread
+        with self.lock:
+            comparison = compare_vector_clocks(self.vector_clock, buyer_vector_clock)
+            # print("#############")
+            # print(f"Leader {self.vector_clock}")
+            # print(f"Buyer {message.buyer_id} {buyer_vector_clock}")
+            # print(f"Comparison result: {comparison}")
+            # print("#############")
+
+        if comparison == -1:
+            # Buyer's vector clock is ahead (leader is behind)
+            # Update leader's vector clock and process the request
+            with self.lock:
+                old_vector_clock = self.vector_clock.copy()
+                for i in range(self.total_peers):
+                    self.vector_clock[i] = max(self.vector_clock[i], buyer_vector_clock[i])
+                self.vector_clock[self.peer_index] += 1
+                print(
+                    f"[{self.peer_id}] Updated vector clock from {old_vector_clock} to {self.vector_clock} after processing buy request.")
+
+            # Proceed to process the buy request
+            with self.pending_buy_requests_lock:
+                self.pending_buy_requests.append(message)
+            # Buy requests will be processed by the background thread
+
+        elif comparison == 0:
+            # Vector clocks are concurrent
+            # Queue the request to process later
+            print(f"[{self.peer_id}] Buy request from buyer {message.buyer_id} is concurrent. Queuing request.")
+            with self.pending_buy_requests_lock:
+                self.pending_buy_requests.append(message)
+            # The sorting in process_pending_buy_requests will handle ordering
+
+        else:
+            # Reject the buy request due to vector clock mismatch
+            print(f"[{self.peer_id}] Vector clock mismatch for buyer {message.buyer_id}. Rejecting request.")
+            with self.lock:
+                old_vector_clock = self.vector_clock.copy()
+                for i in range(self.total_peers):
+                    if i != self.peer_index:
+                        self.vector_clock[i] = max(self.vector_clock[i], message.vector_clock[i])
+                self.vector_clock[self.peer_index] += 1
+                print(
+                    f"[{self.peer_id}] Updated vector clock from {old_vector_clock} to {self.vector_clock} after rejecting buy request.")
+
+            # Send rejection to buyer
+            buy_confirmation_reply = BuyConfirmationMessage(
+                message.request_id,
+                message.buyer_id,
+                message.product_name,
+                False,  # Status False indicating failure
+                message.quantity,
+                self.get_vector_clock(),
+                reason='vector_clock_mismatch'
+            ).to_dict()
+            self.send_message(message.buyer_address, buy_confirmation_reply)
 
     def delayed_buy(self, wait_time):
         """Wait for a specified time before initiating another buy."""
@@ -379,6 +510,7 @@ class Peer:
     def handle_buy_confirmation(self, message):
         """Handle the buy confirmation from the trader."""
         confirmation_message = BuyConfirmationMessage.from_dict(message)
+        self.update_vector_clock(confirmation_message.vector_clock)
 
         # Check if the confirmation is for the current buyer
         if confirmation_message.buyer_id == self.peer_id:
@@ -386,20 +518,24 @@ class Peer:
                 # Purchase was successful
                 self.items_bought += confirmation_message.quantity
                 timestamp = datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S.%f")[:-3]
-                print(f"{timestamp} [{self.peer_id}] bought {confirmation_message.quantity} {confirmation_message.product_name}(s) from trader.")
-                self.update_vector_clock(confirmation_message.vector_clock)
+                print(f"{timestamp} [{self.peer_id}] bought {confirmation_message.quantity} {confirmation_message.product_name}(s) from {confirmation_message.buyer_id}")
+                # self.update_vector_clock(confirmation_message.vector_clock)
 
                 # Decide whether to continue buying
                 wait_time = random.randint(5, 10)
                 self.thread_pool.submit(self.delayed_buy, wait_time)
-                print(f"[{self.peer_id}] Buyer will make another purchase in {wait_time} seconds.")
+                print(f"Buyer will make another purchase in {wait_time} seconds.")
             else:
                 # Purchase failed
                 print(f"[{self.peer_id}] Purchase of {confirmation_message.product_name} from trader failed.")
-                # Try buying a different item after a delay
+                if confirmation_message.reason == 'vector_clock_mismatch':
+                    print(f"[{self.peer_id}] Vector clock mismatch. Retrying after a delay.")
+                else:
+                    print(f"[{self.peer_id}] Reason: {confirmation_message.reason}")
+                # Retry after a delay
                 wait_time = random.randint(5, 10)
                 self.thread_pool.submit(self.delayed_buy, wait_time)
-                print(f"[{self.peer_id}] Buyer will try a different item in {wait_time} seconds.")
+                print(f"[{self.peer_id}] Buyer will retry in {wait_time} seconds.")
             # Remove from pending requests
             with self.pending_requests_lock:
                 if confirmation_message.request_id in self.pending_requests:
@@ -407,22 +543,11 @@ class Peer:
         else:
             print(f"[{self.peer_id}] Received buy confirmation not intended for this peer.")
 
-    # def wait_and_send_update_inventory(self):
-    #     """Wait until the leader is active and then send inventory update."""
-    #     while (self.leader is None or not self.leader.leader_active) and self.running:
-    #         print(f"[{self.peer_id}] Waiting for an active leader to send inventory update.")
-    #         time.sleep(1)
-    #         # Optionally, initiate an election if desired
-    #         # self.start_election()
-    #     if not self.running:
-    #         return
-    #     self.send_update_inventory()
-    #
     def handle_sell_confirmation(self, message):
         """Handle sell confirmation from the leader."""
         confirmation_message = SellConfirmationMessage.from_dict(message)
 
-        if confirmation_message.product_name != self.item or confirmation_message.status == False:
+        if confirmation_message.product_name != self.item or not confirmation_message.status:
             return
 
         with self.stock_lock:
@@ -435,10 +560,11 @@ class Peer:
             self.earnings += confirmation_message.payment_amount
         print(f"[{self.peer_id}] Received payment of {confirmation_message.payment_amount} for selling {confirmation_message.quantity} {confirmation_message.product_name}(s). Total earnings: {self.earnings}")
 
-        if self.stock <= 0:
-            self.stock = SELLER_STOCK  # Restock
-            print(f"[{self.peer_id}] Stock reached 0. Restocking {self.item} and sending update to leader.")
-            self.thread_pool.submit(self.send_update_inventory)
+        with self.stock_lock:
+            if self.stock <= 0:
+                self.stock = SELLER_STOCK  # Restock
+                print(f"[{self.peer_id}] Stock reached 0. Restocking {self.item} and sending update to leader.")
+                self.thread_pool.submit(self.send_update_inventory)
 
 
     def display_network(self):
@@ -606,6 +732,8 @@ class Peer:
         self.load_market_state()
         # Start the pending buy requests processing thread
         threading.Thread(target=self.process_pending_buy_requests_thread, daemon=True).start()
+        timestamp = datetime.datetime.now().strftime("%d.%m.%Y %H:%M:%S.%f")[:-3]
+        print(f"{timestamp} Dear buyers and sellers, My ID is {self.peer_id}, and I am the new coordinator")
         leader_message = {
             'type': 'leader',
             'leader_id': self.peer_id,
