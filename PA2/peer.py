@@ -64,6 +64,12 @@ class Peer:
             self.timeout = TIMEOUT  # seconds
             self.start_time = None
             self.end_time = None
+            ####Experiments
+            self.response_times = []
+            self.response_times_lock = threading.Lock()
+            self.requests_completed = 0
+            self.total_requests = 1000  # Number of requests to send
+            self.timeouts = 0
 
         if 'seller' in self.role:
             self.earnings = 0.0  # Initialize earnings to zero
@@ -212,6 +218,11 @@ class Peer:
                     print(
                         f"[{self.peer_id}] No response received for {product_name}. Timing out and selecting another item.")
                     to_remove.append(request_id)
+                    self.timeouts += 1
+                    self.requests_completed += 1
+                    with self.response_times_lock:
+                        response_time = current_time - timestamp
+                        self.response_times.append(response_time)
                     remaining_items = [item for item in self.available_items if item != product_name]
                     if not remaining_items:
                         print(f"[{self.peer_id}] No other items to look up besides {product_name}. Shutting down.")
@@ -373,15 +384,18 @@ class Peer:
                 self.get_vector_clock(),
                 seller_payment,
             ).to_dict()
+            self.save_market_state()  # Ensure state is saved
             self.send_message(seller_address, sell_confirmation_reply)
+
 
         # Multicast updated state to all peers
         self.multicast_state_update()
+        self.save_market_state()
 
 
     def buy_item(self, product_name=None, quantity=None):
         """Buyer initiates a buy for an item with the trader."""
-        if 'buyer' not in self.role:
+        if 'buyer' not in self.role or self.requests_completed >= self.total_requests:
             return
 
         with self.operations_lock:
@@ -479,7 +493,10 @@ class Peer:
     def delayed_buy(self, wait_time):
         """Wait for a specified time before initiating another buy."""
         time.sleep(wait_time)
-        self.buy_item()
+        if self.requests_completed < self.total_requests:
+            self.buy_item()
+        else:
+            print(f"[{self.peer_id}] Reached total of {self.total_requests} requests. No more purchases.")
 
     def handle_buy_confirmation(self, message):
         """Handle the buy confirmation from the trader."""
@@ -488,6 +505,15 @@ class Peer:
 
         # Check if the confirmation is for the current buyer
         if confirmation_message.buyer_id == self.peer_id:
+            with self.pending_requests_lock:
+                if confirmation_message.request_id in self.pending_requests:
+                    start_time = self.pending_requests[confirmation_message.request_id][1]
+                    end_time = time.time()
+                    response_time = end_time - start_time
+                    with self.response_times_lock:
+                        self.response_times.append(response_time)
+                    del self.pending_requests[confirmation_message.request_id]
+            self.requests_completed += 1
             if confirmation_message.status:
                 # Purchase was successful
                 self.items_bought += confirmation_message.quantity
@@ -496,9 +522,22 @@ class Peer:
                 # self.update_vector_clock(confirmation_message.vector_clock)
 
                 # Decide whether to continue buying
-                wait_time = random.randint(5, 10)
-                self.thread_pool.submit(self.delayed_buy, wait_time)
-                print(f"Buyer will make another purchase in {wait_time} seconds.")
+                # wait_time = random.randint(5, 10)
+                # self.thread_pool.submit(self.delayed_buy, wait_time)
+                # print(f"Buyer will make another purchase in {wait_time} seconds.")
+                if self.requests_completed < self.total_requests:
+                    wait_time = random.randint(1, 3)
+                    self.thread_pool.submit(self.delayed_buy, wait_time)
+                    print(f"Buyer will make another purchase in {wait_time} seconds.")
+                else:
+                    # Compute average response time
+                    with self.response_times_lock:
+                        average_response_time = sum(self.response_times) / len(self.response_times)
+                        print(f"[{self.peer_id}] Completed {self.total_requests} requests. Average response time: {average_response_time} seconds.")
+                        # Save response times to a file for plotting
+                        with open(f"buyer_{self.peer_id}_response_times.txt", "w") as f:
+                            for rt in self.response_times:
+                                f.write(f"{rt}\n")
             else:
                 # Purchase failed
                 print(f"[{self.peer_id}] Purchase of {confirmation_message.product_name} from trader failed.")
@@ -507,9 +546,26 @@ class Peer:
                 else:
                     print(f"[{self.peer_id}] Reason: {confirmation_message.reason}")
                 # Retry after a delay
-                wait_time = random.randint(5, 10)
-                self.thread_pool.submit(self.delayed_buy, wait_time)
-                print(f"[{self.peer_id}] Buyer will retry in {wait_time} seconds.")
+                # wait_time = random.randint(5, 10)
+                # self.thread_pool.submit(self.delayed_buy, wait_time)
+                # print(f"[{self.peer_id}] Buyer will retry in {wait_time} seconds.")
+                if self.requests_completed < self.total_requests:
+                    wait_time = random.randint(1, 3)
+                    self.thread_pool.submit(self.delayed_buy, wait_time)
+                    print(f"[{self.peer_id}] Buyer will retry in {wait_time} seconds.")
+                else:
+                    # Compute average response time
+                    with self.response_times_lock:
+                        if self.response_times:
+                            average_response_time = sum(self.response_times) / len(self.response_times)
+                        else:
+                            average_response_time = 0
+                        print(
+                            f"[{self.peer_id}] Completed {self.total_requests} requests. Average response time: {average_response_time} seconds.")
+                        # Save response times to a file for plotting
+                        with open(f"buyer_{self.peer_id}_response_times.txt", "w") as f:
+                            for rt in self.response_times:
+                                f.write(f"{rt}\n")
             # Remove from pending requests
             with self.pending_requests_lock:
                 if confirmation_message.request_id in self.pending_requests:
@@ -540,6 +596,9 @@ class Peer:
                 print(f"[{self.peer_id}] Stock reached 0. Restocking {self.item} and sending update to leader.")
                 self.thread_pool.submit(self.send_update_inventory)
 
+        if self.is_leader:
+            self.save_market_state()
+
 
     def display_network(self):
         """Print network structure for this peer."""
@@ -552,6 +611,12 @@ class Peer:
         self.running = False
         self.socket.close()
         self.thread_pool.shutdown(wait=False)
+
+    def shutdown_after_delay(self, delay):
+        time.sleep(delay)
+        print(f"[{self.peer_id}] Leader is shutting down for simulation.")
+        self.leader_active = False
+        self.shutdown_peer()
 
     # Comparison functions for vector clocks
 
