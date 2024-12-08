@@ -5,7 +5,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 
 class DatabaseServer:
-    def __init__(self, host="localhost", port=5000, inventory_file="inventory.json", max_workers=10):
+    def __init__(self, shipped_goods,  host="localhost", port=5000, inventory_file="inventory.json", max_workers=10):
         """
         Initialize the database server.
         :param host: Host for the database server.
@@ -13,6 +13,7 @@ class DatabaseServer:
         :param inventory_file: Path to the JSON file that stores inventory data.
         :param max_workers: Maximum number of threads in the thread pool.
         """
+        self.shipped_goods = shipped_goods
         self.host = host
         self.port = port
         self.inventory_file = inventory_file
@@ -102,6 +103,8 @@ class DatabaseServer:
         with self.locks[product]:
             if self.inventory[product] >= quantity:
                 self.inventory[product] -= quantity
+                with self.shipped_goods.get_lock():
+                    self.shipped_goods.value += quantity    
                 self.save_inventory()
                 return f"OK|Shipped {quantity} {product}(s)|{request_id}"
             else:

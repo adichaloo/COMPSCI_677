@@ -1,139 +1,171 @@
 import multiprocessing
 import time
 from database_server import DatabaseServer
-from seller import Seller
 from trader import Trader
+from seller import Seller
 from buyer import Buyer
 
+import math
 
-def run_database(host, port):
-    """Top-level function to start the database server."""
-    db_server = DatabaseServer(host=host, port=port)
+N_B = 10
+N_T = 2
+N_S = 8
+N_G = 10
+T_G = 5
+
+BUY_PROBABILITY = 1
+MAX_TRANSACTIONS = math.inf
+
+# Top-level functions for multiprocessing
+
+def run_database(db_host, db_port):
+    """Top-level function to run the database server."""
+    db_server = DatabaseServer(host=db_host, port=db_port)
     db_server.run()
 
 
-def run_trader(host, port, db_host, db_port, trader_id):
-    """Top-level function to start a trader."""
-    trader = Trader(host=host, port=port, db_host=db_host, db_port=db_port, trader_id=trader_id)
+def run_trader(db_host, db_port, trader_host, trader_port, trader_id):
+    """Top-level function to run a trader."""
+    trader = Trader(host=trader_host, port=trader_port, db_host=db_host, db_port=db_port, trader_id=trader_id)
     trader.run()
 
 
-def run_seller(traders, seller_id, ng, tg, port):
-    """Top-level function to start a seller with a specified listener port."""
-    seller = Seller(traders=traders, seller_id=seller_id, ng=ng, tg=tg, port=port)
+def run_seller(trader, seller_id, ng, tg, port):
+    """Top-level function to run a seller."""
+    seller = Seller(traders=[trader], seller_id=seller_id, ng=ng, tg=tg, port=port)
     seller.run()
 
 
-
-def run_buyer(traders, buyer_id):
-    """Top-level function to start a buyer."""
-    buyer = Buyer(traders=traders, buyer_id=buyer_id, p = 1)
+def run_buyer(trader, buyer_id, max_transactions, buy_probability):
+    """Top-level function to run a buyer."""
+    buyer = Buyer(traders=[trader], buyer_id=buyer_id, max_transactions=max_transactions, p = buy_probability)
     buyer.run()
 
 
-class NetworkSetup:
-    def __init__(self, num_buyers=2, num_sellers=2, num_traders=1, db_host='localhost', db_port=5000):
+class TradingPostNetwork:
+    def __init__(self, num_buyers=6, num_sellers=6, num_traders=3, db_host='localhost', db_port=5000):
         """
-        Initialize the network setup.
-        :param num_buyers: Number of buyer nodes.
-        :param num_sellers: Number of seller nodes.
-        :param num_traders: Number of trader nodes.
-        :param db_host: Host of the database server.
-        :param db_port: Port of the database server.
+        Initialize the trading post network.
         """
         self.num_buyers = num_buyers
         self.num_sellers = num_sellers
         self.num_traders = num_traders
         self.db_host = db_host
         self.db_port = db_port
-        self.trader_start_port = db_port + 1  # Traders start on ports after the database server port
+        self.trader_start_port = db_port + 1
+        self.seller_start_port = 6000
+        self.trading_posts = []
 
     def start_database_server(self):
-        """Start the database server in a separate process."""
+        """Start the central warehouse database server."""
         db_process = multiprocessing.Process(
-            target=run_database, args=(self.db_host, self.db_port), daemon=True
+            target=run_database,
+            args=(self.db_host, self.db_port),
+            daemon=True
         )
         db_process.start()
         print(f"Database server started on {self.db_host}:{self.db_port}")
         return db_process
 
+    def distribute_entities(self, total_entities, num_posts):
+        """Distribute entities (buyers or sellers) across trading posts."""
+        base_count = total_entities // num_posts
+        remainder = total_entities % num_posts
+        distribution = [base_count + (1 if i < remainder else 0) for i in range(num_posts)]
+        return distribution
+
     def start_traders(self):
-        """Start trader nodes in separate processes."""
+        """Start traders for each trading post."""
         trader_processes = []
         for i in range(self.num_traders):
             trader_port = self.trader_start_port + i
+            self.trading_posts.append({"trader": (self.db_host, trader_port), "buyers": [], "sellers": []})
+
             trader_process = multiprocessing.Process(
                 target=run_trader,
-                args=(self.db_host, trader_port, self.db_host, self.db_port, i + 1),
+                args=(self.db_host, self.db_port, self.db_host, trader_port, i + 1),
                 daemon=True
             )
             trader_process.start()
             trader_processes.append(trader_process)
-            print(f"Trader {i + 1} started on {self.db_host}:{trader_port}")
-            time.sleep(0.5)  # Allow time for startup
+            print(f"Trader {i + 1} (Post {i + 1}) started on {self.db_host}:{trader_port}")
+            time.sleep(0.5)
         return trader_processes
 
-    def start_sellers(self, traders):
-        """Start seller nodes in separate processes with unique listener ports."""
+    def start_sellers(self):
+        """Start sellers, distributed across trading posts."""
         seller_processes = []
-        base_port = 6000  # Base port for sellers
-        for i in range(self.num_sellers):
-            seller_port = base_port + i  # Unique port for each seller
-            seller_process = multiprocessing.Process(
-                target=run_seller,
-                args=(traders, i + 1, 10, 50, seller_port),  # Pass the unique port
-                daemon=True
-            )
-            seller_process.start()
-            seller_processes.append(seller_process)
-            print(f"Seller {i + 1} started with listener on port {seller_port}.")
-            time.sleep(0.5)  # Allow time for startup
+        distribution = self.distribute_entities(self.num_sellers, self.num_traders)
+        seller_id = 1
+
+        for i, post in enumerate(self.trading_posts):
+            for _ in range(distribution[i]):
+                seller_port = self.seller_start_port + seller_id
+
+                seller_process = multiprocessing.Process(
+                    target=run_seller,
+                    args=(post["trader"], seller_id, N_G, T_G, seller_port),
+                    daemon=True
+                )
+                seller_process.start()
+                seller_processes.append(seller_process)
+                post["sellers"].append(seller_id)
+                print(f"Seller {seller_id} started in Trading Post {i + 1} with listener on port {seller_port}.")
+                seller_id += 1
+                time.sleep(0.5)
         return seller_processes
 
-
-    def start_buyers(self, traders):
-        """Start buyer nodes in separate processes."""
+    def start_buyers(self):
+        """Start buyers, distributed across trading posts."""
         buyer_processes = []
-        for i in range(self.num_buyers):
-            buyer_process = multiprocessing.Process(
-                target=run_buyer,
-                args=(traders, i + 1),
-                daemon=True
-            )
-            buyer_process.start()
-            buyer_processes.append(buyer_process)
-            print(f"Buyer {i + 1} started.")
-            time.sleep(0.5)  # Allow time for startup
+        distribution = self.distribute_entities(self.num_buyers, self.num_traders)
+        buyer_id = 1
+
+        for i, post in enumerate(self.trading_posts):
+            for _ in range(distribution[i]):
+                buyer_process = multiprocessing.Process(
+                    target=run_buyer,
+                    args=(post["trader"], buyer_id, MAX_TRANSACTIONS, BUY_PROBABILITY),
+                    daemon=True
+                )
+                buyer_process.start()
+                buyer_processes.append(buyer_process)
+                post["buyers"].append(buyer_id)
+                print(f"Buyer {buyer_id} started in Trading Post {i + 1}.")
+                buyer_id += 1
+                time.sleep(0.5)
         return buyer_processes
 
     def setup_network(self):
-        """Setup the entire network."""
-        print("Starting network setup...")
+        """Set up the entire trading post network."""
+        print("Starting trading post network setup...")
         db_process = self.start_database_server()
 
-        # Prepare trader information
-        traders = [(self.db_host, self.trader_start_port + i) for i in range(self.num_traders)]
-
         trader_processes = self.start_traders()
-        seller_processes = self.start_sellers(traders)
-        buyer_processes = self.start_buyers(traders)
+        seller_processes = self.start_sellers()
+        buyer_processes = self.start_buyers()
 
-        print("Network setup complete. All components are running.")
+        print("Trading post network setup complete. All components are running.")
+        for i, post in enumerate(self.trading_posts):
+            print(f"Trading Post {i + 1}: Trader={post['trader']}, Buyers={post['buyers']}, Sellers={post['sellers']}")
+
         return db_process, trader_processes, seller_processes, buyer_processes
 
 
 if __name__ == "__main__":
-    # Example configuration
-    network = NetworkSetup(num_buyers=2, num_sellers=1, num_traders=3, db_host='localhost', db_port=5555)
+    # Example configuration for the trading post network
+   
+
+    network = TradingPostNetwork(num_buyers=N_B, num_sellers=N_S, num_traders=N_T, db_host='localhost', db_port=5555)
     db_process, trader_processes, seller_processes, buyer_processes = network.setup_network()
 
     try:
         while True:
-            time.sleep(1)
+            time.sleep(1)  # Keep the main process alive
     except KeyboardInterrupt:
-        print("Shutting down network...")
+        print("Shutting down trading post network...")
         # Terminate all processes
         db_process.terminate()
         for process in trader_processes + seller_processes + buyer_processes:
             process.terminate()
-        print("Network shutdown complete.")
+        print("Trading post network shutdown complete.")
