@@ -18,9 +18,9 @@ MAX_TRANSACTIONS = math.inf
 
 # Top-level functions for multiprocessing
 
-def run_database(db_host, db_port):
+def run_database(db_host, db_port, shipped_goods):
     """Top-level function to run the database server."""
-    db_server = DatabaseServer(host=db_host, port=db_port)
+    db_server = DatabaseServer(host=db_host, port=db_port, shipped_goods=shipped_goods)
     db_server.run()
 
 
@@ -58,9 +58,13 @@ class TradingPostNetwork:
 
     def start_database_server(self):
         """Start the central warehouse database server."""
+        from multiprocessing import Manager
+
+        # manager = Manager()
+        # shipped_goods = manager.Value("i", 0)
         db_process = multiprocessing.Process(
             target=run_database,
-            args=(self.db_host, self.db_port),
+            args=(self.db_host, self.db_port, 0),
             daemon=True
         )
         db_process.start()
@@ -140,10 +144,14 @@ class TradingPostNetwork:
         """Set up the entire trading post network."""
         print("Starting trading post network setup...")
         db_process = self.start_database_server()
+        time.sleep(1)
 
         trader_processes = self.start_traders()
+        time.sleep(1)
         seller_processes = self.start_sellers()
+        time.sleep(1)
         buyer_processes = self.start_buyers()
+        time.sleep(1)
 
         print("Trading post network setup complete. All components are running.")
         for i, post in enumerate(self.trading_posts):
@@ -154,7 +162,7 @@ class TradingPostNetwork:
 
 if __name__ == "__main__":
     # Example configuration for the trading post network
-   
+    multiprocessing.set_start_method("spawn", force=True)
 
     network = TradingPostNetwork(num_buyers=N_B, num_sellers=N_S, num_traders=N_T, db_host='localhost', db_port=5555)
     db_process, trader_processes, seller_processes, buyer_processes = network.setup_network()

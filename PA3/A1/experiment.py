@@ -44,7 +44,7 @@ def run_experiment(num_buyers, num_sellers, num_traders, db_port, duration):
     :return: Throughput (goods shipped per second).
     """
     db_host = "localhost"
-    shipped_goods = multiprocessing.Value("i", 0)  # Shared counter for shipped goods
+    shipped_goods = 0  # Shared counter for shipped goods
 
     # Start the database server
     db_process = multiprocessing.Process(
@@ -106,8 +106,8 @@ def visualize_results(hyperparameter_configs, throughputs, title):
 
 if __name__ == "__main__":
     # Experiment configuration
-    experiment_duration = 60  # Experiment duration in seconds
-    db_port = 5555
+    experiment_duration = 10  # Experiment duration in seconds
+    db_port = 9999
 
     # Define various hyperparameter configurations
     hyperparameter_configs = [
