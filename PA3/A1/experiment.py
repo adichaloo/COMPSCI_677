@@ -44,14 +44,39 @@ def run_experiment(num_buyers, num_sellers, num_traders, db_port, duration):
     :return: Throughput (goods shipped per second).
     """
     db_host = "localhost"
-    shipped_goods = 0  # Shared counter for shipped goods
 
     # Start the database server
-    db_process = multiprocessing.Process(
-        target=run_database, args=(db_host, db_port, shipped_goods), daemon=True
-    )
-    db_process.start()
-    time.sleep(2)  # Allow the database server to initialize
+    # db_process = multiprocessing.Process(
+    #     target=run_database, args=(db_host, db_port, shipped_goods), daemon=True
+    # )
+    # db_process.start()
+    # time.sleep(2)  # Allow the database server to initialize
+
+    import socket
+    import os
+    import subprocess
+    import signal
+
+    def get_random_port():
+        """Bind to port 0 to get a random available port."""
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.bind(('', 0))
+            return s.getsockname()[1]
+        
+    def clean_port(port):
+        """Kill any process using the specified port."""
+        try:
+            result = subprocess.run(["lsof", "-t", f"-i:{port}"], capture_output=True, text=True)
+            if result.stdout.strip():
+                pid = int(result.stdout.strip())
+                os.kill(pid, signal.SIGKILL)
+                print(f"Killed process {pid} using port {port}.")
+        except Exception as e:
+            print(f"Error cleaning port {port}: {e}")
+    
+    # experiment_duration = 10  # Experiment duration in seconds
+    db_port = get_random_port()
+    clean_port(db_port)
 
     # Configure and start the network
     network = TradingPostNetwork(
@@ -61,7 +86,7 @@ def run_experiment(num_buyers, num_sellers, num_traders, db_port, duration):
         db_host=db_host,
         db_port=db_port
     )
-    db_process, trader_processes, seller_processes, buyer_processes = network.setup_network()
+    db_process, trader_processes, seller_processes, buyer_processes, shipped_goods = network.setup_network()
 
     # Start throughput monitoring
     monitor_process = multiprocessing.Process(
@@ -106,17 +131,41 @@ def visualize_results(hyperparameter_configs, throughputs, title):
 
 if __name__ == "__main__":
     # Experiment configuration
+
+    import socket
+    import os
+    import subprocess
+    import signal
+
+    def get_random_port():
+        """Bind to port 0 to get a random available port."""
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.bind(('', 0))
+            return s.getsockname()[1]
+        
+    def clean_port(port):
+        """Kill any process using the specified port."""
+        try:
+            result = subprocess.run(["lsof", "-t", f"-i:{port}"], capture_output=True, text=True)
+            if result.stdout.strip():
+                pid = int(result.stdout.strip())
+                os.kill(pid, signal.SIGKILL)
+                print(f"Killed process {pid} using port {port}.")
+        except Exception as e:
+            print(f"Error cleaning port {port}: {e}")
+    
     experiment_duration = 10  # Experiment duration in seconds
-    db_port = 9999
+    db_port = get_random_port()
+    clean_port(db_port)
 
     # Define various hyperparameter configurations
     hyperparameter_configs = [
-        (10, 10, 1),  # (num_buyers, num_sellers, num_traders)
+        # (10, 10, 1),  # (num_buyers, num_sellers, num_traders)
         (10, 10, 2),
-        (20, 20, 1),
-        (20, 20, 2),
-        (30, 30, 1),
-        (30, 30, 2)
+        # (20, 20, 1),
+        # (20, 20, 2),
+        # (30, 30, 1),
+        # (30, 30, 2)
     ]
 
     throughputs = []

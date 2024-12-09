@@ -4,6 +4,7 @@ from database_server import DatabaseServer
 from trader import Trader
 from seller import Seller
 from buyer import Buyer
+from multiprocessing import Manager
 
 import math
 
@@ -58,18 +59,18 @@ class TradingPostNetwork:
 
     def start_database_server(self):
         """Start the central warehouse database server."""
-        from multiprocessing import Manager
+        
 
-        # manager = Manager()
-        # shipped_goods = manager.Value("i", 0)
+        manager = Manager()
+        shipped_goods = manager.Value("i", 0)
         db_process = multiprocessing.Process(
             target=run_database,
-            args=(self.db_host, self.db_port, 0),
+            args=(self.db_host, self.db_port, shipped_goods),
             daemon=True
         )
         db_process.start()
         print(f"Database server started on {self.db_host}:{self.db_port}")
-        return db_process
+        return db_process, shipped_goods
 
     def distribute_entities(self, total_entities, num_posts):
         """Distribute entities (buyers or sellers) across trading posts."""
@@ -143,7 +144,7 @@ class TradingPostNetwork:
     def setup_network(self):
         """Set up the entire trading post network."""
         print("Starting trading post network setup...")
-        db_process = self.start_database_server()
+        db_process, shipped_goods = self.start_database_server()
         time.sleep(1)
 
         trader_processes = self.start_traders()
@@ -157,15 +158,36 @@ class TradingPostNetwork:
         for i, post in enumerate(self.trading_posts):
             print(f"Trading Post {i + 1}: Trader={post['trader']}, Buyers={post['buyers']}, Sellers={post['sellers']}")
 
-        return db_process, trader_processes, seller_processes, buyer_processes
+        return db_process, trader_processes, seller_processes, buyer_processes, shipped_goods
 
 
 if __name__ == "__main__":
+    import socket
+    import subprocess
+    import os
+    import signal
+
+    def get_random_port():
+        """Bind to port 0 to get a random available port."""
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.bind(('', 0))
+            return s.getsockname()[1]
+        
+    def clean_port(port):
+        """Kill any process using the specified port."""
+        try:
+            result = subprocess.run(["lsof", "-t", f"-i:{port}"], capture_output=True, text=True)
+            if result.stdout.strip():
+                pid = int(result.stdout.strip())
+                os.kill(pid, signal.SIGKILL)
+                print(f"Killed process {pid} using port {port}.")
+        except Exception as e:
+            print(f"Error cleaning port {port}: {e}")
     # Example configuration for the trading post network
     multiprocessing.set_start_method("spawn", force=True)
-
+    clean_port(5555)
     network = TradingPostNetwork(num_buyers=N_B, num_sellers=N_S, num_traders=N_T, db_host='localhost', db_port=5555)
-    db_process, trader_processes, seller_processes, buyer_processes = network.setup_network()
+    db_process, trader_processes, seller_processes, buyer_processes, shipped_goods = network.setup_network()
 
     try:
         while True:

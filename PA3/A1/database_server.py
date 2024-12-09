@@ -21,7 +21,7 @@ class DatabaseServer:
         self.inventory = {}
         self.locks = {}
         self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.shipped_goods_lock = threading.Lock()
+        # self.shipped_goods_lock = threading.Lock()
 
     def load_inventory(self):
         """Load inventory from the JSON file."""
@@ -51,7 +51,7 @@ class DatabaseServer:
         :param client_socket: The client socket.
         :param address: The address of the client.
         """
-        print(f"DatabaseServer: Connected to trader at {address}")
+        # print(f"DatabaseServer: Connected to trader at {address}")
         try:
             while True:
                 data = client_socket.recv(1024).decode()
@@ -104,8 +104,8 @@ class DatabaseServer:
         with self.locks[product]:
             if self.inventory[product] >= quantity:
                 self.inventory[product] -= quantity
-                with self.shipped_goods_lock:
-                    self.shipped_goods += quantity    
+                # with self.shipped_goods_lock:
+                self.shipped_goods.value += quantity    
                 self.save_inventory()
                 return f"OK|Shipped {quantity} {product}(s)|{request_id}"
             else:
