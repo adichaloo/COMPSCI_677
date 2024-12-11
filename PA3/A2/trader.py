@@ -144,7 +144,6 @@ class Trader:
                 current_stock = self.cache.get(product, 0)
 
             if current_stock >= quantity:
-                # Optimistically proceed. Don't modify cache yet until DB confirms.
                 # Send request to DB
                 # self.shipped_goods.value += quantity
                 if self.db_socket:
@@ -166,7 +165,8 @@ class Trader:
             else:
                 # Under-sell scenario: cache says not enough inventory.
                 # We choose to trust cache and reject immediately for performance.
-                response = f"[UNDER-SELL DETECTED] for {product}|{request_id}"
+                print("UNDER SELLING DETECTED")
+                response = f"ERROR|Insufficient inventory for {product}|{request_id}"
                 self.forward_to_client(client_address, response)
 
         elif action == "sell":
