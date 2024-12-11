@@ -2,6 +2,7 @@ import socket
 import time
 import random
 import uuid
+from datetime import datetime
 
 
 class Buyer:
@@ -27,15 +28,20 @@ class Buyer:
         """Generate a unique request ID."""
         return str(uuid.uuid4())
 
+    def timestamped_print(self, message):
+        """Print a message with a timestamp."""
+        timestamp = datetime.now().strftime("%d.%m.%Y %H:%M:%S.%f")
+        print(f"{timestamp} Buyer {self.buyer_id}: {message}")
+
     def connect_to_trader(self, trader):
         """Establish a connection to the specified trader."""
         try:
             client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             client_socket.connect(trader)
-            print(f"Buyer {self.buyer_id} connected to trader at {trader[0]}:{trader[1]}")
+            self.timestamped_print(f"Connected to trader at {trader[0]}:{trader[1]}")
             return client_socket
         except ConnectionError as e:
-            print(f"Buyer {self.buyer_id} failed to connect to the trader at {trader[0]}:{trader[1]}: {e}")
+            self.timestamped_print(f"Failed to connect to the trader at {trader[0]}:{trader[1]}: {e}")
             return None
 
     def process_response(self, response, request_id, trader):
@@ -46,12 +52,12 @@ class Buyer:
         :param trader: Tuple (host, port) of the trader.
         """
         if response.startswith("OK"):
-            print(f"Buyer {self.buyer_id}: Buy complete for request {request_id} (via {trader[0]}:{trader[1]}): {response}")
+            self.timestamped_print(f"Buy complete for request {request_id} (via {trader[0]}:{trader[1]}): {response}")
             self.completed_transactions += 1
         elif response.startswith("ERROR"):
-            print(f"Buyer {self.buyer_id}: Buy failure for request {request_id} (via {trader[0]}:{trader[1]}): {response}")
+            self.timestamped_print(f"Buy failure for request {request_id} (via {trader[0]}:{trader[1]}): {response}")
         else:
-            print(f"Buyer {self.buyer_id}: Unexpected response for request {request_id} (via {trader[0]}:{trader[1]}): {response}")
+            self.timestamped_print(f"Unexpected response for request {request_id} (via {trader[0]}:{trader[1]}): {response}")
 
     def buy_goods(self, client_socket, product, quantity, request_id, trader):
         """
@@ -68,20 +74,20 @@ class Buyer:
             response = client_socket.recv(1024).decode()
             self.process_response(response, request_id, trader)
         except Exception as e:
-            print(f"Buyer {self.buyer_id} encountered an error while communicating with trader at {trader[0]}:{trader[1]}: {e}")
+            self.timestamped_print(f"Encountered an error while communicating with trader at {trader[0]}:{trader[1]}: {e}")
 
     def generate_and_send_requests(self):
         """Periodically generate buy requests and send them to random traders."""
         while self.completed_transactions < self.max_transactions:
             if random.random() > self.p:
-                print(f"Buyer {self.buyer_id}: Stopping due to probability threshold.")
+                self.timestamped_print(f"Stopping due to probability threshold.")
                 break
 
             product = random.choice(self.goods)
             quantity = random.randint(1, 10)  # Random quantity between 1 and 10
             request_id = self.generate_request_id()  # Generate a unique request ID
             trader = random.choice(self.traders)  # Select a random trader
-            print(f"Buyer {self.buyer_id} wants to buy {quantity} {product}(s) from trader at {trader[0]}:{trader[1]} with request ID {request_id}")
+            self.timestamped_print(f"Wants to buy {quantity} {product}(s) from trader at {trader[0]}:{trader[1]} with request ID {request_id}")
 
             # Connect to the selected trader
             client_socket = self.connect_to_trader(trader)
@@ -90,7 +96,7 @@ class Buyer:
                 client_socket.close()
             time.sleep(self.tb)
 
-        print(f"Buyer {self.buyer_id}: Completed {self.completed_transactions} transactions. Shutting down.")
+        self.timestamped_print(f"Completed {self.completed_transactions} transactions. Shutting down.")
 
     def run(self):
         """Start the buyer process."""

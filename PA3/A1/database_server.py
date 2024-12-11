@@ -2,6 +2,7 @@ import socket
 import threading
 import json
 from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime
 
 
 class DatabaseServer:
@@ -23,17 +24,22 @@ class DatabaseServer:
         self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         # self.shipped_goods_lock = threading.Lock()
 
+    def timestamped_print(self, message):
+        """Print a message with a timestamp."""
+        timestamp = datetime.now().strftime("%d.%m.%Y %H:%M:%S.%f")
+        print(f"{timestamp} Warehouse: {message}")
+
     def load_inventory(self):
         """Load inventory from the JSON file."""
         try:
             with open(self.inventory_file, "r") as f:
                 self.inventory = json.load(f)
-                print("Inventory loaded successfully.")
+                self.timestamped_print("Inventory loaded successfully.")
         except FileNotFoundError:
-            print("Inventory file not found. Starting with an empty inventory.")
+            self.timestamped_print("Inventory file not found. Starting with an empty inventory.")
             self.inventory = {}
         except json.JSONDecodeError as e:
-            print(f"Failed to load inventory: {e}")
+            self.timestamped_print(f"Failed to load inventory: {e}")
             self.inventory = {}
 
         # Initialize locks for each product
@@ -57,15 +63,15 @@ class DatabaseServer:
                 data = client_socket.recv(1024).decode()
                 if not data:
                     break
-                print(f"DatabaseServer received: {data} from {address}")
+                self.timestamped_print(f"DatabaseServer received: {data} from {address}")
 
                 response = self.handle_command(data)
                 client_socket.send(response.encode())
         except Exception as e:
-            print(f"DatabaseServer encountered an error with trader {address}: {e}")
+            self.timestamped_print(f"DatabaseServer encountered an error with trader {address}: {e}")
         finally:
             client_socket.close()
-            print(f"DatabaseServer: Disconnected from trader at {address}")
+            self.timestamped_print(f"DatabaseServer: Disconnected from trader at {address}")
 
     def handle_command(self, command):
         """
@@ -134,7 +140,7 @@ class DatabaseServer:
         self.load_inventory()
         self.server_socket.bind((self.host, self.port))
         self.server_socket.listen(5)
-        print(f"DatabaseServer is running on {self.host}:{self.port}")
+        self.timestamped_print(f"DatabaseServer is running on {self.host}:{self.port}")
 
         with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
             try:
@@ -142,7 +148,7 @@ class DatabaseServer:
                     client_socket, address = self.server_socket.accept()
                     executor.submit(self.process_request, client_socket, address)
             except KeyboardInterrupt:
-                print("DatabaseServer shutting down.")
+                self.timestamped_print("DatabaseServer shutting down.")
             finally:
                 self.server_socket.close()
 
