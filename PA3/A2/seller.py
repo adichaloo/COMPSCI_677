@@ -3,6 +3,7 @@ import time
 import random
 import threading
 import uuid
+from datetime import datetime
 
 
 class Seller:
@@ -28,19 +29,24 @@ class Seller:
         """Generate a unique request ID."""
         return str(uuid.uuid4())
 
+    def timestamped_print(self, message):
+        """Print a message with a timestamp."""
+        timestamp = datetime.now().strftime("%d.%m.%Y %H:%M:%S.%f")
+        print(f"{timestamp} Seller {self.seller_id}: {message}")
+
     def start_listener(self):
         """Start a socket to listen for incoming messages from traders."""
         listener_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         listener_socket.bind(("localhost", self.port))
         listener_socket.listen(5)
-        print(f"Seller {self.seller_id} is listening for trader messages on port {self.port}")
+        self.timestamped_print(f"Listening for trader messages on port {self.port}")
 
         while self.running:
             try:
                 client_socket, address = listener_socket.accept()
                 threading.Thread(target=self.handle_message, args=(client_socket, address), daemon=True).start()
             except Exception as e:
-                print(f"Seller {self.seller_id} encountered an error in listener: {e}")
+                self.timestamped_print(f"Encountered an error in listener: {e}")
                 break
 
         listener_socket.close()
@@ -49,12 +55,12 @@ class Seller:
         """Handle an incoming message from a trader."""
         try:
             message = client_socket.recv(1024).decode()
-            print(f"Seller {self.seller_id} received message from trader {address}: {message}")
+            self.timestamped_print(f"Received message from trader {address}: {message}")
             # Example response if needed
             response = f"Message received by seller {self.seller_id}"
             client_socket.send(response.encode())
         except Exception as e:
-            print(f"Seller {self.seller_id} failed to process message from trader {address}: {e}")
+            self.timestamped_print(f"Failed to process message from trader {address}: {e}")
         finally:
             client_socket.close()
 
@@ -63,20 +69,20 @@ class Seller:
         try:
             client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             client_socket.connect(trader)
-            print(f"Seller {self.seller_id} connected to trader at {trader[0]}:{trader[1]}")
+            self.timestamped_print(f"Connected to trader at {trader[0]}:{trader[1]}")
             return client_socket
         except ConnectionError as e:
-            print(f"Seller {self.seller_id} failed to connect to the trader at {trader[0]}:{trader[1]}: {e}")
+            self.timestamped_print(f"Failed to connect to the trader at {trader[0]}:{trader[1]}: {e}")
             return None
 
     def process_response(self, response, trader, request_id):
         """Process the response from the trader."""
         if response.startswith("OK"):
-            print(f"Seller {self.seller_id}: Sell complete for request {request_id} (via {trader[0]}:{trader[1]}): {response}")
+            self.timestamped_print(f"Sell complete for request {request_id} (via {trader[0]}:{trader[1]}): {response}")
         elif response.startswith("ERROR"):
-            print(f"Seller {self.seller_id}: Sell failure for request {request_id} (via {trader[0]}:{trader[1]}): {response}")
+            self.timestamped_print(f"Sell failure for request {request_id} (via {trader[0]}:{trader[1]}): {response}")
         else:
-            print(f"Seller {self.seller_id}: Unexpected response for request {request_id} (via {trader[0]}:{trader[1]}): {response}")
+            self.timestamped_print(f"Unexpected response for request {request_id} (via {trader[0]}:{trader[1]}): {response}")
 
     def sell_goods(self, client_socket, product, quantity, request_id, trader):
         """Send a sell request to the trader."""
@@ -86,7 +92,7 @@ class Seller:
             response = client_socket.recv(1024).decode()
             self.process_response(response, trader, request_id)
         except Exception as e:
-            print(f"Seller {self.seller_id} encountered an error while communicating with trader at {trader[0]}:{trader[1]}: {e}")
+            self.timestamped_print(f"Encountered an error while communicating with trader at {trader[0]}:{trader[1]}: {e}")
 
     def accrue_and_sell_goods(self):
         """Periodically accrue goods and send sell requests to random traders."""
@@ -95,7 +101,7 @@ class Seller:
             quantity = self.ng  # Accrued goods
             request_id = self.generate_request_id()  # Generate a unique request ID
             trader = random.choice(self.traders)  # Select a random trader
-            print(f"Seller {self.seller_id} accrued {quantity} {product}(s) to sell to trader at {trader[0]}:{trader[1]} with request ID {request_id}")
+            self.timestamped_print(f"Accrued {quantity} {product}(s) to sell to trader at {trader[0]}:{trader[1]} with request ID {request_id}")
 
             # Connect to the selected trader
             client_socket = self.connect_to_trader(trader)

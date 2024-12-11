@@ -1,6 +1,7 @@
 import socket
 import threading
 from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime
 from queue import Queue
 import json
 import uuid
@@ -45,6 +46,11 @@ class Trader:
             print(f"Trader {self.trader_id} failed to connect to database server: {e}")
             self.db_socket = None
 
+    def timestamped_print(self, message):
+        """Print a message with a timestamp."""
+        timestamp = datetime.now().strftime("%d.%m.%Y %H:%M:%S.%f")
+        print(f"{timestamp} Trader {self.trader_id}: {message}")
+
     def periodic_cache_sync(self, interval=5):
         """Periodically fetch the entire inventory from the warehouse to sync cache."""
         while True:
@@ -67,11 +73,11 @@ class Trader:
                     inv = json.loads(inv_json)
                     with self.cache_lock:
                         self.cache = inv
-                    print(f"Trader {self.trader_id}: Cache fully synced with warehouse.")
+                    self.timestamped_print(f"Cache fully synced with warehouse.")
             else:
-                print(f"Trader {self.trader_id}: Failed to fetch inventory, response: {response}")
+                self.timestamped_print(f" Failed to fetch inventory, response: {response}")
         except Exception as e:
-            print(f"Trader {self.trader_id}: Error fetching inventory: {e}")
+            self.timestamped_print(f"Error fetching inventory: {e}")
 
     def forward_to_database(self, command, client_address):
         """
@@ -124,8 +130,7 @@ class Trader:
                         self.forward_to_client(client_address, response)
                     else:
                         # Over-sell occurred, refresh cache
-                        print(f"Trader {self.trader_id}: [OVER-SELL DETECTED] Warehouse rejected buy request "
-                              f"for {quantity} {product}(s). Refreshing cache.")
+                        self.timestamped_print(f"[OVER-SELL DETECTED] Warehouse rejected buy request for {quantity} {product}(s). Refreshing cache.")
                         self.refresh_entire_inventory()
                         self.forward_to_client(client_address, response)
                 else:
@@ -167,7 +172,7 @@ class Trader:
         if client_address in self.client_queues:
             self.client_queues[client_address].put(response)
         else:
-            print(f"Trader {self.trader_id}: Client {client_address} not found for response forwarding.")
+            self.timestamped_print(f"Client {client_address} not found for response forwarding.")
 
     def handle_client(self, client_socket, address):
         """Handle a connection from a buyer or seller."""
@@ -180,7 +185,7 @@ class Trader:
                 data = client_socket.recv(1024).decode()
                 if not data:
                     break
-                print(f"Trader {self.trader_id} received from {address}: {data}")
+                self.timestamped_print(f"Received from {address}: {data}")
 
                 # Forward the command to the database server
                 self.forward_to_database(data, address)
@@ -189,9 +194,9 @@ class Trader:
                 response = self.client_queues[address].get()
                 client_socket.send(response.encode())
         except ConnectionResetError:
-            print(f"Trader {self.trader_id}: Connection reset by client at {address}")
+            self.timestamped_print(f"Connection reset by client at {address}")
         except Exception as e:
-            print(f"Trader {self.trader_id} encountered an error with client {address}: {e}")
+            self.timestamped_print(f"Encountered an error with client {address}: {e}")
         finally:
             client_socket.close()
             del self.client_queues[address]
@@ -201,20 +206,20 @@ class Trader:
         """Start the trader process."""
         self.connect_to_database()
         if not self.db_socket:
-            print(f"Trader {self.trader_id} cannot start without a database connection.")
+            self.timestamped_print(f"Cannot start without a database connection.")
             return
             # Initial cache sync before starting if use_cache is True
         if self.use_cache:
             self.refresh_entire_inventory()
 
-        print(f"Trader {self.trader_id} is running with a thread pool of {self.max_workers} workers.")
+        self.timestamped_print(f"Running with a thread pool of {self.max_workers} workers.")
         with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
             try:
                 while True:
                     client_socket, address = self.server_socket.accept()
                     executor.submit(self.handle_client, client_socket, address)
             except KeyboardInterrupt:
-                print(f"Trader {self.trader_id} shutting down.")
+                self.timestamped_print(f"Shutting down.")
                 self.server_socket.close()
                 if self.db_socket:
                     self.db_socket.close()

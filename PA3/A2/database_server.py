@@ -2,6 +2,7 @@ import socket
 import threading
 import json
 from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime
 
 
 class DatabaseServer:
@@ -26,17 +27,21 @@ class DatabaseServer:
         self.locks = {}
         self.inventory_lock = threading.Lock()  # A global lock for reading full inventory safely
 
+    def timestamped_print(self, message):
+        """Print a message with a timestamp."""
+        timestamp = datetime.now().strftime("%d.%m.%Y %H:%M:%S.%f")
+        print(f"{timestamp} Warehouse: {message}")
     def load_inventory(self):
         """Load inventory from the JSON file."""
         try:
             with open(self.inventory_file, "r") as f:
                 self.inventory = json.load(f)
-                print("Inventory loaded successfully.")
+                self.timestamped_print("Inventory loaded successfully.")
         except FileNotFoundError:
-            print("Inventory file not found. Starting with an empty inventory.")
+            self.timestamped_print("Inventory file not found. Starting with an empty inventory.")
             self.inventory = {}
         except json.JSONDecodeError as e:
-            print(f"Failed to load inventory: {e}")
+            self.timestamped_print(f"Failed to load inventory: {e}")
             self.inventory = {}
 
         # Initialize locks for each product
@@ -54,21 +59,21 @@ class DatabaseServer:
         :param client_socket: The client socket.
         :param address: The address of the client.
         """
-        print(f"DatabaseServer: Connected to trader at {address}")
+        self.timestamped_print(f"DatabaseServer: Connected to trader at {address}")
         try:
             while True:
                 data = client_socket.recv(1024).decode()
                 if not data:
                     break
-                print(f"DatabaseServer received: {data} from {address}")
+                self.timestamped_print(f"DatabaseServer received: {data} from {address}")
 
                 response = self.handle_command(data)
                 client_socket.send(response.encode())
         except Exception as e:
-            print(f"DatabaseServer encountered an error with trader {address}: {e}")
+            self.timestamped_print(f"DatabaseServer encountered an error with trader {address}: {e}")
         finally:
             client_socket.close()
-            print(f"DatabaseServer: Disconnected from trader at {address}")
+            self.timestamped_print(f"DatabaseServer: Disconnected from trader at {address}")
 
     def handle_command(self, command):
         """
