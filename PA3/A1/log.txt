@@ -1,0 +1,1504 @@
+Starting trading post network setup...
+Database server started on localhost:5555
+10.12.2024 22:55:33.470352 Warehouse: Inventory loaded successfully.
+10.12.2024 22:55:33.482960 Warehouse: DatabaseServer is running on localhost:5555
+Trader 1 (Post 1) started on localhost:5556
+Trader 1 listening on localhost:5556
+Trader 1 connected to database server at localhost:5555
+10.12.2024 22:55:34.555971 Trader 1: Trader 1 is running with a thread pool of 10 workers.
+Trader 2 (Post 2) started on localhost:5557
+Trader 2 listening on localhost:5557
+Trader 2 connected to database server at localhost:5555
+10.12.2024 22:55:35.091506 Trader 2: Trader 2 is running with a thread pool of 10 workers.
+Seller 1 started with listener on port 6001.
+10.12.2024 22:55:36.623854 Seller 1: Accrued 10 apple(s) to sell to trader at localhost:5557 with request ID 7a8de4a7-4b38-484d-8a7d-87b25a9a7e3e
+10.12.2024 22:55:36.625505 Seller 1: Listening for trader messages on port 6001
+10.12.2024 22:55:36.625814 Seller 1: Connected to trader at localhost:5557
+10.12.2024 22:55:36.626158 Trader 2: Received from ('127.0.0.1', 52317): sell|apple|10|7a8de4a7-4b38-484d-8a7d-87b25a9a7e3e
+10.12.2024 22:55:36.626289 Warehouse: DatabaseServer received: sell|apple|10|7a8de4a7-4b38-484d-8a7d-87b25a9a7e3e from ('127.0.0.1', 52316)
+10.12.2024 22:55:36.626759 Seller 1: Sell complete for request 7a8de4a7-4b38-484d-8a7d-87b25a9a7e3e (via localhost:5557): OK|Stocked 10 apple(s)|7a8de4a7-4b38-484d-8a7d-87b25a9a7e3e
+Seller 2 started with listener on port 6002.
+10.12.2024 22:55:37.130380 Seller 2: Accrued 10 orange(s) to sell to trader at localhost:5557 with request ID ab12616c-f07b-4421-a6fd-67fb328965f8
+10.12.2024 22:55:37.132090 Seller 2: Listening for trader messages on port 6002
+10.12.2024 22:55:37.132324 Seller 2: Connected to trader at localhost:5557
+10.12.2024 22:55:37.132413 Trader 2: Received from ('127.0.0.1', 52318): sell|orange|10|ab12616c-f07b-4421-a6fd-67fb328965f8
+10.12.2024 22:55:37.132500 Warehouse: DatabaseServer received: sell|orange|10|ab12616c-f07b-4421-a6fd-67fb328965f8 from ('127.0.0.1', 52316)
+10.12.2024 22:55:37.132879 Seller 2: Sell complete for request ab12616c-f07b-4421-a6fd-67fb328965f8 (via localhost:5557): OK|Stocked 10 orange(s)|ab12616c-f07b-4421-a6fd-67fb328965f8
+Seller 3 started with listener on port 6003.
+10.12.2024 22:55:37.635892 Seller 3: Accrued 10 apple(s) to sell to trader at localhost:5557 with request ID 2afe3182-7104-4f65-b4b4-b44f1d74762e
+10.12.2024 22:55:37.637461 Seller 3: Listening for trader messages on port 6003
+10.12.2024 22:55:37.637699 Seller 3: Connected to trader at localhost:5557
+10.12.2024 22:55:37.637776 Trader 2: Received from ('127.0.0.1', 52319): sell|apple|10|2afe3182-7104-4f65-b4b4-b44f1d74762e
+10.12.2024 22:55:37.637886 Warehouse: DatabaseServer received: sell|apple|10|2afe3182-7104-4f65-b4b4-b44f1d74762e from ('127.0.0.1', 52316)
+10.12.2024 22:55:37.638268 Seller 3: Sell complete for request 2afe3182-7104-4f65-b4b4-b44f1d74762e (via localhost:5557): OK|Stocked 10 apple(s)|2afe3182-7104-4f65-b4b4-b44f1d74762e
+Seller 4 started with listener on port 6004.
+10.12.2024 22:55:38.148420 Seller 4: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID dc3a6855-8384-4644-8c7b-8f280ca087fd
+10.12.2024 22:55:38.150116 Seller 4: Listening for trader messages on port 6004
+10.12.2024 22:55:38.150353 Seller 4: Connected to trader at localhost:5556
+10.12.2024 22:55:38.150670 Trader 1: Received from ('127.0.0.1', 52320): sell|banana|10|dc3a6855-8384-4644-8c7b-8f280ca087fd
+10.12.2024 22:55:38.150781 Warehouse: DatabaseServer received: sell|banana|10|dc3a6855-8384-4644-8c7b-8f280ca087fd from ('127.0.0.1', 52315)
+10.12.2024 22:55:38.151166 Seller 4: Sell complete for request dc3a6855-8384-4644-8c7b-8f280ca087fd (via localhost:5556): OK|Stocked 10 banana(s)|dc3a6855-8384-4644-8c7b-8f280ca087fd
+Seller 5 started with listener on port 6005.
+10.12.2024 22:55:38.658058 Seller 5: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID 977ece3a-a2ca-47a3-a93e-fd67a78be54c
+10.12.2024 22:55:38.659704 Seller 5: Listening for trader messages on port 6005
+10.12.2024 22:55:38.659922 Seller 5: Connected to trader at localhost:5556
+10.12.2024 22:55:38.660016 Trader 1: Received from ('127.0.0.1', 52321): sell|banana|10|977ece3a-a2ca-47a3-a93e-fd67a78be54c
+10.12.2024 22:55:38.660104 Warehouse: DatabaseServer received: sell|banana|10|977ece3a-a2ca-47a3-a93e-fd67a78be54c from ('127.0.0.1', 52315)
+10.12.2024 22:55:38.660473 Seller 5: Sell complete for request 977ece3a-a2ca-47a3-a93e-fd67a78be54c (via localhost:5556): OK|Stocked 10 banana(s)|977ece3a-a2ca-47a3-a93e-fd67a78be54c
+Seller 6 started with listener on port 6006.
+10.12.2024 22:55:39.166124 Seller 6: Accrued 10 orange(s) to sell to trader at localhost:5556 with request ID 914968d3-3376-4600-96b0-fe40ed132647
+10.12.2024 22:55:39.167788 Seller 6: Listening for trader messages on port 6006
+10.12.2024 22:55:39.168009 Seller 6: Connected to trader at localhost:5556
+10.12.2024 22:55:39.168092 Trader 1: Received from ('127.0.0.1', 52324): sell|orange|10|914968d3-3376-4600-96b0-fe40ed132647
+10.12.2024 22:55:39.168178 Warehouse: DatabaseServer received: sell|orange|10|914968d3-3376-4600-96b0-fe40ed132647 from ('127.0.0.1', 52315)
+10.12.2024 22:55:39.168550 Seller 6: Sell complete for request 914968d3-3376-4600-96b0-fe40ed132647 (via localhost:5556): OK|Stocked 10 orange(s)|914968d3-3376-4600-96b0-fe40ed132647
+Seller 7 started with listener on port 6007.
+10.12.2024 22:55:39.677318 Seller 7: Accrued 10 apple(s) to sell to trader at localhost:5557 with request ID 934f90db-7590-42b4-a550-ef535ef879cb
+10.12.2024 22:55:39.678865 Seller 7: Listening for trader messages on port 6007
+10.12.2024 22:55:39.679041 Seller 7: Connected to trader at localhost:5557
+10.12.2024 22:55:39.679138 Trader 2: Received from ('127.0.0.1', 52325): sell|apple|10|934f90db-7590-42b4-a550-ef535ef879cb
+10.12.2024 22:55:39.679221 Warehouse: DatabaseServer received: sell|apple|10|934f90db-7590-42b4-a550-ef535ef879cb from ('127.0.0.1', 52316)
+10.12.2024 22:55:39.679505 Seller 7: Sell complete for request 934f90db-7590-42b4-a550-ef535ef879cb (via localhost:5557): OK|Stocked 10 apple(s)|934f90db-7590-42b4-a550-ef535ef879cb
+Seller 8 started with listener on port 6008.
+10.12.2024 22:55:40.181922 Seller 8: Accrued 10 apple(s) to sell to trader at localhost:5557 with request ID cba77b99-503b-482f-962b-acf18a8249b2
+10.12.2024 22:55:40.183497 Seller 8: Listening for trader messages on port 6008
+10.12.2024 22:55:40.183702 Seller 8: Connected to trader at localhost:5557
+10.12.2024 22:55:40.183775 Trader 2: Received from ('127.0.0.1', 52326): sell|apple|10|cba77b99-503b-482f-962b-acf18a8249b2
+10.12.2024 22:55:40.183856 Warehouse: DatabaseServer received: sell|apple|10|cba77b99-503b-482f-962b-acf18a8249b2 from ('127.0.0.1', 52316)
+10.12.2024 22:55:40.184224 Seller 8: Sell complete for request cba77b99-503b-482f-962b-acf18a8249b2 (via localhost:5557): OK|Stocked 10 apple(s)|cba77b99-503b-482f-962b-acf18a8249b2
+Buyer 1 started
+10.12.2024 22:55:41.632258 Seller 1: Accrued 10 apple(s) to sell to trader at localhost:5557 with request ID 799d95ca-bee7-4868-81ab-0bd6d3d4edde
+10.12.2024 22:55:41.633061 Seller 1: Connected to trader at localhost:5557
+10.12.2024 22:55:41.633240 Trader 2: Received from ('127.0.0.1', 52327): sell|apple|10|799d95ca-bee7-4868-81ab-0bd6d3d4edde
+10.12.2024 22:55:41.633365 Warehouse: DatabaseServer received: sell|apple|10|799d95ca-bee7-4868-81ab-0bd6d3d4edde from ('127.0.0.1', 52316)
+10.12.2024 22:55:41.633989 Seller 1: Sell complete for request 799d95ca-bee7-4868-81ab-0bd6d3d4edde (via localhost:5557): OK|Stocked 10 apple(s)|799d95ca-bee7-4868-81ab-0bd6d3d4edde
+10.12.2024 22:55:41.691603 Buyer 1: Wants to buy 10 apple(s) from trader at localhost:5557 with request ID 84a02261-c8cc-42eb-8498-6d1b91e557c9
+10.12.2024 22:55:41.693475 Buyer 1: Connected to trader at localhost:5557
+10.12.2024 22:55:41.693560 Trader 2: Received from ('127.0.0.1', 52328): buy|apple|10|84a02261-c8cc-42eb-8498-6d1b91e557c9
+10.12.2024 22:55:41.693638 Warehouse: DatabaseServer received: buy|apple|10|84a02261-c8cc-42eb-8498-6d1b91e557c9 from ('127.0.0.1', 52316)
+10.12.2024 22:55:41.694869 Buyer 1: Buy complete for request 84a02261-c8cc-42eb-8498-6d1b91e557c9 (via localhost:5557): OK|Shipped 10 apple(s)|84a02261-c8cc-42eb-8498-6d1b91e557c9
+Buyer 2 started
+10.12.2024 22:55:42.138363 Seller 2: Accrued 10 apple(s) to sell to trader at localhost:5557 with request ID 88956e44-33e6-42c4-9282-9515b69d5cf6
+10.12.2024 22:55:42.139176 Seller 2: Connected to trader at localhost:5557
+10.12.2024 22:55:42.139367 Trader 2: Received from ('127.0.0.1', 52329): sell|apple|10|88956e44-33e6-42c4-9282-9515b69d5cf6
+10.12.2024 22:55:42.139527 Warehouse: DatabaseServer received: sell|apple|10|88956e44-33e6-42c4-9282-9515b69d5cf6 from ('127.0.0.1', 52316)
+10.12.2024 22:55:42.140141 Seller 2: Sell complete for request 88956e44-33e6-42c4-9282-9515b69d5cf6 (via localhost:5557): OK|Stocked 10 apple(s)|88956e44-33e6-42c4-9282-9515b69d5cf6
+10.12.2024 22:55:42.197495 Buyer 2: Wants to buy 5 banana(s) from trader at localhost:5556 with request ID 0b43bc12-23fc-4889-8d07-1f7697760fd0
+10.12.2024 22:55:42.199148 Buyer 2: Connected to trader at localhost:5556
+10.12.2024 22:55:42.199256 Trader 1: Received from ('127.0.0.1', 52330): buy|banana|5|0b43bc12-23fc-4889-8d07-1f7697760fd0
+10.12.2024 22:55:42.199343 Warehouse: DatabaseServer received: buy|banana|5|0b43bc12-23fc-4889-8d07-1f7697760fd0 from ('127.0.0.1', 52315)
+10.12.2024 22:55:42.200114 Buyer 2: Buy complete for request 0b43bc12-23fc-4889-8d07-1f7697760fd0 (via localhost:5556): OK|Shipped 5 banana(s)|0b43bc12-23fc-4889-8d07-1f7697760fd0
+Buyer 3 started
+10.12.2024 22:55:42.643830 Seller 3: Accrued 10 banana(s) to sell to trader at localhost:5557 with request ID 88f7be62-59ab-457e-a4a8-9ada7b6e907b
+10.12.2024 22:55:42.644769 Seller 3: Connected to trader at localhost:5557
+10.12.2024 22:55:42.644935 Trader 2: Received from ('127.0.0.1', 52331): sell|banana|10|88f7be62-59ab-457e-a4a8-9ada7b6e907b
+10.12.2024 22:55:42.645058 Warehouse: DatabaseServer received: sell|banana|10|88f7be62-59ab-457e-a4a8-9ada7b6e907b from ('127.0.0.1', 52316)
+10.12.2024 22:55:42.645660 Seller 3: Sell complete for request 88f7be62-59ab-457e-a4a8-9ada7b6e907b (via localhost:5557): OK|Stocked 10 banana(s)|88f7be62-59ab-457e-a4a8-9ada7b6e907b
+10.12.2024 22:55:42.708673 Buyer 3: Wants to buy 9 apple(s) from trader at localhost:5556 with request ID e8b62f9b-f21f-4ff2-9464-2b1ea3f536bb
+10.12.2024 22:55:42.710620 Buyer 3: Connected to trader at localhost:5556
+10.12.2024 22:55:42.710725 Trader 1: Received from ('127.0.0.1', 52332): buy|apple|9|e8b62f9b-f21f-4ff2-9464-2b1ea3f536bb
+10.12.2024 22:55:42.710815 Warehouse: DatabaseServer received: buy|apple|9|e8b62f9b-f21f-4ff2-9464-2b1ea3f536bb from ('127.0.0.1', 52315)
+10.12.2024 22:55:42.711310 Buyer 3: Buy complete for request e8b62f9b-f21f-4ff2-9464-2b1ea3f536bb (via localhost:5556): OK|Shipped 9 apple(s)|e8b62f9b-f21f-4ff2-9464-2b1ea3f536bb
+Buyer 4 started
+10.12.2024 22:55:43.156698 Seller 4: Accrued 10 apple(s) to sell to trader at localhost:5557 with request ID 3bd5981a-6f00-4410-808b-fbdde47355e8
+10.12.2024 22:55:43.157540 Seller 4: Connected to trader at localhost:5557
+10.12.2024 22:55:43.157686 Trader 2: Received from ('127.0.0.1', 52333): sell|apple|10|3bd5981a-6f00-4410-808b-fbdde47355e8
+10.12.2024 22:55:43.157804 Warehouse: DatabaseServer received: sell|apple|10|3bd5981a-6f00-4410-808b-fbdde47355e8 from ('127.0.0.1', 52316)
+10.12.2024 22:55:43.158377 Seller 4: Sell complete for request 3bd5981a-6f00-4410-808b-fbdde47355e8 (via localhost:5557): OK|Stocked 10 apple(s)|3bd5981a-6f00-4410-808b-fbdde47355e8
+10.12.2024 22:55:43.217297 Buyer 4: Wants to buy 1 orange(s) from trader at localhost:5557 with request ID a96d3818-8b5c-4e10-9419-b2b87d143345
+10.12.2024 22:55:43.218941 Buyer 4: Connected to trader at localhost:5557
+10.12.2024 22:55:43.219014 Trader 2: Received from ('127.0.0.1', 52334): buy|orange|1|a96d3818-8b5c-4e10-9419-b2b87d143345
+10.12.2024 22:55:43.219089 Warehouse: DatabaseServer received: buy|orange|1|a96d3818-8b5c-4e10-9419-b2b87d143345 from ('127.0.0.1', 52316)
+10.12.2024 22:55:43.219532 Buyer 4: Buy complete for request a96d3818-8b5c-4e10-9419-b2b87d143345 (via localhost:5557): OK|Shipped 1 orange(s)|a96d3818-8b5c-4e10-9419-b2b87d143345
+Buyer 5 started
+10.12.2024 22:55:43.665933 Seller 5: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID 0acf7db4-4cab-45b1-8863-654b52cc3de2
+10.12.2024 22:55:43.666730 Seller 5: Connected to trader at localhost:5556
+10.12.2024 22:55:43.666915 Trader 1: Received from ('127.0.0.1', 52335): sell|banana|10|0acf7db4-4cab-45b1-8863-654b52cc3de2
+10.12.2024 22:55:43.667060 Warehouse: DatabaseServer received: sell|banana|10|0acf7db4-4cab-45b1-8863-654b52cc3de2 from ('127.0.0.1', 52315)
+10.12.2024 22:55:43.667691 Seller 5: Sell complete for request 0acf7db4-4cab-45b1-8863-654b52cc3de2 (via localhost:5556): OK|Stocked 10 banana(s)|0acf7db4-4cab-45b1-8863-654b52cc3de2
+10.12.2024 22:55:43.727365 Buyer 5: Wants to buy 1 orange(s) from trader at localhost:5556 with request ID da0d6fe0-3756-4aa9-80b3-2378d08b9759
+10.12.2024 22:55:43.729250 Buyer 5: Connected to trader at localhost:5556
+10.12.2024 22:55:43.729379 Trader 1: Received from ('127.0.0.1', 52336): buy|orange|1|da0d6fe0-3756-4aa9-80b3-2378d08b9759
+10.12.2024 22:55:43.729464 Warehouse: DatabaseServer received: buy|orange|1|da0d6fe0-3756-4aa9-80b3-2378d08b9759 from ('127.0.0.1', 52315)
+10.12.2024 22:55:43.729961 Buyer 5: Buy complete for request da0d6fe0-3756-4aa9-80b3-2378d08b9759 (via localhost:5556): OK|Shipped 1 orange(s)|da0d6fe0-3756-4aa9-80b3-2378d08b9759
+Buyer 6 started
+10.12.2024 22:55:44.173938 Seller 6: Accrued 10 banana(s) to sell to trader at localhost:5557 with request ID d2f2b8eb-f8dc-4a2d-9215-268ab4a4d2b2
+10.12.2024 22:55:44.174695 Seller 6: Connected to trader at localhost:5557
+10.12.2024 22:55:44.174846 Trader 2: Received from ('127.0.0.1', 52339): sell|banana|10|d2f2b8eb-f8dc-4a2d-9215-268ab4a4d2b2
+10.12.2024 22:55:44.174972 Warehouse: DatabaseServer received: sell|banana|10|d2f2b8eb-f8dc-4a2d-9215-268ab4a4d2b2 from ('127.0.0.1', 52316)
+10.12.2024 22:55:44.175595 Seller 6: Sell complete for request d2f2b8eb-f8dc-4a2d-9215-268ab4a4d2b2 (via localhost:5557): OK|Stocked 10 banana(s)|d2f2b8eb-f8dc-4a2d-9215-268ab4a4d2b2
+10.12.2024 22:55:44.232853 Buyer 6: Wants to buy 9 banana(s) from trader at localhost:5556 with request ID b8c019ed-3799-498c-b18a-308a7ecdb8c7
+10.12.2024 22:55:44.234721 Buyer 6: Connected to trader at localhost:5556
+10.12.2024 22:55:44.234799 Trader 1: Received from ('127.0.0.1', 52340): buy|banana|9|b8c019ed-3799-498c-b18a-308a7ecdb8c7
+10.12.2024 22:55:44.234883 Warehouse: DatabaseServer received: buy|banana|9|b8c019ed-3799-498c-b18a-308a7ecdb8c7 from ('127.0.0.1', 52315)
+10.12.2024 22:55:44.235372 Buyer 6: Buy complete for request b8c019ed-3799-498c-b18a-308a7ecdb8c7 (via localhost:5556): OK|Shipped 9 banana(s)|b8c019ed-3799-498c-b18a-308a7ecdb8c7
+Buyer 7 started
+10.12.2024 22:55:44.684933 Seller 7: Accrued 10 orange(s) to sell to trader at localhost:5557 with request ID bd4da76a-2d84-44d2-9589-678625642c8b
+10.12.2024 22:55:44.685820 Seller 7: Connected to trader at localhost:5557
+10.12.2024 22:55:44.685972 Trader 2: Received from ('127.0.0.1', 52341): sell|orange|10|bd4da76a-2d84-44d2-9589-678625642c8b
+10.12.2024 22:55:44.686102 Warehouse: DatabaseServer received: sell|orange|10|bd4da76a-2d84-44d2-9589-678625642c8b from ('127.0.0.1', 52316)
+10.12.2024 22:55:44.686725 Seller 7: Sell complete for request bd4da76a-2d84-44d2-9589-678625642c8b (via localhost:5557): OK|Stocked 10 orange(s)|bd4da76a-2d84-44d2-9589-678625642c8b
+10.12.2024 22:55:44.742994 Buyer 7: Wants to buy 2 apple(s) from trader at localhost:5556 with request ID a291c0fe-7513-4828-b56c-1522e72ddb31
+10.12.2024 22:55:44.744869 Buyer 7: Connected to trader at localhost:5556
+10.12.2024 22:55:44.744949 Trader 1: Received from ('127.0.0.1', 52342): buy|apple|2|a291c0fe-7513-4828-b56c-1522e72ddb31
+10.12.2024 22:55:44.745037 Warehouse: DatabaseServer received: buy|apple|2|a291c0fe-7513-4828-b56c-1522e72ddb31 from ('127.0.0.1', 52315)
+10.12.2024 22:55:44.745513 Buyer 7: Buy complete for request a291c0fe-7513-4828-b56c-1522e72ddb31 (via localhost:5556): OK|Shipped 2 apple(s)|a291c0fe-7513-4828-b56c-1522e72ddb31
+Buyer 8 started
+10.12.2024 22:55:45.189703 Seller 8: Accrued 10 apple(s) to sell to trader at localhost:5556 with request ID 04fca674-30d6-4aa0-b13c-02ca7f7f6383
+10.12.2024 22:55:45.190669 Seller 8: Connected to trader at localhost:5556
+10.12.2024 22:55:45.190839 Trader 1: Received from ('127.0.0.1', 52343): sell|apple|10|04fca674-30d6-4aa0-b13c-02ca7f7f6383
+10.12.2024 22:55:45.190963 Warehouse: DatabaseServer received: sell|apple|10|04fca674-30d6-4aa0-b13c-02ca7f7f6383 from ('127.0.0.1', 52315)
+10.12.2024 22:55:45.191558 Seller 8: Sell complete for request 04fca674-30d6-4aa0-b13c-02ca7f7f6383 (via localhost:5556): OK|Stocked 10 apple(s)|04fca674-30d6-4aa0-b13c-02ca7f7f6383
+10.12.2024 22:55:45.251190 Buyer 8: Wants to buy 7 apple(s) from trader at localhost:5556 with request ID 0b96d337-5333-4390-9c2e-b35827a8859a
+10.12.2024 22:55:45.253063 Buyer 8: Connected to trader at localhost:5556
+10.12.2024 22:55:45.253173 Trader 1: Received from ('127.0.0.1', 52344): buy|apple|7|0b96d337-5333-4390-9c2e-b35827a8859a
+10.12.2024 22:55:45.253260 Warehouse: DatabaseServer received: buy|apple|7|0b96d337-5333-4390-9c2e-b35827a8859a from ('127.0.0.1', 52315)
+10.12.2024 22:55:45.253735 Buyer 8: Buy complete for request 0b96d337-5333-4390-9c2e-b35827a8859a (via localhost:5556): OK|Shipped 7 apple(s)|0b96d337-5333-4390-9c2e-b35827a8859a
+Buyer 9 started
+10.12.2024 22:55:45.764043 Buyer 9: Wants to buy 8 apple(s) from trader at localhost:5556 with request ID 0de7c147-c95e-48df-98ad-0eb3a54217ce
+10.12.2024 22:55:45.765693 Buyer 9: Connected to trader at localhost:5556
+10.12.2024 22:55:45.765784 Trader 1: Received from ('127.0.0.1', 52345): buy|apple|8|0de7c147-c95e-48df-98ad-0eb3a54217ce
+10.12.2024 22:55:45.765863 Warehouse: DatabaseServer received: buy|apple|8|0de7c147-c95e-48df-98ad-0eb3a54217ce from ('127.0.0.1', 52315)
+10.12.2024 22:55:45.766265 Buyer 9: Buy complete for request 0de7c147-c95e-48df-98ad-0eb3a54217ce (via localhost:5556): OK|Shipped 8 apple(s)|0de7c147-c95e-48df-98ad-0eb3a54217ce
+Buyer 10 started
+10.12.2024 22:55:46.269136 Buyer 10: Wants to buy 10 orange(s) from trader at localhost:5557 with request ID 4526942b-5881-488b-92c5-703d24a501a0
+10.12.2024 22:55:46.270978 Buyer 10: Connected to trader at localhost:5557
+10.12.2024 22:55:46.271079 Trader 2: Received from ('127.0.0.1', 52346): buy|orange|10|4526942b-5881-488b-92c5-703d24a501a0
+10.12.2024 22:55:46.271170 Warehouse: DatabaseServer received: buy|orange|10|4526942b-5881-488b-92c5-703d24a501a0 from ('127.0.0.1', 52316)
+10.12.2024 22:55:46.271669 Buyer 10: Buy complete for request 4526942b-5881-488b-92c5-703d24a501a0 (via localhost:5557): OK|Shipped 10 orange(s)|4526942b-5881-488b-92c5-703d24a501a0
+10.12.2024 22:55:46.639406 Seller 1: Accrued 10 orange(s) to sell to trader at localhost:5557 with request ID 4bbd255b-b2a7-4dfc-96e6-2ce49c5d1ed6
+10.12.2024 22:55:46.640890 Seller 1: Connected to trader at localhost:5557
+10.12.2024 22:55:46.641335 Trader 2: Received from ('127.0.0.1', 52347): sell|orange|10|4bbd255b-b2a7-4dfc-96e6-2ce49c5d1ed6
+10.12.2024 22:55:46.641620 Warehouse: DatabaseServer received: sell|orange|10|4bbd255b-b2a7-4dfc-96e6-2ce49c5d1ed6 from ('127.0.0.1', 52316)
+10.12.2024 22:55:46.643051 Seller 1: Sell complete for request 4bbd255b-b2a7-4dfc-96e6-2ce49c5d1ed6 (via localhost:5557): OK|Stocked 10 orange(s)|4bbd255b-b2a7-4dfc-96e6-2ce49c5d1ed6
+10.12.2024 22:55:46.700273 Buyer 1: Wants to buy 5 apple(s) from trader at localhost:5557 with request ID 2e405608-c7a3-4631-8636-6b85b73a6d7d
+10.12.2024 22:55:46.701152 Buyer 1: Connected to trader at localhost:5557
+10.12.2024 22:55:46.701325 Trader 2: Received from ('127.0.0.1', 52348): buy|apple|5|2e405608-c7a3-4631-8636-6b85b73a6d7d
+10.12.2024 22:55:46.701471 Warehouse: DatabaseServer received: buy|apple|5|2e405608-c7a3-4631-8636-6b85b73a6d7d from ('127.0.0.1', 52316)
+10.12.2024 22:55:46.702537 Buyer 1: Buy complete for request 2e405608-c7a3-4631-8636-6b85b73a6d7d (via localhost:5557): OK|Shipped 5 apple(s)|2e405608-c7a3-4631-8636-6b85b73a6d7d
+10.12.2024 22:55:47.145588 Seller 2: Accrued 10 apple(s) to sell to trader at localhost:5557 with request ID b27480db-0005-43c5-893f-09a6fe05692f
+10.12.2024 22:55:47.146952 Seller 2: Connected to trader at localhost:5557
+10.12.2024 22:55:47.147416 Trader 2: Received from ('127.0.0.1', 52349): sell|apple|10|b27480db-0005-43c5-893f-09a6fe05692f
+10.12.2024 22:55:47.147714 Warehouse: DatabaseServer received: sell|apple|10|b27480db-0005-43c5-893f-09a6fe05692f from ('127.0.0.1', 52316)
+10.12.2024 22:55:47.149074 Seller 2: Sell complete for request b27480db-0005-43c5-893f-09a6fe05692f (via localhost:5557): OK|Stocked 10 apple(s)|b27480db-0005-43c5-893f-09a6fe05692f
+10.12.2024 22:55:47.205599 Buyer 2: Wants to buy 9 apple(s) from trader at localhost:5556 with request ID 3f36b29f-dca0-4e06-8b4f-fa23da1c5d8b
+10.12.2024 22:55:47.206399 Buyer 2: Connected to trader at localhost:5556
+10.12.2024 22:55:47.206607 Trader 1: Received from ('127.0.0.1', 52350): buy|apple|9|3f36b29f-dca0-4e06-8b4f-fa23da1c5d8b
+10.12.2024 22:55:47.206756 Warehouse: DatabaseServer received: buy|apple|9|3f36b29f-dca0-4e06-8b4f-fa23da1c5d8b from ('127.0.0.1', 52315)
+10.12.2024 22:55:47.207730 Buyer 2: Buy complete for request 3f36b29f-dca0-4e06-8b4f-fa23da1c5d8b (via localhost:5556): OK|Shipped 9 apple(s)|3f36b29f-dca0-4e06-8b4f-fa23da1c5d8b
+10.12.2024 22:55:47.651038 Seller 3: Accrued 10 orange(s) to sell to trader at localhost:5557 with request ID 98b069cc-4378-41d8-8356-bc4f4a90516b
+10.12.2024 22:55:47.652352 Seller 3: Connected to trader at localhost:5557
+10.12.2024 22:55:47.652737 Trader 2: Received from ('127.0.0.1', 52351): sell|orange|10|98b069cc-4378-41d8-8356-bc4f4a90516b
+10.12.2024 22:55:47.653025 Warehouse: DatabaseServer received: sell|orange|10|98b069cc-4378-41d8-8356-bc4f4a90516b from ('127.0.0.1', 52316)
+10.12.2024 22:55:47.654072 Seller 3: Sell complete for request 98b069cc-4378-41d8-8356-bc4f4a90516b (via localhost:5557): OK|Stocked 10 orange(s)|98b069cc-4378-41d8-8356-bc4f4a90516b
+Trading post network setup complete. All components are running.
+10.12.2024 22:55:47.712978 Buyer 3: Wants to buy 7 banana(s) from trader at localhost:5556 with request ID 1cc9e981-2779-434d-8469-95034dda047b
+10.12.2024 22:55:47.713635 Buyer 3: Connected to trader at localhost:5556
+10.12.2024 22:55:47.713810 Trader 1: Received from ('127.0.0.1', 52352): buy|banana|7|1cc9e981-2779-434d-8469-95034dda047b
+10.12.2024 22:55:47.713924 Warehouse: DatabaseServer received: buy|banana|7|1cc9e981-2779-434d-8469-95034dda047b from ('127.0.0.1', 52315)
+10.12.2024 22:55:47.714773 Buyer 3: Buy complete for request 1cc9e981-2779-434d-8469-95034dda047b (via localhost:5556): OK|Shipped 7 banana(s)|1cc9e981-2779-434d-8469-95034dda047b
+10.12.2024 22:55:48.161250 Seller 4: Accrued 10 orange(s) to sell to trader at localhost:5557 with request ID 3fcf96f3-38eb-40f4-8f02-264ccd1f71fd
+10.12.2024 22:55:48.161953 Seller 4: Connected to trader at localhost:5557
+10.12.2024 22:55:48.162168 Trader 2: Received from ('127.0.0.1', 52353): sell|orange|10|3fcf96f3-38eb-40f4-8f02-264ccd1f71fd
+10.12.2024 22:55:48.162296 Warehouse: DatabaseServer received: sell|orange|10|3fcf96f3-38eb-40f4-8f02-264ccd1f71fd from ('127.0.0.1', 52316)
+10.12.2024 22:55:48.162963 Seller 4: Sell complete for request 3fcf96f3-38eb-40f4-8f02-264ccd1f71fd (via localhost:5557): OK|Stocked 10 orange(s)|3fcf96f3-38eb-40f4-8f02-264ccd1f71fd
+10.12.2024 22:55:48.225034 Buyer 4: Wants to buy 3 orange(s) from trader at localhost:5556 with request ID 7cdcee7a-f2f2-46bb-8736-3b8fcbcd5f29
+10.12.2024 22:55:48.226144 Buyer 4: Connected to trader at localhost:5556
+10.12.2024 22:55:48.226334 Trader 1: Received from ('127.0.0.1', 52354): buy|orange|3|7cdcee7a-f2f2-46bb-8736-3b8fcbcd5f29
+10.12.2024 22:55:48.226499 Warehouse: DatabaseServer received: buy|orange|3|7cdcee7a-f2f2-46bb-8736-3b8fcbcd5f29 from ('127.0.0.1', 52315)
+10.12.2024 22:55:48.227570 Buyer 4: Buy complete for request 7cdcee7a-f2f2-46bb-8736-3b8fcbcd5f29 (via localhost:5556): OK|Shipped 3 orange(s)|7cdcee7a-f2f2-46bb-8736-3b8fcbcd5f29
+10.12.2024 22:55:48.672958 Seller 5: Accrued 10 apple(s) to sell to trader at localhost:5557 with request ID 7687bc4f-8229-404e-916c-0f546406833a
+10.12.2024 22:55:48.673822 Seller 5: Connected to trader at localhost:5557
+10.12.2024 22:55:48.674072 Trader 2: Received from ('127.0.0.1', 52355): sell|apple|10|7687bc4f-8229-404e-916c-0f546406833a
+10.12.2024 22:55:48.674281 Warehouse: DatabaseServer received: sell|apple|10|7687bc4f-8229-404e-916c-0f546406833a from ('127.0.0.1', 52316)
+10.12.2024 22:55:48.675205 Seller 5: Sell complete for request 7687bc4f-8229-404e-916c-0f546406833a (via localhost:5557): OK|Stocked 10 apple(s)|7687bc4f-8229-404e-916c-0f546406833a
+10.12.2024 22:55:48.735297 Buyer 5: Wants to buy 9 orange(s) from trader at localhost:5557 with request ID b4564071-7a3e-4411-83a0-71d589d29ab0
+10.12.2024 22:55:48.736365 Buyer 5: Connected to trader at localhost:5557
+10.12.2024 22:55:48.737156 Trader 2: Received from ('127.0.0.1', 52356): buy|orange|9|b4564071-7a3e-4411-83a0-71d589d29ab0
+10.12.2024 22:55:48.737348 Warehouse: DatabaseServer received: buy|orange|9|b4564071-7a3e-4411-83a0-71d589d29ab0 from ('127.0.0.1', 52316)
+10.12.2024 22:55:48.738328 Buyer 5: Buy complete for request b4564071-7a3e-4411-83a0-71d589d29ab0 (via localhost:5557): OK|Shipped 9 orange(s)|b4564071-7a3e-4411-83a0-71d589d29ab0
+10.12.2024 22:55:49.180912 Seller 6: Accrued 10 apple(s) to sell to trader at localhost:5556 with request ID aa110955-f138-49d7-aba7-2b557b8ba579
+10.12.2024 22:55:49.181918 Seller 6: Connected to trader at localhost:5556
+10.12.2024 22:55:49.182279 Trader 1: Received from ('127.0.0.1', 52357): sell|apple|10|aa110955-f138-49d7-aba7-2b557b8ba579
+10.12.2024 22:55:49.182509 Warehouse: DatabaseServer received: sell|apple|10|aa110955-f138-49d7-aba7-2b557b8ba579 from ('127.0.0.1', 52315)
+10.12.2024 22:55:49.183782 Seller 6: Sell complete for request aa110955-f138-49d7-aba7-2b557b8ba579 (via localhost:5556): OK|Stocked 10 apple(s)|aa110955-f138-49d7-aba7-2b557b8ba579
+10.12.2024 22:55:49.240859 Buyer 6: Wants to buy 6 banana(s) from trader at localhost:5556 with request ID d113a39d-357d-45b3-9e83-6da6ea0e7045
+10.12.2024 22:55:49.242019 Buyer 6: Connected to trader at localhost:5556
+10.12.2024 22:55:49.242210 Trader 1: Received from ('127.0.0.1', 52358): buy|banana|6|d113a39d-357d-45b3-9e83-6da6ea0e7045
+10.12.2024 22:55:49.242383 Warehouse: DatabaseServer received: buy|banana|6|d113a39d-357d-45b3-9e83-6da6ea0e7045 from ('127.0.0.1', 52315)
+10.12.2024 22:55:49.243449 Buyer 6: Buy complete for request d113a39d-357d-45b3-9e83-6da6ea0e7045 (via localhost:5556): OK|Shipped 6 banana(s)|d113a39d-357d-45b3-9e83-6da6ea0e7045
+10.12.2024 22:55:49.692167 Seller 7: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID 8cce0844-3106-4a2f-8dd9-5c6d39512ca3
+10.12.2024 22:55:49.693930 Seller 7: Connected to trader at localhost:5556
+10.12.2024 22:55:49.694546 Trader 1: Received from ('127.0.0.1', 52359): sell|banana|10|8cce0844-3106-4a2f-8dd9-5c6d39512ca3
+10.12.2024 22:55:49.694807 Warehouse: DatabaseServer received: sell|banana|10|8cce0844-3106-4a2f-8dd9-5c6d39512ca3 from ('127.0.0.1', 52315)
+10.12.2024 22:55:49.696426 Seller 7: Sell complete for request 8cce0844-3106-4a2f-8dd9-5c6d39512ca3 (via localhost:5556): OK|Stocked 10 banana(s)|8cce0844-3106-4a2f-8dd9-5c6d39512ca3
+10.12.2024 22:55:49.750915 Buyer 7: Wants to buy 3 banana(s) from trader at localhost:5556 with request ID 6fa323c4-a290-4c63-9d4d-fa101a02b938
+10.12.2024 22:55:49.751940 Buyer 7: Connected to trader at localhost:5556
+10.12.2024 22:55:49.752111 Trader 1: Received from ('127.0.0.1', 52360): buy|banana|3|6fa323c4-a290-4c63-9d4d-fa101a02b938
+10.12.2024 22:55:49.752229 Warehouse: DatabaseServer received: buy|banana|3|6fa323c4-a290-4c63-9d4d-fa101a02b938 from ('127.0.0.1', 52315)
+10.12.2024 22:55:49.753076 Buyer 7: Buy complete for request 6fa323c4-a290-4c63-9d4d-fa101a02b938 (via localhost:5556): OK|Shipped 3 banana(s)|6fa323c4-a290-4c63-9d4d-fa101a02b938
+10.12.2024 22:55:50.196955 Seller 8: Accrued 10 apple(s) to sell to trader at localhost:5556 with request ID 3ff64cc5-2972-419d-b774-f342d9c5b89a
+10.12.2024 22:55:50.198502 Seller 8: Connected to trader at localhost:5556
+10.12.2024 22:55:50.198836 Trader 1: Received from ('127.0.0.1', 52361): sell|apple|10|3ff64cc5-2972-419d-b774-f342d9c5b89a
+10.12.2024 22:55:50.199117 Warehouse: DatabaseServer received: sell|apple|10|3ff64cc5-2972-419d-b774-f342d9c5b89a from ('127.0.0.1', 52315)
+10.12.2024 22:55:50.200592 Seller 8: Sell complete for request 3ff64cc5-2972-419d-b774-f342d9c5b89a (via localhost:5556): OK|Stocked 10 apple(s)|3ff64cc5-2972-419d-b774-f342d9c5b89a
+10.12.2024 22:55:50.259279 Buyer 8: Wants to buy 10 banana(s) from trader at localhost:5556 with request ID c2e539a1-5074-4bff-a651-6e9af9e530b1
+10.12.2024 22:55:50.260401 Buyer 8: Connected to trader at localhost:5556
+10.12.2024 22:55:50.260552 Trader 1: Received from ('127.0.0.1', 52362): buy|banana|10|c2e539a1-5074-4bff-a651-6e9af9e530b1
+10.12.2024 22:55:50.260714 Warehouse: DatabaseServer received: buy|banana|10|c2e539a1-5074-4bff-a651-6e9af9e530b1 from ('127.0.0.1', 52315)
+10.12.2024 22:55:50.261785 Buyer 8: Buy complete for request c2e539a1-5074-4bff-a651-6e9af9e530b1 (via localhost:5556): OK|Shipped 10 banana(s)|c2e539a1-5074-4bff-a651-6e9af9e530b1
+10.12.2024 22:55:50.771880 Buyer 9: Wants to buy 4 apple(s) from trader at localhost:5557 with request ID 5ca18283-4255-455e-9305-3db0e2472f96
+10.12.2024 22:55:50.773764 Buyer 9: Connected to trader at localhost:5557
+10.12.2024 22:55:50.774088 Trader 2: Received from ('127.0.0.1', 52365): buy|apple|4|5ca18283-4255-455e-9305-3db0e2472f96
+10.12.2024 22:55:50.774312 Warehouse: DatabaseServer received: buy|apple|4|5ca18283-4255-455e-9305-3db0e2472f96 from ('127.0.0.1', 52316)
+10.12.2024 22:55:50.776560 Buyer 9: Buy complete for request 5ca18283-4255-455e-9305-3db0e2472f96 (via localhost:5557): OK|Shipped 4 apple(s)|5ca18283-4255-455e-9305-3db0e2472f96
+10.12.2024 22:55:51.277204 Buyer 10: Wants to buy 5 banana(s) from trader at localhost:5557 with request ID e44b8064-3c37-4f81-8432-ea54eca997d8
+10.12.2024 22:55:51.278776 Buyer 10: Connected to trader at localhost:5557
+10.12.2024 22:55:51.279101 Trader 2: Received from ('127.0.0.1', 52366): buy|banana|5|e44b8064-3c37-4f81-8432-ea54eca997d8
+10.12.2024 22:55:51.279341 Warehouse: DatabaseServer received: buy|banana|5|e44b8064-3c37-4f81-8432-ea54eca997d8 from ('127.0.0.1', 52316)
+10.12.2024 22:55:51.281362 Buyer 10: Buy complete for request e44b8064-3c37-4f81-8432-ea54eca997d8 (via localhost:5557): OK|Shipped 5 banana(s)|e44b8064-3c37-4f81-8432-ea54eca997d8
+10.12.2024 22:55:51.648475 Seller 1: Accrued 10 orange(s) to sell to trader at localhost:5556 with request ID f86fd5e5-3743-4bae-aa36-dcf560f2aa6c
+10.12.2024 22:55:51.649994 Seller 1: Connected to trader at localhost:5556
+10.12.2024 22:55:51.650369 Trader 1: Received from ('127.0.0.1', 52367): sell|orange|10|f86fd5e5-3743-4bae-aa36-dcf560f2aa6c
+10.12.2024 22:55:51.650646 Warehouse: DatabaseServer received: sell|orange|10|f86fd5e5-3743-4bae-aa36-dcf560f2aa6c from ('127.0.0.1', 52315)
+10.12.2024 22:55:51.651902 Seller 1: Sell complete for request f86fd5e5-3743-4bae-aa36-dcf560f2aa6c (via localhost:5556): OK|Stocked 10 orange(s)|f86fd5e5-3743-4bae-aa36-dcf560f2aa6c
+10.12.2024 22:55:51.707848 Buyer 1: Wants to buy 5 banana(s) from trader at localhost:5556 with request ID 8a0008cc-eff3-4bf1-b1c2-474ae0fe2a0a
+10.12.2024 22:55:51.708801 Buyer 1: Connected to trader at localhost:5556
+10.12.2024 22:55:51.708970 Trader 1: Received from ('127.0.0.1', 52368): buy|banana|5|8a0008cc-eff3-4bf1-b1c2-474ae0fe2a0a
+10.12.2024 22:55:51.709147 Warehouse: DatabaseServer received: buy|banana|5|8a0008cc-eff3-4bf1-b1c2-474ae0fe2a0a from ('127.0.0.1', 52315)
+10.12.2024 22:55:51.710285 Buyer 1: Buy complete for request 8a0008cc-eff3-4bf1-b1c2-474ae0fe2a0a (via localhost:5556): OK|Shipped 5 banana(s)|8a0008cc-eff3-4bf1-b1c2-474ae0fe2a0a
+10.12.2024 22:55:52.152960 Seller 2: Accrued 10 apple(s) to sell to trader at localhost:5556 with request ID a52acb28-8a98-41a3-a3bd-f7086057b041
+10.12.2024 22:55:52.154377 Seller 2: Connected to trader at localhost:5556
+10.12.2024 22:55:52.154741 Trader 1: Received from ('127.0.0.1', 52369): sell|apple|10|a52acb28-8a98-41a3-a3bd-f7086057b041
+10.12.2024 22:55:52.154994 Warehouse: DatabaseServer received: sell|apple|10|a52acb28-8a98-41a3-a3bd-f7086057b041 from ('127.0.0.1', 52315)
+10.12.2024 22:55:52.156233 Seller 2: Sell complete for request a52acb28-8a98-41a3-a3bd-f7086057b041 (via localhost:5556): OK|Stocked 10 apple(s)|a52acb28-8a98-41a3-a3bd-f7086057b041
+10.12.2024 22:55:52.213020 Buyer 2: Wants to buy 5 orange(s) from trader at localhost:5557 with request ID fa4964a3-33b0-4052-a130-d2a2d7063458
+10.12.2024 22:55:52.213979 Buyer 2: Connected to trader at localhost:5557
+10.12.2024 22:55:52.214178 Trader 2: Received from ('127.0.0.1', 52370): buy|orange|5|fa4964a3-33b0-4052-a130-d2a2d7063458
+10.12.2024 22:55:52.214345 Warehouse: DatabaseServer received: buy|orange|5|fa4964a3-33b0-4052-a130-d2a2d7063458 from ('127.0.0.1', 52316)
+10.12.2024 22:55:52.215382 Buyer 2: Buy complete for request fa4964a3-33b0-4052-a130-d2a2d7063458 (via localhost:5557): OK|Shipped 5 orange(s)|fa4964a3-33b0-4052-a130-d2a2d7063458
+10.12.2024 22:55:52.658685 Seller 3: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID 85901bba-2d36-4fa1-89fa-61579a1c7a6e
+10.12.2024 22:55:52.660021 Seller 3: Connected to trader at localhost:5556
+10.12.2024 22:55:52.660351 Trader 1: Received from ('127.0.0.1', 52371): sell|banana|10|85901bba-2d36-4fa1-89fa-61579a1c7a6e
+10.12.2024 22:55:52.660640 Warehouse: DatabaseServer received: sell|banana|10|85901bba-2d36-4fa1-89fa-61579a1c7a6e from ('127.0.0.1', 52315)
+10.12.2024 22:55:52.661931 Seller 3: Sell complete for request 85901bba-2d36-4fa1-89fa-61579a1c7a6e (via localhost:5556): OK|Stocked 10 banana(s)|85901bba-2d36-4fa1-89fa-61579a1c7a6e
+10.12.2024 22:55:52.719556 Buyer 3: Wants to buy 5 apple(s) from trader at localhost:5556 with request ID 92c934aa-c5e7-4030-9afe-e833a1903ada
+10.12.2024 22:55:52.720556 Buyer 3: Connected to trader at localhost:5556
+10.12.2024 22:55:52.720727 Trader 1: Received from ('127.0.0.1', 52372): buy|apple|5|92c934aa-c5e7-4030-9afe-e833a1903ada
+10.12.2024 22:55:52.720881 Warehouse: DatabaseServer received: buy|apple|5|92c934aa-c5e7-4030-9afe-e833a1903ada from ('127.0.0.1', 52315)
+10.12.2024 22:55:52.721782 Buyer 3: Buy complete for request 92c934aa-c5e7-4030-9afe-e833a1903ada (via localhost:5556): OK|Shipped 5 apple(s)|92c934aa-c5e7-4030-9afe-e833a1903ada
+10.12.2024 22:55:53.164799 Seller 4: Accrued 10 orange(s) to sell to trader at localhost:5556 with request ID 1eafe063-74de-4e91-97e0-c3f1d2885d8f
+10.12.2024 22:55:53.165808 Seller 4: Connected to trader at localhost:5556
+10.12.2024 22:55:53.165997 Trader 1: Received from ('127.0.0.1', 52373): sell|orange|10|1eafe063-74de-4e91-97e0-c3f1d2885d8f
+10.12.2024 22:55:53.166126 Warehouse: DatabaseServer received: sell|orange|10|1eafe063-74de-4e91-97e0-c3f1d2885d8f from ('127.0.0.1', 52315)
+10.12.2024 22:55:53.166890 Seller 4: Sell complete for request 1eafe063-74de-4e91-97e0-c3f1d2885d8f (via localhost:5556): OK|Stocked 10 orange(s)|1eafe063-74de-4e91-97e0-c3f1d2885d8f
+10.12.2024 22:55:53.232841 Buyer 4: Wants to buy 1 apple(s) from trader at localhost:5557 with request ID d9cd85fd-79d6-4fc9-89f2-3e9656972abc
+10.12.2024 22:55:53.233915 Buyer 4: Connected to trader at localhost:5557
+10.12.2024 22:55:53.234180 Trader 2: Received from ('127.0.0.1', 52374): buy|apple|1|d9cd85fd-79d6-4fc9-89f2-3e9656972abc
+10.12.2024 22:55:53.234361 Warehouse: DatabaseServer received: buy|apple|1|d9cd85fd-79d6-4fc9-89f2-3e9656972abc from ('127.0.0.1', 52316)
+10.12.2024 22:55:53.235444 Buyer 4: Buy complete for request d9cd85fd-79d6-4fc9-89f2-3e9656972abc (via localhost:5557): OK|Shipped 1 apple(s)|d9cd85fd-79d6-4fc9-89f2-3e9656972abc
+10.12.2024 22:55:53.677515 Seller 5: Accrued 10 orange(s) to sell to trader at localhost:5556 with request ID 8c0deb1d-cd91-4f50-9c0d-b9a72894caef
+10.12.2024 22:55:53.678822 Seller 5: Connected to trader at localhost:5556
+10.12.2024 22:55:53.679173 Trader 1: Received from ('127.0.0.1', 52375): sell|orange|10|8c0deb1d-cd91-4f50-9c0d-b9a72894caef
+10.12.2024 22:55:53.679436 Warehouse: DatabaseServer received: sell|orange|10|8c0deb1d-cd91-4f50-9c0d-b9a72894caef from ('127.0.0.1', 52315)
+10.12.2024 22:55:53.686985 Seller 5: Sell complete for request 8c0deb1d-cd91-4f50-9c0d-b9a72894caef (via localhost:5556): OK|Stocked 10 orange(s)|8c0deb1d-cd91-4f50-9c0d-b9a72894caef
+10.12.2024 22:55:53.743583 Buyer 5: Wants to buy 3 orange(s) from trader at localhost:5557 with request ID c319dc53-28a2-4f3d-9797-f8eafb0b33ab
+10.12.2024 22:55:53.744523 Buyer 5: Connected to trader at localhost:5557
+10.12.2024 22:55:53.744701 Trader 2: Received from ('127.0.0.1', 52376): buy|orange|3|c319dc53-28a2-4f3d-9797-f8eafb0b33ab
+10.12.2024 22:55:53.744875 Warehouse: DatabaseServer received: buy|orange|3|c319dc53-28a2-4f3d-9797-f8eafb0b33ab from ('127.0.0.1', 52316)
+10.12.2024 22:55:53.745847 Buyer 5: Buy complete for request c319dc53-28a2-4f3d-9797-f8eafb0b33ab (via localhost:5557): OK|Shipped 3 orange(s)|c319dc53-28a2-4f3d-9797-f8eafb0b33ab
+10.12.2024 22:55:54.188966 Seller 6: Accrued 10 orange(s) to sell to trader at localhost:5556 with request ID 5cf5b283-5e0e-4c3c-a4a9-96047c16938d
+10.12.2024 22:55:54.190416 Seller 6: Connected to trader at localhost:5556
+10.12.2024 22:55:54.190792 Trader 1: Received from ('127.0.0.1', 52377): sell|orange|10|5cf5b283-5e0e-4c3c-a4a9-96047c16938d
+10.12.2024 22:55:54.191062 Warehouse: DatabaseServer received: sell|orange|10|5cf5b283-5e0e-4c3c-a4a9-96047c16938d from ('127.0.0.1', 52315)
+10.12.2024 22:55:54.192977 Seller 6: Sell complete for request 5cf5b283-5e0e-4c3c-a4a9-96047c16938d (via localhost:5556): OK|Stocked 10 orange(s)|5cf5b283-5e0e-4c3c-a4a9-96047c16938d
+10.12.2024 22:55:54.248678 Buyer 6: Wants to buy 7 apple(s) from trader at localhost:5556 with request ID 1d02f434-c544-40ac-b56d-2564c7209a1c
+10.12.2024 22:55:54.249556 Buyer 6: Connected to trader at localhost:5556
+10.12.2024 22:55:54.249736 Trader 1: Received from ('127.0.0.1', 52378): buy|apple|7|1d02f434-c544-40ac-b56d-2564c7209a1c
+10.12.2024 22:55:54.249897 Warehouse: DatabaseServer received: buy|apple|7|1d02f434-c544-40ac-b56d-2564c7209a1c from ('127.0.0.1', 52315)
+10.12.2024 22:55:54.250954 Buyer 6: Buy complete for request 1d02f434-c544-40ac-b56d-2564c7209a1c (via localhost:5556): OK|Shipped 7 apple(s)|1d02f434-c544-40ac-b56d-2564c7209a1c
+10.12.2024 22:55:54.701817 Seller 7: Accrued 10 banana(s) to sell to trader at localhost:5557 with request ID ed645b9c-d262-4317-aa1a-b9edd44c7f7a
+10.12.2024 22:55:54.703326 Seller 7: Connected to trader at localhost:5557
+10.12.2024 22:55:54.703683 Trader 2: Received from ('127.0.0.1', 52379): sell|banana|10|ed645b9c-d262-4317-aa1a-b9edd44c7f7a
+10.12.2024 22:55:54.703936 Warehouse: DatabaseServer received: sell|banana|10|ed645b9c-d262-4317-aa1a-b9edd44c7f7a from ('127.0.0.1', 52316)
+10.12.2024 22:55:54.705346 Seller 7: Sell complete for request ed645b9c-d262-4317-aa1a-b9edd44c7f7a (via localhost:5557): OK|Stocked 10 banana(s)|ed645b9c-d262-4317-aa1a-b9edd44c7f7a
+10.12.2024 22:55:54.758308 Buyer 7: Wants to buy 8 banana(s) from trader at localhost:5557 with request ID 58e9724d-4cc0-40d6-a3ba-b876629a65ed
+10.12.2024 22:55:54.759324 Buyer 7: Connected to trader at localhost:5557
+10.12.2024 22:55:54.759477 Trader 2: Received from ('127.0.0.1', 52380): buy|banana|8|58e9724d-4cc0-40d6-a3ba-b876629a65ed
+10.12.2024 22:55:54.759617 Warehouse: DatabaseServer received: buy|banana|8|58e9724d-4cc0-40d6-a3ba-b876629a65ed from ('127.0.0.1', 52316)
+10.12.2024 22:55:54.760540 Buyer 7: Buy complete for request 58e9724d-4cc0-40d6-a3ba-b876629a65ed (via localhost:5557): OK|Shipped 8 banana(s)|58e9724d-4cc0-40d6-a3ba-b876629a65ed
+10.12.2024 22:55:55.205930 Seller 8: Accrued 10 banana(s) to sell to trader at localhost:5557 with request ID df10fbea-e894-4743-8785-f14366404331
+10.12.2024 22:55:55.207282 Seller 8: Connected to trader at localhost:5557
+10.12.2024 22:55:55.207608 Trader 2: Received from ('127.0.0.1', 52383): sell|banana|10|df10fbea-e894-4743-8785-f14366404331
+10.12.2024 22:55:55.207838 Warehouse: DatabaseServer received: sell|banana|10|df10fbea-e894-4743-8785-f14366404331 from ('127.0.0.1', 52316)
+10.12.2024 22:55:55.208999 Seller 8: Sell complete for request df10fbea-e894-4743-8785-f14366404331 (via localhost:5557): OK|Stocked 10 banana(s)|df10fbea-e894-4743-8785-f14366404331
+10.12.2024 22:55:55.267001 Buyer 8: Wants to buy 7 banana(s) from trader at localhost:5556 with request ID a7061f3a-8dea-49b0-b616-637b920f0540
+10.12.2024 22:55:55.268040 Buyer 8: Connected to trader at localhost:5556
+10.12.2024 22:55:55.268214 Trader 1: Received from ('127.0.0.1', 52384): buy|banana|7|a7061f3a-8dea-49b0-b616-637b920f0540
+10.12.2024 22:55:55.268388 Warehouse: DatabaseServer received: buy|banana|7|a7061f3a-8dea-49b0-b616-637b920f0540 from ('127.0.0.1', 52315)
+10.12.2024 22:55:55.269359 Buyer 8: Buy complete for request a7061f3a-8dea-49b0-b616-637b920f0540 (via localhost:5556): OK|Shipped 7 banana(s)|a7061f3a-8dea-49b0-b616-637b920f0540
+10.12.2024 22:55:55.781999 Buyer 9: Wants to buy 2 apple(s) from trader at localhost:5557 with request ID 3be1f91d-4cda-4381-9695-6fadfdc26843
+10.12.2024 22:55:55.783571 Buyer 9: Connected to trader at localhost:5557
+10.12.2024 22:55:55.783909 Trader 2: Received from ('127.0.0.1', 52385): buy|apple|2|3be1f91d-4cda-4381-9695-6fadfdc26843
+10.12.2024 22:55:55.784169 Warehouse: DatabaseServer received: buy|apple|2|3be1f91d-4cda-4381-9695-6fadfdc26843 from ('127.0.0.1', 52316)
+10.12.2024 22:55:55.785877 Buyer 9: Buy complete for request 3be1f91d-4cda-4381-9695-6fadfdc26843 (via localhost:5557): OK|Shipped 2 apple(s)|3be1f91d-4cda-4381-9695-6fadfdc26843
+10.12.2024 22:55:56.285162 Buyer 10: Wants to buy 7 apple(s) from trader at localhost:5556 with request ID 6be03dfa-2f93-442c-b73e-c43cd4dd5fef
+10.12.2024 22:55:56.286773 Buyer 10: Connected to trader at localhost:5556
+10.12.2024 22:55:56.287110 Trader 1: Received from ('127.0.0.1', 52402): buy|apple|7|6be03dfa-2f93-442c-b73e-c43cd4dd5fef
+10.12.2024 22:55:56.287311 Warehouse: DatabaseServer received: buy|apple|7|6be03dfa-2f93-442c-b73e-c43cd4dd5fef from ('127.0.0.1', 52315)
+10.12.2024 22:55:56.289018 Buyer 10: Buy complete for request 6be03dfa-2f93-442c-b73e-c43cd4dd5fef (via localhost:5556): OK|Shipped 7 apple(s)|6be03dfa-2f93-442c-b73e-c43cd4dd5fef
+10.12.2024 22:55:56.657260 Seller 1: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID 9cffe1ef-3e40-4aaf-a5b6-464de5ccb12f
+10.12.2024 22:55:56.658703 Seller 1: Connected to trader at localhost:5556
+10.12.2024 22:55:56.659036 Trader 1: Received from ('127.0.0.1', 52403): sell|banana|10|9cffe1ef-3e40-4aaf-a5b6-464de5ccb12f
+10.12.2024 22:55:56.659377 Warehouse: DatabaseServer received: sell|banana|10|9cffe1ef-3e40-4aaf-a5b6-464de5ccb12f from ('127.0.0.1', 52315)
+10.12.2024 22:55:56.660779 Seller 1: Sell complete for request 9cffe1ef-3e40-4aaf-a5b6-464de5ccb12f (via localhost:5556): OK|Stocked 10 banana(s)|9cffe1ef-3e40-4aaf-a5b6-464de5ccb12f
+10.12.2024 22:55:56.715500 Buyer 1: Wants to buy 5 apple(s) from trader at localhost:5557 with request ID 2fc37434-759d-4049-9459-01a2b4b89a06
+10.12.2024 22:55:56.716377 Buyer 1: Connected to trader at localhost:5557
+10.12.2024 22:55:56.716558 Trader 2: Received from ('127.0.0.1', 52404): buy|apple|5|2fc37434-759d-4049-9459-01a2b4b89a06
+10.12.2024 22:55:56.716706 Warehouse: DatabaseServer received: buy|apple|5|2fc37434-759d-4049-9459-01a2b4b89a06 from ('127.0.0.1', 52316)
+10.12.2024 22:55:56.717777 Buyer 1: Buy complete for request 2fc37434-759d-4049-9459-01a2b4b89a06 (via localhost:5557): OK|Shipped 5 apple(s)|2fc37434-759d-4049-9459-01a2b4b89a06
+10.12.2024 22:55:57.158932 Seller 2: Accrued 10 orange(s) to sell to trader at localhost:5557 with request ID fbb2e7aa-57cf-4b35-8e3b-43cdbbb2ca5f
+10.12.2024 22:55:57.159531 Seller 2: Connected to trader at localhost:5557
+10.12.2024 22:55:57.159695 Trader 2: Received from ('127.0.0.1', 52405): sell|orange|10|fbb2e7aa-57cf-4b35-8e3b-43cdbbb2ca5f
+10.12.2024 22:55:57.159826 Warehouse: DatabaseServer received: sell|orange|10|fbb2e7aa-57cf-4b35-8e3b-43cdbbb2ca5f from ('127.0.0.1', 52316)
+10.12.2024 22:55:57.160406 Seller 2: Sell complete for request fbb2e7aa-57cf-4b35-8e3b-43cdbbb2ca5f (via localhost:5557): OK|Stocked 10 orange(s)|fbb2e7aa-57cf-4b35-8e3b-43cdbbb2ca5f
+10.12.2024 22:55:57.220570 Buyer 2: Wants to buy 2 banana(s) from trader at localhost:5557 with request ID 2820b3eb-4089-4381-ba90-c811a4110821
+10.12.2024 22:55:57.221529 Buyer 2: Connected to trader at localhost:5557
+10.12.2024 22:55:57.221698 Trader 2: Received from ('127.0.0.1', 52406): buy|banana|2|2820b3eb-4089-4381-ba90-c811a4110821
+10.12.2024 22:55:57.221869 Warehouse: DatabaseServer received: buy|banana|2|2820b3eb-4089-4381-ba90-c811a4110821 from ('127.0.0.1', 52316)
+10.12.2024 22:55:57.222893 Buyer 2: Buy complete for request 2820b3eb-4089-4381-ba90-c811a4110821 (via localhost:5557): OK|Shipped 2 banana(s)|2820b3eb-4089-4381-ba90-c811a4110821
+10.12.2024 22:55:57.667284 Seller 3: Accrued 10 orange(s) to sell to trader at localhost:5556 with request ID 0b3d4711-b606-4f21-8207-2e2a5953af2b
+10.12.2024 22:55:57.668600 Seller 3: Connected to trader at localhost:5556
+10.12.2024 22:55:57.668936 Trader 1: Received from ('127.0.0.1', 52407): sell|orange|10|0b3d4711-b606-4f21-8207-2e2a5953af2b
+10.12.2024 22:55:57.669202 Warehouse: DatabaseServer received: sell|orange|10|0b3d4711-b606-4f21-8207-2e2a5953af2b from ('127.0.0.1', 52315)
+10.12.2024 22:55:57.670393 Seller 3: Sell complete for request 0b3d4711-b606-4f21-8207-2e2a5953af2b (via localhost:5556): OK|Stocked 10 orange(s)|0b3d4711-b606-4f21-8207-2e2a5953af2b
+10.12.2024 22:55:57.726980 Buyer 3: Wants to buy 10 orange(s) from trader at localhost:5557 with request ID bd59f728-1ee8-4f41-9f3d-6400628c7ce4
+10.12.2024 22:55:57.727982 Buyer 3: Connected to trader at localhost:5557
+10.12.2024 22:55:57.728104 Trader 2: Received from ('127.0.0.1', 52408): buy|orange|10|bd59f728-1ee8-4f41-9f3d-6400628c7ce4
+10.12.2024 22:55:57.728229 Warehouse: DatabaseServer received: buy|orange|10|bd59f728-1ee8-4f41-9f3d-6400628c7ce4 from ('127.0.0.1', 52316)
+10.12.2024 22:55:57.729050 Buyer 3: Buy complete for request bd59f728-1ee8-4f41-9f3d-6400628c7ce4 (via localhost:5557): OK|Shipped 10 orange(s)|bd59f728-1ee8-4f41-9f3d-6400628c7ce4
+10.12.2024 22:55:58.169347 Seller 4: Accrued 10 apple(s) to sell to trader at localhost:5556 with request ID e2552de9-a640-4595-8f45-23d2f50fc1b6
+10.12.2024 22:55:58.170519 Seller 4: Connected to trader at localhost:5556
+10.12.2024 22:55:58.170768 Trader 1: Received from ('127.0.0.1', 52409): sell|apple|10|e2552de9-a640-4595-8f45-23d2f50fc1b6
+10.12.2024 22:55:58.170955 Warehouse: DatabaseServer received: sell|apple|10|e2552de9-a640-4595-8f45-23d2f50fc1b6 from ('127.0.0.1', 52315)
+10.12.2024 22:55:58.171905 Seller 4: Sell complete for request e2552de9-a640-4595-8f45-23d2f50fc1b6 (via localhost:5556): OK|Stocked 10 apple(s)|e2552de9-a640-4595-8f45-23d2f50fc1b6
+10.12.2024 22:55:58.240500 Buyer 4: Wants to buy 10 apple(s) from trader at localhost:5557 with request ID 8afdd578-2cf5-422e-942c-db4efbfccc4e
+10.12.2024 22:55:58.241707 Buyer 4: Connected to trader at localhost:5557
+10.12.2024 22:55:58.241950 Trader 2: Received from ('127.0.0.1', 52410): buy|apple|10|8afdd578-2cf5-422e-942c-db4efbfccc4e
+10.12.2024 22:55:58.242139 Warehouse: DatabaseServer received: buy|apple|10|8afdd578-2cf5-422e-942c-db4efbfccc4e from ('127.0.0.1', 52316)
+10.12.2024 22:55:58.243447 Buyer 4: Buy complete for request 8afdd578-2cf5-422e-942c-db4efbfccc4e (via localhost:5557): OK|Shipped 10 apple(s)|8afdd578-2cf5-422e-942c-db4efbfccc4e
+10.12.2024 22:55:58.693095 Seller 5: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID 8733f9dd-6e8e-46c4-8003-24cabe06f2b8
+10.12.2024 22:55:58.694768 Seller 5: Connected to trader at localhost:5556
+10.12.2024 22:55:58.695221 Trader 1: Received from ('127.0.0.1', 52411): sell|banana|10|8733f9dd-6e8e-46c4-8003-24cabe06f2b8
+10.12.2024 22:55:58.695431 Warehouse: DatabaseServer received: sell|banana|10|8733f9dd-6e8e-46c4-8003-24cabe06f2b8 from ('127.0.0.1', 52315)
+10.12.2024 22:55:58.696637 Seller 5: Sell complete for request 8733f9dd-6e8e-46c4-8003-24cabe06f2b8 (via localhost:5556): OK|Stocked 10 banana(s)|8733f9dd-6e8e-46c4-8003-24cabe06f2b8
+10.12.2024 22:55:58.751017 Buyer 5: Wants to buy 10 banana(s) from trader at localhost:5557 with request ID c92c57e6-2ec1-46c9-a7c8-0c9d9a17586d
+10.12.2024 22:55:58.752019 Buyer 5: Connected to trader at localhost:5557
+10.12.2024 22:55:58.752158 Trader 2: Received from ('127.0.0.1', 52412): buy|banana|10|c92c57e6-2ec1-46c9-a7c8-0c9d9a17586d
+10.12.2024 22:55:58.752292 Warehouse: DatabaseServer received: buy|banana|10|c92c57e6-2ec1-46c9-a7c8-0c9d9a17586d from ('127.0.0.1', 52316)
+10.12.2024 22:55:58.753101 Buyer 5: Buy complete for request c92c57e6-2ec1-46c9-a7c8-0c9d9a17586d (via localhost:5557): OK|Shipped 10 banana(s)|c92c57e6-2ec1-46c9-a7c8-0c9d9a17586d
+10.12.2024 22:55:59.197677 Seller 6: Accrued 10 orange(s) to sell to trader at localhost:5557 with request ID c26c9d3f-a1f8-48fd-b444-330ca98eb97f
+10.12.2024 22:55:59.198958 Seller 6: Connected to trader at localhost:5557
+10.12.2024 22:55:59.199326 Trader 2: Received from ('127.0.0.1', 52413): sell|orange|10|c26c9d3f-a1f8-48fd-b444-330ca98eb97f
+10.12.2024 22:55:59.199609 Warehouse: DatabaseServer received: sell|orange|10|c26c9d3f-a1f8-48fd-b444-330ca98eb97f from ('127.0.0.1', 52316)
+10.12.2024 22:55:59.200611 Seller 6: Sell complete for request c26c9d3f-a1f8-48fd-b444-330ca98eb97f (via localhost:5557): OK|Stocked 10 orange(s)|c26c9d3f-a1f8-48fd-b444-330ca98eb97f
+10.12.2024 22:55:59.256159 Buyer 6: Wants to buy 1 apple(s) from trader at localhost:5557 with request ID 50490966-7bcb-4d23-8377-970df62dd3a8
+10.12.2024 22:55:59.257079 Buyer 6: Connected to trader at localhost:5557
+10.12.2024 22:55:59.257208 Trader 2: Received from ('127.0.0.1', 52414): buy|apple|1|50490966-7bcb-4d23-8377-970df62dd3a8
+10.12.2024 22:55:59.257348 Warehouse: DatabaseServer received: buy|apple|1|50490966-7bcb-4d23-8377-970df62dd3a8 from ('127.0.0.1', 52316)
+10.12.2024 22:55:59.258332 Buyer 6: Buy complete for request 50490966-7bcb-4d23-8377-970df62dd3a8 (via localhost:5557): OK|Shipped 1 apple(s)|50490966-7bcb-4d23-8377-970df62dd3a8
+10.12.2024 22:55:59.709811 Seller 7: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID fe7e18a0-ab00-4353-bfd5-98dd7b7a2ec5
+10.12.2024 22:55:59.711400 Seller 7: Connected to trader at localhost:5556
+10.12.2024 22:55:59.711786 Trader 1: Received from ('127.0.0.1', 52417): sell|banana|10|fe7e18a0-ab00-4353-bfd5-98dd7b7a2ec5
+10.12.2024 22:55:59.711993 Warehouse: DatabaseServer received: sell|banana|10|fe7e18a0-ab00-4353-bfd5-98dd7b7a2ec5 from ('127.0.0.1', 52315)
+10.12.2024 22:55:59.713692 Seller 7: Sell complete for request fe7e18a0-ab00-4353-bfd5-98dd7b7a2ec5 (via localhost:5556): OK|Stocked 10 banana(s)|fe7e18a0-ab00-4353-bfd5-98dd7b7a2ec5
+10.12.2024 22:55:59.765739 Buyer 7: Wants to buy 5 banana(s) from trader at localhost:5556 with request ID 6be0b042-34dd-4995-b494-204b1ba88105
+10.12.2024 22:55:59.766814 Buyer 7: Connected to trader at localhost:5556
+10.12.2024 22:55:59.766984 Trader 1: Received from ('127.0.0.1', 52418): buy|banana|5|6be0b042-34dd-4995-b494-204b1ba88105
+10.12.2024 22:55:59.767123 Warehouse: DatabaseServer received: buy|banana|5|6be0b042-34dd-4995-b494-204b1ba88105 from ('127.0.0.1', 52315)
+10.12.2024 22:55:59.768149 Buyer 7: Buy complete for request 6be0b042-34dd-4995-b494-204b1ba88105 (via localhost:5556): OK|Shipped 5 banana(s)|6be0b042-34dd-4995-b494-204b1ba88105
+10.12.2024 22:56:00.211956 Seller 8: Accrued 10 orange(s) to sell to trader at localhost:5556 with request ID 55e1857b-e67e-4174-8910-eaaf6ecc7fd4
+10.12.2024 22:56:00.212984 Seller 8: Connected to trader at localhost:5556
+10.12.2024 22:56:00.213235 Trader 1: Received from ('127.0.0.1', 52419): sell|orange|10|55e1857b-e67e-4174-8910-eaaf6ecc7fd4
+10.12.2024 22:56:00.213446 Warehouse: DatabaseServer received: sell|orange|10|55e1857b-e67e-4174-8910-eaaf6ecc7fd4 from ('127.0.0.1', 52315)
+10.12.2024 22:56:00.214495 Seller 8: Sell complete for request 55e1857b-e67e-4174-8910-eaaf6ecc7fd4 (via localhost:5556): OK|Stocked 10 orange(s)|55e1857b-e67e-4174-8910-eaaf6ecc7fd4
+10.12.2024 22:56:00.274552 Buyer 8: Wants to buy 2 orange(s) from trader at localhost:5557 with request ID b32cb97b-b79f-4540-b9a6-9cb5441f7c7a
+10.12.2024 22:56:00.275643 Buyer 8: Connected to trader at localhost:5557
+10.12.2024 22:56:00.275835 Trader 2: Received from ('127.0.0.1', 52420): buy|orange|2|b32cb97b-b79f-4540-b9a6-9cb5441f7c7a
+10.12.2024 22:56:00.275980 Warehouse: DatabaseServer received: buy|orange|2|b32cb97b-b79f-4540-b9a6-9cb5441f7c7a from ('127.0.0.1', 52316)
+10.12.2024 22:56:00.276834 Buyer 8: Buy complete for request b32cb97b-b79f-4540-b9a6-9cb5441f7c7a (via localhost:5557): OK|Shipped 2 orange(s)|b32cb97b-b79f-4540-b9a6-9cb5441f7c7a
+10.12.2024 22:56:00.790420 Buyer 9: Wants to buy 3 orange(s) from trader at localhost:5557 with request ID 2ade58f3-5412-4ab9-9e00-fc2d29dfc79f
+10.12.2024 22:56:00.792100 Buyer 9: Connected to trader at localhost:5557
+10.12.2024 22:56:00.792506 Trader 2: Received from ('127.0.0.1', 52421): buy|orange|3|2ade58f3-5412-4ab9-9e00-fc2d29dfc79f
+10.12.2024 22:56:00.792763 Warehouse: DatabaseServer received: buy|orange|3|2ade58f3-5412-4ab9-9e00-fc2d29dfc79f from ('127.0.0.1', 52316)
+10.12.2024 22:56:00.794612 Buyer 9: Buy complete for request 2ade58f3-5412-4ab9-9e00-fc2d29dfc79f (via localhost:5557): OK|Shipped 3 orange(s)|2ade58f3-5412-4ab9-9e00-fc2d29dfc79f
+10.12.2024 22:56:01.289743 Buyer 10: Wants to buy 7 orange(s) from trader at localhost:5556 with request ID 52927f59-6b76-462d-9efd-261089b3d756
+10.12.2024 22:56:01.291118 Buyer 10: Connected to trader at localhost:5556
+10.12.2024 22:56:01.291461 Trader 1: Received from ('127.0.0.1', 52422): buy|orange|7|52927f59-6b76-462d-9efd-261089b3d756
+10.12.2024 22:56:01.291688 Warehouse: DatabaseServer received: buy|orange|7|52927f59-6b76-462d-9efd-261089b3d756 from ('127.0.0.1', 52315)
+10.12.2024 22:56:01.293441 Buyer 10: Buy complete for request 52927f59-6b76-462d-9efd-261089b3d756 (via localhost:5556): OK|Shipped 7 orange(s)|52927f59-6b76-462d-9efd-261089b3d756
+10.12.2024 22:56:01.665526 Seller 1: Accrued 10 orange(s) to sell to trader at localhost:5557 with request ID c393791a-c9ce-4e10-9b8e-57ecbb7d2174
+10.12.2024 22:56:01.666985 Seller 1: Connected to trader at localhost:5557
+10.12.2024 22:56:01.667353 Trader 2: Received from ('127.0.0.1', 52423): sell|orange|10|c393791a-c9ce-4e10-9b8e-57ecbb7d2174
+10.12.2024 22:56:01.667622 Warehouse: DatabaseServer received: sell|orange|10|c393791a-c9ce-4e10-9b8e-57ecbb7d2174 from ('127.0.0.1', 52316)
+10.12.2024 22:56:01.668922 Seller 1: Sell complete for request c393791a-c9ce-4e10-9b8e-57ecbb7d2174 (via localhost:5557): OK|Stocked 10 orange(s)|c393791a-c9ce-4e10-9b8e-57ecbb7d2174
+10.12.2024 22:56:01.722949 Buyer 1: Wants to buy 3 apple(s) from trader at localhost:5556 with request ID 9b3afd3e-65dd-4839-98f2-fb83a8679575
+10.12.2024 22:56:01.723886 Buyer 1: Connected to trader at localhost:5556
+10.12.2024 22:56:01.724039 Trader 1: Received from ('127.0.0.1', 52424): buy|apple|3|9b3afd3e-65dd-4839-98f2-fb83a8679575
+10.12.2024 22:56:01.724172 Warehouse: DatabaseServer received: buy|apple|3|9b3afd3e-65dd-4839-98f2-fb83a8679575 from ('127.0.0.1', 52315)
+10.12.2024 22:56:01.725085 Buyer 1: Buy complete for request 9b3afd3e-65dd-4839-98f2-fb83a8679575 (via localhost:5556): OK|Shipped 3 apple(s)|9b3afd3e-65dd-4839-98f2-fb83a8679575
+10.12.2024 22:56:02.165675 Seller 2: Accrued 10 orange(s) to sell to trader at localhost:5556 with request ID fa73313d-813b-4ad0-b1d8-8fb9d9bccd2d
+10.12.2024 22:56:02.167124 Seller 2: Connected to trader at localhost:5556
+10.12.2024 22:56:02.167764 Trader 1: Received from ('127.0.0.1', 52425): sell|orange|10|fa73313d-813b-4ad0-b1d8-8fb9d9bccd2d
+10.12.2024 22:56:02.168036 Warehouse: DatabaseServer received: sell|orange|10|fa73313d-813b-4ad0-b1d8-8fb9d9bccd2d from ('127.0.0.1', 52315)
+10.12.2024 22:56:02.169314 Seller 2: Sell complete for request fa73313d-813b-4ad0-b1d8-8fb9d9bccd2d (via localhost:5556): OK|Stocked 10 orange(s)|fa73313d-813b-4ad0-b1d8-8fb9d9bccd2d
+10.12.2024 22:56:02.223005 Buyer 2: Wants to buy 10 orange(s) from trader at localhost:5556 with request ID ea5e1ac8-00da-4330-a3b6-572237a1def8
+10.12.2024 22:56:02.223575 Buyer 2: Connected to trader at localhost:5556
+10.12.2024 22:56:02.223684 Trader 1: Received from ('127.0.0.1', 52426): buy|orange|10|ea5e1ac8-00da-4330-a3b6-572237a1def8
+10.12.2024 22:56:02.223773 Warehouse: DatabaseServer received: buy|orange|10|ea5e1ac8-00da-4330-a3b6-572237a1def8 from ('127.0.0.1', 52315)
+10.12.2024 22:56:02.224432 Buyer 2: Buy complete for request ea5e1ac8-00da-4330-a3b6-572237a1def8 (via localhost:5556): OK|Shipped 10 orange(s)|ea5e1ac8-00da-4330-a3b6-572237a1def8
+10.12.2024 22:56:02.675738 Seller 3: Accrued 10 banana(s) to sell to trader at localhost:5557 with request ID 281b92bd-581f-4646-b9f4-a2dd6a2e340a
+10.12.2024 22:56:02.677140 Seller 3: Connected to trader at localhost:5557
+10.12.2024 22:56:02.677483 Trader 2: Received from ('127.0.0.1', 52427): sell|banana|10|281b92bd-581f-4646-b9f4-a2dd6a2e340a
+10.12.2024 22:56:02.677719 Warehouse: DatabaseServer received: sell|banana|10|281b92bd-581f-4646-b9f4-a2dd6a2e340a from ('127.0.0.1', 52316)
+10.12.2024 22:56:02.678971 Seller 3: Sell complete for request 281b92bd-581f-4646-b9f4-a2dd6a2e340a (via localhost:5557): OK|Stocked 10 banana(s)|281b92bd-581f-4646-b9f4-a2dd6a2e340a
+10.12.2024 22:56:02.734212 Buyer 3: Wants to buy 10 apple(s) from trader at localhost:5556 with request ID d74b5b41-7914-4a5c-8958-93149b15f25c
+10.12.2024 22:56:02.735220 Buyer 3: Connected to trader at localhost:5556
+10.12.2024 22:56:02.735377 Trader 1: Received from ('127.0.0.1', 52428): buy|apple|10|d74b5b41-7914-4a5c-8958-93149b15f25c
+10.12.2024 22:56:02.735512 Warehouse: DatabaseServer received: buy|apple|10|d74b5b41-7914-4a5c-8958-93149b15f25c from ('127.0.0.1', 52315)
+10.12.2024 22:56:02.736448 Buyer 3: Buy complete for request d74b5b41-7914-4a5c-8958-93149b15f25c (via localhost:5556): OK|Shipped 10 apple(s)|d74b5b41-7914-4a5c-8958-93149b15f25c
+10.12.2024 22:56:03.173220 Seller 4: Accrued 10 apple(s) to sell to trader at localhost:5556 with request ID 8487e5ee-a5db-41c2-9627-43117d29036b
+10.12.2024 22:56:03.174638 Seller 4: Connected to trader at localhost:5556
+10.12.2024 22:56:03.174967 Trader 1: Received from ('127.0.0.1', 52429): sell|apple|10|8487e5ee-a5db-41c2-9627-43117d29036b
+10.12.2024 22:56:03.175234 Warehouse: DatabaseServer received: sell|apple|10|8487e5ee-a5db-41c2-9627-43117d29036b from ('127.0.0.1', 52315)
+10.12.2024 22:56:03.176584 Seller 4: Sell complete for request 8487e5ee-a5db-41c2-9627-43117d29036b (via localhost:5556): OK|Stocked 10 apple(s)|8487e5ee-a5db-41c2-9627-43117d29036b
+10.12.2024 22:56:03.248707 Buyer 4: Wants to buy 7 orange(s) from trader at localhost:5556 with request ID eed11dde-a6bb-4e88-835c-becb816f86d0
+10.12.2024 22:56:03.250140 Buyer 4: Connected to trader at localhost:5556
+10.12.2024 22:56:03.250419 Trader 1: Received from ('127.0.0.1', 52430): buy|orange|7|eed11dde-a6bb-4e88-835c-becb816f86d0
+10.12.2024 22:56:03.250630 Warehouse: DatabaseServer received: buy|orange|7|eed11dde-a6bb-4e88-835c-becb816f86d0 from ('127.0.0.1', 52315)
+10.12.2024 22:56:03.252240 Buyer 4: Buy complete for request eed11dde-a6bb-4e88-835c-becb816f86d0 (via localhost:5556): OK|Shipped 7 orange(s)|eed11dde-a6bb-4e88-835c-becb816f86d0
+10.12.2024 22:56:03.698100 Seller 5: Accrued 10 apple(s) to sell to trader at localhost:5557 with request ID b77d817e-7bcf-483e-97bc-6c687b3fb425
+10.12.2024 22:56:03.699348 Seller 5: Connected to trader at localhost:5557
+10.12.2024 22:56:03.699662 Trader 2: Received from ('127.0.0.1', 52431): sell|apple|10|b77d817e-7bcf-483e-97bc-6c687b3fb425
+10.12.2024 22:56:03.699881 Warehouse: DatabaseServer received: sell|apple|10|b77d817e-7bcf-483e-97bc-6c687b3fb425 from ('127.0.0.1', 52316)
+10.12.2024 22:56:03.701157 Seller 5: Sell complete for request b77d817e-7bcf-483e-97bc-6c687b3fb425 (via localhost:5557): OK|Stocked 10 apple(s)|b77d817e-7bcf-483e-97bc-6c687b3fb425
+10.12.2024 22:56:03.758229 Buyer 5: Wants to buy 2 apple(s) from trader at localhost:5556 with request ID 3ecded2c-09ae-4465-a10b-ffd900e558fe
+10.12.2024 22:56:03.759111 Buyer 5: Connected to trader at localhost:5556
+10.12.2024 22:56:03.759287 Trader 1: Received from ('127.0.0.1', 52432): buy|apple|2|3ecded2c-09ae-4465-a10b-ffd900e558fe
+10.12.2024 22:56:03.759450 Warehouse: DatabaseServer received: buy|apple|2|3ecded2c-09ae-4465-a10b-ffd900e558fe from ('127.0.0.1', 52315)
+10.12.2024 22:56:03.761280 Buyer 5: Buy complete for request 3ecded2c-09ae-4465-a10b-ffd900e558fe (via localhost:5556): OK|Shipped 2 apple(s)|3ecded2c-09ae-4465-a10b-ffd900e558fe
+10.12.2024 22:56:04.204396 Seller 6: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID c12e34a4-9cd5-4ae0-b3f6-d055b8eb62ed
+10.12.2024 22:56:04.205686 Seller 6: Connected to trader at localhost:5556
+10.12.2024 22:56:04.206058 Trader 1: Received from ('127.0.0.1', 52433): sell|banana|10|c12e34a4-9cd5-4ae0-b3f6-d055b8eb62ed
+10.12.2024 22:56:04.206478 Warehouse: DatabaseServer received: sell|banana|10|c12e34a4-9cd5-4ae0-b3f6-d055b8eb62ed from ('127.0.0.1', 52315)
+10.12.2024 22:56:04.208287 Seller 6: Sell complete for request c12e34a4-9cd5-4ae0-b3f6-d055b8eb62ed (via localhost:5556): OK|Stocked 10 banana(s)|c12e34a4-9cd5-4ae0-b3f6-d055b8eb62ed
+10.12.2024 22:56:04.263470 Buyer 6: Wants to buy 7 banana(s) from trader at localhost:5556 with request ID bd14fce5-3a43-4d15-9ecd-f05a70d54b10
+10.12.2024 22:56:04.264506 Buyer 6: Connected to trader at localhost:5556
+10.12.2024 22:56:04.264632 Trader 1: Received from ('127.0.0.1', 52434): buy|banana|7|bd14fce5-3a43-4d15-9ecd-f05a70d54b10
+10.12.2024 22:56:04.264761 Warehouse: DatabaseServer received: buy|banana|7|bd14fce5-3a43-4d15-9ecd-f05a70d54b10 from ('127.0.0.1', 52315)
+10.12.2024 22:56:04.265799 Buyer 6: Buy complete for request bd14fce5-3a43-4d15-9ecd-f05a70d54b10 (via localhost:5556): OK|Shipped 7 banana(s)|bd14fce5-3a43-4d15-9ecd-f05a70d54b10
+10.12.2024 22:56:04.719008 Seller 7: Accrued 10 banana(s) to sell to trader at localhost:5557 with request ID bc0222dc-2aab-482f-9dca-d25d4a6ec458
+10.12.2024 22:56:04.720497 Seller 7: Connected to trader at localhost:5557
+10.12.2024 22:56:04.720882 Trader 2: Received from ('127.0.0.1', 52435): sell|banana|10|bc0222dc-2aab-482f-9dca-d25d4a6ec458
+10.12.2024 22:56:04.721095 Warehouse: DatabaseServer received: sell|banana|10|bc0222dc-2aab-482f-9dca-d25d4a6ec458 from ('127.0.0.1', 52316)
+10.12.2024 22:56:04.722342 Seller 7: Sell complete for request bc0222dc-2aab-482f-9dca-d25d4a6ec458 (via localhost:5557): OK|Stocked 10 banana(s)|bc0222dc-2aab-482f-9dca-d25d4a6ec458
+10.12.2024 22:56:04.773287 Buyer 7: Wants to buy 3 apple(s) from trader at localhost:5557 with request ID df1a45de-6fb9-48db-bdb5-990f547d564f
+10.12.2024 22:56:04.776391 Buyer 7: Connected to trader at localhost:5557
+10.12.2024 22:56:04.776553 Trader 2: Received from ('127.0.0.1', 52436): buy|apple|3|df1a45de-6fb9-48db-bdb5-990f547d564f
+10.12.2024 22:56:04.776694 Warehouse: DatabaseServer received: buy|apple|3|df1a45de-6fb9-48db-bdb5-990f547d564f from ('127.0.0.1', 52316)
+10.12.2024 22:56:04.777653 Buyer 7: Buy complete for request df1a45de-6fb9-48db-bdb5-990f547d564f (via localhost:5557): OK|Shipped 3 apple(s)|df1a45de-6fb9-48db-bdb5-990f547d564f
+10.12.2024 22:56:05.219893 Seller 8: Accrued 10 apple(s) to sell to trader at localhost:5556 with request ID 67506c29-19be-49b3-819d-6fc471b4b122
+10.12.2024 22:56:05.221781 Seller 8: Connected to trader at localhost:5556
+10.12.2024 22:56:05.222172 Trader 1: Received from ('127.0.0.1', 52437): sell|apple|10|67506c29-19be-49b3-819d-6fc471b4b122
+10.12.2024 22:56:05.222655 Warehouse: DatabaseServer received: sell|apple|10|67506c29-19be-49b3-819d-6fc471b4b122 from ('127.0.0.1', 52315)
+10.12.2024 22:56:05.223724 Seller 8: Sell complete for request 67506c29-19be-49b3-819d-6fc471b4b122 (via localhost:5556): OK|Stocked 10 apple(s)|67506c29-19be-49b3-819d-6fc471b4b122
+10.12.2024 22:56:05.282001 Buyer 8: Wants to buy 8 apple(s) from trader at localhost:5557 with request ID 0d36eea2-c803-47ec-a756-c070f37c9df7
+10.12.2024 22:56:05.282943 Buyer 8: Connected to trader at localhost:5557
+10.12.2024 22:56:05.283131 Trader 2: Received from ('127.0.0.1', 52438): buy|apple|8|0d36eea2-c803-47ec-a756-c070f37c9df7
+10.12.2024 22:56:05.283297 Warehouse: DatabaseServer received: buy|apple|8|0d36eea2-c803-47ec-a756-c070f37c9df7 from ('127.0.0.1', 52316)
+10.12.2024 22:56:05.284255 Buyer 8: Buy complete for request 0d36eea2-c803-47ec-a756-c070f37c9df7 (via localhost:5557): OK|Shipped 8 apple(s)|0d36eea2-c803-47ec-a756-c070f37c9df7
+10.12.2024 22:56:05.795513 Buyer 9: Wants to buy 9 orange(s) from trader at localhost:5557 with request ID 96462899-083c-4866-b4b5-1c39bd292ce3
+10.12.2024 22:56:05.797020 Buyer 9: Connected to trader at localhost:5557
+10.12.2024 22:56:05.797332 Trader 2: Received from ('127.0.0.1', 52439): buy|orange|9|96462899-083c-4866-b4b5-1c39bd292ce3
+10.12.2024 22:56:05.797513 Warehouse: DatabaseServer received: buy|orange|9|96462899-083c-4866-b4b5-1c39bd292ce3 from ('127.0.0.1', 52316)
+10.12.2024 22:56:05.799106 Buyer 9: Buy complete for request 96462899-083c-4866-b4b5-1c39bd292ce3 (via localhost:5557): OK|Shipped 9 orange(s)|96462899-083c-4866-b4b5-1c39bd292ce3
+10.12.2024 22:56:06.295618 Buyer 10: Wants to buy 2 apple(s) from trader at localhost:5557 with request ID 5c07c585-ef03-4f9e-9cf0-f563092a5767
+10.12.2024 22:56:06.297076 Buyer 10: Connected to trader at localhost:5557
+10.12.2024 22:56:06.297390 Trader 2: Received from ('127.0.0.1', 52440): buy|apple|2|5c07c585-ef03-4f9e-9cf0-f563092a5767
+10.12.2024 22:56:06.297604 Warehouse: DatabaseServer received: buy|apple|2|5c07c585-ef03-4f9e-9cf0-f563092a5767 from ('127.0.0.1', 52316)
+10.12.2024 22:56:06.299399 Buyer 10: Buy complete for request 5c07c585-ef03-4f9e-9cf0-f563092a5767 (via localhost:5557): OK|Shipped 2 apple(s)|5c07c585-ef03-4f9e-9cf0-f563092a5767
+10.12.2024 22:56:06.669714 Seller 1: Accrued 10 orange(s) to sell to trader at localhost:5556 with request ID 61a510c7-c9f4-4ee7-9620-7bcbf7ca0198
+10.12.2024 22:56:06.671063 Seller 1: Connected to trader at localhost:5556
+10.12.2024 22:56:06.671378 Trader 1: Received from ('127.0.0.1', 52441): sell|orange|10|61a510c7-c9f4-4ee7-9620-7bcbf7ca0198
+10.12.2024 22:56:06.671836 Warehouse: DatabaseServer received: sell|orange|10|61a510c7-c9f4-4ee7-9620-7bcbf7ca0198 from ('127.0.0.1', 52315)
+10.12.2024 22:56:06.672772 Seller 1: Sell complete for request 61a510c7-c9f4-4ee7-9620-7bcbf7ca0198 (via localhost:5556): OK|Stocked 10 orange(s)|61a510c7-c9f4-4ee7-9620-7bcbf7ca0198
+10.12.2024 22:56:06.730279 Buyer 1: Wants to buy 4 apple(s) from trader at localhost:5556 with request ID 7b304d08-cf08-4b6f-8e71-596a509ef4fe
+10.12.2024 22:56:06.731410 Buyer 1: Connected to trader at localhost:5556
+10.12.2024 22:56:06.731593 Trader 1: Received from ('127.0.0.1', 52442): buy|apple|4|7b304d08-cf08-4b6f-8e71-596a509ef4fe
+10.12.2024 22:56:06.731755 Warehouse: DatabaseServer received: buy|apple|4|7b304d08-cf08-4b6f-8e71-596a509ef4fe from ('127.0.0.1', 52315)
+10.12.2024 22:56:06.732839 Buyer 1: Buy complete for request 7b304d08-cf08-4b6f-8e71-596a509ef4fe (via localhost:5556): OK|Shipped 4 apple(s)|7b304d08-cf08-4b6f-8e71-596a509ef4fe
+10.12.2024 22:56:07.173371 Seller 2: Accrued 10 orange(s) to sell to trader at localhost:5556 with request ID 6dc85307-a29d-4225-bd5c-445faaae8336
+10.12.2024 22:56:07.174769 Seller 2: Connected to trader at localhost:5556
+10.12.2024 22:56:07.175105 Trader 1: Received from ('127.0.0.1', 52443): sell|orange|10|6dc85307-a29d-4225-bd5c-445faaae8336
+10.12.2024 22:56:07.175357 Warehouse: DatabaseServer received: sell|orange|10|6dc85307-a29d-4225-bd5c-445faaae8336 from ('127.0.0.1', 52315)
+10.12.2024 22:56:07.176904 Seller 2: Sell complete for request 6dc85307-a29d-4225-bd5c-445faaae8336 (via localhost:5556): OK|Stocked 10 orange(s)|6dc85307-a29d-4225-bd5c-445faaae8336
+10.12.2024 22:56:07.226155 Buyer 2: Wants to buy 2 apple(s) from trader at localhost:5556 with request ID 2dc83aed-de4e-4858-8055-33b1cebc89f5
+10.12.2024 22:56:07.226758 Buyer 2: Connected to trader at localhost:5556
+10.12.2024 22:56:07.226897 Trader 1: Received from ('127.0.0.1', 52444): buy|apple|2|2dc83aed-de4e-4858-8055-33b1cebc89f5
+10.12.2024 22:56:07.227032 Warehouse: DatabaseServer received: buy|apple|2|2dc83aed-de4e-4858-8055-33b1cebc89f5 from ('127.0.0.1', 52315)
+10.12.2024 22:56:07.227832 Buyer 2: Buy complete for request 2dc83aed-de4e-4858-8055-33b1cebc89f5 (via localhost:5556): OK|Shipped 2 apple(s)|2dc83aed-de4e-4858-8055-33b1cebc89f5
+10.12.2024 22:56:07.679840 Seller 3: Accrued 10 apple(s) to sell to trader at localhost:5557 with request ID 37ee9fab-3983-46be-bd14-ea0c020d80d7
+10.12.2024 22:56:07.680808 Seller 3: Connected to trader at localhost:5557
+10.12.2024 22:56:07.681018 Trader 2: Received from ('127.0.0.1', 52445): sell|apple|10|37ee9fab-3983-46be-bd14-ea0c020d80d7
+10.12.2024 22:56:07.681166 Warehouse: DatabaseServer received: sell|apple|10|37ee9fab-3983-46be-bd14-ea0c020d80d7 from ('127.0.0.1', 52316)
+10.12.2024 22:56:07.682408 Seller 3: Sell complete for request 37ee9fab-3983-46be-bd14-ea0c020d80d7 (via localhost:5557): OK|Stocked 10 apple(s)|37ee9fab-3983-46be-bd14-ea0c020d80d7
+10.12.2024 22:56:07.741591 Buyer 3: Wants to buy 4 orange(s) from trader at localhost:5556 with request ID 71704623-473d-45c1-9287-c3de70e6f7a4
+10.12.2024 22:56:07.742540 Buyer 3: Connected to trader at localhost:5556
+10.12.2024 22:56:07.742710 Trader 1: Received from ('127.0.0.1', 52446): buy|orange|4|71704623-473d-45c1-9287-c3de70e6f7a4
+10.12.2024 22:56:07.742867 Warehouse: DatabaseServer received: buy|orange|4|71704623-473d-45c1-9287-c3de70e6f7a4 from ('127.0.0.1', 52315)
+10.12.2024 22:56:07.743958 Buyer 3: Buy complete for request 71704623-473d-45c1-9287-c3de70e6f7a4 (via localhost:5556): OK|Shipped 4 orange(s)|71704623-473d-45c1-9287-c3de70e6f7a4
+10.12.2024 22:56:08.180525 Seller 4: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID 38d53c40-e49c-420f-9376-aed9d4e3fbd5
+10.12.2024 22:56:08.181362 Seller 4: Connected to trader at localhost:5556
+10.12.2024 22:56:08.181979 Trader 1: Received from ('127.0.0.1', 52447): sell|banana|10|38d53c40-e49c-420f-9376-aed9d4e3fbd5
+10.12.2024 22:56:08.182331 Warehouse: DatabaseServer received: sell|banana|10|38d53c40-e49c-420f-9376-aed9d4e3fbd5 from ('127.0.0.1', 52315)
+10.12.2024 22:56:08.183453 Seller 4: Sell complete for request 38d53c40-e49c-420f-9376-aed9d4e3fbd5 (via localhost:5556): OK|Stocked 10 banana(s)|38d53c40-e49c-420f-9376-aed9d4e3fbd5
+10.12.2024 22:56:08.257406 Buyer 4: Wants to buy 5 banana(s) from trader at localhost:5557 with request ID 4d551103-4b92-4c95-bde4-0d107bdc4a1b
+10.12.2024 22:56:08.258310 Buyer 4: Connected to trader at localhost:5557
+10.12.2024 22:56:08.258728 Trader 2: Received from ('127.0.0.1', 52448): buy|banana|5|4d551103-4b92-4c95-bde4-0d107bdc4a1b
+10.12.2024 22:56:08.258918 Warehouse: DatabaseServer received: buy|banana|5|4d551103-4b92-4c95-bde4-0d107bdc4a1b from ('127.0.0.1', 52316)
+10.12.2024 22:56:08.260124 Buyer 4: Buy complete for request 4d551103-4b92-4c95-bde4-0d107bdc4a1b (via localhost:5557): OK|Shipped 5 banana(s)|4d551103-4b92-4c95-bde4-0d107bdc4a1b
+10.12.2024 22:56:08.702840 Seller 5: Accrued 10 banana(s) to sell to trader at localhost:5557 with request ID 9c883c05-5101-467c-9f4e-5e9c32242819
+10.12.2024 22:56:08.704186 Seller 5: Connected to trader at localhost:5557
+10.12.2024 22:56:08.704552 Trader 2: Received from ('127.0.0.1', 52449): sell|banana|10|9c883c05-5101-467c-9f4e-5e9c32242819
+10.12.2024 22:56:08.704795 Warehouse: DatabaseServer received: sell|banana|10|9c883c05-5101-467c-9f4e-5e9c32242819 from ('127.0.0.1', 52316)
+10.12.2024 22:56:08.706004 Seller 5: Sell complete for request 9c883c05-5101-467c-9f4e-5e9c32242819 (via localhost:5557): OK|Stocked 10 banana(s)|9c883c05-5101-467c-9f4e-5e9c32242819
+10.12.2024 22:56:08.766443 Buyer 5: Wants to buy 6 orange(s) from trader at localhost:5557 with request ID b3007b42-7c85-4b85-bf4a-cd69dabc51e0
+10.12.2024 22:56:08.767451 Buyer 5: Connected to trader at localhost:5557
+10.12.2024 22:56:08.767656 Trader 2: Received from ('127.0.0.1', 52450): buy|orange|6|b3007b42-7c85-4b85-bf4a-cd69dabc51e0
+10.12.2024 22:56:08.767841 Warehouse: DatabaseServer received: buy|orange|6|b3007b42-7c85-4b85-bf4a-cd69dabc51e0 from ('127.0.0.1', 52316)
+10.12.2024 22:56:08.768950 Buyer 5: Buy complete for request b3007b42-7c85-4b85-bf4a-cd69dabc51e0 (via localhost:5557): OK|Shipped 6 orange(s)|b3007b42-7c85-4b85-bf4a-cd69dabc51e0
+10.12.2024 22:56:09.211963 Seller 6: Accrued 10 apple(s) to sell to trader at localhost:5556 with request ID 4bd99bb2-8b7e-4188-8276-705c5bb2b179
+10.12.2024 22:56:09.213355 Seller 6: Connected to trader at localhost:5556
+10.12.2024 22:56:09.213786 Trader 1: Received from ('127.0.0.1', 52451): sell|apple|10|4bd99bb2-8b7e-4188-8276-705c5bb2b179
+10.12.2024 22:56:09.214093 Warehouse: DatabaseServer received: sell|apple|10|4bd99bb2-8b7e-4188-8276-705c5bb2b179 from ('127.0.0.1', 52315)
+10.12.2024 22:56:09.215464 Seller 6: Sell complete for request 4bd99bb2-8b7e-4188-8276-705c5bb2b179 (via localhost:5556): OK|Stocked 10 apple(s)|4bd99bb2-8b7e-4188-8276-705c5bb2b179
+10.12.2024 22:56:09.270926 Buyer 6: Wants to buy 1 orange(s) from trader at localhost:5557 with request ID 923cc183-fa6c-4952-bdc3-12b26f258a14
+10.12.2024 22:56:09.271852 Buyer 6: Connected to trader at localhost:5557
+10.12.2024 22:56:09.272011 Trader 2: Received from ('127.0.0.1', 52452): buy|orange|1|923cc183-fa6c-4952-bdc3-12b26f258a14
+10.12.2024 22:56:09.272161 Warehouse: DatabaseServer received: buy|orange|1|923cc183-fa6c-4952-bdc3-12b26f258a14 from ('127.0.0.1', 52316)
+10.12.2024 22:56:09.273423 Buyer 6: Buy complete for request 923cc183-fa6c-4952-bdc3-12b26f258a14 (via localhost:5557): OK|Shipped 1 orange(s)|923cc183-fa6c-4952-bdc3-12b26f258a14
+10.12.2024 22:56:09.723811 Seller 7: Accrued 10 banana(s) to sell to trader at localhost:5557 with request ID 062af5c8-117e-4d93-bbbf-0511a98ad6d6
+10.12.2024 22:56:09.725225 Seller 7: Connected to trader at localhost:5557
+10.12.2024 22:56:09.725609 Trader 2: Received from ('127.0.0.1', 52453): sell|banana|10|062af5c8-117e-4d93-bbbf-0511a98ad6d6
+10.12.2024 22:56:09.725863 Warehouse: DatabaseServer received: sell|banana|10|062af5c8-117e-4d93-bbbf-0511a98ad6d6 from ('127.0.0.1', 52316)
+10.12.2024 22:56:09.727277 Seller 7: Sell complete for request 062af5c8-117e-4d93-bbbf-0511a98ad6d6 (via localhost:5557): OK|Stocked 10 banana(s)|062af5c8-117e-4d93-bbbf-0511a98ad6d6
+10.12.2024 22:56:09.782854 Buyer 7: Wants to buy 2 orange(s) from trader at localhost:5557 with request ID 0c887d63-f0d5-43d3-8554-d368c3c93e10
+10.12.2024 22:56:09.784294 Buyer 7: Connected to trader at localhost:5557
+10.12.2024 22:56:09.784440 Trader 2: Received from ('127.0.0.1', 52454): buy|orange|2|0c887d63-f0d5-43d3-8554-d368c3c93e10
+10.12.2024 22:56:09.784605 Warehouse: DatabaseServer received: buy|orange|2|0c887d63-f0d5-43d3-8554-d368c3c93e10 from ('127.0.0.1', 52316)
+10.12.2024 22:56:09.785796 Buyer 7: Buy complete for request 0c887d63-f0d5-43d3-8554-d368c3c93e10 (via localhost:5557): OK|Shipped 2 orange(s)|0c887d63-f0d5-43d3-8554-d368c3c93e10
+10.12.2024 22:56:10.228988 Seller 8: Accrued 10 orange(s) to sell to trader at localhost:5556 with request ID 2425c801-0c19-4976-bdd3-088c90d5dcfd
+10.12.2024 22:56:10.230262 Seller 8: Connected to trader at localhost:5556
+10.12.2024 22:56:10.230658 Trader 1: Received from ('127.0.0.1', 52455): sell|orange|10|2425c801-0c19-4976-bdd3-088c90d5dcfd
+10.12.2024 22:56:10.230901 Warehouse: DatabaseServer received: sell|orange|10|2425c801-0c19-4976-bdd3-088c90d5dcfd from ('127.0.0.1', 52315)
+10.12.2024 22:56:10.232176 Seller 8: Sell complete for request 2425c801-0c19-4976-bdd3-088c90d5dcfd (via localhost:5556): OK|Stocked 10 orange(s)|2425c801-0c19-4976-bdd3-088c90d5dcfd
+10.12.2024 22:56:10.289391 Buyer 8: Wants to buy 10 orange(s) from trader at localhost:5557 with request ID deb8a122-dc28-4cd6-9585-351c91c763cd
+10.12.2024 22:56:10.290395 Buyer 8: Connected to trader at localhost:5557
+10.12.2024 22:56:10.290551 Trader 2: Received from ('127.0.0.1', 52456): buy|orange|10|deb8a122-dc28-4cd6-9585-351c91c763cd
+10.12.2024 22:56:10.290702 Warehouse: DatabaseServer received: buy|orange|10|deb8a122-dc28-4cd6-9585-351c91c763cd from ('127.0.0.1', 52316)
+10.12.2024 22:56:10.291641 Buyer 8: Buy complete for request deb8a122-dc28-4cd6-9585-351c91c763cd (via localhost:5557): OK|Shipped 10 orange(s)|deb8a122-dc28-4cd6-9585-351c91c763cd
+10.12.2024 22:56:10.800037 Buyer 9: Wants to buy 7 banana(s) from trader at localhost:5557 with request ID 07886d10-cadc-4e2e-a618-dcbb1aac132b
+10.12.2024 22:56:10.802572 Buyer 9: Connected to trader at localhost:5557
+10.12.2024 22:56:10.803043 Trader 2: Received from ('127.0.0.1', 52459): buy|banana|7|07886d10-cadc-4e2e-a618-dcbb1aac132b
+10.12.2024 22:56:10.803297 Warehouse: DatabaseServer received: buy|banana|7|07886d10-cadc-4e2e-a618-dcbb1aac132b from ('127.0.0.1', 52316)
+10.12.2024 22:56:10.804549 Buyer 9: Buy complete for request 07886d10-cadc-4e2e-a618-dcbb1aac132b (via localhost:5557): OK|Shipped 7 banana(s)|07886d10-cadc-4e2e-a618-dcbb1aac132b
+10.12.2024 22:56:11.302856 Buyer 10: Wants to buy 8 banana(s) from trader at localhost:5557 with request ID 911939f7-3b71-48f2-8cf7-68dbe917049f
+10.12.2024 22:56:11.304281 Buyer 10: Connected to trader at localhost:5557
+10.12.2024 22:56:11.304649 Trader 2: Received from ('127.0.0.1', 52460): buy|banana|8|911939f7-3b71-48f2-8cf7-68dbe917049f
+10.12.2024 22:56:11.304897 Warehouse: DatabaseServer received: buy|banana|8|911939f7-3b71-48f2-8cf7-68dbe917049f from ('127.0.0.1', 52316)
+10.12.2024 22:56:11.306901 Buyer 10: Buy complete for request 911939f7-3b71-48f2-8cf7-68dbe917049f (via localhost:5557): OK|Shipped 8 banana(s)|911939f7-3b71-48f2-8cf7-68dbe917049f
+10.12.2024 22:56:11.678287 Seller 1: Accrued 10 apple(s) to sell to trader at localhost:5556 with request ID f9163247-fc7b-48f6-8b0f-96681ccc26bc
+10.12.2024 22:56:11.679826 Seller 1: Connected to trader at localhost:5556
+10.12.2024 22:56:11.680151 Trader 1: Received from ('127.0.0.1', 52461): sell|apple|10|f9163247-fc7b-48f6-8b0f-96681ccc26bc
+10.12.2024 22:56:11.680398 Warehouse: DatabaseServer received: sell|apple|10|f9163247-fc7b-48f6-8b0f-96681ccc26bc from ('127.0.0.1', 52315)
+10.12.2024 22:56:11.681555 Seller 1: Sell complete for request f9163247-fc7b-48f6-8b0f-96681ccc26bc (via localhost:5556): OK|Stocked 10 apple(s)|f9163247-fc7b-48f6-8b0f-96681ccc26bc
+10.12.2024 22:56:11.738028 Buyer 1: Wants to buy 4 banana(s) from trader at localhost:5556 with request ID d1a3bc4c-37c9-495d-a58f-9e0f4c879177
+10.12.2024 22:56:11.739240 Buyer 1: Connected to trader at localhost:5556
+10.12.2024 22:56:11.739457 Trader 1: Received from ('127.0.0.1', 52462): buy|banana|4|d1a3bc4c-37c9-495d-a58f-9e0f4c879177
+10.12.2024 22:56:11.739635 Warehouse: DatabaseServer received: buy|banana|4|d1a3bc4c-37c9-495d-a58f-9e0f4c879177 from ('127.0.0.1', 52315)
+10.12.2024 22:56:11.740827 Buyer 1: Buy complete for request d1a3bc4c-37c9-495d-a58f-9e0f4c879177 (via localhost:5556): OK|Shipped 4 banana(s)|d1a3bc4c-37c9-495d-a58f-9e0f4c879177
+10.12.2024 22:56:12.178176 Seller 2: Accrued 10 orange(s) to sell to trader at localhost:5556 with request ID 4d6a885d-262a-48d6-830a-4bb9774b92e6
+10.12.2024 22:56:12.179837 Seller 2: Connected to trader at localhost:5556
+10.12.2024 22:56:12.180200 Trader 1: Received from ('127.0.0.1', 52463): sell|orange|10|4d6a885d-262a-48d6-830a-4bb9774b92e6
+10.12.2024 22:56:12.180410 Warehouse: DatabaseServer received: sell|orange|10|4d6a885d-262a-48d6-830a-4bb9774b92e6 from ('127.0.0.1', 52315)
+10.12.2024 22:56:12.181558 Seller 2: Sell complete for request 4d6a885d-262a-48d6-830a-4bb9774b92e6 (via localhost:5556): OK|Stocked 10 orange(s)|4d6a885d-262a-48d6-830a-4bb9774b92e6
+10.12.2024 22:56:12.232953 Buyer 2: Wants to buy 2 orange(s) from trader at localhost:5556 with request ID 02007ee0-eebb-421c-bd3c-5ea47750e8f7
+10.12.2024 22:56:12.233920 Buyer 2: Connected to trader at localhost:5556
+10.12.2024 22:56:12.234082 Trader 1: Received from ('127.0.0.1', 52464): buy|orange|2|02007ee0-eebb-421c-bd3c-5ea47750e8f7
+10.12.2024 22:56:12.234222 Warehouse: DatabaseServer received: buy|orange|2|02007ee0-eebb-421c-bd3c-5ea47750e8f7 from ('127.0.0.1', 52315)
+10.12.2024 22:56:12.235620 Buyer 2: Buy complete for request 02007ee0-eebb-421c-bd3c-5ea47750e8f7 (via localhost:5556): OK|Shipped 2 orange(s)|02007ee0-eebb-421c-bd3c-5ea47750e8f7
+10.12.2024 22:56:12.686278 Seller 3: Accrued 10 apple(s) to sell to trader at localhost:5557 with request ID 8d446eca-f271-4742-89ea-c27dd8902fcf
+10.12.2024 22:56:12.687574 Seller 3: Connected to trader at localhost:5557
+10.12.2024 22:56:12.687821 Trader 2: Received from ('127.0.0.1', 52465): sell|apple|10|8d446eca-f271-4742-89ea-c27dd8902fcf
+10.12.2024 22:56:12.688031 Warehouse: DatabaseServer received: sell|apple|10|8d446eca-f271-4742-89ea-c27dd8902fcf from ('127.0.0.1', 52316)
+10.12.2024 22:56:12.688928 Seller 3: Sell complete for request 8d446eca-f271-4742-89ea-c27dd8902fcf (via localhost:5557): OK|Stocked 10 apple(s)|8d446eca-f271-4742-89ea-c27dd8902fcf
+10.12.2024 22:56:12.749097 Buyer 3: Wants to buy 7 orange(s) from trader at localhost:5556 with request ID e3ae6aa3-22a8-4381-b4ac-eda489a71867
+10.12.2024 22:56:12.749820 Buyer 3: Connected to trader at localhost:5556
+10.12.2024 22:56:12.750004 Trader 1: Received from ('127.0.0.1', 52466): buy|orange|7|e3ae6aa3-22a8-4381-b4ac-eda489a71867
+10.12.2024 22:56:12.750192 Warehouse: DatabaseServer received: buy|orange|7|e3ae6aa3-22a8-4381-b4ac-eda489a71867 from ('127.0.0.1', 52315)
+10.12.2024 22:56:12.751249 Buyer 3: Buy complete for request e3ae6aa3-22a8-4381-b4ac-eda489a71867 (via localhost:5556): OK|Shipped 7 orange(s)|e3ae6aa3-22a8-4381-b4ac-eda489a71867
+10.12.2024 22:56:13.188926 Seller 4: Accrued 10 orange(s) to sell to trader at localhost:5556 with request ID 71096f4b-88f1-4206-9aca-7d31409803fc
+10.12.2024 22:56:13.190549 Seller 4: Connected to trader at localhost:5556
+10.12.2024 22:56:13.190886 Trader 1: Received from ('127.0.0.1', 52467): sell|orange|10|71096f4b-88f1-4206-9aca-7d31409803fc
+10.12.2024 22:56:13.191175 Warehouse: DatabaseServer received: sell|orange|10|71096f4b-88f1-4206-9aca-7d31409803fc from ('127.0.0.1', 52315)
+10.12.2024 22:56:13.192393 Seller 4: Sell complete for request 71096f4b-88f1-4206-9aca-7d31409803fc (via localhost:5556): OK|Stocked 10 orange(s)|71096f4b-88f1-4206-9aca-7d31409803fc
+10.12.2024 22:56:13.262976 Buyer 4: Wants to buy 2 orange(s) from trader at localhost:5557 with request ID d4758421-3a8c-43e4-bed0-b486f9b0f3cd
+10.12.2024 22:56:13.264068 Buyer 4: Connected to trader at localhost:5557
+10.12.2024 22:56:13.264352 Trader 2: Received from ('127.0.0.1', 52468): buy|orange|2|d4758421-3a8c-43e4-bed0-b486f9b0f3cd
+10.12.2024 22:56:13.264548 Warehouse: DatabaseServer received: buy|orange|2|d4758421-3a8c-43e4-bed0-b486f9b0f3cd from ('127.0.0.1', 52316)
+10.12.2024 22:56:13.266233 Buyer 4: Buy complete for request d4758421-3a8c-43e4-bed0-b486f9b0f3cd (via localhost:5557): OK|Shipped 2 orange(s)|d4758421-3a8c-43e4-bed0-b486f9b0f3cd
+10.12.2024 22:56:13.711475 Seller 5: Accrued 10 banana(s) to sell to trader at localhost:5557 with request ID d882901f-f68c-4879-a445-57d723918cd2
+10.12.2024 22:56:13.712741 Seller 5: Connected to trader at localhost:5557
+10.12.2024 22:56:13.713013 Trader 2: Received from ('127.0.0.1', 52469): sell|banana|10|d882901f-f68c-4879-a445-57d723918cd2
+10.12.2024 22:56:13.713207 Warehouse: DatabaseServer received: sell|banana|10|d882901f-f68c-4879-a445-57d723918cd2 from ('127.0.0.1', 52316)
+10.12.2024 22:56:13.714378 Seller 5: Sell complete for request d882901f-f68c-4879-a445-57d723918cd2 (via localhost:5557): OK|Stocked 10 banana(s)|d882901f-f68c-4879-a445-57d723918cd2
+10.12.2024 22:56:13.774085 Buyer 5: Wants to buy 2 orange(s) from trader at localhost:5557 with request ID cb67fb38-3389-4df3-8fea-445a0c125b5a
+10.12.2024 22:56:13.775024 Buyer 5: Connected to trader at localhost:5557
+10.12.2024 22:56:13.775190 Trader 2: Received from ('127.0.0.1', 52470): buy|orange|2|cb67fb38-3389-4df3-8fea-445a0c125b5a
+10.12.2024 22:56:13.775337 Warehouse: DatabaseServer received: buy|orange|2|cb67fb38-3389-4df3-8fea-445a0c125b5a from ('127.0.0.1', 52316)
+10.12.2024 22:56:13.776466 Buyer 5: Buy complete for request cb67fb38-3389-4df3-8fea-445a0c125b5a (via localhost:5557): OK|Shipped 2 orange(s)|cb67fb38-3389-4df3-8fea-445a0c125b5a
+10.12.2024 22:56:14.219878 Seller 6: Accrued 10 apple(s) to sell to trader at localhost:5557 with request ID 56bed619-ca2c-4dfd-ac03-484ec8f6f81c
+10.12.2024 22:56:14.221357 Seller 6: Connected to trader at localhost:5557
+10.12.2024 22:56:14.221693 Trader 2: Received from ('127.0.0.1', 52471): sell|apple|10|56bed619-ca2c-4dfd-ac03-484ec8f6f81c
+10.12.2024 22:56:14.221959 Warehouse: DatabaseServer received: sell|apple|10|56bed619-ca2c-4dfd-ac03-484ec8f6f81c from ('127.0.0.1', 52316)
+10.12.2024 22:56:14.223171 Seller 6: Sell complete for request 56bed619-ca2c-4dfd-ac03-484ec8f6f81c (via localhost:5557): OK|Stocked 10 apple(s)|56bed619-ca2c-4dfd-ac03-484ec8f6f81c
+10.12.2024 22:56:14.274987 Buyer 6: Wants to buy 2 apple(s) from trader at localhost:5556 with request ID b70ad879-c5ec-4203-9b86-ee531a3d13c8
+10.12.2024 22:56:14.275868 Buyer 6: Connected to trader at localhost:5556
+10.12.2024 22:56:14.276035 Trader 1: Received from ('127.0.0.1', 52472): buy|apple|2|b70ad879-c5ec-4203-9b86-ee531a3d13c8
+10.12.2024 22:56:14.276182 Warehouse: DatabaseServer received: buy|apple|2|b70ad879-c5ec-4203-9b86-ee531a3d13c8 from ('127.0.0.1', 52315)
+10.12.2024 22:56:14.277079 Buyer 6: Buy complete for request b70ad879-c5ec-4203-9b86-ee531a3d13c8 (via localhost:5556): OK|Shipped 2 apple(s)|b70ad879-c5ec-4203-9b86-ee531a3d13c8
+10.12.2024 22:56:14.732383 Seller 7: Accrued 10 apple(s) to sell to trader at localhost:5557 with request ID 288a9fed-b55c-42c8-9e00-42ca33294377
+10.12.2024 22:56:14.733648 Seller 7: Connected to trader at localhost:5557
+10.12.2024 22:56:14.733901 Trader 2: Received from ('127.0.0.1', 52473): sell|apple|10|288a9fed-b55c-42c8-9e00-42ca33294377
+10.12.2024 22:56:14.734075 Warehouse: DatabaseServer received: sell|apple|10|288a9fed-b55c-42c8-9e00-42ca33294377 from ('127.0.0.1', 52316)
+10.12.2024 22:56:14.735140 Seller 7: Sell complete for request 288a9fed-b55c-42c8-9e00-42ca33294377 (via localhost:5557): OK|Stocked 10 apple(s)|288a9fed-b55c-42c8-9e00-42ca33294377
+10.12.2024 22:56:14.790985 Buyer 7: Wants to buy 1 banana(s) from trader at localhost:5557 with request ID 123105e6-b95e-4317-bb15-7b69a2269989
+10.12.2024 22:56:14.791820 Buyer 7: Connected to trader at localhost:5557
+10.12.2024 22:56:14.791965 Trader 2: Received from ('127.0.0.1', 52474): buy|banana|1|123105e6-b95e-4317-bb15-7b69a2269989
+10.12.2024 22:56:14.792092 Warehouse: DatabaseServer received: buy|banana|1|123105e6-b95e-4317-bb15-7b69a2269989 from ('127.0.0.1', 52316)
+10.12.2024 22:56:14.793044 Buyer 7: Buy complete for request 123105e6-b95e-4317-bb15-7b69a2269989 (via localhost:5557): OK|Shipped 1 banana(s)|123105e6-b95e-4317-bb15-7b69a2269989
+10.12.2024 22:56:15.234025 Seller 8: Accrued 10 banana(s) to sell to trader at localhost:5557 with request ID 24ead7ec-3e07-48ec-9357-b45180acbaa5
+10.12.2024 22:56:15.235444 Seller 8: Connected to trader at localhost:5557
+10.12.2024 22:56:15.235655 Trader 2: Received from ('127.0.0.1', 52477): sell|banana|10|24ead7ec-3e07-48ec-9357-b45180acbaa5
+10.12.2024 22:56:15.235813 Warehouse: DatabaseServer received: sell|banana|10|24ead7ec-3e07-48ec-9357-b45180acbaa5 from ('127.0.0.1', 52316)
+10.12.2024 22:56:15.236894 Seller 8: Sell complete for request 24ead7ec-3e07-48ec-9357-b45180acbaa5 (via localhost:5557): OK|Stocked 10 banana(s)|24ead7ec-3e07-48ec-9357-b45180acbaa5
+10.12.2024 22:56:15.297024 Buyer 8: Wants to buy 5 orange(s) from trader at localhost:5556 with request ID a9ca08fb-b970-4544-8556-dc6b8124dd76
+10.12.2024 22:56:15.297797 Buyer 8: Connected to trader at localhost:5556
+10.12.2024 22:56:15.297972 Trader 1: Received from ('127.0.0.1', 52478): buy|orange|5|a9ca08fb-b970-4544-8556-dc6b8124dd76
+10.12.2024 22:56:15.298138 Warehouse: DatabaseServer received: buy|orange|5|a9ca08fb-b970-4544-8556-dc6b8124dd76 from ('127.0.0.1', 52315)
+10.12.2024 22:56:15.299109 Buyer 8: Buy complete for request a9ca08fb-b970-4544-8556-dc6b8124dd76 (via localhost:5556): OK|Shipped 5 orange(s)|a9ca08fb-b970-4544-8556-dc6b8124dd76
+10.12.2024 22:56:15.806485 Buyer 9: Wants to buy 10 apple(s) from trader at localhost:5556 with request ID f27277bf-5cb4-45b6-84e0-0b8976c33c90
+10.12.2024 22:56:15.807795 Buyer 9: Connected to trader at localhost:5556
+10.12.2024 22:56:15.808169 Trader 1: Received from ('127.0.0.1', 52479): buy|apple|10|f27277bf-5cb4-45b6-84e0-0b8976c33c90
+10.12.2024 22:56:15.808434 Warehouse: DatabaseServer received: buy|apple|10|f27277bf-5cb4-45b6-84e0-0b8976c33c90 from ('127.0.0.1', 52315)
+10.12.2024 22:56:15.810339 Buyer 9: Buy complete for request f27277bf-5cb4-45b6-84e0-0b8976c33c90 (via localhost:5556): OK|Shipped 10 apple(s)|f27277bf-5cb4-45b6-84e0-0b8976c33c90
+10.12.2024 22:56:16.308772 Buyer 10: Wants to buy 2 apple(s) from trader at localhost:5557 with request ID cc7a23bb-bf01-438d-b465-43fefb3cf580
+10.12.2024 22:56:16.310098 Buyer 10: Connected to trader at localhost:5557
+10.12.2024 22:56:16.310462 Trader 2: Received from ('127.0.0.1', 52480): buy|apple|2|cc7a23bb-bf01-438d-b465-43fefb3cf580
+10.12.2024 22:56:16.310706 Warehouse: DatabaseServer received: buy|apple|2|cc7a23bb-bf01-438d-b465-43fefb3cf580 from ('127.0.0.1', 52316)
+10.12.2024 22:56:16.312657 Buyer 10: Buy complete for request cc7a23bb-bf01-438d-b465-43fefb3cf580 (via localhost:5557): OK|Shipped 2 apple(s)|cc7a23bb-bf01-438d-b465-43fefb3cf580
+10.12.2024 22:56:16.686379 Seller 1: Accrued 10 orange(s) to sell to trader at localhost:5557 with request ID 5996c6f1-f336-4ae8-af8a-d52df3dc4b09
+10.12.2024 22:56:16.687760 Seller 1: Connected to trader at localhost:5557
+10.12.2024 22:56:16.688251 Trader 2: Received from ('127.0.0.1', 52481): sell|orange|10|5996c6f1-f336-4ae8-af8a-d52df3dc4b09
+10.12.2024 22:56:16.688555 Warehouse: DatabaseServer received: sell|orange|10|5996c6f1-f336-4ae8-af8a-d52df3dc4b09 from ('127.0.0.1', 52316)
+10.12.2024 22:56:16.690004 Seller 1: Sell complete for request 5996c6f1-f336-4ae8-af8a-d52df3dc4b09 (via localhost:5557): OK|Stocked 10 orange(s)|5996c6f1-f336-4ae8-af8a-d52df3dc4b09
+10.12.2024 22:56:16.746048 Buyer 1: Wants to buy 3 orange(s) from trader at localhost:5557 with request ID f524fbe0-24e8-44a6-8dfc-0e4d7793ac8c
+10.12.2024 22:56:16.747171 Buyer 1: Connected to trader at localhost:5557
+10.12.2024 22:56:16.747311 Trader 2: Received from ('127.0.0.1', 52482): buy|orange|3|f524fbe0-24e8-44a6-8dfc-0e4d7793ac8c
+10.12.2024 22:56:16.747411 Warehouse: DatabaseServer received: buy|orange|3|f524fbe0-24e8-44a6-8dfc-0e4d7793ac8c from ('127.0.0.1', 52316)
+10.12.2024 22:56:16.748232 Buyer 1: Buy complete for request f524fbe0-24e8-44a6-8dfc-0e4d7793ac8c (via localhost:5557): OK|Shipped 3 orange(s)|f524fbe0-24e8-44a6-8dfc-0e4d7793ac8c
+10.12.2024 22:56:17.186039 Seller 2: Accrued 10 apple(s) to sell to trader at localhost:5556 with request ID 9f9314eb-e1b0-4496-a423-34ef4ce1c80f
+10.12.2024 22:56:17.187654 Seller 2: Connected to trader at localhost:5556
+10.12.2024 22:56:17.187946 Trader 1: Received from ('127.0.0.1', 52483): sell|apple|10|9f9314eb-e1b0-4496-a423-34ef4ce1c80f
+10.12.2024 22:56:17.188147 Warehouse: DatabaseServer received: sell|apple|10|9f9314eb-e1b0-4496-a423-34ef4ce1c80f from ('127.0.0.1', 52315)
+10.12.2024 22:56:17.189464 Seller 2: Sell complete for request 9f9314eb-e1b0-4496-a423-34ef4ce1c80f (via localhost:5556): OK|Stocked 10 apple(s)|9f9314eb-e1b0-4496-a423-34ef4ce1c80f
+10.12.2024 22:56:17.240740 Buyer 2: Wants to buy 10 banana(s) from trader at localhost:5557 with request ID aed970fd-b0a8-4b85-9cbe-efa3df4849e1
+10.12.2024 22:56:17.241525 Buyer 2: Connected to trader at localhost:5557
+10.12.2024 22:56:17.241742 Trader 2: Received from ('127.0.0.1', 52484): buy|banana|10|aed970fd-b0a8-4b85-9cbe-efa3df4849e1
+10.12.2024 22:56:17.241902 Warehouse: DatabaseServer received: buy|banana|10|aed970fd-b0a8-4b85-9cbe-efa3df4849e1 from ('127.0.0.1', 52316)
+10.12.2024 22:56:17.242799 Buyer 2: Buy complete for request aed970fd-b0a8-4b85-9cbe-efa3df4849e1 (via localhost:5557): OK|Shipped 10 banana(s)|aed970fd-b0a8-4b85-9cbe-efa3df4849e1
+10.12.2024 22:56:17.690416 Seller 3: Accrued 10 orange(s) to sell to trader at localhost:5557 with request ID 751142ff-18e2-4284-a199-008a6c21ab42
+10.12.2024 22:56:17.691627 Seller 3: Connected to trader at localhost:5557
+10.12.2024 22:56:17.691909 Trader 2: Received from ('127.0.0.1', 52485): sell|orange|10|751142ff-18e2-4284-a199-008a6c21ab42
+10.12.2024 22:56:17.692119 Warehouse: DatabaseServer received: sell|orange|10|751142ff-18e2-4284-a199-008a6c21ab42 from ('127.0.0.1', 52316)
+10.12.2024 22:56:17.693301 Seller 3: Sell complete for request 751142ff-18e2-4284-a199-008a6c21ab42 (via localhost:5557): OK|Stocked 10 orange(s)|751142ff-18e2-4284-a199-008a6c21ab42
+10.12.2024 22:56:17.756428 Buyer 3: Wants to buy 6 apple(s) from trader at localhost:5557 with request ID 03f0b85a-c32a-4a38-abd1-d512958c9e07
+10.12.2024 22:56:17.757468 Buyer 3: Connected to trader at localhost:5557
+10.12.2024 22:56:17.757703 Trader 2: Received from ('127.0.0.1', 52486): buy|apple|6|03f0b85a-c32a-4a38-abd1-d512958c9e07
+10.12.2024 22:56:17.757868 Warehouse: DatabaseServer received: buy|apple|6|03f0b85a-c32a-4a38-abd1-d512958c9e07 from ('127.0.0.1', 52316)
+10.12.2024 22:56:17.759060 Buyer 3: Buy complete for request 03f0b85a-c32a-4a38-abd1-d512958c9e07 (via localhost:5557): OK|Shipped 6 apple(s)|03f0b85a-c32a-4a38-abd1-d512958c9e07
+10.12.2024 22:56:18.195598 Seller 4: Accrued 10 orange(s) to sell to trader at localhost:5557 with request ID f5edd7b0-e15c-47b2-b1b5-e3a6dc6a9bb5
+10.12.2024 22:56:18.196286 Seller 4: Connected to trader at localhost:5557
+10.12.2024 22:56:18.196468 Trader 2: Received from ('127.0.0.1', 52487): sell|orange|10|f5edd7b0-e15c-47b2-b1b5-e3a6dc6a9bb5
+10.12.2024 22:56:18.196606 Warehouse: DatabaseServer received: sell|orange|10|f5edd7b0-e15c-47b2-b1b5-e3a6dc6a9bb5 from ('127.0.0.1', 52316)
+10.12.2024 22:56:18.197416 Seller 4: Sell complete for request f5edd7b0-e15c-47b2-b1b5-e3a6dc6a9bb5 (via localhost:5557): OK|Stocked 10 orange(s)|f5edd7b0-e15c-47b2-b1b5-e3a6dc6a9bb5
+10.12.2024 22:56:18.271471 Buyer 4: Wants to buy 10 apple(s) from trader at localhost:5556 with request ID 9e754dec-c2ff-4edd-b1fe-c006cc16b4d3
+10.12.2024 22:56:18.272617 Buyer 4: Connected to trader at localhost:5556
+10.12.2024 22:56:18.272898 Trader 1: Received from ('127.0.0.1', 52488): buy|apple|10|9e754dec-c2ff-4edd-b1fe-c006cc16b4d3
+10.12.2024 22:56:18.273112 Warehouse: DatabaseServer received: buy|apple|10|9e754dec-c2ff-4edd-b1fe-c006cc16b4d3 from ('127.0.0.1', 52315)
+10.12.2024 22:56:18.274667 Buyer 4: Buy complete for request 9e754dec-c2ff-4edd-b1fe-c006cc16b4d3 (via localhost:5556): OK|Shipped 10 apple(s)|9e754dec-c2ff-4edd-b1fe-c006cc16b4d3
+10.12.2024 22:56:18.717600 Seller 5: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID 05ffefaa-886e-4e12-9b28-b94b1b8446be
+10.12.2024 22:56:18.718907 Seller 5: Connected to trader at localhost:5556
+10.12.2024 22:56:18.719234 Trader 1: Received from ('127.0.0.1', 52489): sell|banana|10|05ffefaa-886e-4e12-9b28-b94b1b8446be
+10.12.2024 22:56:18.719487 Warehouse: DatabaseServer received: sell|banana|10|05ffefaa-886e-4e12-9b28-b94b1b8446be from ('127.0.0.1', 52315)
+10.12.2024 22:56:18.721232 Seller 5: Sell complete for request 05ffefaa-886e-4e12-9b28-b94b1b8446be (via localhost:5556): OK|Stocked 10 banana(s)|05ffefaa-886e-4e12-9b28-b94b1b8446be
+10.12.2024 22:56:18.777787 Buyer 5: Wants to buy 3 orange(s) from trader at localhost:5556 with request ID 73c78655-6e67-4997-83ba-3e7aaf01e3d0
+10.12.2024 22:56:18.778437 Buyer 5: Connected to trader at localhost:5556
+10.12.2024 22:56:18.778599 Trader 1: Received from ('127.0.0.1', 52490): buy|orange|3|73c78655-6e67-4997-83ba-3e7aaf01e3d0
+10.12.2024 22:56:18.778723 Warehouse: DatabaseServer received: buy|orange|3|73c78655-6e67-4997-83ba-3e7aaf01e3d0 from ('127.0.0.1', 52315)
+10.12.2024 22:56:18.779561 Buyer 5: Buy complete for request 73c78655-6e67-4997-83ba-3e7aaf01e3d0 (via localhost:5556): OK|Shipped 3 orange(s)|73c78655-6e67-4997-83ba-3e7aaf01e3d0
+10.12.2024 22:56:19.224222 Seller 6: Accrued 10 orange(s) to sell to trader at localhost:5557 with request ID c9cc1025-b597-4a18-8eca-19653dee99cc
+10.12.2024 22:56:19.224961 Seller 6: Connected to trader at localhost:5557
+10.12.2024 22:56:19.225142 Trader 2: Received from ('127.0.0.1', 52491): sell|orange|10|c9cc1025-b597-4a18-8eca-19653dee99cc
+10.12.2024 22:56:19.225247 Warehouse: DatabaseServer received: sell|orange|10|c9cc1025-b597-4a18-8eca-19653dee99cc from ('127.0.0.1', 52316)
+10.12.2024 22:56:19.225870 Seller 6: Sell complete for request c9cc1025-b597-4a18-8eca-19653dee99cc (via localhost:5557): OK|Stocked 10 orange(s)|c9cc1025-b597-4a18-8eca-19653dee99cc
+10.12.2024 22:56:19.280016 Buyer 6: Wants to buy 3 banana(s) from trader at localhost:5556 with request ID fe624e62-8b5d-489d-a21b-cdf5e42be672
+10.12.2024 22:56:19.281406 Buyer 6: Connected to trader at localhost:5556
+10.12.2024 22:56:19.281569 Trader 1: Received from ('127.0.0.1', 52492): buy|banana|3|fe624e62-8b5d-489d-a21b-cdf5e42be672
+10.12.2024 22:56:19.281721 Warehouse: DatabaseServer received: buy|banana|3|fe624e62-8b5d-489d-a21b-cdf5e42be672 from ('127.0.0.1', 52315)
+10.12.2024 22:56:19.282577 Buyer 6: Buy complete for request fe624e62-8b5d-489d-a21b-cdf5e42be672 (via localhost:5556): OK|Shipped 3 banana(s)|fe624e62-8b5d-489d-a21b-cdf5e42be672
+10.12.2024 22:56:19.740270 Seller 7: Accrued 10 apple(s) to sell to trader at localhost:5557 with request ID 408911ec-26b0-4a0b-8167-12121f7cd617
+10.12.2024 22:56:19.741003 Seller 7: Connected to trader at localhost:5557
+10.12.2024 22:56:19.741157 Trader 2: Received from ('127.0.0.1', 52495): sell|apple|10|408911ec-26b0-4a0b-8167-12121f7cd617
+10.12.2024 22:56:19.741287 Warehouse: DatabaseServer received: sell|apple|10|408911ec-26b0-4a0b-8167-12121f7cd617 from ('127.0.0.1', 52316)
+10.12.2024 22:56:19.742079 Seller 7: Sell complete for request 408911ec-26b0-4a0b-8167-12121f7cd617 (via localhost:5557): OK|Stocked 10 apple(s)|408911ec-26b0-4a0b-8167-12121f7cd617
+10.12.2024 22:56:19.798162 Buyer 7: Wants to buy 2 banana(s) from trader at localhost:5557 with request ID b5c96724-0275-4e0a-aece-a58bfe9403f2
+10.12.2024 22:56:19.799092 Buyer 7: Connected to trader at localhost:5557
+10.12.2024 22:56:19.799243 Trader 2: Received from ('127.0.0.1', 52496): buy|banana|2|b5c96724-0275-4e0a-aece-a58bfe9403f2
+10.12.2024 22:56:19.799372 Warehouse: DatabaseServer received: buy|banana|2|b5c96724-0275-4e0a-aece-a58bfe9403f2 from ('127.0.0.1', 52316)
+10.12.2024 22:56:19.800296 Buyer 7: Buy complete for request b5c96724-0275-4e0a-aece-a58bfe9403f2 (via localhost:5557): OK|Shipped 2 banana(s)|b5c96724-0275-4e0a-aece-a58bfe9403f2
+10.12.2024 22:56:20.240980 Seller 8: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID 4ae3e125-6756-425e-8e97-5c18bea5bd2c
+10.12.2024 22:56:20.242530 Seller 8: Connected to trader at localhost:5556
+10.12.2024 22:56:20.242878 Trader 1: Received from ('127.0.0.1', 52497): sell|banana|10|4ae3e125-6756-425e-8e97-5c18bea5bd2c
+10.12.2024 22:56:20.242996 Warehouse: DatabaseServer received: sell|banana|10|4ae3e125-6756-425e-8e97-5c18bea5bd2c from ('127.0.0.1', 52315)
+10.12.2024 22:56:20.243646 Seller 8: Sell complete for request 4ae3e125-6756-425e-8e97-5c18bea5bd2c (via localhost:5556): OK|Stocked 10 banana(s)|4ae3e125-6756-425e-8e97-5c18bea5bd2c
+10.12.2024 22:56:20.304235 Buyer 8: Wants to buy 8 orange(s) from trader at localhost:5556 with request ID 1464b24b-3f4a-497b-a47b-3b06ce9d7bed
+10.12.2024 22:56:20.305118 Buyer 8: Connected to trader at localhost:5556
+10.12.2024 22:56:20.305318 Trader 1: Received from ('127.0.0.1', 52498): buy|orange|8|1464b24b-3f4a-497b-a47b-3b06ce9d7bed
+10.12.2024 22:56:20.305484 Warehouse: DatabaseServer received: buy|orange|8|1464b24b-3f4a-497b-a47b-3b06ce9d7bed from ('127.0.0.1', 52315)
+10.12.2024 22:56:20.306603 Buyer 8: Buy complete for request 1464b24b-3f4a-497b-a47b-3b06ce9d7bed (via localhost:5556): OK|Shipped 8 orange(s)|1464b24b-3f4a-497b-a47b-3b06ce9d7bed
+10.12.2024 22:56:20.814847 Buyer 9: Wants to buy 5 orange(s) from trader at localhost:5556 with request ID a5cf062a-366e-4ea2-a856-3271fef2419d
+10.12.2024 22:56:20.816255 Buyer 9: Connected to trader at localhost:5556
+10.12.2024 22:56:20.816616 Trader 1: Received from ('127.0.0.1', 52499): buy|orange|5|a5cf062a-366e-4ea2-a856-3271fef2419d
+10.12.2024 22:56:20.816911 Warehouse: DatabaseServer received: buy|orange|5|a5cf062a-366e-4ea2-a856-3271fef2419d from ('127.0.0.1', 52315)
+10.12.2024 22:56:20.818922 Buyer 9: Buy complete for request a5cf062a-366e-4ea2-a856-3271fef2419d (via localhost:5556): OK|Shipped 5 orange(s)|a5cf062a-366e-4ea2-a856-3271fef2419d
+10.12.2024 22:56:21.317910 Buyer 10: Wants to buy 2 apple(s) from trader at localhost:5556 with request ID 30255443-4880-413f-9671-e93da247afae
+10.12.2024 22:56:21.319427 Buyer 10: Connected to trader at localhost:5556
+10.12.2024 22:56:21.319750 Trader 1: Received from ('127.0.0.1', 52500): buy|apple|2|30255443-4880-413f-9671-e93da247afae
+10.12.2024 22:56:21.320011 Warehouse: DatabaseServer received: buy|apple|2|30255443-4880-413f-9671-e93da247afae from ('127.0.0.1', 52315)
+10.12.2024 22:56:21.322009 Buyer 10: Buy complete for request 30255443-4880-413f-9671-e93da247afae (via localhost:5556): OK|Shipped 2 apple(s)|30255443-4880-413f-9671-e93da247afae
+10.12.2024 22:56:21.692474 Seller 1: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID 3d045af5-3d44-4fb6-ae5d-e33989e1c7b1
+10.12.2024 22:56:21.693858 Seller 1: Connected to trader at localhost:5556
+10.12.2024 22:56:21.694217 Trader 1: Received from ('127.0.0.1', 52501): sell|banana|10|3d045af5-3d44-4fb6-ae5d-e33989e1c7b1
+10.12.2024 22:56:21.694475 Warehouse: DatabaseServer received: sell|banana|10|3d045af5-3d44-4fb6-ae5d-e33989e1c7b1 from ('127.0.0.1', 52315)
+10.12.2024 22:56:21.696130 Seller 1: Sell complete for request 3d045af5-3d44-4fb6-ae5d-e33989e1c7b1 (via localhost:5556): OK|Stocked 10 banana(s)|3d045af5-3d44-4fb6-ae5d-e33989e1c7b1
+10.12.2024 22:56:21.750600 Buyer 1: Wants to buy 1 banana(s) from trader at localhost:5557 with request ID 8045ed12-3356-43e2-842f-af1af2b2755e
+10.12.2024 22:56:21.751468 Buyer 1: Connected to trader at localhost:5557
+10.12.2024 22:56:21.751610 Trader 2: Received from ('127.0.0.1', 52502): buy|banana|1|8045ed12-3356-43e2-842f-af1af2b2755e
+10.12.2024 22:56:21.751753 Warehouse: DatabaseServer received: buy|banana|1|8045ed12-3356-43e2-842f-af1af2b2755e from ('127.0.0.1', 52316)
+10.12.2024 22:56:21.752681 Buyer 1: Buy complete for request 8045ed12-3356-43e2-842f-af1af2b2755e (via localhost:5557): OK|Shipped 1 banana(s)|8045ed12-3356-43e2-842f-af1af2b2755e
+10.12.2024 22:56:22.193552 Seller 2: Accrued 10 banana(s) to sell to trader at localhost:5557 with request ID 4342a5cd-426f-488d-b266-d5f1ec11245d
+10.12.2024 22:56:22.194853 Seller 2: Connected to trader at localhost:5557
+10.12.2024 22:56:22.195194 Trader 2: Received from ('127.0.0.1', 52503): sell|banana|10|4342a5cd-426f-488d-b266-d5f1ec11245d
+10.12.2024 22:56:22.195412 Warehouse: DatabaseServer received: sell|banana|10|4342a5cd-426f-488d-b266-d5f1ec11245d from ('127.0.0.1', 52316)
+10.12.2024 22:56:22.196607 Seller 2: Sell complete for request 4342a5cd-426f-488d-b266-d5f1ec11245d (via localhost:5557): OK|Stocked 10 banana(s)|4342a5cd-426f-488d-b266-d5f1ec11245d
+10.12.2024 22:56:22.247960 Buyer 2: Wants to buy 4 orange(s) from trader at localhost:5556 with request ID dee039a4-9d5a-4a84-9670-cfb6e18aaf9d
+10.12.2024 22:56:22.248988 Buyer 2: Connected to trader at localhost:5556
+10.12.2024 22:56:22.249139 Trader 1: Received from ('127.0.0.1', 52504): buy|orange|4|dee039a4-9d5a-4a84-9670-cfb6e18aaf9d
+10.12.2024 22:56:22.249271 Warehouse: DatabaseServer received: buy|orange|4|dee039a4-9d5a-4a84-9670-cfb6e18aaf9d from ('127.0.0.1', 52315)
+10.12.2024 22:56:22.250109 Buyer 2: Buy complete for request dee039a4-9d5a-4a84-9670-cfb6e18aaf9d (via localhost:5556): OK|Shipped 4 orange(s)|dee039a4-9d5a-4a84-9670-cfb6e18aaf9d
+10.12.2024 22:56:22.697502 Seller 3: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID 3c6428f2-08a8-4198-b6b6-0f1af6c43254
+10.12.2024 22:56:22.698865 Seller 3: Connected to trader at localhost:5556
+10.12.2024 22:56:22.699188 Trader 1: Received from ('127.0.0.1', 52505): sell|banana|10|3c6428f2-08a8-4198-b6b6-0f1af6c43254
+10.12.2024 22:56:22.699453 Warehouse: DatabaseServer received: sell|banana|10|3c6428f2-08a8-4198-b6b6-0f1af6c43254 from ('127.0.0.1', 52315)
+10.12.2024 22:56:22.700784 Seller 3: Sell complete for request 3c6428f2-08a8-4198-b6b6-0f1af6c43254 (via localhost:5556): OK|Stocked 10 banana(s)|3c6428f2-08a8-4198-b6b6-0f1af6c43254
+10.12.2024 22:56:22.764267 Buyer 3: Wants to buy 2 apple(s) from trader at localhost:5557 with request ID 7b376656-8da1-4c78-ad59-273c26bf9d82
+10.12.2024 22:56:22.765385 Buyer 3: Connected to trader at localhost:5557
+10.12.2024 22:56:22.765669 Trader 2: Received from ('127.0.0.1', 52506): buy|apple|2|7b376656-8da1-4c78-ad59-273c26bf9d82
+10.12.2024 22:56:22.765860 Warehouse: DatabaseServer received: buy|apple|2|7b376656-8da1-4c78-ad59-273c26bf9d82 from ('127.0.0.1', 52316)
+10.12.2024 22:56:22.767271 Buyer 3: Buy complete for request 7b376656-8da1-4c78-ad59-273c26bf9d82 (via localhost:5557): OK|Shipped 2 apple(s)|7b376656-8da1-4c78-ad59-273c26bf9d82
+10.12.2024 22:56:23.201933 Seller 4: Accrued 10 apple(s) to sell to trader at localhost:5556 with request ID 0840f57d-164e-41de-89aa-823dc5a5b1e0
+10.12.2024 22:56:23.203395 Seller 4: Connected to trader at localhost:5556
+10.12.2024 22:56:23.203763 Trader 1: Received from ('127.0.0.1', 52507): sell|apple|10|0840f57d-164e-41de-89aa-823dc5a5b1e0
+10.12.2024 22:56:23.204016 Warehouse: DatabaseServer received: sell|apple|10|0840f57d-164e-41de-89aa-823dc5a5b1e0 from ('127.0.0.1', 52315)
+10.12.2024 22:56:23.205198 Seller 4: Sell complete for request 0840f57d-164e-41de-89aa-823dc5a5b1e0 (via localhost:5556): OK|Stocked 10 apple(s)|0840f57d-164e-41de-89aa-823dc5a5b1e0
+10.12.2024 22:56:23.278841 Buyer 4: Wants to buy 8 banana(s) from trader at localhost:5557 with request ID 24749967-9bf5-48ce-9b4c-e39529ab0f13
+10.12.2024 22:56:23.279956 Buyer 4: Connected to trader at localhost:5557
+10.12.2024 22:56:23.280223 Trader 2: Received from ('127.0.0.1', 52508): buy|banana|8|24749967-9bf5-48ce-9b4c-e39529ab0f13
+10.12.2024 22:56:23.280410 Warehouse: DatabaseServer received: buy|banana|8|24749967-9bf5-48ce-9b4c-e39529ab0f13 from ('127.0.0.1', 52316)
+10.12.2024 22:56:23.281916 Buyer 4: Buy complete for request 24749967-9bf5-48ce-9b4c-e39529ab0f13 (via localhost:5557): OK|Shipped 8 banana(s)|24749967-9bf5-48ce-9b4c-e39529ab0f13
+10.12.2024 22:56:23.726448 Seller 5: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID 59a5dfc0-4ce5-4994-b7e9-c8eb94f75633
+10.12.2024 22:56:23.727768 Seller 5: Connected to trader at localhost:5556
+10.12.2024 22:56:23.728087 Trader 1: Received from ('127.0.0.1', 52509): sell|banana|10|59a5dfc0-4ce5-4994-b7e9-c8eb94f75633
+10.12.2024 22:56:23.728331 Warehouse: DatabaseServer received: sell|banana|10|59a5dfc0-4ce5-4994-b7e9-c8eb94f75633 from ('127.0.0.1', 52315)
+10.12.2024 22:56:23.729723 Seller 5: Sell complete for request 59a5dfc0-4ce5-4994-b7e9-c8eb94f75633 (via localhost:5556): OK|Stocked 10 banana(s)|59a5dfc0-4ce5-4994-b7e9-c8eb94f75633
+10.12.2024 22:56:23.784656 Buyer 5: Wants to buy 7 orange(s) from trader at localhost:5557 with request ID a645fc2c-f8fa-4291-8233-7255b9644e41
+10.12.2024 22:56:23.785633 Buyer 5: Connected to trader at localhost:5557
+10.12.2024 22:56:23.785794 Trader 2: Received from ('127.0.0.1', 52510): buy|orange|7|a645fc2c-f8fa-4291-8233-7255b9644e41
+10.12.2024 22:56:23.785940 Warehouse: DatabaseServer received: buy|orange|7|a645fc2c-f8fa-4291-8233-7255b9644e41 from ('127.0.0.1', 52316)
+10.12.2024 22:56:23.786865 Buyer 5: Buy complete for request a645fc2c-f8fa-4291-8233-7255b9644e41 (via localhost:5557): OK|Shipped 7 orange(s)|a645fc2c-f8fa-4291-8233-7255b9644e41
+10.12.2024 22:56:24.226870 Seller 6: Accrued 10 banana(s) to sell to trader at localhost:5557 with request ID 9284d0c1-fa39-40a7-bdc0-23323f951c06
+10.12.2024 22:56:24.228192 Seller 6: Connected to trader at localhost:5557
+10.12.2024 22:56:24.228588 Trader 2: Received from ('127.0.0.1', 52511): sell|banana|10|9284d0c1-fa39-40a7-bdc0-23323f951c06
+10.12.2024 22:56:24.228869 Warehouse: DatabaseServer received: sell|banana|10|9284d0c1-fa39-40a7-bdc0-23323f951c06 from ('127.0.0.1', 52316)
+10.12.2024 22:56:24.230083 Seller 6: Sell complete for request 9284d0c1-fa39-40a7-bdc0-23323f951c06 (via localhost:5557): OK|Stocked 10 banana(s)|9284d0c1-fa39-40a7-bdc0-23323f951c06
+10.12.2024 22:56:24.287660 Buyer 6: Wants to buy 9 apple(s) from trader at localhost:5557 with request ID e2b61906-9eab-4fbd-8b27-35a5e0c9f732
+10.12.2024 22:56:24.288468 Buyer 6: Connected to trader at localhost:5557
+10.12.2024 22:56:24.288632 Trader 2: Received from ('127.0.0.1', 52512): buy|apple|9|e2b61906-9eab-4fbd-8b27-35a5e0c9f732
+10.12.2024 22:56:24.288784 Warehouse: DatabaseServer received: buy|apple|9|e2b61906-9eab-4fbd-8b27-35a5e0c9f732 from ('127.0.0.1', 52316)
+10.12.2024 22:56:24.289866 Buyer 6: Buy complete for request e2b61906-9eab-4fbd-8b27-35a5e0c9f732 (via localhost:5557): OK|Shipped 9 apple(s)|e2b61906-9eab-4fbd-8b27-35a5e0c9f732
+10.12.2024 22:56:24.747269 Seller 7: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID b16b7429-5cf5-4890-97dd-e3e2c92eaae5
+10.12.2024 22:56:24.748580 Seller 7: Connected to trader at localhost:5556
+10.12.2024 22:56:24.748911 Trader 1: Received from ('127.0.0.1', 52513): sell|banana|10|b16b7429-5cf5-4890-97dd-e3e2c92eaae5
+10.12.2024 22:56:24.749364 Warehouse: DatabaseServer received: sell|banana|10|b16b7429-5cf5-4890-97dd-e3e2c92eaae5 from ('127.0.0.1', 52315)
+10.12.2024 22:56:24.751278 Seller 7: Sell complete for request b16b7429-5cf5-4890-97dd-e3e2c92eaae5 (via localhost:5556): OK|Stocked 10 banana(s)|b16b7429-5cf5-4890-97dd-e3e2c92eaae5
+10.12.2024 22:56:24.805388 Buyer 7: Wants to buy 4 banana(s) from trader at localhost:5556 with request ID c31c3dfb-6c64-4fab-ba74-62dee46f7329
+10.12.2024 22:56:24.806069 Buyer 7: Connected to trader at localhost:5556
+10.12.2024 22:56:24.806228 Trader 1: Received from ('127.0.0.1', 52514): buy|banana|4|c31c3dfb-6c64-4fab-ba74-62dee46f7329
+10.12.2024 22:56:24.806360 Warehouse: DatabaseServer received: buy|banana|4|c31c3dfb-6c64-4fab-ba74-62dee46f7329 from ('127.0.0.1', 52315)
+10.12.2024 22:56:24.807296 Buyer 7: Buy complete for request c31c3dfb-6c64-4fab-ba74-62dee46f7329 (via localhost:5556): OK|Shipped 4 banana(s)|c31c3dfb-6c64-4fab-ba74-62dee46f7329
+10.12.2024 22:56:25.246004 Seller 8: Accrued 10 banana(s) to sell to trader at localhost:5557 with request ID 5b4db48e-52fd-4529-bac5-4d1fe9ff72c6
+10.12.2024 22:56:25.247305 Seller 8: Connected to trader at localhost:5557
+10.12.2024 22:56:25.247635 Trader 2: Received from ('127.0.0.1', 52515): sell|banana|10|5b4db48e-52fd-4529-bac5-4d1fe9ff72c6
+10.12.2024 22:56:25.247913 Warehouse: DatabaseServer received: sell|banana|10|5b4db48e-52fd-4529-bac5-4d1fe9ff72c6 from ('127.0.0.1', 52316)
+10.12.2024 22:56:25.249167 Seller 8: Sell complete for request 5b4db48e-52fd-4529-bac5-4d1fe9ff72c6 (via localhost:5557): OK|Stocked 10 banana(s)|5b4db48e-52fd-4529-bac5-4d1fe9ff72c6
+10.12.2024 22:56:25.311738 Buyer 8: Wants to buy 3 apple(s) from trader at localhost:5556 with request ID 236b85a6-ad43-4fd2-aa4b-562f4fc8c707
+10.12.2024 22:56:25.312878 Buyer 8: Connected to trader at localhost:5556
+10.12.2024 22:56:25.313083 Trader 1: Received from ('127.0.0.1', 52516): buy|apple|3|236b85a6-ad43-4fd2-aa4b-562f4fc8c707
+10.12.2024 22:56:25.313238 Warehouse: DatabaseServer received: buy|apple|3|236b85a6-ad43-4fd2-aa4b-562f4fc8c707 from ('127.0.0.1', 52315)
+10.12.2024 22:56:25.314267 Buyer 8: Buy complete for request 236b85a6-ad43-4fd2-aa4b-562f4fc8c707 (via localhost:5556): OK|Shipped 3 apple(s)|236b85a6-ad43-4fd2-aa4b-562f4fc8c707
+10.12.2024 22:56:25.824183 Buyer 9: Wants to buy 7 apple(s) from trader at localhost:5557 with request ID ac4c7737-d457-4503-8f13-7dc19e2e6bc6
+10.12.2024 22:56:25.825424 Buyer 9: Connected to trader at localhost:5557
+10.12.2024 22:56:25.825782 Trader 2: Received from ('127.0.0.1', 52517): buy|apple|7|ac4c7737-d457-4503-8f13-7dc19e2e6bc6
+10.12.2024 22:56:25.826015 Warehouse: DatabaseServer received: buy|apple|7|ac4c7737-d457-4503-8f13-7dc19e2e6bc6 from ('127.0.0.1', 52316)
+10.12.2024 22:56:25.827409 Buyer 9: Buy complete for request ac4c7737-d457-4503-8f13-7dc19e2e6bc6 (via localhost:5557): OK|Shipped 7 apple(s)|ac4c7737-d457-4503-8f13-7dc19e2e6bc6
+10.12.2024 22:56:26.323944 Buyer 10: Wants to buy 8 orange(s) from trader at localhost:5557 with request ID e6c32197-e924-4170-84bc-b6071b1c4b07
+10.12.2024 22:56:26.325038 Buyer 10: Connected to trader at localhost:5557
+10.12.2024 22:56:26.325327 Trader 2: Received from ('127.0.0.1', 52520): buy|orange|8|e6c32197-e924-4170-84bc-b6071b1c4b07
+10.12.2024 22:56:26.325540 Warehouse: DatabaseServer received: buy|orange|8|e6c32197-e924-4170-84bc-b6071b1c4b07 from ('127.0.0.1', 52316)
+10.12.2024 22:56:26.327056 Buyer 10: Buy complete for request e6c32197-e924-4170-84bc-b6071b1c4b07 (via localhost:5557): OK|Shipped 8 orange(s)|e6c32197-e924-4170-84bc-b6071b1c4b07
+10.12.2024 22:56:26.699870 Seller 1: Accrued 10 orange(s) to sell to trader at localhost:5556 with request ID 9572e54d-2d83-47a2-a0f1-1f4d108e6c8e
+10.12.2024 22:56:26.701180 Seller 1: Connected to trader at localhost:5556
+10.12.2024 22:56:26.701571 Trader 1: Received from ('127.0.0.1', 52521): sell|orange|10|9572e54d-2d83-47a2-a0f1-1f4d108e6c8e
+10.12.2024 22:56:26.701830 Warehouse: DatabaseServer received: sell|orange|10|9572e54d-2d83-47a2-a0f1-1f4d108e6c8e from ('127.0.0.1', 52315)
+10.12.2024 22:56:26.703864 Seller 1: Sell complete for request 9572e54d-2d83-47a2-a0f1-1f4d108e6c8e (via localhost:5556): OK|Stocked 10 orange(s)|9572e54d-2d83-47a2-a0f1-1f4d108e6c8e
+10.12.2024 22:56:26.757778 Buyer 1: Wants to buy 7 orange(s) from trader at localhost:5557 with request ID 03c4cf5f-691c-40fb-aee3-a4c76a838684
+10.12.2024 22:56:26.758746 Buyer 1: Connected to trader at localhost:5557
+10.12.2024 22:56:26.758927 Trader 2: Received from ('127.0.0.1', 52522): buy|orange|7|03c4cf5f-691c-40fb-aee3-a4c76a838684
+10.12.2024 22:56:26.759083 Warehouse: DatabaseServer received: buy|orange|7|03c4cf5f-691c-40fb-aee3-a4c76a838684 from ('127.0.0.1', 52316)
+10.12.2024 22:56:26.760788 Buyer 1: Buy complete for request 03c4cf5f-691c-40fb-aee3-a4c76a838684 (via localhost:5557): OK|Shipped 7 orange(s)|03c4cf5f-691c-40fb-aee3-a4c76a838684
+10.12.2024 22:56:27.198476 Seller 2: Accrued 10 apple(s) to sell to trader at localhost:5557 with request ID b9ad8a49-9e26-423d-9b7a-be93a5d1dee7
+10.12.2024 22:56:27.199507 Seller 2: Connected to trader at localhost:5557
+10.12.2024 22:56:27.199778 Trader 2: Received from ('127.0.0.1', 52523): sell|apple|10|b9ad8a49-9e26-423d-9b7a-be93a5d1dee7
+10.12.2024 22:56:27.199974 Warehouse: DatabaseServer received: sell|apple|10|b9ad8a49-9e26-423d-9b7a-be93a5d1dee7 from ('127.0.0.1', 52316)
+10.12.2024 22:56:27.201038 Seller 2: Sell complete for request b9ad8a49-9e26-423d-9b7a-be93a5d1dee7 (via localhost:5557): OK|Stocked 10 apple(s)|b9ad8a49-9e26-423d-9b7a-be93a5d1dee7
+10.12.2024 22:56:27.255292 Buyer 2: Wants to buy 1 apple(s) from trader at localhost:5556 with request ID 55faa56c-b6aa-4bfa-9254-2ae05c01408e
+10.12.2024 22:56:27.256305 Buyer 2: Connected to trader at localhost:5556
+10.12.2024 22:56:27.256464 Trader 1: Received from ('127.0.0.1', 52524): buy|apple|1|55faa56c-b6aa-4bfa-9254-2ae05c01408e
+10.12.2024 22:56:27.256622 Warehouse: DatabaseServer received: buy|apple|1|55faa56c-b6aa-4bfa-9254-2ae05c01408e from ('127.0.0.1', 52315)
+10.12.2024 22:56:27.258276 Buyer 2: Buy complete for request 55faa56c-b6aa-4bfa-9254-2ae05c01408e (via localhost:5556): OK|Shipped 1 apple(s)|55faa56c-b6aa-4bfa-9254-2ae05c01408e
+10.12.2024 22:56:27.702147 Seller 3: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID 8def150f-0cc2-4a0e-ba06-4a143d75b890
+10.12.2024 22:56:27.703540 Seller 3: Connected to trader at localhost:5556
+10.12.2024 22:56:27.703898 Trader 1: Received from ('127.0.0.1', 52525): sell|banana|10|8def150f-0cc2-4a0e-ba06-4a143d75b890
+10.12.2024 22:56:27.704164 Warehouse: DatabaseServer received: sell|banana|10|8def150f-0cc2-4a0e-ba06-4a143d75b890 from ('127.0.0.1', 52315)
+10.12.2024 22:56:27.705449 Seller 3: Sell complete for request 8def150f-0cc2-4a0e-ba06-4a143d75b890 (via localhost:5556): OK|Stocked 10 banana(s)|8def150f-0cc2-4a0e-ba06-4a143d75b890
+10.12.2024 22:56:27.772043 Buyer 3: Wants to buy 4 banana(s) from trader at localhost:5557 with request ID 41382c34-880c-4ef3-bca7-b81e209c23e1
+10.12.2024 22:56:27.773142 Buyer 3: Connected to trader at localhost:5557
+10.12.2024 22:56:27.773317 Trader 2: Received from ('127.0.0.1', 52526): buy|banana|4|41382c34-880c-4ef3-bca7-b81e209c23e1
+10.12.2024 22:56:27.773472 Warehouse: DatabaseServer received: buy|banana|4|41382c34-880c-4ef3-bca7-b81e209c23e1 from ('127.0.0.1', 52316)
+10.12.2024 22:56:27.774356 Buyer 3: Buy complete for request 41382c34-880c-4ef3-bca7-b81e209c23e1 (via localhost:5557): OK|Shipped 4 banana(s)|41382c34-880c-4ef3-bca7-b81e209c23e1
+10.12.2024 22:56:28.209271 Seller 4: Accrued 10 orange(s) to sell to trader at localhost:5556 with request ID d729c427-d388-4486-bade-4cef3eabb236
+10.12.2024 22:56:28.210576 Seller 4: Connected to trader at localhost:5556
+10.12.2024 22:56:28.210983 Trader 1: Received from ('127.0.0.1', 52527): sell|orange|10|d729c427-d388-4486-bade-4cef3eabb236
+10.12.2024 22:56:28.211251 Warehouse: DatabaseServer received: sell|orange|10|d729c427-d388-4486-bade-4cef3eabb236 from ('127.0.0.1', 52315)
+10.12.2024 22:56:28.212577 Seller 4: Sell complete for request d729c427-d388-4486-bade-4cef3eabb236 (via localhost:5556): OK|Stocked 10 orange(s)|d729c427-d388-4486-bade-4cef3eabb236
+10.12.2024 22:56:28.285927 Buyer 4: Wants to buy 7 banana(s) from trader at localhost:5557 with request ID 0da5ad57-8e4b-4f9b-a297-1c746b82b6c3
+10.12.2024 22:56:28.287072 Buyer 4: Connected to trader at localhost:5557
+10.12.2024 22:56:28.287367 Trader 2: Received from ('127.0.0.1', 52528): buy|banana|7|0da5ad57-8e4b-4f9b-a297-1c746b82b6c3
+10.12.2024 22:56:28.287544 Warehouse: DatabaseServer received: buy|banana|7|0da5ad57-8e4b-4f9b-a297-1c746b82b6c3 from ('127.0.0.1', 52316)
+10.12.2024 22:56:28.288937 Buyer 4: Buy complete for request 0da5ad57-8e4b-4f9b-a297-1c746b82b6c3 (via localhost:5557): OK|Shipped 7 banana(s)|0da5ad57-8e4b-4f9b-a297-1c746b82b6c3
+10.12.2024 22:56:28.734952 Seller 5: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID df5aebd1-216e-43b8-ac68-23a802605064
+10.12.2024 22:56:28.736290 Seller 5: Connected to trader at localhost:5556
+10.12.2024 22:56:28.736679 Trader 1: Received from ('127.0.0.1', 52529): sell|banana|10|df5aebd1-216e-43b8-ac68-23a802605064
+10.12.2024 22:56:28.736932 Warehouse: DatabaseServer received: sell|banana|10|df5aebd1-216e-43b8-ac68-23a802605064 from ('127.0.0.1', 52315)
+10.12.2024 22:56:28.738356 Seller 5: Sell complete for request df5aebd1-216e-43b8-ac68-23a802605064 (via localhost:5556): OK|Stocked 10 banana(s)|df5aebd1-216e-43b8-ac68-23a802605064
+10.12.2024 22:56:28.791948 Buyer 5: Wants to buy 2 orange(s) from trader at localhost:5557 with request ID d94d2bba-5ed5-4910-8679-0a8db7a34a5e
+10.12.2024 22:56:28.792805 Buyer 5: Connected to trader at localhost:5557
+10.12.2024 22:56:28.792939 Trader 2: Received from ('127.0.0.1', 52530): buy|orange|2|d94d2bba-5ed5-4910-8679-0a8db7a34a5e
+10.12.2024 22:56:28.793067 Warehouse: DatabaseServer received: buy|orange|2|d94d2bba-5ed5-4910-8679-0a8db7a34a5e from ('127.0.0.1', 52316)
+10.12.2024 22:56:28.794062 Buyer 5: Buy complete for request d94d2bba-5ed5-4910-8679-0a8db7a34a5e (via localhost:5557): OK|Shipped 2 orange(s)|d94d2bba-5ed5-4910-8679-0a8db7a34a5e
+10.12.2024 22:56:29.235257 Seller 6: Accrued 10 apple(s) to sell to trader at localhost:5556 with request ID 0732336d-5a73-48a6-8a4d-418e3f08e787
+10.12.2024 22:56:29.236321 Seller 6: Connected to trader at localhost:5556
+10.12.2024 22:56:29.236529 Trader 1: Received from ('127.0.0.1', 52531): sell|apple|10|0732336d-5a73-48a6-8a4d-418e3f08e787
+10.12.2024 22:56:29.236711 Warehouse: DatabaseServer received: sell|apple|10|0732336d-5a73-48a6-8a4d-418e3f08e787 from ('127.0.0.1', 52315)
+10.12.2024 22:56:29.237710 Seller 6: Sell complete for request 0732336d-5a73-48a6-8a4d-418e3f08e787 (via localhost:5556): OK|Stocked 10 apple(s)|0732336d-5a73-48a6-8a4d-418e3f08e787
+10.12.2024 22:56:29.291565 Buyer 6: Wants to buy 1 apple(s) from trader at localhost:5556 with request ID 1bea2a33-c28a-44f8-9b3c-f69fcafbb762
+10.12.2024 22:56:29.292467 Buyer 6: Connected to trader at localhost:5556
+10.12.2024 22:56:29.292612 Trader 1: Received from ('127.0.0.1', 52532): buy|apple|1|1bea2a33-c28a-44f8-9b3c-f69fcafbb762
+10.12.2024 22:56:29.292749 Warehouse: DatabaseServer received: buy|apple|1|1bea2a33-c28a-44f8-9b3c-f69fcafbb762 from ('127.0.0.1', 52315)
+10.12.2024 22:56:29.293657 Buyer 6: Buy complete for request 1bea2a33-c28a-44f8-9b3c-f69fcafbb762 (via localhost:5556): OK|Shipped 1 apple(s)|1bea2a33-c28a-44f8-9b3c-f69fcafbb762
+10.12.2024 22:56:29.752430 Seller 7: Accrued 10 orange(s) to sell to trader at localhost:5556 with request ID c39f09a1-c6d2-4837-932a-a4f652858b55
+10.12.2024 22:56:29.753783 Seller 7: Connected to trader at localhost:5556
+10.12.2024 22:56:29.754131 Trader 1: Received from ('127.0.0.1', 52533): sell|orange|10|c39f09a1-c6d2-4837-932a-a4f652858b55
+10.12.2024 22:56:29.754384 Warehouse: DatabaseServer received: sell|orange|10|c39f09a1-c6d2-4837-932a-a4f652858b55 from ('127.0.0.1', 52315)
+10.12.2024 22:56:29.755572 Seller 7: Sell complete for request c39f09a1-c6d2-4837-932a-a4f652858b55 (via localhost:5556): OK|Stocked 10 orange(s)|c39f09a1-c6d2-4837-932a-a4f652858b55
+10.12.2024 22:56:29.812379 Buyer 7: Wants to buy 5 apple(s) from trader at localhost:5556 with request ID f3c6256a-200e-4cc3-a60e-146c701dc150
+10.12.2024 22:56:29.813359 Buyer 7: Connected to trader at localhost:5556
+10.12.2024 22:56:29.813515 Trader 1: Received from ('127.0.0.1', 52534): buy|apple|5|f3c6256a-200e-4cc3-a60e-146c701dc150
+10.12.2024 22:56:29.813656 Warehouse: DatabaseServer received: buy|apple|5|f3c6256a-200e-4cc3-a60e-146c701dc150 from ('127.0.0.1', 52315)
+10.12.2024 22:56:29.814621 Buyer 7: Buy complete for request f3c6256a-200e-4cc3-a60e-146c701dc150 (via localhost:5556): OK|Shipped 5 apple(s)|f3c6256a-200e-4cc3-a60e-146c701dc150
+10.12.2024 22:56:30.254395 Seller 8: Accrued 10 orange(s) to sell to trader at localhost:5556 with request ID e7afc380-3241-402a-9647-0df6645206ed
+10.12.2024 22:56:30.255771 Seller 8: Connected to trader at localhost:5556
+10.12.2024 22:56:30.256118 Trader 1: Received from ('127.0.0.1', 52535): sell|orange|10|e7afc380-3241-402a-9647-0df6645206ed
+10.12.2024 22:56:30.256380 Warehouse: DatabaseServer received: sell|orange|10|e7afc380-3241-402a-9647-0df6645206ed from ('127.0.0.1', 52315)
+10.12.2024 22:56:30.257448 Seller 8: Sell complete for request e7afc380-3241-402a-9647-0df6645206ed (via localhost:5556): OK|Stocked 10 orange(s)|e7afc380-3241-402a-9647-0df6645206ed
+10.12.2024 22:56:30.319343 Buyer 8: Wants to buy 4 apple(s) from trader at localhost:5556 with request ID 8c53d760-762d-4bd3-84b3-7e8521c2456f
+10.12.2024 22:56:30.320294 Buyer 8: Connected to trader at localhost:5556
+10.12.2024 22:56:30.320422 Trader 1: Received from ('127.0.0.1', 52536): buy|apple|4|8c53d760-762d-4bd3-84b3-7e8521c2456f
+10.12.2024 22:56:30.320568 Warehouse: DatabaseServer received: buy|apple|4|8c53d760-762d-4bd3-84b3-7e8521c2456f from ('127.0.0.1', 52315)
+10.12.2024 22:56:30.321536 Buyer 8: Buy complete for request 8c53d760-762d-4bd3-84b3-7e8521c2456f (via localhost:5556): OK|Shipped 4 apple(s)|8c53d760-762d-4bd3-84b3-7e8521c2456f
+10.12.2024 22:56:30.831367 Buyer 9: Wants to buy 2 orange(s) from trader at localhost:5557 with request ID 2a9a17e2-6e42-41fd-88fa-8cab15bdf960
+10.12.2024 22:56:30.832776 Buyer 9: Connected to trader at localhost:5557
+10.12.2024 22:56:30.833136 Trader 2: Received from ('127.0.0.1', 52539): buy|orange|2|2a9a17e2-6e42-41fd-88fa-8cab15bdf960
+10.12.2024 22:56:30.833343 Warehouse: DatabaseServer received: buy|orange|2|2a9a17e2-6e42-41fd-88fa-8cab15bdf960 from ('127.0.0.1', 52316)
+10.12.2024 22:56:30.834977 Buyer 9: Buy complete for request 2a9a17e2-6e42-41fd-88fa-8cab15bdf960 (via localhost:5557): OK|Shipped 2 orange(s)|2a9a17e2-6e42-41fd-88fa-8cab15bdf960
+10.12.2024 22:56:31.332304 Buyer 10: Wants to buy 1 banana(s) from trader at localhost:5557 with request ID 5e825736-043d-4415-a57a-3423223e0364
+10.12.2024 22:56:31.333337 Buyer 10: Connected to trader at localhost:5557
+10.12.2024 22:56:31.333583 Trader 2: Received from ('127.0.0.1', 52540): buy|banana|1|5e825736-043d-4415-a57a-3423223e0364
+10.12.2024 22:56:31.333765 Warehouse: DatabaseServer received: buy|banana|1|5e825736-043d-4415-a57a-3423223e0364 from ('127.0.0.1', 52316)
+10.12.2024 22:56:31.335295 Buyer 10: Buy complete for request 5e825736-043d-4415-a57a-3423223e0364 (via localhost:5557): OK|Shipped 1 banana(s)|5e825736-043d-4415-a57a-3423223e0364
+10.12.2024 22:56:31.709050 Seller 1: Accrued 10 orange(s) to sell to trader at localhost:5556 with request ID c3ad7a35-0cc4-4f3b-8ca7-7b0067ac37fc
+10.12.2024 22:56:31.710430 Seller 1: Connected to trader at localhost:5556
+10.12.2024 22:56:31.710820 Trader 1: Received from ('127.0.0.1', 52541): sell|orange|10|c3ad7a35-0cc4-4f3b-8ca7-7b0067ac37fc
+10.12.2024 22:56:31.711078 Warehouse: DatabaseServer received: sell|orange|10|c3ad7a35-0cc4-4f3b-8ca7-7b0067ac37fc from ('127.0.0.1', 52315)
+10.12.2024 22:56:31.713037 Seller 1: Sell complete for request c3ad7a35-0cc4-4f3b-8ca7-7b0067ac37fc (via localhost:5556): OK|Stocked 10 orange(s)|c3ad7a35-0cc4-4f3b-8ca7-7b0067ac37fc
+10.12.2024 22:56:31.765879 Buyer 1: Wants to buy 8 orange(s) from trader at localhost:5556 with request ID b60cf7ee-9df7-46d9-ae09-1a7bee21ba5b
+10.12.2024 22:56:31.766841 Buyer 1: Connected to trader at localhost:5556
+10.12.2024 22:56:31.766993 Trader 1: Received from ('127.0.0.1', 52542): buy|orange|8|b60cf7ee-9df7-46d9-ae09-1a7bee21ba5b
+10.12.2024 22:56:31.767117 Warehouse: DatabaseServer received: buy|orange|8|b60cf7ee-9df7-46d9-ae09-1a7bee21ba5b from ('127.0.0.1', 52315)
+10.12.2024 22:56:31.768214 Buyer 1: Buy complete for request b60cf7ee-9df7-46d9-ae09-1a7bee21ba5b (via localhost:5556): OK|Shipped 8 orange(s)|b60cf7ee-9df7-46d9-ae09-1a7bee21ba5b
+10.12.2024 22:56:32.205210 Seller 2: Accrued 10 banana(s) to sell to trader at localhost:5557 with request ID 5ccdfe33-9dce-4b15-b925-5726d6a38e8a
+10.12.2024 22:56:32.206591 Seller 2: Connected to trader at localhost:5557
+10.12.2024 22:56:32.206949 Trader 2: Received from ('127.0.0.1', 52543): sell|banana|10|5ccdfe33-9dce-4b15-b925-5726d6a38e8a
+10.12.2024 22:56:32.207198 Warehouse: DatabaseServer received: sell|banana|10|5ccdfe33-9dce-4b15-b925-5726d6a38e8a from ('127.0.0.1', 52316)
+10.12.2024 22:56:32.208480 Seller 2: Sell complete for request 5ccdfe33-9dce-4b15-b925-5726d6a38e8a (via localhost:5557): OK|Stocked 10 banana(s)|5ccdfe33-9dce-4b15-b925-5726d6a38e8a
+10.12.2024 22:56:32.263330 Buyer 2: Wants to buy 6 apple(s) from trader at localhost:5556 with request ID 06985ae3-b378-44e3-bce7-8a459a313ef1
+10.12.2024 22:56:32.264232 Buyer 2: Connected to trader at localhost:5556
+10.12.2024 22:56:32.264377 Trader 1: Received from ('127.0.0.1', 52544): buy|apple|6|06985ae3-b378-44e3-bce7-8a459a313ef1
+10.12.2024 22:56:32.264542 Warehouse: DatabaseServer received: buy|apple|6|06985ae3-b378-44e3-bce7-8a459a313ef1 from ('127.0.0.1', 52315)
+10.12.2024 22:56:32.265438 Buyer 2: Buy complete for request 06985ae3-b378-44e3-bce7-8a459a313ef1 (via localhost:5556): OK|Shipped 6 apple(s)|06985ae3-b378-44e3-bce7-8a459a313ef1
+10.12.2024 22:56:32.710627 Seller 3: Accrued 10 orange(s) to sell to trader at localhost:5557 with request ID 4c98091e-7f54-47c1-9c94-40f99fbd85cf
+10.12.2024 22:56:32.711894 Seller 3: Connected to trader at localhost:5557
+10.12.2024 22:56:32.712214 Trader 2: Received from ('127.0.0.1', 52545): sell|orange|10|4c98091e-7f54-47c1-9c94-40f99fbd85cf
+10.12.2024 22:56:32.712554 Warehouse: DatabaseServer received: sell|orange|10|4c98091e-7f54-47c1-9c94-40f99fbd85cf from ('127.0.0.1', 52316)
+10.12.2024 22:56:32.713892 Seller 3: Sell complete for request 4c98091e-7f54-47c1-9c94-40f99fbd85cf (via localhost:5557): OK|Stocked 10 orange(s)|4c98091e-7f54-47c1-9c94-40f99fbd85cf
+10.12.2024 22:56:32.779513 Buyer 3: Wants to buy 10 orange(s) from trader at localhost:5557 with request ID a7a34239-01f4-4c21-9819-0ef88bf40586
+10.12.2024 22:56:32.780492 Buyer 3: Connected to trader at localhost:5557
+10.12.2024 22:56:32.780786 Trader 2: Received from ('127.0.0.1', 52546): buy|orange|10|a7a34239-01f4-4c21-9819-0ef88bf40586
+10.12.2024 22:56:32.780959 Warehouse: DatabaseServer received: buy|orange|10|a7a34239-01f4-4c21-9819-0ef88bf40586 from ('127.0.0.1', 52316)
+10.12.2024 22:56:32.782151 Buyer 3: Buy complete for request a7a34239-01f4-4c21-9819-0ef88bf40586 (via localhost:5557): OK|Shipped 10 orange(s)|a7a34239-01f4-4c21-9819-0ef88bf40586
+10.12.2024 22:56:33.213832 Seller 4: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID 38cbcdc1-28f1-4763-b745-1b102bc40664
+10.12.2024 22:56:33.215166 Seller 4: Connected to trader at localhost:5556
+10.12.2024 22:56:33.215501 Trader 1: Received from ('127.0.0.1', 52547): sell|banana|10|38cbcdc1-28f1-4763-b745-1b102bc40664
+10.12.2024 22:56:33.215750 Warehouse: DatabaseServer received: sell|banana|10|38cbcdc1-28f1-4763-b745-1b102bc40664 from ('127.0.0.1', 52315)
+10.12.2024 22:56:33.217261 Seller 4: Sell complete for request 38cbcdc1-28f1-4763-b745-1b102bc40664 (via localhost:5556): OK|Stocked 10 banana(s)|38cbcdc1-28f1-4763-b745-1b102bc40664
+10.12.2024 22:56:33.290960 Buyer 4: Wants to buy 4 orange(s) from trader at localhost:5556 with request ID bf39e5f4-8b1d-4860-af26-1078949e513d
+10.12.2024 22:56:33.291741 Buyer 4: Connected to trader at localhost:5556
+10.12.2024 22:56:33.291936 Trader 1: Received from ('127.0.0.1', 52548): buy|orange|4|bf39e5f4-8b1d-4860-af26-1078949e513d
+10.12.2024 22:56:33.292060 Warehouse: DatabaseServer received: buy|orange|4|bf39e5f4-8b1d-4860-af26-1078949e513d from ('127.0.0.1', 52315)
+10.12.2024 22:56:33.293243 Buyer 4: Buy complete for request bf39e5f4-8b1d-4860-af26-1078949e513d (via localhost:5556): OK|Shipped 4 orange(s)|bf39e5f4-8b1d-4860-af26-1078949e513d
+10.12.2024 22:56:33.743074 Seller 5: Accrued 10 apple(s) to sell to trader at localhost:5556 with request ID 5fa7a27c-906a-4abb-af2a-0dce66188b0f
+10.12.2024 22:56:33.744394 Seller 5: Connected to trader at localhost:5556
+10.12.2024 22:56:33.744790 Trader 1: Received from ('127.0.0.1', 52549): sell|apple|10|5fa7a27c-906a-4abb-af2a-0dce66188b0f
+10.12.2024 22:56:33.745034 Warehouse: DatabaseServer received: sell|apple|10|5fa7a27c-906a-4abb-af2a-0dce66188b0f from ('127.0.0.1', 52315)
+10.12.2024 22:56:33.746300 Seller 5: Sell complete for request 5fa7a27c-906a-4abb-af2a-0dce66188b0f (via localhost:5556): OK|Stocked 10 apple(s)|5fa7a27c-906a-4abb-af2a-0dce66188b0f
+10.12.2024 22:56:33.812562 Buyer 5: Wants to buy 1 banana(s) from trader at localhost:5557 with request ID e3f141b1-b985-4e82-aad3-75bdd43548c1
+10.12.2024 22:56:33.814368 Buyer 5: Connected to trader at localhost:5557
+10.12.2024 22:56:33.814612 Trader 2: Received from ('127.0.0.1', 52550): buy|banana|1|e3f141b1-b985-4e82-aad3-75bdd43548c1
+10.12.2024 22:56:33.814757 Warehouse: DatabaseServer received: buy|banana|1|e3f141b1-b985-4e82-aad3-75bdd43548c1 from ('127.0.0.1', 52316)
+10.12.2024 22:56:33.816282 Buyer 5: Buy complete for request e3f141b1-b985-4e82-aad3-75bdd43548c1 (via localhost:5557): OK|Shipped 1 banana(s)|e3f141b1-b985-4e82-aad3-75bdd43548c1
+10.12.2024 22:56:34.240228 Seller 6: Accrued 10 orange(s) to sell to trader at localhost:5557 with request ID b1718fe4-8781-4517-864d-5c2343574940
+10.12.2024 22:56:34.241703 Seller 6: Connected to trader at localhost:5557
+10.12.2024 22:56:34.242068 Trader 2: Received from ('127.0.0.1', 52551): sell|orange|10|b1718fe4-8781-4517-864d-5c2343574940
+10.12.2024 22:56:34.242305 Warehouse: DatabaseServer received: sell|orange|10|b1718fe4-8781-4517-864d-5c2343574940 from ('127.0.0.1', 52316)
+10.12.2024 22:56:34.244692 Seller 6: Sell complete for request b1718fe4-8781-4517-864d-5c2343574940 (via localhost:5557): OK|Stocked 10 orange(s)|b1718fe4-8781-4517-864d-5c2343574940
+10.12.2024 22:56:34.299304 Buyer 6: Wants to buy 1 orange(s) from trader at localhost:5557 with request ID 4d0f1d5f-c5b4-4a8a-82f7-530a9636ca19
+10.12.2024 22:56:34.303507 Buyer 6: Connected to trader at localhost:5557
+10.12.2024 22:56:34.303672 Trader 2: Received from ('127.0.0.1', 52552): buy|orange|1|4d0f1d5f-c5b4-4a8a-82f7-530a9636ca19
+10.12.2024 22:56:34.303817 Warehouse: DatabaseServer received: buy|orange|1|4d0f1d5f-c5b4-4a8a-82f7-530a9636ca19 from ('127.0.0.1', 52316)
+10.12.2024 22:56:34.304899 Buyer 6: Buy complete for request 4d0f1d5f-c5b4-4a8a-82f7-530a9636ca19 (via localhost:5557): OK|Shipped 1 orange(s)|4d0f1d5f-c5b4-4a8a-82f7-530a9636ca19
+10.12.2024 22:56:34.758884 Seller 7: Accrued 10 apple(s) to sell to trader at localhost:5556 with request ID 20f7c957-ae99-439d-acba-2f8e4d0eba84
+10.12.2024 22:56:34.759846 Seller 7: Connected to trader at localhost:5556
+10.12.2024 22:56:34.760083 Trader 1: Received from ('127.0.0.1', 52553): sell|apple|10|20f7c957-ae99-439d-acba-2f8e4d0eba84
+10.12.2024 22:56:34.760260 Warehouse: DatabaseServer received: sell|apple|10|20f7c957-ae99-439d-acba-2f8e4d0eba84 from ('127.0.0.1', 52315)
+10.12.2024 22:56:34.761165 Seller 7: Sell complete for request 20f7c957-ae99-439d-acba-2f8e4d0eba84 (via localhost:5556): OK|Stocked 10 apple(s)|20f7c957-ae99-439d-acba-2f8e4d0eba84
+10.12.2024 22:56:34.822594 Buyer 7: Wants to buy 7 orange(s) from trader at localhost:5557 with request ID 87849c12-b54c-4383-ac6a-d56314d6c9f2
+10.12.2024 22:56:34.824647 Buyer 7: Connected to trader at localhost:5557
+10.12.2024 22:56:34.824839 Trader 2: Received from ('127.0.0.1', 52554): buy|orange|7|87849c12-b54c-4383-ac6a-d56314d6c9f2
+10.12.2024 22:56:34.824998 Warehouse: DatabaseServer received: buy|orange|7|87849c12-b54c-4383-ac6a-d56314d6c9f2 from ('127.0.0.1', 52316)
+10.12.2024 22:56:34.825909 Buyer 7: Buy complete for request 87849c12-b54c-4383-ac6a-d56314d6c9f2 (via localhost:5557): OK|Shipped 7 orange(s)|87849c12-b54c-4383-ac6a-d56314d6c9f2
+10.12.2024 22:56:35.259681 Seller 8: Accrued 10 apple(s) to sell to trader at localhost:5556 with request ID 005f6424-84ea-4c9a-8313-15880aec1308
+10.12.2024 22:56:35.261769 Seller 8: Connected to trader at localhost:5556
+10.12.2024 22:56:35.262007 Trader 1: Received from ('127.0.0.1', 52557): sell|apple|10|005f6424-84ea-4c9a-8313-15880aec1308
+10.12.2024 22:56:35.262207 Warehouse: DatabaseServer received: sell|apple|10|005f6424-84ea-4c9a-8313-15880aec1308 from ('127.0.0.1', 52315)
+10.12.2024 22:56:35.263424 Seller 8: Sell complete for request 005f6424-84ea-4c9a-8313-15880aec1308 (via localhost:5556): OK|Stocked 10 apple(s)|005f6424-84ea-4c9a-8313-15880aec1308
+10.12.2024 22:56:35.327300 Buyer 8: Wants to buy 3 banana(s) from trader at localhost:5556 with request ID 7feef153-07d5-40b4-8d29-b25c43c2b809
+10.12.2024 22:56:35.328393 Buyer 8: Connected to trader at localhost:5556
+10.12.2024 22:56:35.328667 Trader 1: Received from ('127.0.0.1', 52558): buy|banana|3|7feef153-07d5-40b4-8d29-b25c43c2b809
+10.12.2024 22:56:35.328812 Warehouse: DatabaseServer received: buy|banana|3|7feef153-07d5-40b4-8d29-b25c43c2b809 from ('127.0.0.1', 52315)
+10.12.2024 22:56:35.329868 Buyer 8: Buy complete for request 7feef153-07d5-40b4-8d29-b25c43c2b809 (via localhost:5556): OK|Shipped 3 banana(s)|7feef153-07d5-40b4-8d29-b25c43c2b809
+10.12.2024 22:56:35.841041 Buyer 9: Wants to buy 8 banana(s) from trader at localhost:5556 with request ID 59fb5061-0801-4b56-9169-b58ee56654e6
+10.12.2024 22:56:35.843935 Buyer 9: Connected to trader at localhost:5556
+10.12.2024 22:56:35.845487 Trader 1: Received from ('127.0.0.1', 52559): buy|banana|8|59fb5061-0801-4b56-9169-b58ee56654e6
+10.12.2024 22:56:35.845661 Warehouse: DatabaseServer received: buy|banana|8|59fb5061-0801-4b56-9169-b58ee56654e6 from ('127.0.0.1', 52315)
+10.12.2024 22:56:35.847111 Buyer 9: Buy complete for request 59fb5061-0801-4b56-9169-b58ee56654e6 (via localhost:5556): OK|Shipped 8 banana(s)|59fb5061-0801-4b56-9169-b58ee56654e6
+10.12.2024 22:56:36.336998 Buyer 10: Wants to buy 6 apple(s) from trader at localhost:5557 with request ID 02fa366c-d31b-4a02-ae8f-b339cbd06e3b
+10.12.2024 22:56:36.338813 Buyer 10: Connected to trader at localhost:5557
+10.12.2024 22:56:36.339083 Trader 2: Received from ('127.0.0.1', 52560): buy|apple|6|02fa366c-d31b-4a02-ae8f-b339cbd06e3b
+10.12.2024 22:56:36.339356 Warehouse: DatabaseServer received: buy|apple|6|02fa366c-d31b-4a02-ae8f-b339cbd06e3b from ('127.0.0.1', 52316)
+10.12.2024 22:56:36.340793 Buyer 10: Buy complete for request 02fa366c-d31b-4a02-ae8f-b339cbd06e3b (via localhost:5557): OK|Shipped 6 apple(s)|02fa366c-d31b-4a02-ae8f-b339cbd06e3b
+10.12.2024 22:56:36.716559 Seller 1: Accrued 10 apple(s) to sell to trader at localhost:5557 with request ID b97e3219-3961-4995-ae97-020b2f34eb5b
+10.12.2024 22:56:36.717946 Seller 1: Connected to trader at localhost:5557
+10.12.2024 22:56:36.718270 Trader 2: Received from ('127.0.0.1', 52561): sell|apple|10|b97e3219-3961-4995-ae97-020b2f34eb5b
+10.12.2024 22:56:36.718535 Warehouse: DatabaseServer received: sell|apple|10|b97e3219-3961-4995-ae97-020b2f34eb5b from ('127.0.0.1', 52316)
+10.12.2024 22:56:36.719987 Seller 1: Sell complete for request b97e3219-3961-4995-ae97-020b2f34eb5b (via localhost:5557): OK|Stocked 10 apple(s)|b97e3219-3961-4995-ae97-020b2f34eb5b
+10.12.2024 22:56:36.773329 Buyer 1: Wants to buy 6 apple(s) from trader at localhost:5556 with request ID 7bc4bf53-0918-4a16-8421-6b3340ce1b50
+10.12.2024 22:56:36.774210 Buyer 1: Connected to trader at localhost:5556
+10.12.2024 22:56:36.774405 Trader 1: Received from ('127.0.0.1', 52562): buy|apple|6|7bc4bf53-0918-4a16-8421-6b3340ce1b50
+10.12.2024 22:56:36.774571 Warehouse: DatabaseServer received: buy|apple|6|7bc4bf53-0918-4a16-8421-6b3340ce1b50 from ('127.0.0.1', 52315)
+10.12.2024 22:56:36.775719 Buyer 1: Buy complete for request 7bc4bf53-0918-4a16-8421-6b3340ce1b50 (via localhost:5556): OK|Shipped 6 apple(s)|7bc4bf53-0918-4a16-8421-6b3340ce1b50
+10.12.2024 22:56:37.211980 Seller 2: Accrued 10 banana(s) to sell to trader at localhost:5557 with request ID 79639316-4e37-4c4c-be1e-1d4aab47e851
+10.12.2024 22:56:37.213444 Seller 2: Connected to trader at localhost:5557
+10.12.2024 22:56:37.213744 Trader 2: Received from ('127.0.0.1', 52563): sell|banana|10|79639316-4e37-4c4c-be1e-1d4aab47e851
+10.12.2024 22:56:37.213955 Warehouse: DatabaseServer received: sell|banana|10|79639316-4e37-4c4c-be1e-1d4aab47e851 from ('127.0.0.1', 52316)
+10.12.2024 22:56:37.215117 Seller 2: Sell complete for request 79639316-4e37-4c4c-be1e-1d4aab47e851 (via localhost:5557): OK|Stocked 10 banana(s)|79639316-4e37-4c4c-be1e-1d4aab47e851
+10.12.2024 22:56:37.270529 Buyer 2: Wants to buy 8 orange(s) from trader at localhost:5556 with request ID b3f5c4c0-9b76-4dd1-a252-544b019880e6
+10.12.2024 22:56:37.271569 Buyer 2: Connected to trader at localhost:5556
+10.12.2024 22:56:37.271717 Trader 1: Received from ('127.0.0.1', 52564): buy|orange|8|b3f5c4c0-9b76-4dd1-a252-544b019880e6
+10.12.2024 22:56:37.271865 Warehouse: DatabaseServer received: buy|orange|8|b3f5c4c0-9b76-4dd1-a252-544b019880e6 from ('127.0.0.1', 52315)
+10.12.2024 22:56:37.272738 Buyer 2: Buy complete for request b3f5c4c0-9b76-4dd1-a252-544b019880e6 (via localhost:5556): OK|Shipped 8 orange(s)|b3f5c4c0-9b76-4dd1-a252-544b019880e6
+10.12.2024 22:56:37.718988 Seller 3: Accrued 10 apple(s) to sell to trader at localhost:5556 with request ID 5d9362da-7f53-45cf-8b5a-534e906917cb
+10.12.2024 22:56:37.720416 Seller 3: Connected to trader at localhost:5556
+10.12.2024 22:56:37.720739 Trader 1: Received from ('127.0.0.1', 52565): sell|apple|10|5d9362da-7f53-45cf-8b5a-534e906917cb
+10.12.2024 22:56:37.720994 Warehouse: DatabaseServer received: sell|apple|10|5d9362da-7f53-45cf-8b5a-534e906917cb from ('127.0.0.1', 52315)
+10.12.2024 22:56:37.722255 Seller 3: Sell complete for request 5d9362da-7f53-45cf-8b5a-534e906917cb (via localhost:5556): OK|Stocked 10 apple(s)|5d9362da-7f53-45cf-8b5a-534e906917cb
+10.12.2024 22:56:37.786991 Buyer 3: Wants to buy 1 banana(s) from trader at localhost:5557 with request ID f8882ecd-98f5-4963-b79d-65d410c5e693
+10.12.2024 22:56:37.787786 Buyer 3: Connected to trader at localhost:5557
+10.12.2024 22:56:37.787948 Trader 2: Received from ('127.0.0.1', 52566): buy|banana|1|f8882ecd-98f5-4963-b79d-65d410c5e693
+10.12.2024 22:56:37.788091 Warehouse: DatabaseServer received: buy|banana|1|f8882ecd-98f5-4963-b79d-65d410c5e693 from ('127.0.0.1', 52316)
+10.12.2024 22:56:37.789128 Buyer 3: Buy complete for request f8882ecd-98f5-4963-b79d-65d410c5e693 (via localhost:5557): OK|Shipped 1 banana(s)|f8882ecd-98f5-4963-b79d-65d410c5e693
+10.12.2024 22:56:38.222099 Seller 4: Accrued 10 orange(s) to sell to trader at localhost:5556 with request ID 3874d7fb-1f44-4b42-90c7-14ea09dd332a
+10.12.2024 22:56:38.223165 Seller 4: Connected to trader at localhost:5556
+10.12.2024 22:56:38.223449 Trader 1: Received from ('127.0.0.1', 52567): sell|orange|10|3874d7fb-1f44-4b42-90c7-14ea09dd332a
+10.12.2024 22:56:38.223651 Warehouse: DatabaseServer received: sell|orange|10|3874d7fb-1f44-4b42-90c7-14ea09dd332a from ('127.0.0.1', 52315)
+10.12.2024 22:56:38.224456 Seller 4: Sell complete for request 3874d7fb-1f44-4b42-90c7-14ea09dd332a (via localhost:5556): OK|Stocked 10 orange(s)|3874d7fb-1f44-4b42-90c7-14ea09dd332a
+10.12.2024 22:56:38.298473 Buyer 4: Wants to buy 8 apple(s) from trader at localhost:5556 with request ID 0f02ba01-089d-42fc-aa33-32fb3d5fa5a8
+10.12.2024 22:56:38.299771 Buyer 4: Connected to trader at localhost:5556
+10.12.2024 22:56:38.300013 Trader 1: Received from ('127.0.0.1', 52568): buy|apple|8|0f02ba01-089d-42fc-aa33-32fb3d5fa5a8
+10.12.2024 22:56:38.300192 Warehouse: DatabaseServer received: buy|apple|8|0f02ba01-089d-42fc-aa33-32fb3d5fa5a8 from ('127.0.0.1', 52315)
+10.12.2024 22:56:38.301622 Buyer 4: Buy complete for request 0f02ba01-089d-42fc-aa33-32fb3d5fa5a8 (via localhost:5556): OK|Shipped 8 apple(s)|0f02ba01-089d-42fc-aa33-32fb3d5fa5a8
+10.12.2024 22:56:38.750145 Seller 5: Accrued 10 orange(s) to sell to trader at localhost:5557 with request ID 6b50fe8d-4835-41b6-9e03-0cddab88a779
+10.12.2024 22:56:38.751224 Seller 5: Connected to trader at localhost:5557
+10.12.2024 22:56:38.751458 Trader 2: Received from ('127.0.0.1', 52569): sell|orange|10|6b50fe8d-4835-41b6-9e03-0cddab88a779
+10.12.2024 22:56:38.751658 Warehouse: DatabaseServer received: sell|orange|10|6b50fe8d-4835-41b6-9e03-0cddab88a779 from ('127.0.0.1', 52316)
+10.12.2024 22:56:38.752578 Seller 5: Sell complete for request 6b50fe8d-4835-41b6-9e03-0cddab88a779 (via localhost:5557): OK|Stocked 10 orange(s)|6b50fe8d-4835-41b6-9e03-0cddab88a779
+10.12.2024 22:56:38.821622 Buyer 5: Wants to buy 5 apple(s) from trader at localhost:5557 with request ID 3ff2ed98-dba2-4a8b-8ae2-90a100ee679a
+10.12.2024 22:56:38.822836 Buyer 5: Connected to trader at localhost:5557
+10.12.2024 22:56:38.823092 Trader 2: Received from ('127.0.0.1', 52570): buy|apple|5|3ff2ed98-dba2-4a8b-8ae2-90a100ee679a
+10.12.2024 22:56:38.823265 Warehouse: DatabaseServer received: buy|apple|5|3ff2ed98-dba2-4a8b-8ae2-90a100ee679a from ('127.0.0.1', 52316)
+10.12.2024 22:56:38.824697 Buyer 5: Buy complete for request 3ff2ed98-dba2-4a8b-8ae2-90a100ee679a (via localhost:5557): OK|Shipped 5 apple(s)|3ff2ed98-dba2-4a8b-8ae2-90a100ee679a
+10.12.2024 22:56:39.249941 Seller 6: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID 87eed906-585a-4424-a849-d7154f702852
+10.12.2024 22:56:39.251380 Seller 6: Connected to trader at localhost:5556
+10.12.2024 22:56:39.251974 Trader 1: Received from ('127.0.0.1', 52571): sell|banana|10|87eed906-585a-4424-a849-d7154f702852
+10.12.2024 22:56:39.252241 Warehouse: DatabaseServer received: sell|banana|10|87eed906-585a-4424-a849-d7154f702852 from ('127.0.0.1', 52315)
+10.12.2024 22:56:39.253493 Seller 6: Sell complete for request 87eed906-585a-4424-a849-d7154f702852 (via localhost:5556): OK|Stocked 10 banana(s)|87eed906-585a-4424-a849-d7154f702852
+10.12.2024 22:56:39.310080 Buyer 6: Wants to buy 6 banana(s) from trader at localhost:5556 with request ID 7fe23a79-151c-47c5-84dc-41113c965346
+10.12.2024 22:56:39.311054 Buyer 6: Connected to trader at localhost:5556
+10.12.2024 22:56:39.311241 Trader 1: Received from ('127.0.0.1', 52572): buy|banana|6|7fe23a79-151c-47c5-84dc-41113c965346
+10.12.2024 22:56:39.311454 Warehouse: DatabaseServer received: buy|banana|6|7fe23a79-151c-47c5-84dc-41113c965346 from ('127.0.0.1', 52315)
+10.12.2024 22:56:39.312532 Buyer 6: Buy complete for request 7fe23a79-151c-47c5-84dc-41113c965346 (via localhost:5556): OK|Shipped 6 banana(s)|7fe23a79-151c-47c5-84dc-41113c965346
+10.12.2024 22:56:39.766446 Seller 7: Accrued 10 banana(s) to sell to trader at localhost:5557 with request ID 18715b3b-b533-4008-a4e2-071bdebb4a60
+10.12.2024 22:56:39.767770 Seller 7: Connected to trader at localhost:5557
+10.12.2024 22:56:39.768089 Trader 2: Received from ('127.0.0.1', 52575): sell|banana|10|18715b3b-b533-4008-a4e2-071bdebb4a60
+10.12.2024 22:56:39.768453 Warehouse: DatabaseServer received: sell|banana|10|18715b3b-b533-4008-a4e2-071bdebb4a60 from ('127.0.0.1', 52316)
+10.12.2024 22:56:39.769727 Seller 7: Sell complete for request 18715b3b-b533-4008-a4e2-071bdebb4a60 (via localhost:5557): OK|Stocked 10 banana(s)|18715b3b-b533-4008-a4e2-071bdebb4a60
+10.12.2024 22:56:39.831077 Buyer 7: Wants to buy 3 orange(s) from trader at localhost:5556 with request ID 2a38c261-ebe4-4041-8c39-294ebe9bc9c8
+10.12.2024 22:56:39.832122 Buyer 7: Connected to trader at localhost:5556
+10.12.2024 22:56:39.832388 Trader 1: Received from ('127.0.0.1', 52576): buy|orange|3|2a38c261-ebe4-4041-8c39-294ebe9bc9c8
+10.12.2024 22:56:39.832574 Warehouse: DatabaseServer received: buy|orange|3|2a38c261-ebe4-4041-8c39-294ebe9bc9c8 from ('127.0.0.1', 52315)
+10.12.2024 22:56:39.833726 Buyer 7: Buy complete for request 2a38c261-ebe4-4041-8c39-294ebe9bc9c8 (via localhost:5556): OK|Shipped 3 orange(s)|2a38c261-ebe4-4041-8c39-294ebe9bc9c8
+10.12.2024 22:56:40.265412 Seller 8: Accrued 10 orange(s) to sell to trader at localhost:5557 with request ID c78bc8e2-899c-4953-b536-e3dcaef60a86
+10.12.2024 22:56:40.266883 Seller 8: Connected to trader at localhost:5557
+10.12.2024 22:56:40.267255 Trader 2: Received from ('127.0.0.1', 52577): sell|orange|10|c78bc8e2-899c-4953-b536-e3dcaef60a86
+10.12.2024 22:56:40.267485 Warehouse: DatabaseServer received: sell|orange|10|c78bc8e2-899c-4953-b536-e3dcaef60a86 from ('127.0.0.1', 52316)
+10.12.2024 22:56:40.268983 Seller 8: Sell complete for request c78bc8e2-899c-4953-b536-e3dcaef60a86 (via localhost:5557): OK|Stocked 10 orange(s)|c78bc8e2-899c-4953-b536-e3dcaef60a86
+10.12.2024 22:56:40.330962 Buyer 8: Wants to buy 1 banana(s) from trader at localhost:5557 with request ID e1bd52fe-722a-42da-91ab-7ccfc4dcc70d
+10.12.2024 22:56:40.332254 Buyer 8: Connected to trader at localhost:5557
+10.12.2024 22:56:40.332420 Trader 2: Received from ('127.0.0.1', 52578): buy|banana|1|e1bd52fe-722a-42da-91ab-7ccfc4dcc70d
+10.12.2024 22:56:40.332559 Warehouse: DatabaseServer received: buy|banana|1|e1bd52fe-722a-42da-91ab-7ccfc4dcc70d from ('127.0.0.1', 52316)
+10.12.2024 22:56:40.333595 Buyer 8: Buy complete for request e1bd52fe-722a-42da-91ab-7ccfc4dcc70d (via localhost:5557): OK|Shipped 1 banana(s)|e1bd52fe-722a-42da-91ab-7ccfc4dcc70d
+10.12.2024 22:56:40.852226 Buyer 9: Wants to buy 9 apple(s) from trader at localhost:5556 with request ID 91238416-4a83-4d5b-bd0c-bcd36a832348
+10.12.2024 22:56:40.853624 Buyer 9: Connected to trader at localhost:5556
+10.12.2024 22:56:40.853976 Trader 1: Received from ('127.0.0.1', 52579): buy|apple|9|91238416-4a83-4d5b-bd0c-bcd36a832348
+10.12.2024 22:56:40.854215 Warehouse: DatabaseServer received: buy|apple|9|91238416-4a83-4d5b-bd0c-bcd36a832348 from ('127.0.0.1', 52315)
+10.12.2024 22:56:40.856158 Buyer 9: Buy complete for request 91238416-4a83-4d5b-bd0c-bcd36a832348 (via localhost:5556): OK|Shipped 9 apple(s)|91238416-4a83-4d5b-bd0c-bcd36a832348
+10.12.2024 22:56:41.345511 Buyer 10: Wants to buy 8 orange(s) from trader at localhost:5556 with request ID 4b9a32ee-fca8-4c0f-9b77-39e1091b196f
+10.12.2024 22:56:41.346618 Buyer 10: Connected to trader at localhost:5556
+10.12.2024 22:56:41.347014 Trader 1: Received from ('127.0.0.1', 52580): buy|orange|8|4b9a32ee-fca8-4c0f-9b77-39e1091b196f
+10.12.2024 22:56:41.347293 Warehouse: DatabaseServer received: buy|orange|8|4b9a32ee-fca8-4c0f-9b77-39e1091b196f from ('127.0.0.1', 52315)
+10.12.2024 22:56:41.348886 Buyer 10: Buy complete for request 4b9a32ee-fca8-4c0f-9b77-39e1091b196f (via localhost:5556): OK|Shipped 8 orange(s)|4b9a32ee-fca8-4c0f-9b77-39e1091b196f
+10.12.2024 22:56:41.725442 Seller 1: Accrued 10 orange(s) to sell to trader at localhost:5557 with request ID 315c27a8-bac5-4d22-8a69-b1a45edee631
+10.12.2024 22:56:41.726743 Seller 1: Connected to trader at localhost:5557
+10.12.2024 22:56:41.727454 Trader 2: Received from ('127.0.0.1', 52581): sell|orange|10|315c27a8-bac5-4d22-8a69-b1a45edee631
+10.12.2024 22:56:41.727706 Warehouse: DatabaseServer received: sell|orange|10|315c27a8-bac5-4d22-8a69-b1a45edee631 from ('127.0.0.1', 52316)
+10.12.2024 22:56:41.728719 Seller 1: Sell complete for request 315c27a8-bac5-4d22-8a69-b1a45edee631 (via localhost:5557): OK|Stocked 10 orange(s)|315c27a8-bac5-4d22-8a69-b1a45edee631
+10.12.2024 22:56:41.780953 Buyer 1: Wants to buy 2 orange(s) from trader at localhost:5557 with request ID fdaa7613-8281-4560-8f0a-4686c214dac6
+10.12.2024 22:56:41.781926 Buyer 1: Connected to trader at localhost:5557
+10.12.2024 22:56:41.782096 Trader 2: Received from ('127.0.0.1', 52582): buy|orange|2|fdaa7613-8281-4560-8f0a-4686c214dac6
+10.12.2024 22:56:41.782245 Warehouse: DatabaseServer received: buy|orange|2|fdaa7613-8281-4560-8f0a-4686c214dac6 from ('127.0.0.1', 52316)
+10.12.2024 22:56:41.783283 Buyer 1: Buy complete for request fdaa7613-8281-4560-8f0a-4686c214dac6 (via localhost:5557): OK|Shipped 2 orange(s)|fdaa7613-8281-4560-8f0a-4686c214dac6
+10.12.2024 22:56:42.218660 Seller 2: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID 6705743f-8501-4c48-aab6-de5d4a07ada4
+10.12.2024 22:56:42.219295 Seller 2: Connected to trader at localhost:5556
+10.12.2024 22:56:42.219423 Trader 1: Received from ('127.0.0.1', 52585): sell|banana|10|6705743f-8501-4c48-aab6-de5d4a07ada4
+10.12.2024 22:56:42.219525 Warehouse: DatabaseServer received: sell|banana|10|6705743f-8501-4c48-aab6-de5d4a07ada4 from ('127.0.0.1', 52315)
+10.12.2024 22:56:42.220061 Seller 2: Sell complete for request 6705743f-8501-4c48-aab6-de5d4a07ada4 (via localhost:5556): OK|Stocked 10 banana(s)|6705743f-8501-4c48-aab6-de5d4a07ada4
+10.12.2024 22:56:42.276672 Buyer 2: Wants to buy 3 banana(s) from trader at localhost:5557 with request ID 7080f6ac-119a-4ddf-add9-d0e4659367e0
+10.12.2024 22:56:42.277264 Buyer 2: Connected to trader at localhost:5557
+10.12.2024 22:56:42.277465 Trader 2: Received from ('127.0.0.1', 52586): buy|banana|3|7080f6ac-119a-4ddf-add9-d0e4659367e0
+10.12.2024 22:56:42.277573 Warehouse: DatabaseServer received: buy|banana|3|7080f6ac-119a-4ddf-add9-d0e4659367e0 from ('127.0.0.1', 52316)
+10.12.2024 22:56:42.278577 Buyer 2: Buy complete for request 7080f6ac-119a-4ddf-add9-d0e4659367e0 (via localhost:5557): OK|Shipped 3 banana(s)|7080f6ac-119a-4ddf-add9-d0e4659367e0
+10.12.2024 22:56:42.726843 Seller 3: Accrued 10 orange(s) to sell to trader at localhost:5556 with request ID e780b91f-d88d-47e9-ad6a-05ae987db705
+10.12.2024 22:56:42.728577 Seller 3: Connected to trader at localhost:5556
+10.12.2024 22:56:42.728970 Trader 1: Received from ('127.0.0.1', 52587): sell|orange|10|e780b91f-d88d-47e9-ad6a-05ae987db705
+10.12.2024 22:56:42.729150 Warehouse: DatabaseServer received: sell|orange|10|e780b91f-d88d-47e9-ad6a-05ae987db705 from ('127.0.0.1', 52315)
+10.12.2024 22:56:42.730390 Seller 3: Sell complete for request e780b91f-d88d-47e9-ad6a-05ae987db705 (via localhost:5556): OK|Stocked 10 orange(s)|e780b91f-d88d-47e9-ad6a-05ae987db705
+10.12.2024 22:56:42.794585 Buyer 3: Wants to buy 7 apple(s) from trader at localhost:5556 with request ID aed719de-81cc-406f-97bb-66b9222f03be
+10.12.2024 22:56:42.795826 Buyer 3: Connected to trader at localhost:5556
+10.12.2024 22:56:42.796054 Trader 1: Received from ('127.0.0.1', 52588): buy|apple|7|aed719de-81cc-406f-97bb-66b9222f03be
+10.12.2024 22:56:42.796215 Warehouse: DatabaseServer received: buy|apple|7|aed719de-81cc-406f-97bb-66b9222f03be from ('127.0.0.1', 52315)
+10.12.2024 22:56:42.797324 Buyer 3: Buy complete for request aed719de-81cc-406f-97bb-66b9222f03be (via localhost:5556): OK|Shipped 7 apple(s)|aed719de-81cc-406f-97bb-66b9222f03be
+10.12.2024 22:56:43.227463 Seller 4: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID a82f230f-5245-4eb8-b3e0-9425d81cafa3
+10.12.2024 22:56:43.228980 Seller 4: Connected to trader at localhost:5556
+10.12.2024 22:56:43.229284 Trader 1: Received from ('127.0.0.1', 52591): sell|banana|10|a82f230f-5245-4eb8-b3e0-9425d81cafa3
+10.12.2024 22:56:43.229516 Warehouse: DatabaseServer received: sell|banana|10|a82f230f-5245-4eb8-b3e0-9425d81cafa3 from ('127.0.0.1', 52315)
+10.12.2024 22:56:43.230658 Seller 4: Sell complete for request a82f230f-5245-4eb8-b3e0-9425d81cafa3 (via localhost:5556): OK|Stocked 10 banana(s)|a82f230f-5245-4eb8-b3e0-9425d81cafa3
+10.12.2024 22:56:43.306362 Buyer 4: Wants to buy 9 apple(s) from trader at localhost:5556 with request ID 381a2502-af5e-4258-9c2f-17a5c908bb41
+10.12.2024 22:56:43.307627 Buyer 4: Connected to trader at localhost:5556
+10.12.2024 22:56:43.307890 Trader 1: Received from ('127.0.0.1', 52592): buy|apple|9|381a2502-af5e-4258-9c2f-17a5c908bb41
+10.12.2024 22:56:43.308081 Warehouse: DatabaseServer received: buy|apple|9|381a2502-af5e-4258-9c2f-17a5c908bb41 from ('127.0.0.1', 52315)
+10.12.2024 22:56:43.309429 Buyer 4: Buy complete for request 381a2502-af5e-4258-9c2f-17a5c908bb41 (via localhost:5556): OK|Shipped 9 apple(s)|381a2502-af5e-4258-9c2f-17a5c908bb41
+10.12.2024 22:56:43.758750 Seller 5: Accrued 10 apple(s) to sell to trader at localhost:5556 with request ID 0da6e547-af6f-40d9-8bcb-487343a1d5e1
+10.12.2024 22:56:43.760624 Seller 5: Connected to trader at localhost:5556
+10.12.2024 22:56:43.760861 Trader 1: Received from ('127.0.0.1', 52593): sell|apple|10|0da6e547-af6f-40d9-8bcb-487343a1d5e1
+10.12.2024 22:56:43.761054 Warehouse: DatabaseServer received: sell|apple|10|0da6e547-af6f-40d9-8bcb-487343a1d5e1 from ('127.0.0.1', 52315)
+10.12.2024 22:56:43.762132 Seller 5: Sell complete for request 0da6e547-af6f-40d9-8bcb-487343a1d5e1 (via localhost:5556): OK|Stocked 10 apple(s)|0da6e547-af6f-40d9-8bcb-487343a1d5e1
+10.12.2024 22:56:43.826400 Buyer 5: Wants to buy 1 banana(s) from trader at localhost:5556 with request ID 81d25658-54c9-4f03-80cc-b3d957a7d148
+10.12.2024 22:56:43.827179 Buyer 5: Connected to trader at localhost:5556
+10.12.2024 22:56:43.827357 Trader 1: Received from ('127.0.0.1', 52594): buy|banana|1|81d25658-54c9-4f03-80cc-b3d957a7d148
+10.12.2024 22:56:43.827488 Warehouse: DatabaseServer received: buy|banana|1|81d25658-54c9-4f03-80cc-b3d957a7d148 from ('127.0.0.1', 52315)
+10.12.2024 22:56:43.828505 Buyer 5: Buy complete for request 81d25658-54c9-4f03-80cc-b3d957a7d148 (via localhost:5556): OK|Shipped 1 banana(s)|81d25658-54c9-4f03-80cc-b3d957a7d148
+10.12.2024 22:56:44.257000 Seller 6: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID 29449877-9cda-4ad1-a93b-65342276fe5a
+10.12.2024 22:56:44.259248 Seller 6: Connected to trader at localhost:5556
+10.12.2024 22:56:44.259574 Trader 1: Received from ('127.0.0.1', 52595): sell|banana|10|29449877-9cda-4ad1-a93b-65342276fe5a
+10.12.2024 22:56:44.259782 Warehouse: DatabaseServer received: sell|banana|10|29449877-9cda-4ad1-a93b-65342276fe5a from ('127.0.0.1', 52315)
+10.12.2024 22:56:44.260917 Seller 6: Sell complete for request 29449877-9cda-4ad1-a93b-65342276fe5a (via localhost:5556): OK|Stocked 10 banana(s)|29449877-9cda-4ad1-a93b-65342276fe5a
+10.12.2024 22:56:44.317820 Buyer 6: Wants to buy 2 apple(s) from trader at localhost:5556 with request ID aca0a6b5-bbbd-4ecb-aeb8-675e710159c7
+10.12.2024 22:56:44.319242 Buyer 6: Connected to trader at localhost:5556
+10.12.2024 22:56:44.319411 Trader 1: Received from ('127.0.0.1', 52596): buy|apple|2|aca0a6b5-bbbd-4ecb-aeb8-675e710159c7
+10.12.2024 22:56:44.319594 Warehouse: DatabaseServer received: buy|apple|2|aca0a6b5-bbbd-4ecb-aeb8-675e710159c7 from ('127.0.0.1', 52315)
+10.12.2024 22:56:44.320673 Buyer 6: Buy complete for request aca0a6b5-bbbd-4ecb-aeb8-675e710159c7 (via localhost:5556): OK|Shipped 2 apple(s)|aca0a6b5-bbbd-4ecb-aeb8-675e710159c7
+10.12.2024 22:56:44.776044 Seller 7: Accrued 10 orange(s) to sell to trader at localhost:5556 with request ID e19a5fbe-790f-411c-87ad-601d2837a581
+10.12.2024 22:56:44.778355 Seller 7: Connected to trader at localhost:5556
+10.12.2024 22:56:44.778729 Trader 1: Received from ('127.0.0.1', 52597): sell|orange|10|e19a5fbe-790f-411c-87ad-601d2837a581
+10.12.2024 22:56:44.778985 Warehouse: DatabaseServer received: sell|orange|10|e19a5fbe-790f-411c-87ad-601d2837a581 from ('127.0.0.1', 52315)
+10.12.2024 22:56:44.780501 Seller 7: Sell complete for request e19a5fbe-790f-411c-87ad-601d2837a581 (via localhost:5556): OK|Stocked 10 orange(s)|e19a5fbe-790f-411c-87ad-601d2837a581
+10.12.2024 22:56:44.839023 Buyer 7: Wants to buy 6 banana(s) from trader at localhost:5556 with request ID f6638f11-3104-4634-83ab-21ad6d811c2b
+10.12.2024 22:56:44.839988 Buyer 7: Connected to trader at localhost:5556
+10.12.2024 22:56:44.840120 Trader 1: Received from ('127.0.0.1', 52598): buy|banana|6|f6638f11-3104-4634-83ab-21ad6d811c2b
+10.12.2024 22:56:44.840260 Warehouse: DatabaseServer received: buy|banana|6|f6638f11-3104-4634-83ab-21ad6d811c2b from ('127.0.0.1', 52315)
+10.12.2024 22:56:44.841243 Buyer 7: Buy complete for request f6638f11-3104-4634-83ab-21ad6d811c2b (via localhost:5556): OK|Shipped 6 banana(s)|f6638f11-3104-4634-83ab-21ad6d811c2b
+10.12.2024 22:56:45.272404 Seller 8: Accrued 10 apple(s) to sell to trader at localhost:5556 with request ID 639ab85f-55a9-487b-9582-2e5f50a11b15
+10.12.2024 22:56:45.274493 Seller 8: Connected to trader at localhost:5556
+10.12.2024 22:56:45.274746 Trader 1: Received from ('127.0.0.1', 52599): sell|apple|10|639ab85f-55a9-487b-9582-2e5f50a11b15
+10.12.2024 22:56:45.274927 Warehouse: DatabaseServer received: sell|apple|10|639ab85f-55a9-487b-9582-2e5f50a11b15 from ('127.0.0.1', 52315)
+10.12.2024 22:56:45.275994 Seller 8: Sell complete for request 639ab85f-55a9-487b-9582-2e5f50a11b15 (via localhost:5556): OK|Stocked 10 apple(s)|639ab85f-55a9-487b-9582-2e5f50a11b15
+10.12.2024 22:56:45.338872 Buyer 8: Wants to buy 10 banana(s) from trader at localhost:5557 with request ID 89270ff8-6aac-48bb-91c8-4c1557e54f21
+10.12.2024 22:56:45.339880 Buyer 8: Connected to trader at localhost:5557
+10.12.2024 22:56:45.340162 Trader 2: Received from ('127.0.0.1', 52600): buy|banana|10|89270ff8-6aac-48bb-91c8-4c1557e54f21
+10.12.2024 22:56:45.340308 Warehouse: DatabaseServer received: buy|banana|10|89270ff8-6aac-48bb-91c8-4c1557e54f21 from ('127.0.0.1', 52316)
+10.12.2024 22:56:45.341572 Buyer 8: Buy complete for request 89270ff8-6aac-48bb-91c8-4c1557e54f21 (via localhost:5557): OK|Shipped 10 banana(s)|89270ff8-6aac-48bb-91c8-4c1557e54f21
+10.12.2024 22:56:45.857143 Buyer 9: Wants to buy 3 orange(s) from trader at localhost:5557 with request ID e836454e-f360-49c9-9cc3-1e84b791d5f9
+10.12.2024 22:56:45.858180 Buyer 9: Connected to trader at localhost:5557
+10.12.2024 22:56:45.858423 Trader 2: Received from ('127.0.0.1', 52601): buy|orange|3|e836454e-f360-49c9-9cc3-1e84b791d5f9
+10.12.2024 22:56:45.858623 Warehouse: DatabaseServer received: buy|orange|3|e836454e-f360-49c9-9cc3-1e84b791d5f9 from ('127.0.0.1', 52316)
+10.12.2024 22:56:45.860040 Buyer 9: Buy complete for request e836454e-f360-49c9-9cc3-1e84b791d5f9 (via localhost:5557): OK|Shipped 3 orange(s)|e836454e-f360-49c9-9cc3-1e84b791d5f9
+10.12.2024 22:56:46.352348 Buyer 10: Wants to buy 1 apple(s) from trader at localhost:5557 with request ID d3ae9c54-9ae7-4639-817b-e07501ff175e
+10.12.2024 22:56:46.353628 Buyer 10: Connected to trader at localhost:5557
+10.12.2024 22:56:46.353963 Trader 2: Received from ('127.0.0.1', 52602): buy|apple|1|d3ae9c54-9ae7-4639-817b-e07501ff175e
+10.12.2024 22:56:46.354208 Warehouse: DatabaseServer received: buy|apple|1|d3ae9c54-9ae7-4639-817b-e07501ff175e from ('127.0.0.1', 52316)
+10.12.2024 22:56:46.356143 Buyer 10: Buy complete for request d3ae9c54-9ae7-4639-817b-e07501ff175e (via localhost:5557): OK|Shipped 1 apple(s)|d3ae9c54-9ae7-4639-817b-e07501ff175e
+10.12.2024 22:56:46.731355 Seller 1: Accrued 10 banana(s) to sell to trader at localhost:5557 with request ID b7fcf7cc-4a88-4307-8a32-6ed0618539bb
+10.12.2024 22:56:46.732759 Seller 1: Connected to trader at localhost:5557
+10.12.2024 22:56:46.733077 Trader 2: Received from ('127.0.0.1', 52603): sell|banana|10|b7fcf7cc-4a88-4307-8a32-6ed0618539bb
+10.12.2024 22:56:46.733324 Warehouse: DatabaseServer received: sell|banana|10|b7fcf7cc-4a88-4307-8a32-6ed0618539bb from ('127.0.0.1', 52316)
+10.12.2024 22:56:46.734773 Seller 1: Sell complete for request b7fcf7cc-4a88-4307-8a32-6ed0618539bb (via localhost:5557): OK|Stocked 10 banana(s)|b7fcf7cc-4a88-4307-8a32-6ed0618539bb
+10.12.2024 22:56:46.788420 Buyer 1: Wants to buy 9 orange(s) from trader at localhost:5556 with request ID d35cadef-91ad-4671-ad0c-6dd963e5b8f2
+10.12.2024 22:56:46.789423 Buyer 1: Connected to trader at localhost:5556
+10.12.2024 22:56:46.789603 Trader 1: Received from ('127.0.0.1', 52604): buy|orange|9|d35cadef-91ad-4671-ad0c-6dd963e5b8f2
+10.12.2024 22:56:46.789762 Warehouse: DatabaseServer received: buy|orange|9|d35cadef-91ad-4671-ad0c-6dd963e5b8f2 from ('127.0.0.1', 52315)
+10.12.2024 22:56:46.790815 Buyer 1: Buy complete for request d35cadef-91ad-4671-ad0c-6dd963e5b8f2 (via localhost:5556): OK|Shipped 9 orange(s)|d35cadef-91ad-4671-ad0c-6dd963e5b8f2
+10.12.2024 22:56:47.220833 Seller 2: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID 408cfbb5-45f9-4a6c-a7a9-cfb9e51675fa
+10.12.2024 22:56:47.221853 Seller 2: Connected to trader at localhost:5556
+10.12.2024 22:56:47.222137 Trader 1: Received from ('127.0.0.1', 52607): sell|banana|10|408cfbb5-45f9-4a6c-a7a9-cfb9e51675fa
+10.12.2024 22:56:47.222327 Warehouse: DatabaseServer received: sell|banana|10|408cfbb5-45f9-4a6c-a7a9-cfb9e51675fa from ('127.0.0.1', 52315)
+10.12.2024 22:56:47.223289 Seller 2: Sell complete for request 408cfbb5-45f9-4a6c-a7a9-cfb9e51675fa (via localhost:5556): OK|Stocked 10 banana(s)|408cfbb5-45f9-4a6c-a7a9-cfb9e51675fa
+10.12.2024 22:56:47.280818 Buyer 2: Wants to buy 9 orange(s) from trader at localhost:5557 with request ID a5522436-da8a-4978-a8ab-6f9d0fb0563a
+10.12.2024 22:56:47.281618 Buyer 2: Connected to trader at localhost:5557
+10.12.2024 22:56:47.281790 Trader 2: Received from ('127.0.0.1', 52608): buy|orange|9|a5522436-da8a-4978-a8ab-6f9d0fb0563a
+10.12.2024 22:56:47.281948 Warehouse: DatabaseServer received: buy|orange|9|a5522436-da8a-4978-a8ab-6f9d0fb0563a from ('127.0.0.1', 52316)
+10.12.2024 22:56:47.282952 Buyer 2: Buy complete for request a5522436-da8a-4978-a8ab-6f9d0fb0563a (via localhost:5557): OK|Shipped 9 orange(s)|a5522436-da8a-4978-a8ab-6f9d0fb0563a
+10.12.2024 22:56:47.735425 Seller 3: Accrued 10 apple(s) to sell to trader at localhost:5557 with request ID 5bbdc402-71bb-4af7-8e56-d11972221886
+10.12.2024 22:56:47.736939 Seller 3: Connected to trader at localhost:5557
+10.12.2024 22:56:47.737278 Trader 2: Received from ('127.0.0.1', 52611): sell|apple|10|5bbdc402-71bb-4af7-8e56-d11972221886
+10.12.2024 22:56:47.737525 Warehouse: DatabaseServer received: sell|apple|10|5bbdc402-71bb-4af7-8e56-d11972221886 from ('127.0.0.1', 52316)
+10.12.2024 22:56:47.738774 Seller 3: Sell complete for request 5bbdc402-71bb-4af7-8e56-d11972221886 (via localhost:5557): OK|Stocked 10 apple(s)|5bbdc402-71bb-4af7-8e56-d11972221886
+10.12.2024 22:56:47.802448 Buyer 3: Wants to buy 4 apple(s) from trader at localhost:5557 with request ID 67a04087-94d3-406c-b6a2-b51642acfb0e
+10.12.2024 22:56:47.803311 Buyer 3: Connected to trader at localhost:5557
+10.12.2024 22:56:47.803559 Trader 2: Received from ('127.0.0.1', 52612): buy|apple|4|67a04087-94d3-406c-b6a2-b51642acfb0e
+10.12.2024 22:56:47.803695 Warehouse: DatabaseServer received: buy|apple|4|67a04087-94d3-406c-b6a2-b51642acfb0e from ('127.0.0.1', 52316)
+10.12.2024 22:56:47.805005 Buyer 3: Buy complete for request 67a04087-94d3-406c-b6a2-b51642acfb0e (via localhost:5557): OK|Shipped 4 apple(s)|67a04087-94d3-406c-b6a2-b51642acfb0e
+10.12.2024 22:56:48.232813 Seller 4: Accrued 10 apple(s) to sell to trader at localhost:5557 with request ID 4b0f2955-56e4-443e-b50e-c2a13a2940a4
+10.12.2024 22:56:48.234217 Seller 4: Connected to trader at localhost:5557
+10.12.2024 22:56:48.234552 Trader 2: Received from ('127.0.0.1', 52613): sell|apple|10|4b0f2955-56e4-443e-b50e-c2a13a2940a4
+10.12.2024 22:56:48.234796 Warehouse: DatabaseServer received: sell|apple|10|4b0f2955-56e4-443e-b50e-c2a13a2940a4 from ('127.0.0.1', 52316)
+10.12.2024 22:56:48.236253 Seller 4: Sell complete for request 4b0f2955-56e4-443e-b50e-c2a13a2940a4 (via localhost:5557): OK|Stocked 10 apple(s)|4b0f2955-56e4-443e-b50e-c2a13a2940a4
+10.12.2024 22:56:48.314617 Buyer 4: Wants to buy 9 banana(s) from trader at localhost:5556 with request ID 9cad938b-b250-4993-b467-270a1cfbd0e4
+10.12.2024 22:56:48.315871 Buyer 4: Connected to trader at localhost:5556
+10.12.2024 22:56:48.316243 Trader 1: Received from ('127.0.0.1', 52614): buy|banana|9|9cad938b-b250-4993-b467-270a1cfbd0e4
+10.12.2024 22:56:48.316524 Warehouse: DatabaseServer received: buy|banana|9|9cad938b-b250-4993-b467-270a1cfbd0e4 from ('127.0.0.1', 52315)
+10.12.2024 22:56:48.318262 Buyer 4: Buy complete for request 9cad938b-b250-4993-b467-270a1cfbd0e4 (via localhost:5556): OK|Shipped 9 banana(s)|9cad938b-b250-4993-b467-270a1cfbd0e4
+10.12.2024 22:56:48.767438 Seller 5: Accrued 10 apple(s) to sell to trader at localhost:5557 with request ID 097611bf-5110-4852-b6eb-5579abb0977d
+10.12.2024 22:56:48.768887 Seller 5: Connected to trader at localhost:5557
+10.12.2024 22:56:48.769201 Trader 2: Received from ('127.0.0.1', 52615): sell|apple|10|097611bf-5110-4852-b6eb-5579abb0977d
+10.12.2024 22:56:48.769399 Warehouse: DatabaseServer received: sell|apple|10|097611bf-5110-4852-b6eb-5579abb0977d from ('127.0.0.1', 52316)
+10.12.2024 22:56:48.770736 Seller 5: Sell complete for request 097611bf-5110-4852-b6eb-5579abb0977d (via localhost:5557): OK|Stocked 10 apple(s)|097611bf-5110-4852-b6eb-5579abb0977d
+10.12.2024 22:56:48.832370 Buyer 5: Wants to buy 2 banana(s) from trader at localhost:5556 with request ID 92e75e81-ba57-45eb-99be-66cd5e474cd5
+10.12.2024 22:56:48.833274 Buyer 5: Connected to trader at localhost:5556
+10.12.2024 22:56:48.833524 Trader 1: Received from ('127.0.0.1', 52616): buy|banana|2|92e75e81-ba57-45eb-99be-66cd5e474cd5
+10.12.2024 22:56:48.833645 Warehouse: DatabaseServer received: buy|banana|2|92e75e81-ba57-45eb-99be-66cd5e474cd5 from ('127.0.0.1', 52315)
+10.12.2024 22:56:48.834769 Buyer 5: Buy complete for request 92e75e81-ba57-45eb-99be-66cd5e474cd5 (via localhost:5556): OK|Shipped 2 banana(s)|92e75e81-ba57-45eb-99be-66cd5e474cd5
+10.12.2024 22:56:49.263086 Seller 6: Accrued 10 apple(s) to sell to trader at localhost:5557 with request ID bcfa743c-d71a-4f35-9f33-0c52abc6274f
+10.12.2024 22:56:49.264444 Seller 6: Connected to trader at localhost:5557
+10.12.2024 22:56:49.264760 Trader 2: Received from ('127.0.0.1', 52617): sell|apple|10|bcfa743c-d71a-4f35-9f33-0c52abc6274f
+10.12.2024 22:56:49.264989 Warehouse: DatabaseServer received: sell|apple|10|bcfa743c-d71a-4f35-9f33-0c52abc6274f from ('127.0.0.1', 52316)
+10.12.2024 22:56:49.266551 Seller 6: Sell complete for request bcfa743c-d71a-4f35-9f33-0c52abc6274f (via localhost:5557): OK|Stocked 10 apple(s)|bcfa743c-d71a-4f35-9f33-0c52abc6274f
+10.12.2024 22:56:49.325785 Buyer 6: Wants to buy 9 orange(s) from trader at localhost:5556 with request ID a813156d-36f5-46a0-890b-bb0fb0ca68b1
+10.12.2024 22:56:49.326753 Buyer 6: Connected to trader at localhost:5556
+10.12.2024 22:56:49.326929 Trader 1: Received from ('127.0.0.1', 52618): buy|orange|9|a813156d-36f5-46a0-890b-bb0fb0ca68b1
+10.12.2024 22:56:49.327089 Warehouse: DatabaseServer received: buy|orange|9|a813156d-36f5-46a0-890b-bb0fb0ca68b1 from ('127.0.0.1', 52315)
+10.12.2024 22:56:49.328194 Buyer 6: Buy complete for request a813156d-36f5-46a0-890b-bb0fb0ca68b1 (via localhost:5556): OK|Shipped 9 orange(s)|a813156d-36f5-46a0-890b-bb0fb0ca68b1
+10.12.2024 22:56:49.785319 Seller 7: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID 173e5a9b-9293-4506-a0cf-21247079b7a0
+10.12.2024 22:56:49.786684 Seller 7: Connected to trader at localhost:5556
+10.12.2024 22:56:49.787060 Trader 1: Received from ('127.0.0.1', 52619): sell|banana|10|173e5a9b-9293-4506-a0cf-21247079b7a0
+10.12.2024 22:56:49.787287 Warehouse: DatabaseServer received: sell|banana|10|173e5a9b-9293-4506-a0cf-21247079b7a0 from ('127.0.0.1', 52315)
+10.12.2024 22:56:49.788502 Seller 7: Sell complete for request 173e5a9b-9293-4506-a0cf-21247079b7a0 (via localhost:5556): OK|Stocked 10 banana(s)|173e5a9b-9293-4506-a0cf-21247079b7a0
+10.12.2024 22:56:49.846330 Buyer 7: Wants to buy 4 apple(s) from trader at localhost:5556 with request ID 04161c41-2b4b-4468-bbd3-cff56c3898cc
+10.12.2024 22:56:49.846979 Buyer 7: Connected to trader at localhost:5556
+10.12.2024 22:56:49.847122 Trader 1: Received from ('127.0.0.1', 52620): buy|apple|4|04161c41-2b4b-4468-bbd3-cff56c3898cc
+10.12.2024 22:56:49.847284 Warehouse: DatabaseServer received: buy|apple|4|04161c41-2b4b-4468-bbd3-cff56c3898cc from ('127.0.0.1', 52315)
+10.12.2024 22:56:49.848279 Buyer 7: Buy complete for request 04161c41-2b4b-4468-bbd3-cff56c3898cc (via localhost:5556): OK|Shipped 4 apple(s)|04161c41-2b4b-4468-bbd3-cff56c3898cc
+10.12.2024 22:56:50.279349 Seller 8: Accrued 10 apple(s) to sell to trader at localhost:5556 with request ID b4060f5a-7dfa-4b99-aa5f-f8f805b46b4f
+10.12.2024 22:56:50.280722 Seller 8: Connected to trader at localhost:5556
+10.12.2024 22:56:50.281073 Trader 1: Received from ('127.0.0.1', 52621): sell|apple|10|b4060f5a-7dfa-4b99-aa5f-f8f805b46b4f
+10.12.2024 22:56:50.281297 Warehouse: DatabaseServer received: sell|apple|10|b4060f5a-7dfa-4b99-aa5f-f8f805b46b4f from ('127.0.0.1', 52315)
+10.12.2024 22:56:50.282711 Seller 8: Sell complete for request b4060f5a-7dfa-4b99-aa5f-f8f805b46b4f (via localhost:5556): OK|Stocked 10 apple(s)|b4060f5a-7dfa-4b99-aa5f-f8f805b46b4f
+10.12.2024 22:56:50.346724 Buyer 8: Wants to buy 1 banana(s) from trader at localhost:5557 with request ID 76dbb730-d2d4-42d8-971b-dbfe0442a622
+10.12.2024 22:56:50.347659 Buyer 8: Connected to trader at localhost:5557
+10.12.2024 22:56:50.347841 Trader 2: Received from ('127.0.0.1', 52622): buy|banana|1|76dbb730-d2d4-42d8-971b-dbfe0442a622
+10.12.2024 22:56:50.347996 Warehouse: DatabaseServer received: buy|banana|1|76dbb730-d2d4-42d8-971b-dbfe0442a622 from ('127.0.0.1', 52316)
+10.12.2024 22:56:50.349778 Buyer 8: Buy complete for request 76dbb730-d2d4-42d8-971b-dbfe0442a622 (via localhost:5557): OK|Shipped 1 banana(s)|76dbb730-d2d4-42d8-971b-dbfe0442a622
+10.12.2024 22:56:50.865515 Buyer 9: Wants to buy 9 orange(s) from trader at localhost:5556 with request ID dcf509ea-f339-4de0-85b1-996b2301b8f5
+10.12.2024 22:56:50.867138 Buyer 9: Connected to trader at localhost:5556
+10.12.2024 22:56:50.867482 Trader 1: Received from ('127.0.0.1', 52625): buy|orange|9|dcf509ea-f339-4de0-85b1-996b2301b8f5
+10.12.2024 22:56:50.867745 Warehouse: DatabaseServer received: buy|orange|9|dcf509ea-f339-4de0-85b1-996b2301b8f5 from ('127.0.0.1', 52315)
+10.12.2024 22:56:50.869556 Buyer 9: Buy complete for request dcf509ea-f339-4de0-85b1-996b2301b8f5 (via localhost:5556): OK|Shipped 9 orange(s)|dcf509ea-f339-4de0-85b1-996b2301b8f5
+10.12.2024 22:56:51.359099 Buyer 10: Wants to buy 6 apple(s) from trader at localhost:5557 with request ID 0ae1498b-01a1-4963-8efb-498f95c9014b
+10.12.2024 22:56:51.360886 Buyer 10: Connected to trader at localhost:5557
+10.12.2024 22:56:51.361214 Trader 2: Received from ('127.0.0.1', 52626): buy|apple|6|0ae1498b-01a1-4963-8efb-498f95c9014b
+10.12.2024 22:56:51.361463 Warehouse: DatabaseServer received: buy|apple|6|0ae1498b-01a1-4963-8efb-498f95c9014b from ('127.0.0.1', 52316)
+10.12.2024 22:56:51.363281 Buyer 10: Buy complete for request 0ae1498b-01a1-4963-8efb-498f95c9014b (via localhost:5557): OK|Shipped 6 apple(s)|0ae1498b-01a1-4963-8efb-498f95c9014b
+10.12.2024 22:56:51.739379 Seller 1: Accrued 10 apple(s) to sell to trader at localhost:5556 with request ID 5eeb2db5-6d55-4a81-bad6-6dc987470875
+10.12.2024 22:56:51.740400 Seller 1: Connected to trader at localhost:5556
+10.12.2024 22:56:51.740675 Trader 1: Received from ('127.0.0.1', 52627): sell|apple|10|5eeb2db5-6d55-4a81-bad6-6dc987470875
+10.12.2024 22:56:51.740816 Warehouse: DatabaseServer received: sell|apple|10|5eeb2db5-6d55-4a81-bad6-6dc987470875 from ('127.0.0.1', 52315)
+10.12.2024 22:56:51.741826 Seller 1: Sell complete for request 5eeb2db5-6d55-4a81-bad6-6dc987470875 (via localhost:5556): OK|Stocked 10 apple(s)|5eeb2db5-6d55-4a81-bad6-6dc987470875
+10.12.2024 22:56:51.795914 Buyer 1: Wants to buy 2 orange(s) from trader at localhost:5557 with request ID 8b8b7203-5924-4aeb-aa3a-8f70914bf63d
+10.12.2024 22:56:51.797132 Buyer 1: Connected to trader at localhost:5557
+10.12.2024 22:56:51.797313 Trader 2: Received from ('127.0.0.1', 52628): buy|orange|2|8b8b7203-5924-4aeb-aa3a-8f70914bf63d
+10.12.2024 22:56:51.797476 Warehouse: DatabaseServer received: buy|orange|2|8b8b7203-5924-4aeb-aa3a-8f70914bf63d from ('127.0.0.1', 52316)
+10.12.2024 22:56:51.798605 Buyer 1: Buy complete for request 8b8b7203-5924-4aeb-aa3a-8f70914bf63d (via localhost:5557): OK|Shipped 2 orange(s)|8b8b7203-5924-4aeb-aa3a-8f70914bf63d
+10.12.2024 22:56:52.223531 Seller 2: Accrued 10 orange(s) to sell to trader at localhost:5557 with request ID 27653e8e-cff3-4ffc-8a47-6a484f60ab49
+10.12.2024 22:56:52.224813 Seller 2: Connected to trader at localhost:5557
+10.12.2024 22:56:52.225127 Trader 2: Received from ('127.0.0.1', 52629): sell|orange|10|27653e8e-cff3-4ffc-8a47-6a484f60ab49
+10.12.2024 22:56:52.225316 Warehouse: DatabaseServer received: sell|orange|10|27653e8e-cff3-4ffc-8a47-6a484f60ab49 from ('127.0.0.1', 52316)
+10.12.2024 22:56:52.226525 Seller 2: Sell complete for request 27653e8e-cff3-4ffc-8a47-6a484f60ab49 (via localhost:5557): OK|Stocked 10 orange(s)|27653e8e-cff3-4ffc-8a47-6a484f60ab49
+10.12.2024 22:56:52.288059 Buyer 2: Wants to buy 2 apple(s) from trader at localhost:5556 with request ID 88db3421-d534-402f-9f15-eab68beeb965
+10.12.2024 22:56:52.289051 Buyer 2: Connected to trader at localhost:5556
+10.12.2024 22:56:52.289228 Trader 1: Received from ('127.0.0.1', 52630): buy|apple|2|88db3421-d534-402f-9f15-eab68beeb965
+10.12.2024 22:56:52.289399 Warehouse: DatabaseServer received: buy|apple|2|88db3421-d534-402f-9f15-eab68beeb965 from ('127.0.0.1', 52315)
+10.12.2024 22:56:52.290687 Buyer 2: Buy complete for request 88db3421-d534-402f-9f15-eab68beeb965 (via localhost:5556): OK|Shipped 2 apple(s)|88db3421-d534-402f-9f15-eab68beeb965
+10.12.2024 22:56:52.739764 Seller 3: Accrued 10 orange(s) to sell to trader at localhost:5556 with request ID 11e75491-76b3-431b-ba59-54056306d1bb
+10.12.2024 22:56:52.741213 Seller 3: Connected to trader at localhost:5556
+10.12.2024 22:56:52.741562 Trader 1: Received from ('127.0.0.1', 52631): sell|orange|10|11e75491-76b3-431b-ba59-54056306d1bb
+10.12.2024 22:56:52.741813 Warehouse: DatabaseServer received: sell|orange|10|11e75491-76b3-431b-ba59-54056306d1bb from ('127.0.0.1', 52315)
+10.12.2024 22:56:52.743351 Seller 3: Sell complete for request 11e75491-76b3-431b-ba59-54056306d1bb (via localhost:5556): OK|Stocked 10 orange(s)|11e75491-76b3-431b-ba59-54056306d1bb
+10.12.2024 22:56:52.810320 Buyer 3: Wants to buy 1 apple(s) from trader at localhost:5557 with request ID a847dec5-3bf7-48ae-8246-38a269f20bdb
+10.12.2024 22:56:52.811557 Buyer 3: Connected to trader at localhost:5557
+10.12.2024 22:56:52.811833 Trader 2: Received from ('127.0.0.1', 52632): buy|apple|1|a847dec5-3bf7-48ae-8246-38a269f20bdb
+10.12.2024 22:56:52.812013 Warehouse: DatabaseServer received: buy|apple|1|a847dec5-3bf7-48ae-8246-38a269f20bdb from ('127.0.0.1', 52316)
+10.12.2024 22:56:52.813578 Buyer 3: Buy complete for request a847dec5-3bf7-48ae-8246-38a269f20bdb (via localhost:5557): OK|Shipped 1 apple(s)|a847dec5-3bf7-48ae-8246-38a269f20bdb
+10.12.2024 22:56:53.241486 Seller 4: Accrued 10 banana(s) to sell to trader at localhost:5557 with request ID 24572618-62c1-45ea-aff2-b250e89e6320
+10.12.2024 22:56:53.242893 Seller 4: Connected to trader at localhost:5557
+10.12.2024 22:56:53.243250 Trader 2: Received from ('127.0.0.1', 52633): sell|banana|10|24572618-62c1-45ea-aff2-b250e89e6320
+10.12.2024 22:56:53.243501 Warehouse: DatabaseServer received: sell|banana|10|24572618-62c1-45ea-aff2-b250e89e6320 from ('127.0.0.1', 52316)
+10.12.2024 22:56:53.244830 Seller 4: Sell complete for request 24572618-62c1-45ea-aff2-b250e89e6320 (via localhost:5557): OK|Stocked 10 banana(s)|24572618-62c1-45ea-aff2-b250e89e6320
+10.12.2024 22:56:53.323513 Buyer 4: Wants to buy 9 orange(s) from trader at localhost:5556 with request ID 7eb3e0db-754b-458f-b3f6-dba0c38c34b2
+10.12.2024 22:56:53.324798 Buyer 4: Connected to trader at localhost:5556
+10.12.2024 22:56:53.325119 Trader 1: Received from ('127.0.0.1', 52634): buy|orange|9|7eb3e0db-754b-458f-b3f6-dba0c38c34b2
+10.12.2024 22:56:53.325338 Warehouse: DatabaseServer received: buy|orange|9|7eb3e0db-754b-458f-b3f6-dba0c38c34b2 from ('127.0.0.1', 52315)
+10.12.2024 22:56:53.327039 Buyer 4: Buy complete for request 7eb3e0db-754b-458f-b3f6-dba0c38c34b2 (via localhost:5556): OK|Shipped 9 orange(s)|7eb3e0db-754b-458f-b3f6-dba0c38c34b2
+10.12.2024 22:56:53.771250 Seller 5: Accrued 10 apple(s) to sell to trader at localhost:5556 with request ID 34289b76-8e90-41c4-9be2-82fb3c4e37cb
+10.12.2024 22:56:53.772763 Seller 5: Connected to trader at localhost:5556
+10.12.2024 22:56:53.773322 Trader 1: Received from ('127.0.0.1', 52635): sell|apple|10|34289b76-8e90-41c4-9be2-82fb3c4e37cb
+10.12.2024 22:56:53.773572 Warehouse: DatabaseServer received: sell|apple|10|34289b76-8e90-41c4-9be2-82fb3c4e37cb from ('127.0.0.1', 52315)
+10.12.2024 22:56:53.774991 Seller 5: Sell complete for request 34289b76-8e90-41c4-9be2-82fb3c4e37cb (via localhost:5556): OK|Stocked 10 apple(s)|34289b76-8e90-41c4-9be2-82fb3c4e37cb
+10.12.2024 22:56:53.837193 Buyer 5: Wants to buy 4 orange(s) from trader at localhost:5557 with request ID 7a3cb7e5-7930-4b64-9471-3d2d6e63c593
+10.12.2024 22:56:53.838159 Buyer 5: Connected to trader at localhost:5557
+10.12.2024 22:56:53.838359 Trader 2: Received from ('127.0.0.1', 52636): buy|orange|4|7a3cb7e5-7930-4b64-9471-3d2d6e63c593
+10.12.2024 22:56:53.838508 Warehouse: DatabaseServer received: buy|orange|4|7a3cb7e5-7930-4b64-9471-3d2d6e63c593 from ('127.0.0.1', 52316)
+10.12.2024 22:56:53.840062 Buyer 5: Buy complete for request 7a3cb7e5-7930-4b64-9471-3d2d6e63c593 (via localhost:5557): OK|Shipped 4 orange(s)|7a3cb7e5-7930-4b64-9471-3d2d6e63c593
+10.12.2024 22:56:54.268080 Seller 6: Accrued 10 banana(s) to sell to trader at localhost:5557 with request ID 4b4f78fb-0aa6-4d70-9e94-4a72bca191e9
+10.12.2024 22:56:54.269470 Seller 6: Connected to trader at localhost:5557
+10.12.2024 22:56:54.269813 Trader 2: Received from ('127.0.0.1', 52639): sell|banana|10|4b4f78fb-0aa6-4d70-9e94-4a72bca191e9
+10.12.2024 22:56:54.270068 Warehouse: DatabaseServer received: sell|banana|10|4b4f78fb-0aa6-4d70-9e94-4a72bca191e9 from ('127.0.0.1', 52316)
+10.12.2024 22:56:54.271526 Seller 6: Sell complete for request 4b4f78fb-0aa6-4d70-9e94-4a72bca191e9 (via localhost:5557): OK|Stocked 10 banana(s)|4b4f78fb-0aa6-4d70-9e94-4a72bca191e9
+10.12.2024 22:56:54.333297 Buyer 6: Wants to buy 10 orange(s) from trader at localhost:5557 with request ID 4dddf2d4-d0fd-4958-8061-ccaf80499f85
+10.12.2024 22:56:54.334278 Buyer 6: Connected to trader at localhost:5557
+10.12.2024 22:56:54.334469 Trader 2: Received from ('127.0.0.1', 52640): buy|orange|10|4dddf2d4-d0fd-4958-8061-ccaf80499f85
+10.12.2024 22:56:54.334627 Warehouse: DatabaseServer received: buy|orange|10|4dddf2d4-d0fd-4958-8061-ccaf80499f85 from ('127.0.0.1', 52316)
+10.12.2024 22:56:54.335816 Buyer 6: Buy complete for request 4dddf2d4-d0fd-4958-8061-ccaf80499f85 (via localhost:5557): OK|Shipped 10 orange(s)|4dddf2d4-d0fd-4958-8061-ccaf80499f85
+10.12.2024 22:56:54.789484 Seller 7: Accrued 10 banana(s) to sell to trader at localhost:5557 with request ID cc9171af-065d-4fc5-9821-82630dcaea85
+10.12.2024 22:56:54.790860 Seller 7: Connected to trader at localhost:5557
+10.12.2024 22:56:54.791187 Trader 2: Received from ('127.0.0.1', 52641): sell|banana|10|cc9171af-065d-4fc5-9821-82630dcaea85
+10.12.2024 22:56:54.791436 Warehouse: DatabaseServer received: sell|banana|10|cc9171af-065d-4fc5-9821-82630dcaea85 from ('127.0.0.1', 52316)
+10.12.2024 22:56:54.792756 Seller 7: Sell complete for request cc9171af-065d-4fc5-9821-82630dcaea85 (via localhost:5557): OK|Stocked 10 banana(s)|cc9171af-065d-4fc5-9821-82630dcaea85
+10.12.2024 22:56:54.853357 Buyer 7: Wants to buy 8 banana(s) from trader at localhost:5556 with request ID 5eefd765-be28-49c4-b42f-85491d1461af
+10.12.2024 22:56:54.854314 Buyer 7: Connected to trader at localhost:5556
+10.12.2024 22:56:54.854488 Trader 1: Received from ('127.0.0.1', 52642): buy|banana|8|5eefd765-be28-49c4-b42f-85491d1461af
+10.12.2024 22:56:54.854650 Warehouse: DatabaseServer received: buy|banana|8|5eefd765-be28-49c4-b42f-85491d1461af from ('127.0.0.1', 52315)
+10.12.2024 22:56:54.855642 Buyer 7: Buy complete for request 5eefd765-be28-49c4-b42f-85491d1461af (via localhost:5556): OK|Shipped 8 banana(s)|5eefd765-be28-49c4-b42f-85491d1461af
+10.12.2024 22:56:55.285907 Seller 8: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID d1557da6-e2ab-4f39-9091-e6e16f1faa20
+10.12.2024 22:56:55.287283 Seller 8: Connected to trader at localhost:5556
+10.12.2024 22:56:55.287536 Trader 1: Received from ('127.0.0.1', 52645): sell|banana|10|d1557da6-e2ab-4f39-9091-e6e16f1faa20
+10.12.2024 22:56:55.287744 Warehouse: DatabaseServer received: sell|banana|10|d1557da6-e2ab-4f39-9091-e6e16f1faa20 from ('127.0.0.1', 52315)
+10.12.2024 22:56:55.288971 Seller 8: Sell complete for request d1557da6-e2ab-4f39-9091-e6e16f1faa20 (via localhost:5556): OK|Stocked 10 banana(s)|d1557da6-e2ab-4f39-9091-e6e16f1faa20
+10.12.2024 22:56:55.354861 Buyer 8: Wants to buy 3 banana(s) from trader at localhost:5557 with request ID 3e238dd2-a3cc-4bdd-8b04-75f84dc254d7
+10.12.2024 22:56:55.355761 Buyer 8: Connected to trader at localhost:5557
+10.12.2024 22:56:55.355939 Trader 2: Received from ('127.0.0.1', 52646): buy|banana|3|3e238dd2-a3cc-4bdd-8b04-75f84dc254d7
+10.12.2024 22:56:55.356155 Warehouse: DatabaseServer received: buy|banana|3|3e238dd2-a3cc-4bdd-8b04-75f84dc254d7 from ('127.0.0.1', 52316)
+10.12.2024 22:56:55.357058 Buyer 8: Buy complete for request 3e238dd2-a3cc-4bdd-8b04-75f84dc254d7 (via localhost:5557): OK|Shipped 3 banana(s)|3e238dd2-a3cc-4bdd-8b04-75f84dc254d7
+10.12.2024 22:56:55.873774 Buyer 9: Wants to buy 8 banana(s) from trader at localhost:5556 with request ID 3a29d81c-a9f8-47d2-9656-fcbec5b61dc9
+10.12.2024 22:56:55.875049 Buyer 9: Connected to trader at localhost:5556
+10.12.2024 22:56:55.875369 Trader 1: Received from ('127.0.0.1', 52647): buy|banana|8|3a29d81c-a9f8-47d2-9656-fcbec5b61dc9
+10.12.2024 22:56:55.875590 Warehouse: DatabaseServer received: buy|banana|8|3a29d81c-a9f8-47d2-9656-fcbec5b61dc9 from ('127.0.0.1', 52315)
+10.12.2024 22:56:55.877240 Buyer 9: Buy complete for request 3a29d81c-a9f8-47d2-9656-fcbec5b61dc9 (via localhost:5556): OK|Shipped 8 banana(s)|3a29d81c-a9f8-47d2-9656-fcbec5b61dc9
+10.12.2024 22:56:56.368685 Buyer 10: Wants to buy 8 orange(s) from trader at localhost:5556 with request ID a49434ab-5a4c-47e3-be7e-27e3c3a66563
+10.12.2024 22:56:56.370137 Buyer 10: Connected to trader at localhost:5556
+10.12.2024 22:56:56.370501 Trader 1: Received from ('127.0.0.1', 52648): buy|orange|8|a49434ab-5a4c-47e3-be7e-27e3c3a66563
+10.12.2024 22:56:56.370798 Warehouse: DatabaseServer received: buy|orange|8|a49434ab-5a4c-47e3-be7e-27e3c3a66563 from ('127.0.0.1', 52315)
+10.12.2024 22:56:56.372753 Buyer 10: Buy complete for request a49434ab-5a4c-47e3-be7e-27e3c3a66563 (via localhost:5556): OK|Shipped 8 orange(s)|a49434ab-5a4c-47e3-be7e-27e3c3a66563
+10.12.2024 22:56:56.745510 Seller 1: Accrued 10 apple(s) to sell to trader at localhost:5556 with request ID cf9de751-449f-4d5b-ae32-7fca4681b022
+10.12.2024 22:56:56.746382 Seller 1: Connected to trader at localhost:5556
+10.12.2024 22:56:56.746546 Trader 1: Received from ('127.0.0.1', 52649): sell|apple|10|cf9de751-449f-4d5b-ae32-7fca4681b022
+10.12.2024 22:56:56.746676 Warehouse: DatabaseServer received: sell|apple|10|cf9de751-449f-4d5b-ae32-7fca4681b022 from ('127.0.0.1', 52315)
+10.12.2024 22:56:56.747505 Seller 1: Sell complete for request cf9de751-449f-4d5b-ae32-7fca4681b022 (via localhost:5556): OK|Stocked 10 apple(s)|cf9de751-449f-4d5b-ae32-7fca4681b022
+10.12.2024 22:56:56.803651 Buyer 1: Wants to buy 9 apple(s) from trader at localhost:5557 with request ID 61ccfce4-a03f-455c-af14-21f88fe7b85c
+10.12.2024 22:56:56.804985 Buyer 1: Connected to trader at localhost:5557
+10.12.2024 22:56:56.805273 Trader 2: Received from ('127.0.0.1', 52650): buy|apple|9|61ccfce4-a03f-455c-af14-21f88fe7b85c
+10.12.2024 22:56:56.805785 Warehouse: DatabaseServer received: buy|apple|9|61ccfce4-a03f-455c-af14-21f88fe7b85c from ('127.0.0.1', 52316)
+10.12.2024 22:56:56.807939 Buyer 1: Buy complete for request 61ccfce4-a03f-455c-af14-21f88fe7b85c (via localhost:5557): OK|Shipped 9 apple(s)|61ccfce4-a03f-455c-af14-21f88fe7b85c
+10.12.2024 22:56:57.228462 Seller 2: Accrued 10 banana(s) to sell to trader at localhost:5556 with request ID 6cc7f0bd-efa7-4058-969b-cd38c22a8c08
+10.12.2024 22:56:57.229555 Seller 2: Connected to trader at localhost:5556
+10.12.2024 22:56:57.229817 Trader 1: Received from ('127.0.0.1', 52651): sell|banana|10|6cc7f0bd-efa7-4058-969b-cd38c22a8c08
+10.12.2024 22:56:57.230000 Warehouse: DatabaseServer received: sell|banana|10|6cc7f0bd-efa7-4058-969b-cd38c22a8c08 from ('127.0.0.1', 52315)
+10.12.2024 22:56:57.230968 Seller 2: Sell complete for request 6cc7f0bd-efa7-4058-969b-cd38c22a8c08 (via localhost:5556): OK|Stocked 10 banana(s)|6cc7f0bd-efa7-4058-969b-cd38c22a8c08
+10.12.2024 22:56:57.295771 Buyer 2: Wants to buy 2 orange(s) from trader at localhost:5557 with request ID 8bc45d22-255b-498c-82c3-48fb62b4a4f7
+10.12.2024 22:56:57.296665 Buyer 2: Connected to trader at localhost:5557
+10.12.2024 22:56:57.296911 Trader 2: Received from ('127.0.0.1', 52652): buy|orange|2|8bc45d22-255b-498c-82c3-48fb62b4a4f7
+10.12.2024 22:56:57.297103 Warehouse: DatabaseServer received: buy|orange|2|8bc45d22-255b-498c-82c3-48fb62b4a4f7 from ('127.0.0.1', 52316)
+10.12.2024 22:56:57.298254 Buyer 2: Buy complete for request 8bc45d22-255b-498c-82c3-48fb62b4a4f7 (via localhost:5557): OK|Shipped 2 orange(s)|8bc45d22-255b-498c-82c3-48fb62b4a4f7
+10.12.2024 22:56:57.746014 Seller 3: Accrued 10 orange(s) to sell to trader at localhost:5557 with request ID d94658c9-1b32-487e-bedc-cff120ffeb72
+10.12.2024 22:56:57.746926 Seller 3: Connected to trader at localhost:5557
+10.12.2024 22:56:57.747622 Trader 2: Received from ('127.0.0.1', 52653): sell|orange|10|d94658c9-1b32-487e-bedc-cff120ffeb72
+10.12.2024 22:56:57.748735 Warehouse: DatabaseServer received: sell|orange|10|d94658c9-1b32-487e-bedc-cff120ffeb72 from ('127.0.0.1', 52316)
+10.12.2024 22:56:57.749645 Seller 3: Sell complete for request d94658c9-1b32-487e-bedc-cff120ffeb72 (via localhost:5557): OK|Stocked 10 orange(s)|d94658c9-1b32-487e-bedc-cff120ffeb72
+10.12.2024 22:56:57.816051 Buyer 3: Wants to buy 8 apple(s) from trader at localhost:5556 with request ID 28fbfb58-82de-49a0-a398-da6555ccb85e
+10.12.2024 22:56:57.816977 Buyer 3: Connected to trader at localhost:5556
+10.12.2024 22:56:57.817498 Trader 1: Received from ('127.0.0.1', 52654): buy|apple|8|28fbfb58-82de-49a0-a398-da6555ccb85e
+10.12.2024 22:56:57.817753 Warehouse: DatabaseServer received: buy|apple|8|28fbfb58-82de-49a0-a398-da6555ccb85e from ('127.0.0.1', 52315)
+10.12.2024 22:56:57.818973 Buyer 3: Buy complete for request 28fbfb58-82de-49a0-a398-da6555ccb85e (via localhost:5556): OK|Shipped 8 apple(s)|28fbfb58-82de-49a0-a398-da6555ccb85e
+10.12.2024 22:56:58.249372 Seller 4: Accrued 10 apple(s) to sell to trader at localhost:5557 with request ID d81f2e93-2ffb-4268-aa3c-ed70f2ba90a3
+10.12.2024 22:56:58.250574 Seller 4: Connected to trader at localhost:5557
+10.12.2024 22:56:58.250824 Trader 2: Received from ('127.0.0.1', 52655): sell|apple|10|d81f2e93-2ffb-4268-aa3c-ed70f2ba90a3
+10.12.2024 22:56:58.251014 Warehouse: DatabaseServer received: sell|apple|10|d81f2e93-2ffb-4268-aa3c-ed70f2ba90a3 from ('127.0.0.1', 52316)
+10.12.2024 22:56:58.251833 Seller 4: Sell complete for request d81f2e93-2ffb-4268-aa3c-ed70f2ba90a3 (via localhost:5557): OK|Stocked 10 apple(s)|d81f2e93-2ffb-4268-aa3c-ed70f2ba90a3
+10.12.2024 22:56:58.330095 Buyer 4: Wants to buy 5 orange(s) from trader at localhost:5557 with request ID 5fee6a36-afd3-440f-9216-93611e4b87a1
+10.12.2024 22:56:58.331135 Buyer 4: Connected to trader at localhost:5557
+10.12.2024 22:56:58.331347 Trader 2: Received from ('127.0.0.1', 52656): buy|orange|5|5fee6a36-afd3-440f-9216-93611e4b87a1
+10.12.2024 22:56:58.331556 Warehouse: DatabaseServer received: buy|orange|5|5fee6a36-afd3-440f-9216-93611e4b87a1 from ('127.0.0.1', 52316)
+10.12.2024 22:56:58.332895 Buyer 4: Buy complete for request 5fee6a36-afd3-440f-9216-93611e4b87a1 (via localhost:5557): OK|Shipped 5 orange(s)|5fee6a36-afd3-440f-9216-93611e4b87a1
+10.12.2024 22:56:58.780335 Seller 5: Accrued 10 banana(s) to sell to trader at localhost:5557 with request ID 9c052be4-66cb-40ca-a36e-361c3eb77d12
+10.12.2024 22:56:58.781775 Seller 5: Connected to trader at localhost:5557
+10.12.2024 22:56:58.782171 Trader 2: Received from ('127.0.0.1', 52657): sell|banana|10|9c052be4-66cb-40ca-a36e-361c3eb77d12
+10.12.2024 22:56:58.782432 Warehouse: DatabaseServer received: sell|banana|10|9c052be4-66cb-40ca-a36e-361c3eb77d12 from ('127.0.0.1', 52316)
+10.12.2024 22:56:58.783493 Seller 5: Sell complete for request 9c052be4-66cb-40ca-a36e-361c3eb77d12 (via localhost:5557): OK|Stocked 10 banana(s)|9c052be4-66cb-40ca-a36e-361c3eb77d12
+10.12.2024 22:56:58.845347 Buyer 5: Wants to buy 6 banana(s) from trader at localhost:5556 with request ID 3f1db00e-75d7-401d-8c17-ed4fb6cd0fa9
+10.12.2024 22:56:58.846713 Buyer 5: Connected to trader at localhost:5556
+10.12.2024 22:56:58.847518 Trader 1: Received from ('127.0.0.1', 52658): buy|banana|6|3f1db00e-75d7-401d-8c17-ed4fb6cd0fa9
+10.12.2024 22:56:58.847972 Warehouse: DatabaseServer received: buy|banana|6|3f1db00e-75d7-401d-8c17-ed4fb6cd0fa9 from ('127.0.0.1', 52315)
+10.12.2024 22:56:58.849597 Buyer 5: Buy complete for request 3f1db00e-75d7-401d-8c17-ed4fb6cd0fa9 (via localhost:5556): OK|Shipped 6 banana(s)|3f1db00e-75d7-401d-8c17-ed4fb6cd0fa9
+^CBuyer 10 shutting down.
+Buyer 8 shutting down.
+Buyer 9 shutting down.
+Buyer 7 shutting down.
+Buyer 6 shutting down.
+Buyer 5 shutting down.
+Buyer 4 shutting down.
+Buyer 3 shutting down.
+Buyer 2 shutting down.
+Buyer 1 shutting down.
+Seller 8 shutting down.
+Seller 7 shutting down.
+Seller 6 shutting down.
+Seller 4 shutting down.
+Seller 3 shutting down.
+Seller 2 shutting down.
+Trader 1 shutting down.
+Seller 5 shutting down.
+Trader 2 shutting down.
+Seller 1 shutting down.
+10.12.2024 22:56:59.034847 Warehouse: DatabaseServer shutting down.
+Shutting down trading post network...
+10.12.2024 22:56:59.040005 Warehouse: DatabaseServer: Disconnected from trader at ('127.0.0.1', 52315)
+10.12.2024 22:56:59.040706 Warehouse: DatabaseServer: Disconnected from trader at ('127.0.0.1', 52316)
+Trading post network shutdown complete

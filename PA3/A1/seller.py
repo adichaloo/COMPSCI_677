@@ -78,7 +78,7 @@ class Seller:
     def process_response(self, response, trader, request_id):
         """Process the response from the trader."""
         if response.startswith("OK"):
-            self.timestamped_print("Sell complete for request {request_id} (via {trader[0]}:{trader[1]}): {response}")
+            self.timestamped_print(f"Sell complete for request {request_id} (via {trader[0]}:{trader[1]}): {response}")
         elif response.startswith("ERROR"):
             self.timestamped_print(f"Sell failure for request {request_id} (via {trader[0]}:{trader[1]}): {response}")
         else:

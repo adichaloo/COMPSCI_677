@@ -4,13 +4,13 @@ from database_server import DatabaseServer
 from trader import Trader
 from seller import Seller
 from buyer import Buyer
-
+from multiprocessing import Manager
 import math
 
 N_B = 10
 N_T = 2
 N_S = 8
-N_G = 10
+N_G = 5
 T_G = 5
 
 BUY_PROBABILITY = 1
@@ -58,15 +58,13 @@ class TradingPostNetwork:
 
     def start_database_server(self):
         """Start the central warehouse database server."""
-        from multiprocessing import Manager
+    
+
         manager = Manager()
         shipped_goods = manager.Value("i", 0)
-
-        # manager = Manager()
-        # shipped_goods = manager.Value("i", 0)
         db_process = multiprocessing.Process(
             target=run_database,
-            args=(self.db_host, self.db_port, shipped_goods),
+            args=(self.db_host, self.db_port,shipped_goods),
             daemon=True
         )
         db_process.start()
@@ -145,7 +143,7 @@ class TradingPostNetwork:
     def setup_network(self):
         """Set up the entire trading post network."""
         print("Starting trading post network setup...")
-        db_process,  shipped_goods = self.start_database_server()
+        db_process, shipped_goods  = self.start_database_server()
         time.sleep(1)
 
         trader_processes = self.start_traders()
@@ -159,7 +157,7 @@ class TradingPostNetwork:
         for i, post in enumerate(self.trading_posts):
             print(f"Trading Post {i + 1}: Trader={post['trader']}, Buyers={post['buyers']}, Sellers={post['sellers']}")
 
-        return db_process, trader_processes, seller_processes, buyer_processes, shipped_goods
+        return db_process, trader_processes, seller_processes, buyer_processes, shipped_goods 
 
 
 if __name__ == "__main__":
@@ -167,7 +165,7 @@ if __name__ == "__main__":
     multiprocessing.set_start_method("spawn", force=True)
 
     network = TradingPostNetwork(num_buyers=N_B, num_sellers=N_S, num_traders=N_T, db_host='localhost', db_port=5555)
-    db_process, trader_processes, seller_processes, buyer_processes = network.setup_network()
+    db_process, trader_processes, seller_processes, buyer_processes, shipped_goods = network.setup_network()
 
     try:
         while True:

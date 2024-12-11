@@ -1,227 +1,1019 @@
-Stwting trading post network setup...
+Starting trading post network setup...
 Database server started on localhost:5555
+10.12.2024 23:17:55.905618 Warehouse: Inventory loaded successfully.
+10.12.2024 23:17:55.906787 Warehouse: DatabaseServer is running on localhost:5555
 Trader 1 started on localhost:5002 (heartbeat to port 5003)
-Trader 2 started on localhost:5003 (heartbeat to port 5002)
-Seller 1 started in Trading Post 1 with listener on port 6001.
-Seller 2 started in Trading Post 1 with listener on port 6002.
-Seller 3 started in Trading Post 1 with listener on port 6003.
-Seller 4 started in Trading Post 1 with listener on port 6004.
-Seller 5 started in Trading Post 2 with listener on port 6005.
-Seller 6 started in Trading Post 2 with listener on port 6006.
-Seller 7 started in Trading Post 2 with listener on port 6007.
-Seller 8 started in Trading Post 2 with listener on port 6008.
-Buyer 1 started in Trading Post 1.
-Buyer 2 started in Trading Post 1.
-Buyer 3 started in Trading Post 1.
-Buyer 4 started in Trading Post 1.
-Buyer 5 started in Trading Post 1.
-Buyer 6 started in Trading Post 2.
-Buyer 6 wants to buy 8 banana(s) from trader at localhost:5003 with request ID a28de708-1276-4c01-9751-b3e225195273
-Buyer 6 connected to trader at localhost:5003
-Buyer 6: Buy complete for request a28de708-1276-4c01-9751-b3e225195273 (via localhost:5003): OK|Shipped 8 banana(s)|a28de708-1276-4c01-9751-b3e225195273
-Buyer 6 shutting down.
-Buyer 4 wants to buy 4 apple(s) from trader at localhost:5002 with request ID c23c8ce3-7a0b-47bb-999c-e71d1fff0928
-Buyer 4 connected to trader at localhost:5002
-Buyer 4: Buy complete for request c23c8ce3-7a0b-47bb-999c-e71d1fff0928 (via localhost:5002): OK|Shipped 4 apple(s)|c23c8ce3-7a0b-47bb-999c-e71d1fff0928
-Buyer 4 shutting down.
-Buyer 5 wants to buy 8 apple(s) from trader at localhost:5002 with request ID 89e990b3-69fa-4dbe-8842-9ea8795b14eb
-Buyer 5 connected to trader at localhost:5002
-Buyer 5: Buy complete for request 89e990b3-69fa-4dbe-8842-9ea8795b14eb (via localhost:5002): OK|Shipped 8 apple(s)|89e990b3-69fa-4dbe-8842-9ea8795b14eb
-Buyer 5 shutting down.
-Buyer 7 wants to buy 8 apple(s) from trader at localhost:5003 with request ID 265335ea-6b16-4b0e-b1ba-9eb5d4a6287b
-Buyer 7 connected to trader at localhost:5003
-Buyer 7: Buy complete for request 265335ea-6b16-4b0e-b1ba-9eb5d4a6287b (via localhost:5003): OK|Shipped 8 apple(s)|265335ea-6b16-4b0e-b1ba-9eb5d4a6287b
-Buyer 7 shutting down.
-Seller 8 accrued 10 apple(s) to sell to trader at localhost:5003 with request ID 7f06a36e-1474-41d3-8538-297b8574e8e2
-Seller 8 is listening for trader messages on port 6008
-Seller 8 connected to trader at localhost:5003
-Seller 8: Sell complete for request 7f06a36e-1474-41d3-8538-297b8574e8e2 (via localhost:5003): OK|Stocked 10 apple(s)|7f06a36e-1474-41d3-8538-297b8574e8e2
-Seller 8 shutting down.
-Buyer 2 wants to buy 10 apple(s) from trader at localhost:5002 with request ID 92e7f449-1983-4632-94c8-a096f6c1dcc8
-Buyer 2 connected to trader at localhost:5002
-Buyer 2: Buy complete for request 92e7f449-1983-4632-94c8-a096f6c1dcc8 (via localhost:5002): OK|Shipped 10 apple(s)|92e7f449-1983-4632-94c8-a096f6c1dcc8
-Buyer 2 shutting down.
-Buyer 3 wants to buy 10 orange(s) from trader at localhost:5002 with request ID d0c132ec-2719-43a1-b3a8-a701b6479ba8
-Buyer 3 connected to trader at localhost:5002
-Buyer 3: Buy complete for request d0c132ec-2719-43a1-b3a8-a701b6479ba8 (via localhost:5002): OK|Shipped 10 orange(s)|d0c132ec-2719-43a1-b3a8-a701b6479ba8
-Buyer 3 shutting down.
-Seller 7 accrued 10 apple(s) to sell to trader at localhost:5003 with request ID 0de1f7d2-6943-414e-8f6b-2cbb7657ec07
-Seller 7 is listening for trader messages on port 6007
-Seller 7 connected to trader at localhost:5003
-Seller 7: Sell complete for request 0de1f7d2-6943-414e-8f6b-2cbb7657ec07 (via localhost:5003): OK|Stocked 10 apple(s)|0de1f7d2-6943-414e-8f6b-2cbb7657ec07
-Seller 7 accrued 10 banana(s) to sell to trader at localhost:5003 with request ID 8056976e-ae73-4b16-ae97-26852b77c285
-Seller 7 connected to trader at localhost:5003
-Seller 7: Sell complete for request 8056976e-ae73-4b16-ae97-26852b77c285 (via localhost:5003): OK|Stocked 10 banana(s)|8056976e-ae73-4b16-ae97-26852b77c285
-Seller 7 shutting down.
-Seller 5 accrued 10 orange(s) to sell to trader at localhost:5003 with request ID ced2223a-fcfb-4a0a-870f-c81b3e7f8846
-Seller 5 is listening for trader messages on port 6005
-Seller 5 connected to trader at localhost:5003
-Seller 5: Sell complete for request ced2223a-fcfb-4a0a-870f-c81b3e7f8846 (via localhost:5003): OK|Stocked 10 orange(s)|ced2223a-fcfb-4a0a-870f-c81b3e7f8846
-Seller 5 accrued 10 apple(s) to sell to trader at localhost:5003 with request ID de91fd78-f94b-41f1-a745-63bc695fcb73
-Seller 5 connected to trader at localhost:5003
-Seller 5: Sell complete for request de91fd78-f94b-41f1-a745-63bc695fcb73 (via localhost:5003): OK|Stocked 10 apple(s)|de91fd78-f94b-41f1-a745-63bc695fcb73
-Seller 5 shutting down.
-Seller 4 accrued 10 orange(s) to sell to trader at localhost:5002 with request ID feb988c1-68d0-4769-b980-f0f9eafce692
-Seller 4 is listening for trader messages on port 6004
-Seller 4 connected to trader at localhost:5002
-Seller 4: Sell complete for request feb988c1-68d0-4769-b980-f0f9eafce692 (via localhost:5002): OK|Stocked 10 orange(s)|feb988c1-68d0-4769-b980-f0f9eafce692
-Seller 4 accrued 10 apple(s) to sell to trader at localhost:5002 with request ID 469f5f8f-9d78-4679-81fe-281af8de51f9
-Seller 4 connected to trader at localhost:5002
-Seller 4: Sell complete for request 469f5f8f-9d78-4679-81fe-281af8de51f9 (via localhost:5002): OK|Stocked 10 apple(s)|469f5f8f-9d78-4679-81fe-281af8de51f9
-Seller 4 shutting down.
-Seller 3 accrued 10 apple(s) to sell to trader at localhost:5002 with request ID 5e6a9ffc-a0be-468c-b2bd-6843e1f978c5
-Seller 3 is listening for trader messages on port 6003
-Seller 3 connected to trader at localhost:5002
-Seller 3: Sell complete for request 5e6a9ffc-a0be-468c-b2bd-6843e1f978c5 (via localhost:5002): OK|Stocked 10 apple(s)|5e6a9ffc-a0be-468c-b2bd-6843e1f978c5
-Seller 3 accrued 10 apple(s) to sell to trader at localhost:5002 with request ID 1c05e591-5a2b-41a2-b3d9-724b55c0b08f
-Seller 3 connected to trader at localhost:5002
-Seller 3: Sell complete for request 1c05e591-5a2b-41a2-b3d9-724b55c0b08f (via localhost:5002): OK|Stocked 10 apple(s)|1c05e591-5a2b-41a2-b3d9-724b55c0b08f
-Seller 3 shutting down.
-Buyer 1 wants to buy 8 orange(s) from trader at localhost:5002 with request ID 671620ea-5d0e-46c3-ace5-4187e394cb94
-Buyer 1 connected to trader at localhost:5002
-Buyer 1: Buy complete for request 671620ea-5d0e-46c3-ace5-4187e394cb94 (via localhost:5002): OK|Shipped 8 orange(s)|671620ea-5d0e-46c3-ace5-4187e394cb94
-Buyer 1 shutting down.
-Seller 6 accrued 10 banana(s) to sell to trader at localhost:5003 with request ID 4ce6893a-8f58-40d9-8404-212bb5469299
-Seller 6 is listening for trader messages on port 6006
-Seller 6 connected to trader at localhost:5003
-Seller 6: Sell complete for request 4ce6893a-8f58-40d9-8404-212bb5469299 (via localhost:5003): OK|Stocked 10 banana(s)|4ce6893a-8f58-40d9-8404-212bb5469299
-Seller 6 accrued 10 orange(s) to sell to trader at localhost:5003 with request ID 1a5ab734-a3a0-48b7-8f1c-c11238ae9a06
-Seller 6 connected to trader at localhost:5003
-Seller 6: Sell complete for request 1a5ab734-a3a0-48b7-8f1c-c11238ae9a06 (via localhost:5003): OK|Stocked 10 orange(s)|1a5ab734-a3a0-48b7-8f1c-c11238ae9a06
-Seller 6 shutting down.
-Seller 2 accrued 10 orange(s) to sell to trader at localhost:5002 with request ID f46e7ed7-a373-4732-98e3-d0302cbffd79
-Seller 2 is listening for trader messages on port 6002
-Seller 2 connected to trader at localhost:5002
-Seller 2: Sell complete for request f46e7ed7-a373-4732-98e3-d0302cbffd79 (via localhost:5002): OK|Stocked 10 orange(s)|f46e7ed7-a373-4732-98e3-d0302cbffd79
-Seller 2 accrued 10 banana(s) to sell to trader at localhost:5002 with request ID 60d9bed2-e277-4658-95f0-d0bd1c3958bf
-Seller 2 connected to trader at localhost:5002
-Seller 2: Sell complete for request 60d9bed2-e277-4658-95f0-d0bd1c3958bf (via localhost:5002): OK|Stocked 10 banana(s)|60d9bed2-e277-4658-95f0-d0bd1c3958bf
-Seller 2 shutting down.
-Seller 1 accrued 10 orange(s) to sell to trader at localhost:5002 with request ID 004feb48-b52e-4e62-b549-68e99de0dd28
-Seller 1 is listening for trader messages on port 6001
-Seller 1 connected to trader at localhost:5002
-Seller 1: Sell complete for request 004feb48-b52e-4e62-b549-68e99de0dd28 (via localhost:5002): OK|Stocked 10 orange(s)|004feb48-b52e-4e62-b549-68e99de0dd28
-Seller 1 accrued 10 apple(s) to sell to trader at localhost:5002 with request ID 7ff2be40-4a7a-4988-9503-417cfe21c054
-Seller 1 connected to trader at localhost:5002
-Seller 1: Sell complete for request 7ff2be40-4a7a-4988-9503-417cfe21c054 (via localhost:5002): OK|Stocked 10 apple(s)|7ff2be40-4a7a-4988-9503-417cfe21c054
-Seller 1 shutting down.
-Buyer 7 started in Trading Post 2.
-Trader 2 listening on localhost:5003
-Trader 2 connected to database server at localhost:5555
-Trader 2 is running with a thread pool of 10 workers.
-Trader 2 connected to ('127.0.0.1', 50544)
-Trader 2 disconnected from ('127.0.0.1', 50544)
-Trader 2 connected to ('127.0.0.1', 50550)
-Trader 2 disconnected from ('127.0.0.1', 50550)
-Trader 2 connected to ('127.0.0.1', 50551)
-Trader 2 received from ('127.0.0.1', 50551): sell|orange|10|ced2223a-fcfb-4a0a-870f-c81b3e7f8846
-Trader 2 disconnected from ('127.0.0.1', 50551)
-Trader 2 connected to ('127.0.0.1', 50553)
-Trader 2 received from ('127.0.0.1', 50553): sell|banana|10|4ce6893a-8f58-40d9-8404-212bb5469299
-Trader 2 disconnected from ('127.0.0.1', 50553)
-Trader 2 connected to ('127.0.0.1', 50554)
-Trader 2 received from ('127.0.0.1', 50554): sell|apple|10|0de1f7d2-6943-414e-8f6b-2cbb7657ec07
-Trader 2 disconnected from ('127.0.0.1', 50554)
-Trader 2 connected to ('127.0.0.1', 50555)
-Trader 2 received from ('127.0.0.1', 50555): sell|apple|10|7f06a36e-1474-41d3-8538-297b8574e8e2
-Trader 2 disconnected from ('127.0.0.1', 50555)
-Trader 2 connected to ('127.0.0.1', 50556)
-Trader 2 disconnected from ('127.0.0.1', 50556)
-Trader 2 connected to ('127.0.0.1', 50562)
-Trader 2 disconnected from ('127.0.0.1', 50562)
-Trader 2 connected to ('127.0.0.1', 50568)
-Trader 2 received from ('127.0.0.1', 50568): sell|apple|10|de91fd78-f94b-41f1-a745-63bc695fcb73
-Trader 2 disconnected from ('127.0.0.1', 50568)
-Trader 2 connected to ('127.0.0.1', 50570)
-Trader 2 received from ('127.0.0.1', 50570): sell|orange|10|1a5ab734-a3a0-48b7-8f1c-c11238ae9a06
-Trader 2 disconnected from ('127.0.0.1', 50570)
-Trader 2 connected to ('127.0.0.1', 50571)
-Trader 2 received from ('127.0.0.1', 50571): buy|banana|8|a28de708-1276-4c01-9751-b3e225195273
-Trader 2 disconnected from ('127.0.0.1', 50571)
-Trader 2 connected to ('127.0.0.1', 50572)
-Trader 2 disconnected from ('127.0.0.1', 50572)
-Trader 2 connected to ('127.0.0.1', 50573)
-Trader 2 received from ('127.0.0.1', 50573): sell|banana|10|8056976e-ae73-4b16-ae97-26852b77c285
-Trader 2 disconnected from ('127.0.0.1', 50573)
-Trader 2 connected to ('127.0.0.1', 50574)
-Trader 2 received from ('127.0.0.1', 50574): buy|apple|8|265335ea-6b16-4b0e-b1ba-9eb5d4a6287b
-Trader 2 disconnected from ('127.0.0.1', 50574)
-Trader 2 shutting down.
-Inventory loaded successfully.
-DatabaseServer is running on localhost:5555
-DatabaseServer received: sell|orange|10|004feb48-b52e-4e62-b549-68e99de0dd28 from ('127.0.0.1', 50540)
-DatabaseServer received: sell|orange|10|f46e7ed7-a373-4732-98e3-d0302cbffd79 from ('127.0.0.1', 50540)
-DatabaseServer received: sell|apple|10|5e6a9ffc-a0be-468c-b2bd-6843e1f978c5 from ('127.0.0.1', 50540)
-DatabaseServer received: sell|orange|10|feb988c1-68d0-4769-b980-f0f9eafce692 from ('127.0.0.1', 50540)
-DatabaseServer received: sell|orange|10|ced2223a-fcfb-4a0a-870f-c81b3e7f8846 from ('127.0.0.1', 50541)
-DatabaseServer received: sell|banana|10|4ce6893a-8f58-40d9-8404-212bb5469299 from ('127.0.0.1', 50541)
-DatabaseServer received: sell|apple|10|0de1f7d2-6943-414e-8f6b-2cbb7657ec07 from ('127.0.0.1', 50541)
-DatabaseServer received: sell|apple|10|7f06a36e-1474-41d3-8538-297b8574e8e2 from ('127.0.0.1', 50541)
-DatabaseServer received: sell|apple|10|7ff2be40-4a7a-4988-9503-417cfe21c054 from ('127.0.0.1', 50540)
-DatabaseServer received: buy|orange|8|671620ea-5d0e-46c3-ace5-4187e394cb94 from ('127.0.0.1', 50540)
-DatabaseServer received: sell|banana|10|60d9bed2-e277-4658-95f0-d0bd1c3958bf from ('127.0.0.1', 50540)
-DatabaseServer received: buy|apple|10|92e7f449-1983-4632-94c8-a096f6c1dcc8 from ('127.0.0.1', 50540)
-DatabaseServer received: sell|apple|10|1c05e591-5a2b-41a2-b3d9-724b55c0b08f from ('127.0.0.1', 50540)
-DatabaseServer received: buy|orange|10|d0c132ec-2719-43a1-b3a8-a701b6479ba8 from ('127.0.0.1', 50540)
-DatabaseServer received: sell|apple|10|469f5f8f-9d78-4679-81fe-281af8de51f9 from ('127.0.0.1', 50540)
-DatabaseServer received: buy|apple|4|c23c8ce3-7a0b-47bb-999c-e71d1fff0928 from ('127.0.0.1', 50540)
-DatabaseServer received: sell|apple|10|de91fd78-f94b-41f1-a745-63bc695fcb73 from ('127.0.0.1', 50541)
-DatabaseServer received: buy|apple|8|89e990b3-69fa-4dbe-8842-9ea8795b14eb from ('127.0.0.1', 50540)
-DatabaseServer received: sell|orange|10|1a5ab734-a3a0-48b7-8f1c-c11238ae9a06 from ('127.0.0.1', 50541)
-DatabaseServer received: buy|banana|8|a28de708-1276-4c01-9751-b3e225195273 from ('127.0.0.1', 50541)
-DatabaseServer received: sell|banana|10|8056976e-ae73-4b16-ae97-26852b77c285 from ('127.0.0.1', 50541)
-DatabaseServer received: buy|apple|8|265335ea-6b16-4b0e-b1ba-9eb5d4a6287b from ('127.0.0.1', 50541)
-DatabaseServer: Disconnected from trader at ('127.0.0.1', 50541)
-DatabaseServer shutting down.
-DatabaseServer: Disconnected from trader at ('127.0.0.1', 50540)
 Trader 1 listening on localhost:5002
-Trader 1 connected to database server at localhost:5555
-Trader 1 is running with a thread pool of 10 workers.
-Trader 1 connected to ('127.0.0.1', 50545)
-Trader 1 received from ('127.0.0.1', 50545): sell|orange|10|004feb48-b52e-4e62-b549-68e99de0dd28
-Trader 1 disconnected from ('127.0.0.1', 50545)
-Trader 1 connected to ('127.0.0.1', 50546)
-Trader 1 disconnected from ('127.0.0.1', 50546)
-Trader 1 connected to ('127.0.0.1', 50547)
-Trader 1 received from ('127.0.0.1', 50547): sell|orange|10|f46e7ed7-a373-4732-98e3-d0302cbffd79
-Trader 1 disconnected from ('127.0.0.1', 50547)
-Trader 1 connected to ('127.0.0.1', 50548)
-Trader 1 received from ('127.0.0.1', 50548): sell|apple|10|5e6a9ffc-a0be-468c-b2bd-6843e1f978c5
-Trader 1 disconnected from ('127.0.0.1', 50548)
-Trader 1 connected to ('127.0.0.1', 50549)
-Trader 1 received from ('127.0.0.1', 50549): sell|orange|10|feb988c1-68d0-4769-b980-f0f9eafce692
-Trader 1 disconnected from ('127.0.0.1', 50549)
-Trader 1 connected to ('127.0.0.1', 50552)
-Trader 1 disconnected from ('127.0.0.1', 50552)
-Trader 1 connected to ('127.0.0.1', 50557)
-Trader 1 disconnected from ('127.0.0.1', 50557)
-Trader 1 connected to ('127.0.0.1', 50558)
-Trader 1 received from ('127.0.0.1', 50558): sell|apple|10|7ff2be40-4a7a-4988-9503-417cfe21c054
-Trader 1 disconnected from ('127.0.0.1', 50558)
-Trader 1 connected to ('127.0.0.1', 50559)
-Trader 1 received from ('127.0.0.1', 50559): buy|orange|8|671620ea-5d0e-46c3-ace5-4187e394cb94
-Trader 1 disconnected from ('127.0.0.1', 50559)
-Trader 1 connected to ('127.0.0.1', 50560)
-Trader 1 received from ('127.0.0.1', 50560): sell|banana|10|60d9bed2-e277-4658-95f0-d0bd1c3958bf
-Trader 1 disconnected from ('127.0.0.1', 50560)
-Trader 1 connected to ('127.0.0.1', 50561)
-Trader 1 received from ('127.0.0.1', 50561): buy|apple|10|92e7f449-1983-4632-94c8-a096f6c1dcc8
-Trader 1 disconnected from ('127.0.0.1', 50561)
-Trader 1 connected to ('127.0.0.1', 50563)
-Trader 1 received from ('127.0.0.1', 50563): sell|apple|10|1c05e591-5a2b-41a2-b3d9-724b55c0b08f
-Trader 1 disconnected from ('127.0.0.1', 50563)
-Trader 1 connected to ('127.0.0.1', 50564)
-Trader 1 received from ('127.0.0.1', 50564): buy|orange|10|d0c132ec-2719-43a1-b3a8-a701b6479ba8
-Trader 1 disconnected from ('127.0.0.1', 50564)
-Trader 1 connected to ('127.0.0.1', 50565)
-Trader 1 disconnected from ('127.0.0.1', 50565)
-Trader 1 connected to ('127.0.0.1', 50566)
-Trader 1 received from ('127.0.0.1', 50566): sell|apple|10|469f5f8f-9d78-4679-81fe-281af8de51f9
-Trader 1 disconnected from ('127.0.0.1', 50566)
-Trader 1 connected to ('127.0.0.1', 50567)
-Trader 1 received from ('127.0.0.1', 50567): buy|apple|4|c23c8ce3-7a0b-47bb-999c-e71d1fff0928
-Trader 1 disconnected from ('127.0.0.1', 50567)
-Trader 1 connected to ('127.0.0.1', 50569)
-Trader 1 received from ('127.0.0.1', 50569): buy|apple|8|89e990b3-69fa-4dbe-8842-9ea8795b14eb
-Trader 1 disconnected from ('127.0.0.1', 50569)
-Trader 1 shutting down.
+10.12.2024 23:17:56.942624 Trader 1: Connected to database server at localhost:5555
+10.12.2024 23:17:56.942649 Trader 1: Running with a thread pool of 10 workers.
+10.12.2024 23:17:56.942733 Trader 1: Starting Heartbeat
+Trader 2 started on localhost:5003 (heartbeat to port 5002)
+Trader 2 listening on localhost:5003
+10.12.2024 23:17:57.455602 Trader 2: Connected to database server at localhost:5555
+10.12.2024 23:17:57.455625 Trader 2: Running with a thread pool of 10 workers.
+10.12.2024 23:17:57.455703 Trader 2: Starting Heartbeat
+Seller 1 started in Trading Post 1 with listener on port 6001.
+10.12.2024 23:17:58.963333 Seller 1: Attempting to sell 10 apple(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:17:58.964951 Seller 1: Listening for trader messages on port 6001
+10.12.2024 23:17:58.965194 Seller 1: Connected to trader at localhost:5002
+10.12.2024 23:17:58.965349 Trader 1: Received from ('127.0.0.1', 53114): sell|apple|10|f4fac1ce-8548-4636-a5dc-413db4571daa
+10.12.2024 23:17:58.965452 Warehouse: DatabaseServer received: sell|apple|10|f4fac1ce-8548-4636-a5dc-413db4571daa from ('127.0.0.1', 53112)
+10.12.2024 23:17:58.965868 Seller 1: Sell complete for request f4fac1ce-8548-4636-a5dc-413db4571daa (via localhost:5002): OK|Stocked 10 apple(s)|f4fac1ce-8548-4636-a5dc-413db4571daa
+Seller 2 started in Trading Post 1 with listener on port 6002.
+10.12.2024 23:17:59.458554 Seller 2: Attempting to sell 10 banana(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:17:59.460132 Seller 2: Listening for trader messages on port 6002
+10.12.2024 23:17:59.460382 Seller 2: Connected to trader at localhost:5002
+10.12.2024 23:17:59.460464 Trader 1: Received from ('127.0.0.1', 53115): sell|banana|10|342da690-c595-46d9-ad48-b3f7e3ed704c
+10.12.2024 23:17:59.460548 Warehouse: DatabaseServer received: sell|banana|10|342da690-c595-46d9-ad48-b3f7e3ed704c from ('127.0.0.1', 53112)
+10.12.2024 23:17:59.460933 Seller 2: Sell complete for request 342da690-c595-46d9-ad48-b3f7e3ed704c (via localhost:5002): OK|Stocked 10 banana(s)|342da690-c595-46d9-ad48-b3f7e3ed704c
+Seller 3 started in Trading Post 1 with listener on port 6003.
+10.12.2024 23:17:59.948313 Trader 1: Sent heartbeat message.
+10.12.2024 23:17:59.948791 Trader 1: Received heartbeat response YES, I'm Alive.
+10.12.2024 23:17:59.948766 Trader 2: Received and responded to heartbeat message ARE YOU THERE?.
+10.12.2024 23:17:59.980585 Seller 3: Attempting to sell 10 orange(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:17:59.982060 Seller 3: Listening for trader messages on port 6003
+10.12.2024 23:17:59.982247 Seller 3: Connected to trader at localhost:5002
+10.12.2024 23:17:59.982310 Trader 1: Received from ('127.0.0.1', 53117): sell|orange|10|f659cdea-4222-4a9f-a3aa-ca9e5f1aaa67
+10.12.2024 23:17:59.982394 Warehouse: DatabaseServer received: sell|orange|10|f659cdea-4222-4a9f-a3aa-ca9e5f1aaa67 from ('127.0.0.1', 53112)
+10.12.2024 23:17:59.982747 Seller 3: Sell complete for request f659cdea-4222-4a9f-a3aa-ca9e5f1aaa67 (via localhost:5002): OK|Stocked 10 orange(s)|f659cdea-4222-4a9f-a3aa-ca9e5f1aaa67
+Seller 4 started in Trading Post 1 with listener on port 6004.
+10.12.2024 23:18:00.461480 Trader 2: Sent heartbeat message.
+10.12.2024 23:18:00.461598 Trader 1: Received and responded to heartbeat message ARE YOU THERE?.
+10.12.2024 23:18:00.461658 Trader 2: Received heartbeat response YES, I'm Alive.
+10.12.2024 23:18:00.488819 Seller 4: Attempting to sell 10 banana(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:00.490168 Seller 4: Listening for trader messages on port 6004
+10.12.2024 23:18:00.490306 Seller 4: Connected to trader at localhost:5002
+10.12.2024 23:18:00.490382 Trader 1: Received from ('127.0.0.1', 53119): sell|banana|10|fbff091f-ffd6-4b8d-bebc-01e46c2d503e
+10.12.2024 23:18:00.490458 Warehouse: DatabaseServer received: sell|banana|10|fbff091f-ffd6-4b8d-bebc-01e46c2d503e from ('127.0.0.1', 53112)
+10.12.2024 23:18:00.490807 Seller 4: Sell complete for request fbff091f-ffd6-4b8d-bebc-01e46c2d503e (via localhost:5002): OK|Stocked 10 banana(s)|fbff091f-ffd6-4b8d-bebc-01e46c2d503e
+Seller 5 started in Trading Post 2 with listener on port 6005.
+10.12.2024 23:18:00.998364 Seller 5: Attempting to sell 10 apple(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:00.999801 Seller 5: Listening for trader messages on port 6005
+10.12.2024 23:18:00.999987 Seller 5: Connected to trader at localhost:5003
+10.12.2024 23:18:01.000158 Trader 2: Received from ('127.0.0.1', 53120): sell|apple|10|1ca6b14a-c1ae-4638-8484-1a1676f0862a
+10.12.2024 23:18:01.000267 Warehouse: DatabaseServer received: sell|apple|10|1ca6b14a-c1ae-4638-8484-1a1676f0862a from ('127.0.0.1', 53113)
+10.12.2024 23:18:01.000575 Seller 5: Sell complete for request 1ca6b14a-c1ae-4638-8484-1a1676f0862a (via localhost:5003): OK|Stocked 10 apple(s)|1ca6b14a-c1ae-4638-8484-1a1676f0862a
+Seller 6 started in Trading Post 2 with listener on port 6006.
+10.12.2024 23:18:01.508387 Seller 6: Attempting to sell 10 orange(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:01.510078 Seller 6: Listening for trader messages on port 6006
+10.12.2024 23:18:01.510211 Seller 6: Connected to trader at localhost:5003
+10.12.2024 23:18:01.510297 Trader 2: Received from ('127.0.0.1', 53123): sell|orange|10|c8469785-bd7d-47da-838a-b481985ddeb3
+10.12.2024 23:18:01.510370 Warehouse: DatabaseServer received: sell|orange|10|c8469785-bd7d-47da-838a-b481985ddeb3 from ('127.0.0.1', 53113)
+10.12.2024 23:18:01.510704 Seller 6: Sell complete for request c8469785-bd7d-47da-838a-b481985ddeb3 (via localhost:5003): OK|Stocked 10 orange(s)|c8469785-bd7d-47da-838a-b481985ddeb3
+Seller 7 started in Trading Post 2 with listener on port 6007.
+10.12.2024 23:18:01.954756 Trader 1: Sent heartbeat message.
+10.12.2024 23:18:01.954900 Trader 2: Received and responded to heartbeat message ARE YOU THERE?.
+10.12.2024 23:18:01.954958 Trader 1: Received heartbeat response YES, I'm Alive.
+10.12.2024 23:18:02.010618 Seller 7: Attempting to sell 10 banana(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:02.012069 Seller 7: Listening for trader messages on port 6007
+10.12.2024 23:18:02.012263 Seller 7: Connected to trader at localhost:5003
+10.12.2024 23:18:02.012342 Trader 2: Received from ('127.0.0.1', 53125): sell|banana|10|ebab90fc-98f6-426f-a1f4-fd5e115c33cc
+10.12.2024 23:18:02.012423 Warehouse: DatabaseServer received: sell|banana|10|ebab90fc-98f6-426f-a1f4-fd5e115c33cc from ('127.0.0.1', 53113)
+10.12.2024 23:18:02.012766 Seller 7: Sell complete for request ebab90fc-98f6-426f-a1f4-fd5e115c33cc (via localhost:5003): OK|Stocked 10 banana(s)|ebab90fc-98f6-426f-a1f4-fd5e115c33cc
+Seller 8 started in Trading Post 2 with listener on port 6008.
+10.12.2024 23:18:02.467603 Trader 2: Sent heartbeat message.
+10.12.2024 23:18:02.467956 Trader 1: Received and responded to heartbeat message ARE YOU THERE?.
+10.12.2024 23:18:02.468023 Trader 2: Received heartbeat response YES, I'm Alive.
+10.12.2024 23:18:02.520986 Seller 8: Attempting to sell 10 banana(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:02.522554 Seller 8: Listening for trader messages on port 6008
+10.12.2024 23:18:02.522771 Seller 8: Connected to trader at localhost:5003
+10.12.2024 23:18:02.522850 Trader 2: Received from ('127.0.0.1', 53127): sell|banana|10|17e45998-d1c4-4a3c-ac67-cc98b0ac90b5
+10.12.2024 23:18:02.522928 Warehouse: DatabaseServer received: sell|banana|10|17e45998-d1c4-4a3c-ac67-cc98b0ac90b5 from ('127.0.0.1', 53113)
+10.12.2024 23:18:02.523278 Seller 8: Sell complete for request 17e45998-d1c4-4a3c-ac67-cc98b0ac90b5 (via localhost:5003): OK|Stocked 10 banana(s)|17e45998-d1c4-4a3c-ac67-cc98b0ac90b5
+10.12.2024 23:18:03.962088 Trader 1: Sent heartbeat message.
+10.12.2024 23:18:03.962354 Trader 2: Received and responded to heartbeat message ARE YOU THERE?.
+10.12.2024 23:18:03.962470 Trader 1: Received heartbeat response YES, I'm Alive.
+Buyer 1 started in Trading Post 1.
+10.12.2024 23:18:03.970908 Seller 1: Attempting to sell 10 apple(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:03.971987 Seller 1: Connected to trader at localhost:5002
+10.12.2024 23:18:03.972149 Trader 1: Received from ('127.0.0.1', 53131): sell|apple|10|cd42631b-6739-4d6e-9929-796e7c5f667a
+10.12.2024 23:18:03.972327 Warehouse: DatabaseServer received: sell|apple|10|cd42631b-6739-4d6e-9929-796e7c5f667a from ('127.0.0.1', 53112)
+10.12.2024 23:18:03.973399 Seller 1: Sell complete for request cd42631b-6739-4d6e-9929-796e7c5f667a (via localhost:5002): OK|Stocked 10 apple(s)|cd42631b-6739-4d6e-9929-796e7c5f667a
+10.12.2024 23:18:04.040024 Buyer 1: Attempting to buy 9 banana(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:04.041445 Buyer 1: Listening for trader messages on port 7001
+10.12.2024 23:18:04.041619 Buyer 1: Connected to trader at localhost:5002
+10.12.2024 23:18:04.041713 Trader 1: Received from ('127.0.0.1', 53132): buy|banana|9|c1172f32-0dd2-4647-b24c-b64c036012d9
+10.12.2024 23:18:04.041779 Warehouse: DatabaseServer received: buy|banana|9|c1172f32-0dd2-4647-b24c-b64c036012d9 from ('127.0.0.1', 53112)
+10.12.2024 23:18:04.043095 Buyer 1: Buy complete for request c1172f32-0dd2-4647-b24c-b64c036012d9 (via localhost:5002): OK|Shipped 9 banana(s)|c1172f32-0dd2-4647-b24c-b64c036012d9
+10.12.2024 23:18:04.466762 Seller 2: Attempting to sell 10 banana(s) to trader at localhost:5002 (Retry 1)
+Buyer 2 started in Trading Post 1.
+10.12.2024 23:18:04.468310 Seller 2: Connected to trader at localhost:5002
+10.12.2024 23:18:04.468545 Trader 1: Received from ('127.0.0.1', 53133): sell|banana|10|209d9947-e5c6-4f96-bc0f-ff5d1b43dcbc
+10.12.2024 23:18:04.468720 Warehouse: DatabaseServer received: sell|banana|10|209d9947-e5c6-4f96-bc0f-ff5d1b43dcbc from ('127.0.0.1', 53112)
+10.12.2024 23:18:04.469548 Seller 2: Sell complete for request 209d9947-e5c6-4f96-bc0f-ff5d1b43dcbc (via localhost:5002): OK|Stocked 10 banana(s)|209d9947-e5c6-4f96-bc0f-ff5d1b43dcbc
+10.12.2024 23:18:04.473605 Trader 2: Sent heartbeat message.
+10.12.2024 23:18:04.473735 Trader 1: Received and responded to heartbeat message ARE YOU THERE?.
+10.12.2024 23:18:04.473778 Trader 2: Received heartbeat response YES, I'm Alive.
+10.12.2024 23:18:04.535084 Buyer 2: Attempting to buy 2 orange(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:04.536654 Buyer 2: Listening for trader messages on port 7002
+10.12.2024 23:18:04.536860 Buyer 2: Connected to trader at localhost:5002
+10.12.2024 23:18:04.536936 Trader 1: Received from ('127.0.0.1', 53135): buy|orange|2|7c6134aa-c506-4ce2-a757-57424169ffd3
+10.12.2024 23:18:04.537022 Warehouse: DatabaseServer received: buy|orange|2|7c6134aa-c506-4ce2-a757-57424169ffd3 from ('127.0.0.1', 53112)
+10.12.2024 23:18:04.537554 Buyer 2: Buy complete for request 7c6134aa-c506-4ce2-a757-57424169ffd3 (via localhost:5002): OK|Shipped 2 orange(s)|7c6134aa-c506-4ce2-a757-57424169ffd3
+Buyer 3 started in Trading Post 1.
+10.12.2024 23:18:04.988430 Seller 3: Attempting to sell 10 orange(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:04.989777 Seller 3: Connected to trader at localhost:5002
+10.12.2024 23:18:04.989929 Trader 1: Received from ('127.0.0.1', 53136): sell|orange|10|b4b681fc-1673-4588-97b2-855d3181b589
+10.12.2024 23:18:04.990047 Warehouse: DatabaseServer received: sell|orange|10|b4b681fc-1673-4588-97b2-855d3181b589 from ('127.0.0.1', 53112)
+10.12.2024 23:18:04.990622 Seller 3: Sell complete for request b4b681fc-1673-4588-97b2-855d3181b589 (via localhost:5002): OK|Stocked 10 orange(s)|b4b681fc-1673-4588-97b2-855d3181b589
+10.12.2024 23:18:05.040796 Buyer 3: Attempting to buy 7 apple(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:05.042288 Buyer 3: Listening for trader messages on port 7003
+10.12.2024 23:18:05.042511 Buyer 3: Connected to trader at localhost:5002
+10.12.2024 23:18:05.042598 Trader 1: Received from ('127.0.0.1', 53137): buy|apple|7|5f7889ad-3838-4573-9069-10654794de1a
+10.12.2024 23:18:05.042694 Warehouse: DatabaseServer received: buy|apple|7|5f7889ad-3838-4573-9069-10654794de1a from ('127.0.0.1', 53112)
+10.12.2024 23:18:05.043201 Buyer 3: Buy complete for request 5f7889ad-3838-4573-9069-10654794de1a (via localhost:5002): OK|Shipped 7 apple(s)|5f7889ad-3838-4573-9069-10654794de1a
+Buyer 4 started in Trading Post 1.
+10.12.2024 23:18:05.492988 Seller 4: Attempting to sell 10 apple(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:05.494025 Seller 4: Connected to trader at localhost:5002
+10.12.2024 23:18:05.494209 Trader 1: Received from ('127.0.0.1', 53138): sell|apple|10|a83e2712-a785-48a7-81d7-4bd73b4b8bf0
+10.12.2024 23:18:05.494394 Warehouse: DatabaseServer received: sell|apple|10|a83e2712-a785-48a7-81d7-4bd73b4b8bf0 from ('127.0.0.1', 53112)
+10.12.2024 23:18:05.495078 Seller 4: Sell complete for request a83e2712-a785-48a7-81d7-4bd73b4b8bf0 (via localhost:5002): OK|Stocked 10 apple(s)|a83e2712-a785-48a7-81d7-4bd73b4b8bf0
+10.12.2024 23:18:05.541839 Buyer 4: Attempting to buy 2 apple(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:05.543410 Buyer 4: Listening for trader messages on port 7004
+10.12.2024 23:18:05.543617 Buyer 4: Connected to trader at localhost:5002
+10.12.2024 23:18:05.543715 Trader 1: Received from ('127.0.0.1', 53139): buy|apple|2|2185eb77-9e42-4860-9d15-72cf37d49d29
+10.12.2024 23:18:05.543802 Warehouse: DatabaseServer received: buy|apple|2|2185eb77-9e42-4860-9d15-72cf37d49d29 from ('127.0.0.1', 53112)
+10.12.2024 23:18:05.544263 Buyer 4: Buy complete for request 2185eb77-9e42-4860-9d15-72cf37d49d29 (via localhost:5002): OK|Shipped 2 apple(s)|2185eb77-9e42-4860-9d15-72cf37d49d29
+10.12.2024 23:18:05.964807 Trader 1: Sent heartbeat message.
+10.12.2024 23:18:05.964988 Trader 2: Received and responded to heartbeat message ARE YOU THERE?.
+10.12.2024 23:18:05.965027 Trader 1: Received heartbeat response YES, I'm Alive.
+Buyer 5 started in Trading Post 1.
+10.12.2024 23:18:06.006043 Seller 5: Attempting to sell 10 orange(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:06.006882 Seller 5: Connected to trader at localhost:5003
+10.12.2024 23:18:06.007056 Trader 2: Received from ('127.0.0.1', 53141): sell|orange|10|e4e00267-6fa3-4471-be53-87f8bc864940
+10.12.2024 23:18:06.007249 Warehouse: DatabaseServer received: sell|orange|10|e4e00267-6fa3-4471-be53-87f8bc864940 from ('127.0.0.1', 53113)
+10.12.2024 23:18:06.007733 Seller 5: Sell complete for request e4e00267-6fa3-4471-be53-87f8bc864940 (via localhost:5003): OK|Stocked 10 orange(s)|e4e00267-6fa3-4471-be53-87f8bc864940
+10.12.2024 23:18:06.050251 Buyer 5: Attempting to buy 10 apple(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:06.051912 Buyer 5: Listening for trader messages on port 7005
+10.12.2024 23:18:06.052128 Buyer 5: Connected to trader at localhost:5002
+10.12.2024 23:18:06.052210 Trader 1: Received from ('127.0.0.1', 53142): buy|apple|10|b4472496-591f-473f-a15a-6645eb1e0d58
+10.12.2024 23:18:06.052300 Warehouse: DatabaseServer received: buy|apple|10|b4472496-591f-473f-a15a-6645eb1e0d58 from ('127.0.0.1', 53112)
+10.12.2024 23:18:06.052813 Buyer 5: Buy complete for request b4472496-591f-473f-a15a-6645eb1e0d58 (via localhost:5002): OK|Shipped 10 apple(s)|b4472496-591f-473f-a15a-6645eb1e0d58
+10.12.2024 23:18:06.479845 Trader 2: Sent heartbeat message.
+10.12.2024 23:18:06.480112 Trader 1: Received and responded to heartbeat message ARE YOU THERE?.
+10.12.2024 23:18:06.480340 Trader 2: Received heartbeat response YES, I'm Alive.
+Buyer 6 started in Trading Post 2.
+10.12.2024 23:18:06.517511 Seller 6: Attempting to sell 10 apple(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:06.519820 Seller 6: Connected to trader at localhost:5003
+10.12.2024 23:18:06.520228 Trader 2: Received from ('127.0.0.1', 53144): sell|apple|10|5c10a1a6-619e-4c41-ab86-742985eadd60
+10.12.2024 23:18:06.520308 Warehouse: DatabaseServer received: sell|apple|10|5c10a1a6-619e-4c41-ab86-742985eadd60 from ('127.0.0.1', 53113)
+10.12.2024 23:18:06.521145 Seller 6: Sell complete for request 5c10a1a6-619e-4c41-ab86-742985eadd60 (via localhost:5003): OK|Stocked 10 apple(s)|5c10a1a6-619e-4c41-ab86-742985eadd60
+10.12.2024 23:18:06.556508 Buyer 6: Attempting to buy 9 apple(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:06.558003 Buyer 6: Listening for trader messages on port 7006
+10.12.2024 23:18:06.558176 Buyer 6: Connected to trader at localhost:5003
+10.12.2024 23:18:06.558256 Trader 2: Received from ('127.0.0.1', 53145): buy|apple|9|e2564449-9282-4d14-9df3-d50af09697f5
+10.12.2024 23:18:06.558336 Warehouse: DatabaseServer received: buy|apple|9|e2564449-9282-4d14-9df3-d50af09697f5 from ('127.0.0.1', 53113)
+10.12.2024 23:18:06.559266 Buyer 6: Buy complete for request e2564449-9282-4d14-9df3-d50af09697f5 (via localhost:5003): OK|Shipped 9 apple(s)|e2564449-9282-4d14-9df3-d50af09697f5
+Buyer 7 started in Trading Post 2.
+10.12.2024 23:18:07.018176 Seller 7: Attempting to sell 10 apple(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:07.019136 Seller 7: Connected to trader at localhost:5003
+10.12.2024 23:18:07.019270 Trader 2: Received from ('127.0.0.1', 53146): sell|apple|10|8b919d47-278b-4f07-8f4e-0223d161a645
+10.12.2024 23:18:07.019416 Warehouse: DatabaseServer received: sell|apple|10|8b919d47-278b-4f07-8f4e-0223d161a645 from ('127.0.0.1', 53113)
+10.12.2024 23:18:07.019945 Seller 7: Sell complete for request 8b919d47-278b-4f07-8f4e-0223d161a645 (via localhost:5003): OK|Stocked 10 apple(s)|8b919d47-278b-4f07-8f4e-0223d161a645
+10.12.2024 23:18:07.063751 Buyer 7: Attempting to buy 3 apple(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:07.065429 Buyer 7: Listening for trader messages on port 7007
+10.12.2024 23:18:07.065647 Buyer 7: Connected to trader at localhost:5003
+10.12.2024 23:18:07.065734 Trader 2: Received from ('127.0.0.1', 53147): buy|apple|3|1a06615e-9349-4738-83f0-5d012c7108f7
+10.12.2024 23:18:07.065826 Warehouse: DatabaseServer received: buy|apple|3|1a06615e-9349-4738-83f0-5d012c7108f7 from ('127.0.0.1', 53113)
+10.12.2024 23:18:07.066368 Buyer 7: Buy complete for request 1a06615e-9349-4738-83f0-5d012c7108f7 (via localhost:5003): OK|Shipped 3 apple(s)|1a06615e-9349-4738-83f0-5d012c7108f7
+Buyer 8 started in Trading Post 2.
+10.12.2024 23:18:07.528511 Seller 8: Attempting to sell 10 apple(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:07.529405 Seller 8: Connected to trader at localhost:5003
+10.12.2024 23:18:07.529557 Trader 2: Received from ('127.0.0.1', 53148): sell|apple|10|946ddf29-2471-460a-b649-b6f92e348779
+10.12.2024 23:18:07.529672 Warehouse: DatabaseServer received: sell|apple|10|946ddf29-2471-460a-b649-b6f92e348779 from ('127.0.0.1', 53113)
+10.12.2024 23:18:07.530332 Seller 8: Sell complete for request 946ddf29-2471-460a-b649-b6f92e348779 (via localhost:5003): OK|Stocked 10 apple(s)|946ddf29-2471-460a-b649-b6f92e348779
+10.12.2024 23:18:07.569728 Buyer 8: Attempting to buy 7 banana(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:07.571251 Buyer 8: Listening for trader messages on port 7008
+10.12.2024 23:18:07.571431 Buyer 8: Connected to trader at localhost:5003
+10.12.2024 23:18:07.571512 Trader 2: Received from ('127.0.0.1', 53149): buy|banana|7|fe062e0e-516c-4433-b340-e0a5499f6393
+10.12.2024 23:18:07.571590 Warehouse: DatabaseServer received: buy|banana|7|fe062e0e-516c-4433-b340-e0a5499f6393 from ('127.0.0.1', 53113)
+10.12.2024 23:18:07.572056 Buyer 8: Buy complete for request fe062e0e-516c-4433-b340-e0a5499f6393 (via localhost:5003): OK|Shipped 7 banana(s)|fe062e0e-516c-4433-b340-e0a5499f6393
+10.12.2024 23:18:07.971259 Trader 1: Sent heartbeat message.
+10.12.2024 23:18:07.971559 Trader 2: Received and responded to heartbeat message ARE YOU THERE?.
+10.12.2024 23:18:07.971598 Trader 1: Received heartbeat response YES, I'm Alive.
+Buyer 9 started in Trading Post 2.
+10.12.2024 23:18:08.073042 Buyer 9: Attempting to buy 9 banana(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:08.075162 Buyer 9: Listening for trader messages on port 7009
+10.12.2024 23:18:08.075384 Buyer 9: Connected to trader at localhost:5003
+10.12.2024 23:18:08.075466 Trader 2: Received from ('127.0.0.1', 53151): buy|banana|9|9efc3303-671c-481c-8e8b-767fb9e66649
+10.12.2024 23:18:08.075557 Warehouse: DatabaseServer received: buy|banana|9|9efc3303-671c-481c-8e8b-767fb9e66649 from ('127.0.0.1', 53113)
+10.12.2024 23:18:08.076072 Buyer 9: Buy complete for request 9efc3303-671c-481c-8e8b-767fb9e66649 (via localhost:5003): OK|Shipped 9 banana(s)|9efc3303-671c-481c-8e8b-767fb9e66649
+10.12.2024 23:18:08.482834 Trader 2: Sent heartbeat message.
+10.12.2024 23:18:08.483128 Trader 1: Received and responded to heartbeat message ARE YOU THERE?.
+10.12.2024 23:18:08.483193 Trader 2: Received heartbeat response YES, I'm Alive.
+Buyer 10 started in Trading Post 2.
+10.12.2024 23:18:08.588467 Buyer 10: Attempting to buy 3 orange(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:08.590135 Buyer 10: Listening for trader messages on port 7010
+10.12.2024 23:18:08.590346 Buyer 10: Connected to trader at localhost:5003
+10.12.2024 23:18:08.590422 Trader 2: Received from ('127.0.0.1', 53155): buy|orange|3|c3d9eb5d-70e3-4beb-8d27-27f20733f5de
+10.12.2024 23:18:08.590509 Warehouse: DatabaseServer received: buy|orange|3|c3d9eb5d-70e3-4beb-8d27-27f20733f5de from ('127.0.0.1', 53113)
+10.12.2024 23:18:08.591030 Buyer 10: Buy complete for request c3d9eb5d-70e3-4beb-8d27-27f20733f5de (via localhost:5003): OK|Shipped 3 orange(s)|c3d9eb5d-70e3-4beb-8d27-27f20733f5de
+10.12.2024 23:18:08.978607 Seller 1: Attempting to sell 10 banana(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:08.979815 Seller 1: Connected to trader at localhost:5002
+10.12.2024 23:18:08.980267 Trader 1: Received from ('127.0.0.1', 53156): sell|banana|10|a0101361-b22c-49d2-acce-b9ce165fb987
+10.12.2024 23:18:08.980466 Warehouse: DatabaseServer received: sell|banana|10|a0101361-b22c-49d2-acce-b9ce165fb987 from ('127.0.0.1', 53112)
+10.12.2024 23:18:08.981542 Seller 1: Sell complete for request a0101361-b22c-49d2-acce-b9ce165fb987 (via localhost:5002): OK|Stocked 10 banana(s)|a0101361-b22c-49d2-acce-b9ce165fb987
+10.12.2024 23:18:09.048291 Buyer 1: Attempting to buy 4 banana(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:09.049200 Buyer 1: Connected to trader at localhost:5002
+10.12.2024 23:18:09.049400 Trader 1: Received from ('127.0.0.1', 53157): buy|banana|4|c1717860-7066-48b9-bce5-6269aae4a54b
+10.12.2024 23:18:09.049520 Warehouse: DatabaseServer received: buy|banana|4|c1717860-7066-48b9-bce5-6269aae4a54b from ('127.0.0.1', 53112)
+10.12.2024 23:18:09.050863 Buyer 1: Buy complete for request c1717860-7066-48b9-bce5-6269aae4a54b (via localhost:5002): OK|Shipped 4 banana(s)|c1717860-7066-48b9-bce5-6269aae4a54b
+10.12.2024 23:18:09.473454 Seller 2: Attempting to sell 10 apple(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:09.474973 Seller 2: Connected to trader at localhost:5002
+10.12.2024 23:18:09.475364 Trader 1: Received from ('127.0.0.1', 53158): sell|apple|10|96c467cc-6d8f-4186-84e6-70a80f278789
+10.12.2024 23:18:09.475641 Warehouse: DatabaseServer received: sell|apple|10|96c467cc-6d8f-4186-84e6-70a80f278789 from ('127.0.0.1', 53112)
+10.12.2024 23:18:09.477173 Seller 2: Sell complete for request 96c467cc-6d8f-4186-84e6-70a80f278789 (via localhost:5002): OK|Stocked 10 apple(s)|96c467cc-6d8f-4186-84e6-70a80f278789
+10.12.2024 23:18:09.542754 Buyer 2: Attempting to buy 7 banana(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:09.543832 Buyer 2: Connected to trader at localhost:5002
+10.12.2024 23:18:09.544097 Trader 1: Received from ('127.0.0.1', 53159): buy|banana|7|66020e0f-c91f-4bad-98bd-5462842541b7
+10.12.2024 23:18:09.544258 Warehouse: DatabaseServer received: buy|banana|7|66020e0f-c91f-4bad-98bd-5462842541b7 from ('127.0.0.1', 53112)
+10.12.2024 23:18:09.545636 Buyer 2: Buy complete for request 66020e0f-c91f-4bad-98bd-5462842541b7 (via localhost:5002): OK|Shipped 7 banana(s)|66020e0f-c91f-4bad-98bd-5462842541b7
+10.12.2024 23:18:09.974810 Trader 1: Sent heartbeat message.
+10.12.2024 23:18:09.974956 Trader 2: Received and responded to heartbeat message ARE YOU THERE?.
+10.12.2024 23:18:09.974992 Trader 1: Received heartbeat response YES, I'm Alive.
+10.12.2024 23:18:09.995727 Seller 3: Attempting to sell 10 banana(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:09.996661 Seller 3: Connected to trader at localhost:5002
+10.12.2024 23:18:09.996901 Trader 1: Received from ('127.0.0.1', 53161): sell|banana|10|3e195ef2-2ec1-478e-b35f-c8086197bdbf
+10.12.2024 23:18:09.997078 Warehouse: DatabaseServer received: sell|banana|10|3e195ef2-2ec1-478e-b35f-c8086197bdbf from ('127.0.0.1', 53112)
+10.12.2024 23:18:09.998002 Seller 3: Sell complete for request 3e195ef2-2ec1-478e-b35f-c8086197bdbf (via localhost:5002): OK|Stocked 10 banana(s)|3e195ef2-2ec1-478e-b35f-c8086197bdbf
+Trading post network setup complete. All components are running.
+Trading Post 1: Trader=('localhost', 5002), Buyers=[1, 2, 3, 4, 5], Sellers=[1, 2, 3, 4]
+Trading Post 2: Trader=('localhost', 5003), Buyers=[6, 7, 8, 9, 10], Sellers=[5, 6, 7, 8]
+10.12.2024 23:18:10.043929 Buyer 3: Attempting to buy 10 banana(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:10.044586 Buyer 3: Connected to trader at localhost:5002
+10.12.2024 23:18:10.044741 Trader 1: Received from ('127.0.0.1', 53164): buy|banana|10|c07d51f6-445b-4c46-9a3e-af5b32e3b5d8
+10.12.2024 23:18:10.044869 Warehouse: DatabaseServer received: buy|banana|10|c07d51f6-445b-4c46-9a3e-af5b32e3b5d8 from ('127.0.0.1', 53112)
+10.12.2024 23:18:10.045873 Buyer 3: Buy complete for request c07d51f6-445b-4c46-9a3e-af5b32e3b5d8 (via localhost:5002): OK|Shipped 10 banana(s)|c07d51f6-445b-4c46-9a3e-af5b32e3b5d8
+10.12.2024 23:18:10.488777 Trader 2: Sent heartbeat message.
+10.12.2024 23:18:10.489028 Trader 2: Received heartbeat response YES, I'm Alive.
+10.12.2024 23:18:10.489009 Trader 1: Received and responded to heartbeat message ARE YOU THERE?.
+10.12.2024 23:18:10.500242 Seller 4: Attempting to sell 10 apple(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:10.501165 Seller 4: Connected to trader at localhost:5002
+10.12.2024 23:18:10.501419 Trader 1: Received from ('127.0.0.1', 53171): sell|apple|10|789015bc-c470-435f-9bbb-caaadc4e33eb
+10.12.2024 23:18:10.501639 Warehouse: DatabaseServer received: sell|apple|10|789015bc-c470-435f-9bbb-caaadc4e33eb from ('127.0.0.1', 53112)
+10.12.2024 23:18:10.502677 Seller 4: Sell complete for request 789015bc-c470-435f-9bbb-caaadc4e33eb (via localhost:5002): OK|Stocked 10 apple(s)|789015bc-c470-435f-9bbb-caaadc4e33eb
+10.12.2024 23:18:10.549429 Buyer 4: Attempting to buy 2 orange(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:10.550288 Buyer 4: Connected to trader at localhost:5002
+10.12.2024 23:18:10.550472 Trader 1: Received from ('127.0.0.1', 53172): buy|orange|2|364f0df0-0731-4c5c-90ff-8634f50efdf6
+10.12.2024 23:18:10.550631 Warehouse: DatabaseServer received: buy|orange|2|364f0df0-0731-4c5c-90ff-8634f50efdf6 from ('127.0.0.1', 53112)
+10.12.2024 23:18:10.551775 Buyer 4: Buy complete for request 364f0df0-0731-4c5c-90ff-8634f50efdf6 (via localhost:5002): OK|Shipped 2 orange(s)|364f0df0-0731-4c5c-90ff-8634f50efdf6
+10.12.2024 23:18:11.012830 Seller 5: Attempting to sell 10 orange(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:11.013887 Seller 5: Connected to trader at localhost:5003
+10.12.2024 23:18:11.014186 Trader 2: Received from ('127.0.0.1', 53173): sell|orange|10|00f5719d-3ce9-45e9-92e8-dd4bafe04c6e
+10.12.2024 23:18:11.014400 Warehouse: DatabaseServer received: sell|orange|10|00f5719d-3ce9-45e9-92e8-dd4bafe04c6e from ('127.0.0.1', 53113)
+10.12.2024 23:18:11.015595 Seller 5: Sell complete for request 00f5719d-3ce9-45e9-92e8-dd4bafe04c6e (via localhost:5003): OK|Stocked 10 orange(s)|00f5719d-3ce9-45e9-92e8-dd4bafe04c6e
+10.12.2024 23:18:11.058178 Buyer 5: Attempting to buy 8 banana(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:11.058892 Buyer 5: Connected to trader at localhost:5002
+10.12.2024 23:18:11.059022 Trader 1: Received from ('127.0.0.1', 53174): buy|banana|8|7350207f-528d-4bc6-a902-666284ca78a7
+10.12.2024 23:18:11.059101 Warehouse: DatabaseServer received: buy|banana|8|7350207f-528d-4bc6-a902-666284ca78a7 from ('127.0.0.1', 53112)
+10.12.2024 23:18:11.059667 Buyer 5: Buy complete for request 7350207f-528d-4bc6-a902-666284ca78a7 (via localhost:5002): OK|Shipped 8 banana(s)|7350207f-528d-4bc6-a902-666284ca78a7
+10.12.2024 23:18:11.526382 Seller 6: Attempting to sell 10 banana(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:11.527874 Seller 6: Connected to trader at localhost:5003
+10.12.2024 23:18:11.528194 Trader 2: Received from ('127.0.0.1', 53175): sell|banana|10|8730a0df-9971-48f4-96d2-461dbe0ba1e8
+10.12.2024 23:18:11.528516 Warehouse: DatabaseServer received: sell|banana|10|8730a0df-9971-48f4-96d2-461dbe0ba1e8 from ('127.0.0.1', 53113)
+10.12.2024 23:18:11.529904 Seller 6: Sell complete for request 8730a0df-9971-48f4-96d2-461dbe0ba1e8 (via localhost:5003): OK|Stocked 10 banana(s)|8730a0df-9971-48f4-96d2-461dbe0ba1e8
+10.12.2024 23:18:11.564562 Buyer 6: Attempting to buy 10 banana(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:11.566097 Buyer 6: Connected to trader at localhost:5003
+10.12.2024 23:18:11.566378 Trader 2: Received from ('127.0.0.1', 53176): buy|banana|10|17411536-45b1-4efa-bf75-14ffd2a2cf88
+10.12.2024 23:18:11.566561 Warehouse: DatabaseServer received: buy|banana|10|17411536-45b1-4efa-bf75-14ffd2a2cf88 from ('127.0.0.1', 53113)
+10.12.2024 23:18:11.568297 Buyer 6: Buy complete for request 17411536-45b1-4efa-bf75-14ffd2a2cf88 (via localhost:5003): OK|Shipped 10 banana(s)|17411536-45b1-4efa-bf75-14ffd2a2cf88
+10.12.2024 23:18:11.978360 Trader 1: Sent heartbeat message.
+10.12.2024 23:18:11.978702 Trader 1: Received heartbeat response YES, I'm Alive.
+10.12.2024 23:18:11.978662 Trader 2: Received and responded to heartbeat message ARE YOU THERE?.
+10.12.2024 23:18:12.022936 Seller 7: Attempting to sell 10 banana(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:12.023847 Seller 7: Connected to trader at localhost:5003
+10.12.2024 23:18:12.024006 Trader 2: Received from ('127.0.0.1', 53178): sell|banana|10|d061b171-90ac-48c3-a5b3-286530a9fd25
+10.12.2024 23:18:12.024150 Warehouse: DatabaseServer received: sell|banana|10|d061b171-90ac-48c3-a5b3-286530a9fd25 from ('127.0.0.1', 53113)
+10.12.2024 23:18:12.024844 Seller 7: Sell complete for request d061b171-90ac-48c3-a5b3-286530a9fd25 (via localhost:5003): OK|Stocked 10 banana(s)|d061b171-90ac-48c3-a5b3-286530a9fd25
+10.12.2024 23:18:12.071494 Buyer 7: Attempting to buy 10 apple(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:12.072260 Buyer 7: Connected to trader at localhost:5003
+10.12.2024 23:18:12.072374 Trader 2: Received from ('127.0.0.1', 53179): buy|apple|10|2f326600-f1e0-40f0-be8b-c0334d03c187
+10.12.2024 23:18:12.072485 Warehouse: DatabaseServer received: buy|apple|10|2f326600-f1e0-40f0-be8b-c0334d03c187 from ('127.0.0.1', 53113)
+10.12.2024 23:18:12.073244 Buyer 7: Buy complete for request 2f326600-f1e0-40f0-be8b-c0334d03c187 (via localhost:5003): OK|Shipped 10 apple(s)|2f326600-f1e0-40f0-be8b-c0334d03c187
+10.12.2024 23:18:12.493363 Trader 2: Sent heartbeat message.
+10.12.2024 23:18:12.493662 Trader 1: Received and responded to heartbeat message ARE YOU THERE?.
+10.12.2024 23:18:12.493751 Trader 2: Received heartbeat response YES, I'm Alive.
+10.12.2024 23:18:12.534418 Seller 8: Attempting to sell 10 orange(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:12.535610 Seller 8: Connected to trader at localhost:5003
+10.12.2024 23:18:12.536095 Trader 2: Received from ('127.0.0.1', 53183): sell|orange|10|9af9b798-1494-4201-828a-d3af33c605fe
+10.12.2024 23:18:12.536448 Warehouse: DatabaseServer received: sell|orange|10|9af9b798-1494-4201-828a-d3af33c605fe from ('127.0.0.1', 53113)
+10.12.2024 23:18:12.538351 Seller 8: Sell complete for request 9af9b798-1494-4201-828a-d3af33c605fe (via localhost:5003): OK|Stocked 10 orange(s)|9af9b798-1494-4201-828a-d3af33c605fe
+10.12.2024 23:18:12.573793 Buyer 8: Attempting to buy 4 orange(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:12.574604 Buyer 8: Connected to trader at localhost:5003
+10.12.2024 23:18:12.574783 Trader 2: Received from ('127.0.0.1', 53184): buy|orange|4|d25060cc-458c-4ad6-8f64-b00a12d54f96
+10.12.2024 23:18:12.574910 Warehouse: DatabaseServer received: buy|orange|4|d25060cc-458c-4ad6-8f64-b00a12d54f96 from ('127.0.0.1', 53113)
+10.12.2024 23:18:12.576200 Buyer 8: Buy complete for request d25060cc-458c-4ad6-8f64-b00a12d54f96 (via localhost:5003): OK|Shipped 4 orange(s)|d25060cc-458c-4ad6-8f64-b00a12d54f96
+10.12.2024 23:18:13.081461 Buyer 9: Attempting to buy 10 orange(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:13.082766 Buyer 9: Connected to trader at localhost:5003
+10.12.2024 23:18:13.083011 Trader 2: Received from ('127.0.0.1', 53185): buy|orange|10|84d6b123-27b4-4392-b00c-3a786174cb5a
+10.12.2024 23:18:13.083193 Warehouse: DatabaseServer received: buy|orange|10|84d6b123-27b4-4392-b00c-3a786174cb5a from ('127.0.0.1', 53113)
+10.12.2024 23:18:13.084537 Buyer 9: Buy complete for request 84d6b123-27b4-4392-b00c-3a786174cb5a (via localhost:5003): OK|Shipped 10 orange(s)|84d6b123-27b4-4392-b00c-3a786174cb5a
+10.12.2024 23:18:13.596417 Buyer 10: Attempting to buy 9 banana(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:13.597932 Buyer 10: Connected to trader at localhost:5003
+10.12.2024 23:18:13.598244 Trader 2: Received from ('127.0.0.1', 53186): buy|banana|9|667303a1-a720-4099-9bb6-d2723cd11e32
+10.12.2024 23:18:13.598503 Warehouse: DatabaseServer received: buy|banana|9|667303a1-a720-4099-9bb6-d2723cd11e32 from ('127.0.0.1', 53113)
+10.12.2024 23:18:13.600579 Buyer 10: Buy complete for request 667303a1-a720-4099-9bb6-d2723cd11e32 (via localhost:5003): OK|Shipped 9 banana(s)|667303a1-a720-4099-9bb6-d2723cd11e32
+10.12.2024 23:18:13.983923 Seller 1: Attempting to sell 10 banana(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:13.985175 Seller 1: Connected to trader at localhost:5002
+10.12.2024 23:18:13.985461 Trader 1: Sent heartbeat message.
+10.12.2024 23:18:13.985797 Trader 1: Received from ('127.0.0.1', 53187): sell|banana|10|ee3addd2-518f-477c-bb5a-c397751c07db
+10.12.2024 23:18:13.985820 Trader 2: Received and responded to heartbeat message ARE YOU THERE?.
+10.12.2024 23:18:13.985865 Trader 1: Received heartbeat response YES, I'm Alive.
+10.12.2024 23:18:13.986002 Warehouse: DatabaseServer received: sell|banana|10|ee3addd2-518f-477c-bb5a-c397751c07db from ('127.0.0.1', 53112)
+10.12.2024 23:18:13.987372 Seller 1: Sell complete for request ee3addd2-518f-477c-bb5a-c397751c07db (via localhost:5002): OK|Stocked 10 banana(s)|ee3addd2-518f-477c-bb5a-c397751c07db
+10.12.2024 23:18:14.056049 Buyer 1: Attempting to buy 5 orange(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:14.057288 Buyer 1: Connected to trader at localhost:5002
+10.12.2024 23:18:14.057471 Trader 1: Received from ('127.0.0.1', 53189): buy|orange|5|a522819f-8549-4f32-8b6c-6d7dc200b28d
+10.12.2024 23:18:14.057607 Warehouse: DatabaseServer received: buy|orange|5|a522819f-8549-4f32-8b6c-6d7dc200b28d from ('127.0.0.1', 53112)
+10.12.2024 23:18:14.058801 Buyer 1: Buy complete for request a522819f-8549-4f32-8b6c-6d7dc200b28d (via localhost:5002): OK|Shipped 5 orange(s)|a522819f-8549-4f32-8b6c-6d7dc200b28d
+10.12.2024 23:18:14.481095 Seller 2: Attempting to sell 10 apple(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:14.482513 Seller 2: Connected to trader at localhost:5002
+10.12.2024 23:18:14.482900 Trader 1: Received from ('127.0.0.1', 53190): sell|apple|10|565a5a8e-35b2-427a-a733-b6c5a38b96d4
+10.12.2024 23:18:14.483168 Warehouse: DatabaseServer received: sell|apple|10|565a5a8e-35b2-427a-a733-b6c5a38b96d4 from ('127.0.0.1', 53112)
+10.12.2024 23:18:14.484528 Seller 2: Sell complete for request 565a5a8e-35b2-427a-a733-b6c5a38b96d4 (via localhost:5002): OK|Stocked 10 apple(s)|565a5a8e-35b2-427a-a733-b6c5a38b96d4
+10.12.2024 23:18:14.499871 Trader 2: Sent heartbeat message.
+10.12.2024 23:18:14.500095 Trader 1: Received and responded to heartbeat message ARE YOU THERE?.
+10.12.2024 23:18:14.500115 Trader 2: Received heartbeat response YES, I'm Alive.
+10.12.2024 23:18:14.550817 Buyer 2: Attempting to buy 6 banana(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:14.551898 Buyer 2: Connected to trader at localhost:5002
+10.12.2024 23:18:14.552144 Trader 1: Received from ('127.0.0.1', 53192): buy|banana|6|5f549f99-76dc-46e9-9c29-9e781959d433
+10.12.2024 23:18:14.552297 Warehouse: DatabaseServer received: buy|banana|6|5f549f99-76dc-46e9-9c29-9e781959d433 from ('127.0.0.1', 53112)
+10.12.2024 23:18:14.553858 Buyer 2: Buy complete for request 5f549f99-76dc-46e9-9c29-9e781959d433 (via localhost:5002): OK|Shipped 6 banana(s)|5f549f99-76dc-46e9-9c29-9e781959d433
+10.12.2024 23:18:15.003042 Seller 3: Attempting to sell 10 orange(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:15.003652 Seller 3: Connected to trader at localhost:5002
+10.12.2024 23:18:15.003800 Trader 1: Received from ('127.0.0.1', 53193): sell|orange|10|0cb5f647-a0d1-45f6-ac8b-e684d2a55c01
+10.12.2024 23:18:15.003941 Warehouse: DatabaseServer received: sell|orange|10|0cb5f647-a0d1-45f6-ac8b-e684d2a55c01 from ('127.0.0.1', 53112)
+10.12.2024 23:18:15.004583 Seller 3: Sell complete for request 0cb5f647-a0d1-45f6-ac8b-e684d2a55c01 (via localhost:5002): OK|Stocked 10 orange(s)|0cb5f647-a0d1-45f6-ac8b-e684d2a55c01
+10.12.2024 23:18:15.050802 Buyer 3: Attempting to buy 3 orange(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:15.051443 Buyer 3: Connected to trader at localhost:5002
+10.12.2024 23:18:15.051584 Trader 1: Received from ('127.0.0.1', 53194): buy|orange|3|00ed94d9-2da9-42c6-b6f0-a304f4daf7f8
+10.12.2024 23:18:15.051706 Warehouse: DatabaseServer received: buy|orange|3|00ed94d9-2da9-42c6-b6f0-a304f4daf7f8 from ('127.0.0.1', 53112)
+10.12.2024 23:18:15.052539 Buyer 3: Buy complete for request 00ed94d9-2da9-42c6-b6f0-a304f4daf7f8 (via localhost:5002): OK|Shipped 3 orange(s)|00ed94d9-2da9-42c6-b6f0-a304f4daf7f8
+10.12.2024 23:18:15.505637 Seller 4: Attempting to sell 10 banana(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:15.507108 Seller 4: Connected to trader at localhost:5002
+10.12.2024 23:18:15.507478 Trader 1: Received from ('127.0.0.1', 53195): sell|banana|10|97fbfded-b09b-43fb-9316-04367a86d790
+10.12.2024 23:18:15.507740 Warehouse: DatabaseServer received: sell|banana|10|97fbfded-b09b-43fb-9316-04367a86d790 from ('127.0.0.1', 53112)
+10.12.2024 23:18:15.509301 Seller 4: Sell complete for request 97fbfded-b09b-43fb-9316-04367a86d790 (via localhost:5002): OK|Stocked 10 banana(s)|97fbfded-b09b-43fb-9316-04367a86d790
+10.12.2024 23:18:15.556826 Buyer 4: Attempting to buy 8 orange(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:15.557679 Buyer 4: Connected to trader at localhost:5002
+10.12.2024 23:18:15.557823 Trader 1: Received from ('127.0.0.1', 53196): buy|orange|8|58fbf02e-7054-4a7e-a168-6929c2d5ee4e
+10.12.2024 23:18:15.557967 Warehouse: DatabaseServer received: buy|orange|8|58fbf02e-7054-4a7e-a168-6929c2d5ee4e from ('127.0.0.1', 53112)
+10.12.2024 23:18:15.558872 Buyer 4: Buy complete for request 58fbf02e-7054-4a7e-a168-6929c2d5ee4e (via localhost:5002): OK|Shipped 8 orange(s)|58fbf02e-7054-4a7e-a168-6929c2d5ee4e
+10.12.2024 23:18:15.992302 Trader 1: Sent heartbeat message.
+10.12.2024 23:18:15.992603 Trader 2: Received and responded to heartbeat message ARE YOU THERE?.
+10.12.2024 23:18:15.992654 Trader 1: Received heartbeat response YES, I'm Alive.
+10.12.2024 23:18:16.020555 Seller 5: Attempting to sell 10 banana(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:16.021555 Seller 5: Connected to trader at localhost:5003
+10.12.2024 23:18:16.021792 Trader 2: Received from ('127.0.0.1', 53198): sell|banana|10|a20bdf80-6988-45af-b788-1c9e9b3e1eeb
+10.12.2024 23:18:16.021977 Warehouse: DatabaseServer received: sell|banana|10|a20bdf80-6988-45af-b788-1c9e9b3e1eeb from ('127.0.0.1', 53113)
+10.12.2024 23:18:16.031010 Seller 5: Sell complete for request a20bdf80-6988-45af-b788-1c9e9b3e1eeb (via localhost:5003): OK|Stocked 10 banana(s)|a20bdf80-6988-45af-b788-1c9e9b3e1eeb
+10.12.2024 23:18:16.064814 Buyer 5: Attempting to buy 6 orange(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:16.065888 Buyer 5: Connected to trader at localhost:5002
+10.12.2024 23:18:16.066174 Trader 1: Received from ('127.0.0.1', 53199): buy|orange|6|3b21793b-ac45-4301-9bc6-0907ca8d63bb
+10.12.2024 23:18:16.066349 Warehouse: DatabaseServer received: buy|orange|6|3b21793b-ac45-4301-9bc6-0907ca8d63bb from ('127.0.0.1', 53112)
+10.12.2024 23:18:16.067758 Buyer 5: Buy complete for request 3b21793b-ac45-4301-9bc6-0907ca8d63bb (via localhost:5002): OK|Shipped 6 orange(s)|3b21793b-ac45-4301-9bc6-0907ca8d63bb
+10.12.2024 23:18:16.506598 Trader 2: Sent heartbeat message.
+10.12.2024 23:18:16.506896 Trader 1: Received and responded to heartbeat message ARE YOU THERE?.
+10.12.2024 23:18:16.506950 Trader 2: Received heartbeat response YES, I'm Alive.
+10.12.2024 23:18:16.535097 Seller 6: Attempting to sell 10 orange(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:16.536244 Seller 6: Connected to trader at localhost:5003
+10.12.2024 23:18:16.536523 Trader 2: Received from ('127.0.0.1', 53201): sell|orange|10|02d92df2-8334-4991-81f6-ac3e0386e551
+10.12.2024 23:18:16.536731 Warehouse: DatabaseServer received: sell|orange|10|02d92df2-8334-4991-81f6-ac3e0386e551 from ('127.0.0.1', 53113)
+10.12.2024 23:18:16.538330 Seller 6: Sell complete for request 02d92df2-8334-4991-81f6-ac3e0386e551 (via localhost:5003): OK|Stocked 10 orange(s)|02d92df2-8334-4991-81f6-ac3e0386e551
+10.12.2024 23:18:16.573454 Buyer 6: Attempting to buy 3 orange(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:16.574117 Buyer 6: Connected to trader at localhost:5003
+10.12.2024 23:18:16.574251 Trader 2: Received from ('127.0.0.1', 53202): buy|orange|3|0d870953-2f95-4798-a05c-434d5d0fa093
+10.12.2024 23:18:16.574367 Warehouse: DatabaseServer received: buy|orange|3|0d870953-2f95-4798-a05c-434d5d0fa093 from ('127.0.0.1', 53113)
+10.12.2024 23:18:16.575451 Buyer 6: Buy complete for request 0d870953-2f95-4798-a05c-434d5d0fa093 (via localhost:5003): OK|Shipped 3 orange(s)|0d870953-2f95-4798-a05c-434d5d0fa093
+10.12.2024 23:18:17.030010 Seller 7: Attempting to sell 10 orange(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:17.031405 Seller 7: Connected to trader at localhost:5003
+10.12.2024 23:18:17.031742 Trader 2: Received from ('127.0.0.1', 53203): sell|orange|10|9708522c-d241-4c89-a800-03e5de33e5ab
+10.12.2024 23:18:17.031997 Warehouse: DatabaseServer received: sell|orange|10|9708522c-d241-4c89-a800-03e5de33e5ab from ('127.0.0.1', 53113)
+10.12.2024 23:18:17.033573 Seller 7: Sell complete for request 9708522c-d241-4c89-a800-03e5de33e5ab (via localhost:5003): OK|Stocked 10 orange(s)|9708522c-d241-4c89-a800-03e5de33e5ab
+10.12.2024 23:18:17.077376 Buyer 7: Attempting to buy 8 banana(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:17.078023 Buyer 7: Connected to trader at localhost:5003
+10.12.2024 23:18:17.078142 Trader 2: Received from ('127.0.0.1', 53204): buy|banana|8|901692d3-af2d-4ef1-b7f8-94492701cdca
+10.12.2024 23:18:17.078252 Warehouse: DatabaseServer received: buy|banana|8|901692d3-af2d-4ef1-b7f8-94492701cdca from ('127.0.0.1', 53113)
+10.12.2024 23:18:17.078916 Buyer 7: Buy complete for request 901692d3-af2d-4ef1-b7f8-94492701cdca (via localhost:5003): OK|Shipped 8 banana(s)|901692d3-af2d-4ef1-b7f8-94492701cdca
+10.12.2024 23:18:17.543789 Seller 8: Attempting to sell 10 orange(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:17.545244 Seller 8: Connected to trader at localhost:5003
+10.12.2024 23:18:17.545566 Trader 2: Received from ('127.0.0.1', 53205): sell|orange|10|e6a7ec5d-6839-49ed-b45b-40a0184806e4
+10.12.2024 23:18:17.545822 Warehouse: DatabaseServer received: sell|orange|10|e6a7ec5d-6839-49ed-b45b-40a0184806e4 from ('127.0.0.1', 53113)
+10.12.2024 23:18:17.547378 Seller 8: Sell complete for request e6a7ec5d-6839-49ed-b45b-40a0184806e4 (via localhost:5003): OK|Stocked 10 orange(s)|e6a7ec5d-6839-49ed-b45b-40a0184806e4
+10.12.2024 23:18:17.579486 Buyer 8: Attempting to buy 1 orange(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:17.580950 Buyer 8: Connected to trader at localhost:5003
+10.12.2024 23:18:17.581315 Trader 2: Received from ('127.0.0.1', 53206): buy|orange|1|d6e303ff-3fd0-4949-8e3f-40da8a3c73da
+10.12.2024 23:18:17.581526 Warehouse: DatabaseServer received: buy|orange|1|d6e303ff-3fd0-4949-8e3f-40da8a3c73da from ('127.0.0.1', 53113)
+10.12.2024 23:18:17.584478 Buyer 8: Buy complete for request d6e303ff-3fd0-4949-8e3f-40da8a3c73da (via localhost:5003): OK|Shipped 1 orange(s)|d6e303ff-3fd0-4949-8e3f-40da8a3c73da
+10.12.2024 23:18:17.996871 Trader 1: Sent heartbeat message.
+10.12.2024 23:18:17.997270 Trader 2: Received and responded to heartbeat message ARE YOU THERE?.
+10.12.2024 23:18:17.997324 Trader 1: Received heartbeat response YES, I'm Alive.
+10.12.2024 23:18:18.087809 Buyer 9: Attempting to buy 5 orange(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:18.088694 Buyer 9: Connected to trader at localhost:5003
+10.12.2024 23:18:18.088867 Trader 2: Received from ('127.0.0.1', 53208): buy|orange|5|b04b1b6a-e8f6-4492-a711-0d4f78241e17
+10.12.2024 23:18:18.088994 Warehouse: DatabaseServer received: buy|orange|5|b04b1b6a-e8f6-4492-a711-0d4f78241e17 from ('127.0.0.1', 53113)
+10.12.2024 23:18:18.089942 Buyer 9: Buy complete for request b04b1b6a-e8f6-4492-a711-0d4f78241e17 (via localhost:5003): OK|Shipped 5 orange(s)|b04b1b6a-e8f6-4492-a711-0d4f78241e17
+10.12.2024 23:18:18.511132 Trader 2: Sent heartbeat message.
+10.12.2024 23:18:18.511355 Trader 1: Received and responded to heartbeat message ARE YOU THERE?.
+10.12.2024 23:18:18.511400 Trader 2: Received heartbeat response YES, I'm Alive.
+10.12.2024 23:18:18.603892 Buyer 10: Attempting to buy 10 banana(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:18.605265 Buyer 10: Connected to trader at localhost:5003
+10.12.2024 23:18:18.605617 Trader 2: Received from ('127.0.0.1', 53210): buy|banana|10|3089f60c-1fb3-4115-bdf3-0bc081ae1e0a
+10.12.2024 23:18:18.605877 Warehouse: DatabaseServer received: buy|banana|10|3089f60c-1fb3-4115-bdf3-0bc081ae1e0a from ('127.0.0.1', 53113)
+10.12.2024 23:18:18.607833 Buyer 10: Buy complete for request 3089f60c-1fb3-4115-bdf3-0bc081ae1e0a (via localhost:5003): OK|Shipped 10 banana(s)|3089f60c-1fb3-4115-bdf3-0bc081ae1e0a
+10.12.2024 23:18:18.992564 Seller 1: Attempting to sell 10 apple(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:18.993919 Seller 1: Connected to trader at localhost:5002
+10.12.2024 23:18:18.994287 Trader 1: Received from ('127.0.0.1', 53213): sell|apple|10|ba1c2a98-bc6a-4604-a07c-e8ba6234fc0f
+10.12.2024 23:18:18.994532 Warehouse: DatabaseServer received: sell|apple|10|ba1c2a98-bc6a-4604-a07c-e8ba6234fc0f from ('127.0.0.1', 53112)
+10.12.2024 23:18:18.996072 Seller 1: Sell complete for request ba1c2a98-bc6a-4604-a07c-e8ba6234fc0f (via localhost:5002): OK|Stocked 10 apple(s)|ba1c2a98-bc6a-4604-a07c-e8ba6234fc0f
+10.12.2024 23:18:19.062531 Buyer 1: Attempting to buy 5 orange(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:19.063563 Buyer 1: Connected to trader at localhost:5002
+10.12.2024 23:18:19.063750 Trader 1: Received from ('127.0.0.1', 53214): buy|orange|5|fc6880fd-6bd6-4c25-acb9-9d2377b1d104
+10.12.2024 23:18:19.063920 Warehouse: DatabaseServer received: buy|orange|5|fc6880fd-6bd6-4c25-acb9-9d2377b1d104 from ('127.0.0.1', 53112)
+10.12.2024 23:18:19.065116 Buyer 1: Buy complete for request fc6880fd-6bd6-4c25-acb9-9d2377b1d104 (via localhost:5002): OK|Shipped 5 orange(s)|fc6880fd-6bd6-4c25-acb9-9d2377b1d104
+10.12.2024 23:18:19.486493 Seller 2: Attempting to sell 10 orange(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:19.487228 Seller 2: Connected to trader at localhost:5002
+10.12.2024 23:18:19.487386 Trader 1: Received from ('127.0.0.1', 53215): sell|orange|10|67e326e4-6f23-49ee-a691-96324ced2a1f
+10.12.2024 23:18:19.487494 Warehouse: DatabaseServer received: sell|orange|10|67e326e4-6f23-49ee-a691-96324ced2a1f from ('127.0.0.1', 53112)
+10.12.2024 23:18:19.488142 Seller 2: Sell complete for request 67e326e4-6f23-49ee-a691-96324ced2a1f (via localhost:5002): OK|Stocked 10 orange(s)|67e326e4-6f23-49ee-a691-96324ced2a1f
+10.12.2024 23:18:19.558909 Buyer 2: Attempting to buy 2 apple(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:19.559666 Buyer 2: Connected to trader at localhost:5002
+10.12.2024 23:18:19.559872 Trader 1: Received from ('127.0.0.1', 53216): buy|apple|2|f1ccdc7c-ee4a-4393-8c8a-46c74384380a
+10.12.2024 23:18:19.560019 Warehouse: DatabaseServer received: buy|apple|2|f1ccdc7c-ee4a-4393-8c8a-46c74384380a from ('127.0.0.1', 53112)
+10.12.2024 23:18:19.561208 Buyer 2: Buy complete for request f1ccdc7c-ee4a-4393-8c8a-46c74384380a (via localhost:5002): OK|Shipped 2 apple(s)|f1ccdc7c-ee4a-4393-8c8a-46c74384380a
+10.12.2024 23:18:20.002841 Trader 1: Sent heartbeat message.
+10.12.2024 23:18:20.003145 Trader 2: Received and responded to heartbeat message ARE YOU THERE?.
+10.12.2024 23:18:20.003209 Trader 1: Received heartbeat response YES, I'm Alive.
+10.12.2024 23:18:20.009069 Seller 3: Attempting to sell 10 orange(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:20.009945 Seller 3: Connected to trader at localhost:5002
+10.12.2024 23:18:20.010140 Trader 1: Received from ('127.0.0.1', 53218): sell|orange|10|de8a5291-4383-403a-aeaf-7c35d390baef
+10.12.2024 23:18:20.010302 Warehouse: DatabaseServer received: sell|orange|10|de8a5291-4383-403a-aeaf-7c35d390baef from ('127.0.0.1', 53112)
+10.12.2024 23:18:20.011367 Seller 3: Sell complete for request de8a5291-4383-403a-aeaf-7c35d390baef (via localhost:5002): OK|Stocked 10 orange(s)|de8a5291-4383-403a-aeaf-7c35d390baef
+Trader process 32810 has been terminated after 10 seconds.
+10.12.2024 23:18:20.038216 Warehouse: Disconnected from trader at ('127.0.0.1', 53112)
+10.12.2024 23:18:20.057568 Buyer 3: Attempting to buy 1 apple(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:20.058332 Buyer 3: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:20.058647 Buyer 3: Attempting to buy 1 apple(s) from trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:20.059046 Buyer 3: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:20.059120 Buyer 3: No backup trader available. Aborting request.
+10.12.2024 23:18:20.514518 Seller 4: Attempting to sell 10 orange(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:20.516102 Seller 4: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:20.516926 Seller 4: Attempting to sell 10 orange(s) to trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:20.517486 Trader 2: Cannot connect to localhost:5002. Assuming down.
+10.12.2024 23:18:20.517594 Trader 2: Broadcasting solo trader message to all addresses: SOLOTRADER|5003
+10.12.2024 23:18:20.517652 Seller 4: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:20.517685 Trader 2: Current clients: [('localhost', 6001), ('localhost', 6002), ('localhost', 6003), ('localhost', 6004), ('localhost', 6005), ('localhost', 6006), ('localhost', 6007), ('localhost', 6008), ('localhost', 7001), ('localhost', 7002), ('localhost', 7003), ('localhost', 7004), ('localhost', 7005), ('localhost', 7006), ('localhost', 7007), ('localhost', 7008), ('localhost', 7009), ('localhost', 7010)]
+10.12.2024 23:18:20.517732 Trader 2: Attempting to connect to ('localhost', 6001)
+10.12.2024 23:18:20.517769 Seller 4: No backup trader available. Aborting request.
+10.12.2024 23:18:20.518275 Trader 2: Broadcasted message to ('localhost', 6001)
+10.12.2024 23:18:20.518346 Trader 2: Attempting to connect to ('localhost', 6002)
+10.12.2024 23:18:20.518990 Trader 2: Broadcasted message to ('localhost', 6002)
+10.12.2024 23:18:20.519072 Trader 2: Attempting to connect to ('localhost', 6003)
+10.12.2024 23:18:20.519465 Seller 1: Received message from trader ('127.0.0.1', 53224): SOLOTRADER|5003
+10.12.2024 23:18:20.519584 Seller 1: Updated backup port to 5003
+10.12.2024 23:18:20.519703 Trader 2: Broadcasted message to ('localhost', 6003)
+10.12.2024 23:18:20.519761 Trader 2: Attempting to connect to ('localhost', 6004)
+10.12.2024 23:18:20.520127 Seller 2: Received message from trader ('127.0.0.1', 53225): SOLOTRADER|5003
+10.12.2024 23:18:20.520269 Trader 2: Broadcasted message to ('localhost', 6004)
+10.12.2024 23:18:20.520400 Trader 2: Attempting to connect to ('localhost', 6005)
+10.12.2024 23:18:20.520431 Seller 2: Updated backup port to 5003
+10.12.2024 23:18:20.520852 Seller 3: Received message from trader ('127.0.0.1', 53226): SOLOTRADER|5003
+10.12.2024 23:18:20.520941 Seller 3: Updated backup port to 5003
+10.12.2024 23:18:20.521043 Seller 4: Received message from trader ('127.0.0.1', 53227): SOLOTRADER|5003
+10.12.2024 23:18:20.521127 Seller 4: Updated backup port to 5003
+10.12.2024 23:18:20.521156 Trader 2: Broadcasted message to ('localhost', 6005)
+10.12.2024 23:18:20.521194 Trader 2: Attempting to connect to ('localhost', 6006)
+10.12.2024 23:18:20.521527 Trader 2: Broadcasted message to ('localhost', 6006)
+10.12.2024 23:18:20.521577 Trader 2: Attempting to connect to ('localhost', 6007)
+10.12.2024 23:18:20.521778 Seller 5: Received message from trader ('127.0.0.1', 53228): SOLOTRADER|5003
+10.12.2024 23:18:20.521875 Seller 5: Updated backup port to 5003
+10.12.2024 23:18:20.522152 Trader 2: Broadcasted message to ('localhost', 6007)
+10.12.2024 23:18:20.522206 Trader 2: Attempting to connect to ('localhost', 6008)
+10.12.2024 23:18:20.522480 Seller 6: Received message from trader ('127.0.0.1', 53229): SOLOTRADER|5003
+10.12.2024 23:18:20.522587 Seller 6: Updated backup port to 5003
+10.12.2024 23:18:20.522683 Trader 2: Broadcasted message to ('localhost', 6008)
+10.12.2024 23:18:20.522905 Trader 2: Attempting to connect to ('localhost', 7001)
+10.12.2024 23:18:20.523284 Seller 7: Received message from trader ('127.0.0.1', 53230): SOLOTRADER|5003
+10.12.2024 23:18:20.523390 Seller 7: Updated backup port to 5003
+10.12.2024 23:18:20.523560 Trader 2: Broadcasted message to ('localhost', 7001)
+10.12.2024 23:18:20.523558 Seller 8: Received message from trader ('127.0.0.1', 53231): SOLOTRADER|5003
+10.12.2024 23:18:20.523660 Trader 2: Attempting to connect to ('localhost', 7002)
+10.12.2024 23:18:20.523669 Seller 8: Updated backup port to 5003
+10.12.2024 23:18:20.524091 Trader 2: Broadcasted message to ('localhost', 7002)
+10.12.2024 23:18:20.524139 Trader 2: Attempting to connect to ('localhost', 7003)
+10.12.2024 23:18:20.524423 Buyer 2: Received message from trader ('127.0.0.1', 53233): SOLOTRADER|5003
+Buyer 2 updated backup port to 5003
+10.12.2024 23:18:20.524474 Buyer 1: Received message from trader ('127.0.0.1', 53232): SOLOTRADER|5003
+Buyer 1 updated backup port to 5003
+10.12.2024 23:18:20.524566 Trader 2: Broadcasted message to ('localhost', 7003)
+10.12.2024 23:18:20.524637 Trader 2: Attempting to connect to ('localhost', 7004)
+10.12.2024 23:18:20.525016 Trader 2: Broadcasted message to ('localhost', 7004)
+10.12.2024 23:18:20.524989 Buyer 3: Received message from trader ('127.0.0.1', 53234): SOLOTRADER|5003
+Buyer 3 updated backup port to 5003
+10.12.2024 23:18:20.525058 Trader 2: Attempting to connect to ('localhost', 7005)
+10.12.2024 23:18:20.525377 Trader 2: Broadcasted message to ('localhost', 7005)
+10.12.2024 23:18:20.525414 Trader 2: Attempting to connect to ('localhost', 7006)
+10.12.2024 23:18:20.525649 Buyer 4: Received message from trader ('127.0.0.1', 53235): SOLOTRADER|5003
+Buyer 4 updated backup port to 5003
+10.12.2024 23:18:20.525797 Trader 2: Broadcasted message to ('localhost', 7006)
+10.12.2024 23:18:20.525849 Trader 2: Attempting to connect to ('localhost', 7007)
+10.12.2024 23:18:20.526207 Trader 2: Broadcasted message to ('localhost', 7007)
+10.12.2024 23:18:20.526266 Trader 2: Attempting to connect to ('localhost', 7008)
+10.12.2024 23:18:20.526207 Buyer 5: Received message from trader ('127.0.0.1', 53236): SOLOTRADER|5003
+Buyer 5 updated backup port to 5003
+10.12.2024 23:18:20.526296 Buyer 6: Received message from trader ('127.0.0.1', 53237): SOLOTRADER|5003
+Buyer 6 updated backup port to 5003
+10.12.2024 23:18:20.526598 Buyer 7: Received message from trader ('127.0.0.1', 53238): SOLOTRADER|5003
+10.12.2024 23:18:20.526625 Trader 2: Broadcasted message to ('localhost', 7008)
+Buyer 7 updated backup port to 5003
+10.12.2024 23:18:20.526666 Trader 2: Attempting to connect to ('localhost', 7009)
+10.12.2024 23:18:20.526959 Buyer 8: Received message from trader ('127.0.0.1', 53239): SOLOTRADER|5003
+10.12.2024 23:18:20.526990 Trader 2: Broadcasted message to ('localhost', 7009)
+Buyer 8 updated backup port to 5003
+10.12.2024 23:18:20.527030 Trader 2: Attempting to connect to ('localhost', 7010)
+10.12.2024 23:18:20.527313 Buyer 9: Received message from trader ('127.0.0.1', 53240): SOLOTRADER|5003
+Buyer 9 updated backup port to 5003
+10.12.2024 23:18:20.527369 Trader 2: Broadcasted message to ('localhost', 7010)
+10.12.2024 23:18:20.527629 Buyer 10: Received message from trader ('127.0.0.1', 53241): SOLOTRADER|5003
+Buyer 10 updated backup port to 5003
+10.12.2024 23:18:20.563906 Buyer 4: Attempting to buy 6 banana(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:20.564677 Buyer 4: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:20.564818 Buyer 4: Attempting to buy 6 banana(s) from trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:20.565201 Buyer 4: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:20.565258 Buyer 4: Switching to backup trader at localhost:5003
+10.12.2024 23:18:20.565275 Buyer 4: Attempting to buy 6 banana(s) from trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:20.565777 Buyer 4: Connected to trader at localhost:5003
+10.12.2024 23:18:20.565908 Trader 2: Received from ('127.0.0.1', 53244): buy|banana|6|01721f6f-fa84-473a-9c06-727e7fa3c027
+10.12.2024 23:18:20.566035 Warehouse: DatabaseServer received: buy|banana|6|01721f6f-fa84-473a-9c06-727e7fa3c027 from ('127.0.0.1', 53113)
+10.12.2024 23:18:20.566962 Buyer 4: Buy complete for request 01721f6f-fa84-473a-9c06-727e7fa3c027 (via localhost:5003): OK|Shipped 6 banana(s)|01721f6f-fa84-473a-9c06-727e7fa3c027
+10.12.2024 23:18:21.036209 Seller 5: Attempting to sell 10 banana(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:21.037676 Seller 5: Connected to trader at localhost:5003
+10.12.2024 23:18:21.037992 Trader 2: Received from ('127.0.0.1', 53245): sell|banana|10|f67e0a0d-3dea-4d46-9923-0a3a9fe95f44
+10.12.2024 23:18:21.038310 Warehouse: DatabaseServer received: sell|banana|10|f67e0a0d-3dea-4d46-9923-0a3a9fe95f44 from ('127.0.0.1', 53113)
+10.12.2024 23:18:21.039813 Seller 5: Sell complete for request f67e0a0d-3dea-4d46-9923-0a3a9fe95f44 (via localhost:5003): OK|Stocked 10 banana(s)|f67e0a0d-3dea-4d46-9923-0a3a9fe95f44
+10.12.2024 23:18:21.072976 Buyer 5: Attempting to buy 7 banana(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:21.074666 Buyer 5: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:21.075054 Buyer 5: Attempting to buy 7 banana(s) from trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:21.075569 Buyer 5: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:21.075658 Buyer 5: Switching to backup trader at localhost:5003
+10.12.2024 23:18:21.075686 Buyer 5: Attempting to buy 7 banana(s) from trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:21.076114 Buyer 5: Connected to trader at localhost:5003
+10.12.2024 23:18:21.076449 Trader 2: Received from ('127.0.0.1', 53248): buy|banana|7|959bd25f-4beb-4c67-8f45-2c5f288b3435
+10.12.2024 23:18:21.076659 Warehouse: DatabaseServer received: buy|banana|7|959bd25f-4beb-4c67-8f45-2c5f288b3435 from ('127.0.0.1', 53113)
+10.12.2024 23:18:21.078359 Buyer 5: Buy complete for request 959bd25f-4beb-4c67-8f45-2c5f288b3435 (via localhost:5003): OK|Shipped 7 banana(s)|959bd25f-4beb-4c67-8f45-2c5f288b3435
+10.12.2024 23:18:21.543493 Seller 6: Attempting to sell 10 orange(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:21.544889 Seller 6: Connected to trader at localhost:5003
+10.12.2024 23:18:21.545269 Trader 2: Received from ('127.0.0.1', 53249): sell|orange|10|6e7720cd-7119-43aa-92c5-0284cd2ac38a
+10.12.2024 23:18:21.545517 Warehouse: DatabaseServer received: sell|orange|10|6e7720cd-7119-43aa-92c5-0284cd2ac38a from ('127.0.0.1', 53113)
+10.12.2024 23:18:21.547000 Seller 6: Sell complete for request 6e7720cd-7119-43aa-92c5-0284cd2ac38a (via localhost:5003): OK|Stocked 10 orange(s)|6e7720cd-7119-43aa-92c5-0284cd2ac38a
+10.12.2024 23:18:21.578756 Buyer 6: Attempting to buy 5 banana(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:21.580120 Buyer 6: Connected to trader at localhost:5003
+10.12.2024 23:18:21.580476 Trader 2: Received from ('127.0.0.1', 53250): buy|banana|5|b794e83c-bbd8-4128-a721-7c6c639f24fa
+10.12.2024 23:18:21.580716 Warehouse: DatabaseServer received: buy|banana|5|b794e83c-bbd8-4128-a721-7c6c639f24fa from ('127.0.0.1', 53113)
+10.12.2024 23:18:21.582550 Buyer 6: Buy complete for request b794e83c-bbd8-4128-a721-7c6c639f24fa (via localhost:5003): OK|Shipped 5 banana(s)|b794e83c-bbd8-4128-a721-7c6c639f24fa
+10.12.2024 23:18:22.037137 Seller 7: Attempting to sell 10 apple(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:22.038885 Seller 7: Connected to trader at localhost:5003
+10.12.2024 23:18:22.039239 Trader 2: Received from ('127.0.0.1', 53251): sell|apple|10|2497f860-b374-4308-bcb2-74f6bf7dd696
+10.12.2024 23:18:22.039484 Warehouse: DatabaseServer received: sell|apple|10|2497f860-b374-4308-bcb2-74f6bf7dd696 from ('127.0.0.1', 53113)
+10.12.2024 23:18:22.040916 Seller 7: Sell complete for request 2497f860-b374-4308-bcb2-74f6bf7dd696 (via localhost:5003): OK|Stocked 10 apple(s)|2497f860-b374-4308-bcb2-74f6bf7dd696
+10.12.2024 23:18:22.083961 Buyer 7: Attempting to buy 4 apple(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:22.084849 Buyer 7: Connected to trader at localhost:5003
+10.12.2024 23:18:22.085022 Trader 2: Received from ('127.0.0.1', 53252): buy|apple|4|ebd66a30-1eb4-43dc-98d3-3f8fabd20ea8
+10.12.2024 23:18:22.085161 Warehouse: DatabaseServer received: buy|apple|4|ebd66a30-1eb4-43dc-98d3-3f8fabd20ea8 from ('127.0.0.1', 53113)
+10.12.2024 23:18:22.086023 Buyer 7: Buy complete for request ebd66a30-1eb4-43dc-98d3-3f8fabd20ea8 (via localhost:5003): OK|Shipped 4 apple(s)|ebd66a30-1eb4-43dc-98d3-3f8fabd20ea8
+10.12.2024 23:18:22.552461 Seller 8: Attempting to sell 10 banana(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:22.553379 Seller 8: Connected to trader at localhost:5003
+10.12.2024 23:18:22.553721 Trader 2: Received from ('127.0.0.1', 53253): sell|banana|10|8020ea48-faf7-4285-bee8-b717cb12a84c
+10.12.2024 23:18:22.554090 Warehouse: DatabaseServer received: sell|banana|10|8020ea48-faf7-4285-bee8-b717cb12a84c from ('127.0.0.1', 53113)
+10.12.2024 23:18:22.555366 Seller 8: Sell complete for request 8020ea48-faf7-4285-bee8-b717cb12a84c (via localhost:5003): OK|Stocked 10 banana(s)|8020ea48-faf7-4285-bee8-b717cb12a84c
+10.12.2024 23:18:22.587075 Buyer 8: Attempting to buy 3 apple(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:22.588059 Buyer 8: Connected to trader at localhost:5003
+10.12.2024 23:18:22.588369 Trader 2: Received from ('127.0.0.1', 53254): buy|apple|3|38273ce1-b1a6-401e-b0c0-42cc018d49c1
+10.12.2024 23:18:22.588563 Warehouse: DatabaseServer received: buy|apple|3|38273ce1-b1a6-401e-b0c0-42cc018d49c1 from ('127.0.0.1', 53113)
+10.12.2024 23:18:22.590176 Buyer 8: Buy complete for request 38273ce1-b1a6-401e-b0c0-42cc018d49c1 (via localhost:5003): OK|Shipped 3 apple(s)|38273ce1-b1a6-401e-b0c0-42cc018d49c1
+10.12.2024 23:18:23.093372 Buyer 9: Attempting to buy 1 banana(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:23.094368 Buyer 9: Connected to trader at localhost:5003
+10.12.2024 23:18:23.094615 Trader 2: Received from ('127.0.0.1', 53255): buy|banana|1|952d2d3a-d76c-4453-9929-c0d2a2abba63
+10.12.2024 23:18:23.094794 Warehouse: DatabaseServer received: buy|banana|1|952d2d3a-d76c-4453-9929-c0d2a2abba63 from ('127.0.0.1', 53113)
+10.12.2024 23:18:23.096120 Buyer 9: Buy complete for request 952d2d3a-d76c-4453-9929-c0d2a2abba63 (via localhost:5003): OK|Shipped 1 banana(s)|952d2d3a-d76c-4453-9929-c0d2a2abba63
+10.12.2024 23:18:23.608244 Buyer 10: Attempting to buy 1 apple(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:23.609564 Buyer 10: Connected to trader at localhost:5003
+10.12.2024 23:18:23.609914 Trader 2: Received from ('127.0.0.1', 53258): buy|apple|1|fabd4d3f-2f9c-47e1-8185-20d16b16b5af
+10.12.2024 23:18:23.610168 Warehouse: DatabaseServer received: buy|apple|1|fabd4d3f-2f9c-47e1-8185-20d16b16b5af from ('127.0.0.1', 53113)
+10.12.2024 23:18:23.611931 Buyer 10: Buy complete for request fabd4d3f-2f9c-47e1-8185-20d16b16b5af (via localhost:5003): OK|Shipped 1 apple(s)|fabd4d3f-2f9c-47e1-8185-20d16b16b5af
+10.12.2024 23:18:24.000934 Seller 1: Attempting to sell 10 apple(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:24.002182 Seller 1: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:24.002522 Seller 1: Attempting to sell 10 apple(s) to trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:24.003091 Seller 1: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:24.003189 Seller 1: Switching to backup trader at localhost:5003
+10.12.2024 23:18:24.003223 Seller 1: Attempting to sell 10 apple(s) to trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:24.003650 Seller 1: Connected to trader at localhost:5003
+10.12.2024 23:18:24.003933 Trader 2: Received from ('127.0.0.1', 53261): sell|apple|10|26e9627f-fd82-4bb5-b331-dc9b8645837c
+10.12.2024 23:18:24.004136 Warehouse: DatabaseServer received: sell|apple|10|26e9627f-fd82-4bb5-b331-dc9b8645837c from ('127.0.0.1', 53113)
+10.12.2024 23:18:24.005697 Seller 1: Sell complete for request 26e9627f-fd82-4bb5-b331-dc9b8645837c (via localhost:5003): OK|Stocked 10 apple(s)|26e9627f-fd82-4bb5-b331-dc9b8645837c
+10.12.2024 23:18:24.070154 Buyer 1: Attempting to buy 6 apple(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:24.070732 Buyer 1: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:24.070876 Buyer 1: Attempting to buy 6 apple(s) from trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:24.071283 Buyer 1: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:24.071367 Buyer 1: Switching to backup trader at localhost:5003
+10.12.2024 23:18:24.071389 Buyer 1: Attempting to buy 6 apple(s) from trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:24.071708 Buyer 1: Connected to trader at localhost:5003
+10.12.2024 23:18:24.071824 Trader 2: Received from ('127.0.0.1', 53264): buy|apple|6|2af2690c-21ca-440a-89af-d0d31d8c6298
+10.12.2024 23:18:24.071938 Warehouse: DatabaseServer received: buy|apple|6|2af2690c-21ca-440a-89af-d0d31d8c6298 from ('127.0.0.1', 53113)
+10.12.2024 23:18:24.072767 Buyer 1: Buy complete for request 2af2690c-21ca-440a-89af-d0d31d8c6298 (via localhost:5003): OK|Shipped 6 apple(s)|2af2690c-21ca-440a-89af-d0d31d8c6298
+10.12.2024 23:18:24.492631 Seller 2: Attempting to sell 10 orange(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:24.493907 Seller 2: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:24.494251 Seller 2: Attempting to sell 10 orange(s) to trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:24.494777 Seller 2: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:24.494900 Seller 2: Switching to backup trader at localhost:5003
+10.12.2024 23:18:24.494935 Seller 2: Attempting to sell 10 orange(s) to trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:24.495389 Seller 2: Connected to trader at localhost:5003
+10.12.2024 23:18:24.495606 Trader 2: Received from ('127.0.0.1', 53267): sell|orange|10|8bf099a0-0de6-47af-acc6-a0c68a146122
+10.12.2024 23:18:24.495762 Warehouse: DatabaseServer received: sell|orange|10|8bf099a0-0de6-47af-acc6-a0c68a146122 from ('127.0.0.1', 53113)
+10.12.2024 23:18:24.496650 Seller 2: Sell complete for request 8bf099a0-0de6-47af-acc6-a0c68a146122 (via localhost:5003): OK|Stocked 10 orange(s)|8bf099a0-0de6-47af-acc6-a0c68a146122
+10.12.2024 23:18:24.566360 Buyer 2: Attempting to buy 4 banana(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:24.567135 Buyer 2: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:24.567297 Buyer 2: Attempting to buy 4 banana(s) from trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:24.567741 Buyer 2: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:24.567830 Buyer 2: Switching to backup trader at localhost:5003
+10.12.2024 23:18:24.567860 Buyer 2: Attempting to buy 4 banana(s) from trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:24.568241 Buyer 2: Connected to trader at localhost:5003
+10.12.2024 23:18:24.568431 Trader 2: Received from ('127.0.0.1', 53270): buy|banana|4|ed2131c0-8dad-470a-8153-8271cfe1fcb0
+10.12.2024 23:18:24.568586 Warehouse: DatabaseServer received: buy|banana|4|ed2131c0-8dad-470a-8153-8271cfe1fcb0 from ('127.0.0.1', 53113)
+10.12.2024 23:18:24.569762 Buyer 2: Buy complete for request ed2131c0-8dad-470a-8153-8271cfe1fcb0 (via localhost:5003): OK|Shipped 4 banana(s)|ed2131c0-8dad-470a-8153-8271cfe1fcb0
+10.12.2024 23:18:25.016804 Seller 3: Attempting to sell 10 apple(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:25.018068 Seller 3: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:25.018388 Seller 3: Attempting to sell 10 apple(s) to trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:25.018922 Seller 3: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:25.019050 Seller 3: Switching to backup trader at localhost:5003
+10.12.2024 23:18:25.019086 Seller 3: Attempting to sell 10 apple(s) to trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:25.019574 Seller 3: Connected to trader at localhost:5003
+10.12.2024 23:18:25.019877 Trader 2: Received from ('127.0.0.1', 53273): sell|apple|10|07dbcc3d-2812-4304-9e10-826be7c3a073
+10.12.2024 23:18:25.020096 Warehouse: DatabaseServer received: sell|apple|10|07dbcc3d-2812-4304-9e10-826be7c3a073 from ('127.0.0.1', 53113)
+10.12.2024 23:18:25.021589 Seller 3: Sell complete for request 07dbcc3d-2812-4304-9e10-826be7c3a073 (via localhost:5003): OK|Stocked 10 apple(s)|07dbcc3d-2812-4304-9e10-826be7c3a073
+10.12.2024 23:18:25.064140 Buyer 3: Attempting to buy 10 apple(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:25.064782 Buyer 3: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:25.064874 Buyer 3: Attempting to buy 10 apple(s) from trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:25.065164 Buyer 3: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:25.065230 Buyer 3: Switching to backup trader at localhost:5003
+10.12.2024 23:18:25.065253 Buyer 3: Attempting to buy 10 apple(s) from trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:25.065664 Buyer 3: Connected to trader at localhost:5003
+10.12.2024 23:18:25.065848 Trader 2: Received from ('127.0.0.1', 53276): buy|apple|10|29527482-c4a5-45e2-9c2c-8ccbd1ded7c0
+10.12.2024 23:18:25.065997 Warehouse: DatabaseServer received: buy|apple|10|29527482-c4a5-45e2-9c2c-8ccbd1ded7c0 from ('127.0.0.1', 53113)
+10.12.2024 23:18:25.066923 Buyer 3: Buy complete for request 29527482-c4a5-45e2-9c2c-8ccbd1ded7c0 (via localhost:5003): OK|Shipped 10 apple(s)|29527482-c4a5-45e2-9c2c-8ccbd1ded7c0
+10.12.2024 23:18:25.522882 Seller 4: Attempting to sell 10 orange(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:25.523953 Seller 4: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:25.524169 Seller 4: Attempting to sell 10 orange(s) to trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:25.524866 Seller 4: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:25.525042 Seller 4: Switching to backup trader at localhost:5003
+10.12.2024 23:18:25.525117 Seller 4: Attempting to sell 10 orange(s) to trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:25.525718 Seller 4: Connected to trader at localhost:5003
+10.12.2024 23:18:25.525966 Trader 2: Received from ('127.0.0.1', 53279): sell|orange|10|16cda199-4dbe-4e60-bdf5-1c6bcec36c4b
+10.12.2024 23:18:25.526162 Warehouse: DatabaseServer received: sell|orange|10|16cda199-4dbe-4e60-bdf5-1c6bcec36c4b from ('127.0.0.1', 53113)
+10.12.2024 23:18:25.527361 Seller 4: Sell complete for request 16cda199-4dbe-4e60-bdf5-1c6bcec36c4b (via localhost:5003): OK|Stocked 10 orange(s)|16cda199-4dbe-4e60-bdf5-1c6bcec36c4b
+10.12.2024 23:18:25.572024 Buyer 4: Attempting to buy 8 banana(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:25.572789 Buyer 4: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:25.572923 Buyer 4: Attempting to buy 8 banana(s) from trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:25.573267 Buyer 4: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:25.573388 Buyer 4: Switching to backup trader at localhost:5003
+10.12.2024 23:18:25.573412 Buyer 4: Attempting to buy 8 banana(s) from trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:25.573800 Buyer 4: Connected to trader at localhost:5003
+10.12.2024 23:18:25.573967 Trader 2: Received from ('127.0.0.1', 53282): buy|banana|8|219686ec-41f1-4e1f-80c2-3193d83b0eb7
+10.12.2024 23:18:25.574102 Warehouse: DatabaseServer received: buy|banana|8|219686ec-41f1-4e1f-80c2-3193d83b0eb7 from ('127.0.0.1', 53113)
+10.12.2024 23:18:25.574996 Buyer 4: Buy complete for request 219686ec-41f1-4e1f-80c2-3193d83b0eb7 (via localhost:5003): OK|Shipped 8 banana(s)|219686ec-41f1-4e1f-80c2-3193d83b0eb7
+10.12.2024 23:18:26.044946 Seller 5: Attempting to sell 10 banana(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:26.046257 Seller 5: Connected to trader at localhost:5003
+10.12.2024 23:18:26.046638 Trader 2: Received from ('127.0.0.1', 53283): sell|banana|10|d119c5b9-091f-4dff-8a97-4afbe94d6d3e
+10.12.2024 23:18:26.046917 Warehouse: DatabaseServer received: sell|banana|10|d119c5b9-091f-4dff-8a97-4afbe94d6d3e from ('127.0.0.1', 53113)
+10.12.2024 23:18:26.048242 Seller 5: Sell complete for request d119c5b9-091f-4dff-8a97-4afbe94d6d3e (via localhost:5003): OK|Stocked 10 banana(s)|d119c5b9-091f-4dff-8a97-4afbe94d6d3e
+10.12.2024 23:18:26.081201 Buyer 5: Attempting to buy 7 banana(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:26.082507 Buyer 5: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:26.082748 Buyer 5: Attempting to buy 7 banana(s) from trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:26.083410 Buyer 5: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:26.083560 Buyer 5: Switching to backup trader at localhost:5003
+10.12.2024 23:18:26.083593 Buyer 5: Attempting to buy 7 banana(s) from trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:26.084047 Buyer 5: Connected to trader at localhost:5003
+10.12.2024 23:18:26.084369 Trader 2: Received from ('127.0.0.1', 53286): buy|banana|7|4863dec4-2303-40c6-bb9c-f10f072e09bb
+10.12.2024 23:18:26.084580 Warehouse: DatabaseServer received: buy|banana|7|4863dec4-2303-40c6-bb9c-f10f072e09bb from ('127.0.0.1', 53113)
+10.12.2024 23:18:26.086321 Buyer 5: Buy complete for request 4863dec4-2303-40c6-bb9c-f10f072e09bb (via localhost:5003): OK|Shipped 7 banana(s)|4863dec4-2303-40c6-bb9c-f10f072e09bb
+10.12.2024 23:18:26.550843 Seller 6: Attempting to sell 10 orange(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:26.552236 Seller 6: Connected to trader at localhost:5003
+10.12.2024 23:18:26.552585 Trader 2: Received from ('127.0.0.1', 53287): sell|orange|10|62360758-e697-498e-aed9-0676f6dc0e74
+10.12.2024 23:18:26.552906 Warehouse: DatabaseServer received: sell|orange|10|62360758-e697-498e-aed9-0676f6dc0e74 from ('127.0.0.1', 53113)
+10.12.2024 23:18:26.555128 Seller 6: Sell complete for request 62360758-e697-498e-aed9-0676f6dc0e74 (via localhost:5003): OK|Stocked 10 orange(s)|62360758-e697-498e-aed9-0676f6dc0e74
+10.12.2024 23:18:26.587132 Buyer 6: Attempting to buy 10 apple(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:26.588702 Buyer 6: Connected to trader at localhost:5003
+10.12.2024 23:18:26.589107 Trader 2: Received from ('127.0.0.1', 53288): buy|apple|10|05d6df92-bed2-4da8-94e2-00baa844f129
+10.12.2024 23:18:26.589314 Warehouse: DatabaseServer received: buy|apple|10|05d6df92-bed2-4da8-94e2-00baa844f129 from ('127.0.0.1', 53113)
+10.12.2024 23:18:26.591005 Buyer 6: Buy complete for request 05d6df92-bed2-4da8-94e2-00baa844f129 (via localhost:5003): OK|Shipped 10 apple(s)|05d6df92-bed2-4da8-94e2-00baa844f129
+10.12.2024 23:18:27.044851 Seller 7: Attempting to sell 10 banana(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:27.045993 Seller 7: Connected to trader at localhost:5003
+10.12.2024 23:18:27.046284 Trader 2: Received from ('127.0.0.1', 53289): sell|banana|10|097a68ec-64a5-423e-b482-d4c880c26279
+10.12.2024 23:18:27.046491 Warehouse: DatabaseServer received: sell|banana|10|097a68ec-64a5-423e-b482-d4c880c26279 from ('127.0.0.1', 53113)
+10.12.2024 23:18:27.047616 Seller 7: Sell complete for request 097a68ec-64a5-423e-b482-d4c880c26279 (via localhost:5003): OK|Stocked 10 banana(s)|097a68ec-64a5-423e-b482-d4c880c26279
+10.12.2024 23:18:27.089833 Buyer 7: Attempting to buy 2 apple(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:27.090572 Buyer 7: Connected to trader at localhost:5003
+10.12.2024 23:18:27.090738 Trader 2: Received from ('127.0.0.1', 53290): buy|apple|2|32029692-b24a-4cf1-8355-e2ae95c252b9
+10.12.2024 23:18:27.090855 Warehouse: DatabaseServer received: buy|apple|2|32029692-b24a-4cf1-8355-e2ae95c252b9 from ('127.0.0.1', 53113)
+10.12.2024 23:18:27.091640 Buyer 7: Buy complete for request 32029692-b24a-4cf1-8355-e2ae95c252b9 (via localhost:5003): OK|Shipped 2 apple(s)|32029692-b24a-4cf1-8355-e2ae95c252b9
+10.12.2024 23:18:27.559973 Seller 8: Attempting to sell 10 apple(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:27.561161 Seller 8: Connected to trader at localhost:5003
+10.12.2024 23:18:27.561449 Trader 2: Received from ('127.0.0.1', 53291): sell|apple|10|5c998dbf-715c-4613-b29e-91f2bfb89fd2
+10.12.2024 23:18:27.561583 Warehouse: DatabaseServer received: sell|apple|10|5c998dbf-715c-4613-b29e-91f2bfb89fd2 from ('127.0.0.1', 53113)
+10.12.2024 23:18:27.562287 Seller 8: Sell complete for request 5c998dbf-715c-4613-b29e-91f2bfb89fd2 (via localhost:5003): OK|Stocked 10 apple(s)|5c998dbf-715c-4613-b29e-91f2bfb89fd2
+10.12.2024 23:18:27.591504 Buyer 8: Attempting to buy 2 apple(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:27.592078 Buyer 8: Connected to trader at localhost:5003
+10.12.2024 23:18:27.592215 Trader 2: Received from ('127.0.0.1', 53292): buy|apple|2|9764e5b5-6ee5-4558-9493-98dfb7dfe19e
+10.12.2024 23:18:27.592310 Warehouse: DatabaseServer received: buy|apple|2|9764e5b5-6ee5-4558-9493-98dfb7dfe19e from ('127.0.0.1', 53113)
+10.12.2024 23:18:27.593065 Buyer 8: Buy complete for request 9764e5b5-6ee5-4558-9493-98dfb7dfe19e (via localhost:5003): OK|Shipped 2 apple(s)|9764e5b5-6ee5-4558-9493-98dfb7dfe19e
+10.12.2024 23:18:28.101275 Buyer 9: Attempting to buy 1 orange(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:28.101973 Buyer 9: Connected to trader at localhost:5003
+10.12.2024 23:18:28.102100 Trader 2: Received from ('127.0.0.1', 53293): buy|orange|1|abbb99fc-29b9-4c19-81d1-0eb847985461
+10.12.2024 23:18:28.102196 Warehouse: DatabaseServer received: buy|orange|1|abbb99fc-29b9-4c19-81d1-0eb847985461 from ('127.0.0.1', 53113)
+10.12.2024 23:18:28.103006 Buyer 9: Buy complete for request abbb99fc-29b9-4c19-81d1-0eb847985461 (via localhost:5003): OK|Shipped 1 orange(s)|abbb99fc-29b9-4c19-81d1-0eb847985461
+10.12.2024 23:18:28.613758 Buyer 10: Attempting to buy 9 orange(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:28.615436 Buyer 10: Connected to trader at localhost:5003
+10.12.2024 23:18:28.615802 Trader 2: Received from ('127.0.0.1', 53294): buy|orange|9|307b37fe-593f-44fa-a01f-d55d8fd9790c
+10.12.2024 23:18:28.615998 Warehouse: DatabaseServer received: buy|orange|9|307b37fe-593f-44fa-a01f-d55d8fd9790c from ('127.0.0.1', 53113)
+10.12.2024 23:18:28.617697 Buyer 10: Buy complete for request 307b37fe-593f-44fa-a01f-d55d8fd9790c (via localhost:5003): OK|Shipped 9 orange(s)|307b37fe-593f-44fa-a01f-d55d8fd9790c
+10.12.2024 23:18:29.008753 Seller 1: Attempting to sell 10 orange(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:29.010062 Seller 1: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:29.010293 Seller 1: Attempting to sell 10 orange(s) to trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:29.010785 Seller 1: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:29.010915 Seller 1: Switching to backup trader at localhost:5003
+10.12.2024 23:18:29.010952 Seller 1: Attempting to sell 10 orange(s) to trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:29.011379 Seller 1: Connected to trader at localhost:5003
+10.12.2024 23:18:29.011674 Trader 2: Received from ('127.0.0.1', 53297): sell|orange|10|00092020-4280-44ed-b893-8c8856712d95
+10.12.2024 23:18:29.011879 Warehouse: DatabaseServer received: sell|orange|10|00092020-4280-44ed-b893-8c8856712d95 from ('127.0.0.1', 53113)
+10.12.2024 23:18:29.013183 Seller 1: Sell complete for request 00092020-4280-44ed-b893-8c8856712d95 (via localhost:5003): OK|Stocked 10 orange(s)|00092020-4280-44ed-b893-8c8856712d95
+10.12.2024 23:18:29.077902 Buyer 1: Attempting to buy 9 banana(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:29.079214 Buyer 1: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:29.079349 Buyer 1: Attempting to buy 9 banana(s) from trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:29.079702 Buyer 1: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:29.079777 Buyer 1: Switching to backup trader at localhost:5003
+10.12.2024 23:18:29.079800 Buyer 1: Attempting to buy 9 banana(s) from trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:29.080295 Buyer 1: Connected to trader at localhost:5003
+10.12.2024 23:18:29.080565 Trader 2: Received from ('127.0.0.1', 53300): buy|banana|9|7710bfaa-6d8a-4882-9dcd-5944de62d443
+10.12.2024 23:18:29.080780 Warehouse: DatabaseServer received: buy|banana|9|7710bfaa-6d8a-4882-9dcd-5944de62d443 from ('127.0.0.1', 53113)
+10.12.2024 23:18:29.081933 Buyer 1: Buy complete for request 7710bfaa-6d8a-4882-9dcd-5944de62d443 (via localhost:5003): OK|Shipped 9 banana(s)|7710bfaa-6d8a-4882-9dcd-5944de62d443
+10.12.2024 23:18:29.498482 Seller 2: Attempting to sell 10 banana(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:29.499396 Seller 2: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:29.499579 Seller 2: Attempting to sell 10 banana(s) to trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:29.500115 Seller 2: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:29.500256 Seller 2: Switching to backup trader at localhost:5003
+10.12.2024 23:18:29.500298 Seller 2: Attempting to sell 10 banana(s) to trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:29.500723 Seller 2: Connected to trader at localhost:5003
+10.12.2024 23:18:29.500935 Trader 2: Received from ('127.0.0.1', 53305): sell|banana|10|162ece50-3241-49ba-a868-1f19760b3c23
+10.12.2024 23:18:29.501090 Warehouse: DatabaseServer received: sell|banana|10|162ece50-3241-49ba-a868-1f19760b3c23 from ('127.0.0.1', 53113)
+10.12.2024 23:18:29.501942 Seller 2: Sell complete for request 162ece50-3241-49ba-a868-1f19760b3c23 (via localhost:5003): OK|Stocked 10 banana(s)|162ece50-3241-49ba-a868-1f19760b3c23
+10.12.2024 23:18:29.574108 Buyer 2: Attempting to buy 9 orange(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:29.575209 Buyer 2: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:29.575392 Buyer 2: Attempting to buy 9 orange(s) from trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:29.575912 Buyer 2: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:29.576008 Buyer 2: Switching to backup trader at localhost:5003
+10.12.2024 23:18:29.576035 Buyer 2: Attempting to buy 9 orange(s) from trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:29.576343 Buyer 2: Connected to trader at localhost:5003
+10.12.2024 23:18:29.576497 Trader 2: Received from ('127.0.0.1', 53308): buy|orange|9|0b75d4c7-192f-4bbc-bcb3-7fe89803799a
+10.12.2024 23:18:29.576631 Warehouse: DatabaseServer received: buy|orange|9|0b75d4c7-192f-4bbc-bcb3-7fe89803799a from ('127.0.0.1', 53113)
+10.12.2024 23:18:29.577656 Buyer 2: Buy complete for request 0b75d4c7-192f-4bbc-bcb3-7fe89803799a (via localhost:5003): OK|Shipped 9 orange(s)|0b75d4c7-192f-4bbc-bcb3-7fe89803799a
+10.12.2024 23:18:30.026770 Seller 3: Attempting to sell 10 orange(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:30.028303 Seller 3: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:30.028562 Seller 3: Attempting to sell 10 orange(s) to trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:30.029091 Seller 3: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:30.029177 Seller 3: Switching to backup trader at localhost:5003
+10.12.2024 23:18:30.029221 Seller 3: Attempting to sell 10 orange(s) to trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:30.029642 Seller 3: Connected to trader at localhost:5003
+10.12.2024 23:18:30.029893 Trader 2: Received from ('127.0.0.1', 53311): sell|orange|10|19cda31f-758c-4949-8646-53b3ae25a668
+10.12.2024 23:18:30.030063 Warehouse: DatabaseServer received: sell|orange|10|19cda31f-758c-4949-8646-53b3ae25a668 from ('127.0.0.1', 53113)
+10.12.2024 23:18:30.031190 Seller 3: Sell complete for request 19cda31f-758c-4949-8646-53b3ae25a668 (via localhost:5003): OK|Stocked 10 orange(s)|19cda31f-758c-4949-8646-53b3ae25a668
+10.12.2024 23:18:30.071960 Buyer 3: Attempting to buy 7 banana(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:30.072450 Buyer 3: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:30.072512 Buyer 3: Attempting to buy 7 banana(s) from trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:30.072717 Buyer 3: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:30.072750 Buyer 3: Switching to backup trader at localhost:5003
+10.12.2024 23:18:30.072761 Buyer 3: Attempting to buy 7 banana(s) from trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:30.073024 Buyer 3: Connected to trader at localhost:5003
+10.12.2024 23:18:30.073123 Trader 2: Received from ('127.0.0.1', 53314): buy|banana|7|41cad1d2-9568-4aa7-b424-0640b083fb97
+10.12.2024 23:18:30.073222 Warehouse: DatabaseServer received: buy|banana|7|41cad1d2-9568-4aa7-b424-0640b083fb97 from ('127.0.0.1', 53113)
+10.12.2024 23:18:30.073893 Buyer 3: Buy complete for request 41cad1d2-9568-4aa7-b424-0640b083fb97 (via localhost:5003): OK|Shipped 7 banana(s)|41cad1d2-9568-4aa7-b424-0640b083fb97
+10.12.2024 23:18:30.531760 Seller 4: Attempting to sell 10 orange(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:30.533078 Seller 4: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:30.533304 Seller 4: Attempting to sell 10 orange(s) to trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:30.533776 Seller 4: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:30.533876 Seller 4: Switching to backup trader at localhost:5003
+10.12.2024 23:18:30.533910 Seller 4: Attempting to sell 10 orange(s) to trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:30.534467 Seller 4: Connected to trader at localhost:5003
+10.12.2024 23:18:30.534757 Trader 2: Received from ('127.0.0.1', 53317): sell|orange|10|5c2ff1e4-1884-406e-82ad-ea89572a850a
+10.12.2024 23:18:30.535044 Warehouse: DatabaseServer received: sell|orange|10|5c2ff1e4-1884-406e-82ad-ea89572a850a from ('127.0.0.1', 53113)
+10.12.2024 23:18:30.536308 Seller 4: Sell complete for request 5c2ff1e4-1884-406e-82ad-ea89572a850a (via localhost:5003): OK|Stocked 10 orange(s)|5c2ff1e4-1884-406e-82ad-ea89572a850a
+10.12.2024 23:18:30.580042 Buyer 4: Attempting to buy 9 orange(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:30.580572 Buyer 4: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:30.580661 Buyer 4: Attempting to buy 9 orange(s) from trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:30.580946 Buyer 4: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:30.581001 Buyer 4: Switching to backup trader at localhost:5003
+10.12.2024 23:18:30.581017 Buyer 4: Attempting to buy 9 orange(s) from trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:30.581391 Buyer 4: Connected to trader at localhost:5003
+10.12.2024 23:18:30.581525 Trader 2: Received from ('127.0.0.1', 53320): buy|orange|9|fa0e5e67-55f0-4c97-ade4-034f06462a14
+10.12.2024 23:18:30.581647 Warehouse: DatabaseServer received: buy|orange|9|fa0e5e67-55f0-4c97-ade4-034f06462a14 from ('127.0.0.1', 53113)
+10.12.2024 23:18:30.582573 Buyer 4: Buy complete for request fa0e5e67-55f0-4c97-ade4-034f06462a14 (via localhost:5003): OK|Shipped 9 orange(s)|fa0e5e67-55f0-4c97-ade4-034f06462a14
+10.12.2024 23:18:31.050585 Seller 5: Attempting to sell 10 orange(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:31.051887 Seller 5: Connected to trader at localhost:5003
+10.12.2024 23:18:31.052273 Trader 2: Received from ('127.0.0.1', 53321): sell|orange|10|4aa8dd6e-8e42-4a23-9510-225e0e3a090e
+10.12.2024 23:18:31.052530 Warehouse: DatabaseServer received: sell|orange|10|4aa8dd6e-8e42-4a23-9510-225e0e3a090e from ('127.0.0.1', 53113)
+10.12.2024 23:18:31.053880 Seller 5: Sell complete for request 4aa8dd6e-8e42-4a23-9510-225e0e3a090e (via localhost:5003): OK|Stocked 10 orange(s)|4aa8dd6e-8e42-4a23-9510-225e0e3a090e
+10.12.2024 23:18:31.091117 Buyer 5: Attempting to buy 9 banana(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:31.092197 Buyer 5: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:31.092456 Buyer 5: Attempting to buy 9 banana(s) from trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:31.093035 Buyer 5: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:31.093245 Buyer 5: Switching to backup trader at localhost:5003
+10.12.2024 23:18:31.093280 Buyer 5: Attempting to buy 9 banana(s) from trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:31.093750 Buyer 5: Connected to trader at localhost:5003
+10.12.2024 23:18:31.093948 Trader 2: Received from ('127.0.0.1', 53324): buy|banana|9|b2de5ceb-961a-4f81-960c-5c4d64619557
+10.12.2024 23:18:31.094096 Warehouse: DatabaseServer received: buy|banana|9|b2de5ceb-961a-4f81-960c-5c4d64619557 from ('127.0.0.1', 53113)
+10.12.2024 23:18:31.095053 Buyer 5: Buy complete for request b2de5ceb-961a-4f81-960c-5c4d64619557 (via localhost:5003): OK|Shipped 9 banana(s)|b2de5ceb-961a-4f81-960c-5c4d64619557
+10.12.2024 23:18:31.559132 Seller 6: Attempting to sell 10 orange(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:31.560071 Seller 6: Connected to trader at localhost:5003
+10.12.2024 23:18:31.560311 Trader 2: Received from ('127.0.0.1', 53325): sell|orange|10|612093f9-6523-45e1-89d2-7aaee955d83c
+10.12.2024 23:18:31.560490 Warehouse: DatabaseServer received: sell|orange|10|612093f9-6523-45e1-89d2-7aaee955d83c from ('127.0.0.1', 53113)
+10.12.2024 23:18:31.561475 Seller 6: Sell complete for request 612093f9-6523-45e1-89d2-7aaee955d83c (via localhost:5003): OK|Stocked 10 orange(s)|612093f9-6523-45e1-89d2-7aaee955d83c
+10.12.2024 23:18:31.591191 Buyer 6: Attempting to buy 7 banana(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:31.592175 Buyer 6: Connected to trader at localhost:5003
+10.12.2024 23:18:31.592368 Trader 2: Received from ('127.0.0.1', 53326): buy|banana|7|cf66c28a-0ce8-4704-ab1b-8bd9e9044a92
+10.12.2024 23:18:31.592499 Warehouse: DatabaseServer received: buy|banana|7|cf66c28a-0ce8-4704-ab1b-8bd9e9044a92 from ('127.0.0.1', 53113)
+10.12.2024 23:18:31.593777 Buyer 6: Buy complete for request cf66c28a-0ce8-4704-ab1b-8bd9e9044a92 (via localhost:5003): OK|Shipped 7 banana(s)|cf66c28a-0ce8-4704-ab1b-8bd9e9044a92
+10.12.2024 23:18:32.052346 Seller 7: Attempting to sell 10 apple(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:32.054000 Seller 7: Connected to trader at localhost:5003
+10.12.2024 23:18:32.054306 Trader 2: Received from ('127.0.0.1', 53327): sell|apple|10|bdb2f7cb-6130-4f6a-a452-08a3b505ec08
+10.12.2024 23:18:32.054560 Warehouse: DatabaseServer received: sell|apple|10|bdb2f7cb-6130-4f6a-a452-08a3b505ec08 from ('127.0.0.1', 53113)
+10.12.2024 23:18:32.056509 Seller 7: Sell complete for request bdb2f7cb-6130-4f6a-a452-08a3b505ec08 (via localhost:5003): OK|Stocked 10 apple(s)|bdb2f7cb-6130-4f6a-a452-08a3b505ec08
+10.12.2024 23:18:32.096706 Buyer 7: Attempting to buy 2 banana(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:32.097535 Buyer 7: Connected to trader at localhost:5003
+10.12.2024 23:18:32.097724 Trader 2: Received from ('127.0.0.1', 53328): buy|banana|2|4f044b97-6ee0-438d-887d-80a2673e35a3
+10.12.2024 23:18:32.097881 Warehouse: DatabaseServer received: buy|banana|2|4f044b97-6ee0-438d-887d-80a2673e35a3 from ('127.0.0.1', 53113)
+10.12.2024 23:18:32.098907 Buyer 7: Buy complete for request 4f044b97-6ee0-438d-887d-80a2673e35a3 (via localhost:5003): OK|Shipped 2 banana(s)|4f044b97-6ee0-438d-887d-80a2673e35a3
+10.12.2024 23:18:32.563252 Seller 8: Attempting to sell 10 banana(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:32.563958 Seller 8: Connected to trader at localhost:5003
+10.12.2024 23:18:32.564119 Trader 2: Received from ('127.0.0.1', 53329): sell|banana|10|0cb1030b-d5d8-49a3-b27d-dd40f15b8402
+10.12.2024 23:18:32.564241 Warehouse: DatabaseServer received: sell|banana|10|0cb1030b-d5d8-49a3-b27d-dd40f15b8402 from ('127.0.0.1', 53113)
+10.12.2024 23:18:32.564881 Seller 8: Sell complete for request 0cb1030b-d5d8-49a3-b27d-dd40f15b8402 (via localhost:5003): OK|Stocked 10 banana(s)|0cb1030b-d5d8-49a3-b27d-dd40f15b8402
+10.12.2024 23:18:32.597829 Buyer 8: Attempting to buy 1 orange(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:32.598434 Buyer 8: Connected to trader at localhost:5003
+10.12.2024 23:18:32.598579 Trader 2: Received from ('127.0.0.1', 53330): buy|orange|1|6aeb4b3c-666c-43ef-a515-501c80bafb52
+10.12.2024 23:18:32.598685 Warehouse: DatabaseServer received: buy|orange|1|6aeb4b3c-666c-43ef-a515-501c80bafb52 from ('127.0.0.1', 53113)
+10.12.2024 23:18:32.599820 Buyer 8: Buy complete for request 6aeb4b3c-666c-43ef-a515-501c80bafb52 (via localhost:5003): OK|Shipped 1 orange(s)|6aeb4b3c-666c-43ef-a515-501c80bafb52
+10.12.2024 23:18:33.105031 Buyer 9: Attempting to buy 6 banana(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:33.106175 Buyer 9: Connected to trader at localhost:5003
+10.12.2024 23:18:33.106471 Trader 2: Received from ('127.0.0.1', 53331): buy|banana|6|a495fcd4-0a32-4f95-92a4-475ab1c755fa
+10.12.2024 23:18:33.106755 Warehouse: DatabaseServer received: buy|banana|6|a495fcd4-0a32-4f95-92a4-475ab1c755fa from ('127.0.0.1', 53113)
+10.12.2024 23:18:33.108397 Buyer 9: Buy complete for request a495fcd4-0a32-4f95-92a4-475ab1c755fa (via localhost:5003): OK|Shipped 6 banana(s)|a495fcd4-0a32-4f95-92a4-475ab1c755fa
+10.12.2024 23:18:33.618431 Buyer 10: Attempting to buy 7 orange(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:33.619239 Buyer 10: Connected to trader at localhost:5003
+10.12.2024 23:18:33.619443 Trader 2: Received from ('127.0.0.1', 53332): buy|orange|7|b62b7032-27f8-4a7e-b99b-73096dc0f357
+10.12.2024 23:18:33.619589 Warehouse: DatabaseServer received: buy|orange|7|b62b7032-27f8-4a7e-b99b-73096dc0f357 from ('127.0.0.1', 53113)
+10.12.2024 23:18:33.620841 Buyer 10: Buy complete for request b62b7032-27f8-4a7e-b99b-73096dc0f357 (via localhost:5003): OK|Shipped 7 orange(s)|b62b7032-27f8-4a7e-b99b-73096dc0f357
+10.12.2024 23:18:34.013242 Seller 1: Attempting to sell 10 orange(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:34.013915 Seller 1: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:34.014099 Seller 1: Attempting to sell 10 orange(s) to trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:34.014788 Seller 1: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:34.014883 Seller 1: Switching to backup trader at localhost:5003
+10.12.2024 23:18:34.014904 Seller 1: Attempting to sell 10 orange(s) to trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:34.015330 Seller 1: Connected to trader at localhost:5003
+10.12.2024 23:18:34.015833 Trader 2: Received from ('127.0.0.1', 53337): sell|orange|10|ca2b6df5-960b-4090-8b96-fe682718bd04
+10.12.2024 23:18:34.016338 Warehouse: DatabaseServer received: sell|orange|10|ca2b6df5-960b-4090-8b96-fe682718bd04 from ('127.0.0.1', 53113)
+10.12.2024 23:18:34.017144 Seller 1: Sell complete for request ca2b6df5-960b-4090-8b96-fe682718bd04 (via localhost:5003): OK|Stocked 10 orange(s)|ca2b6df5-960b-4090-8b96-fe682718bd04
+10.12.2024 23:18:34.083244 Buyer 1: Attempting to buy 9 orange(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:34.083913 Buyer 1: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:34.084016 Buyer 1: Attempting to buy 9 orange(s) from trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:34.084256 Buyer 1: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:34.084342 Buyer 1: Switching to backup trader at localhost:5003
+10.12.2024 23:18:34.084368 Buyer 1: Attempting to buy 9 orange(s) from trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:34.084682 Buyer 1: Connected to trader at localhost:5003
+10.12.2024 23:18:34.084849 Trader 2: Received from ('127.0.0.1', 53340): buy|orange|9|1978af9a-4f69-47be-9579-d38fcc3431f5
+10.12.2024 23:18:34.084979 Warehouse: DatabaseServer received: buy|orange|9|1978af9a-4f69-47be-9579-d38fcc3431f5 from ('127.0.0.1', 53113)
+10.12.2024 23:18:34.086081 Buyer 1: Buy complete for request 1978af9a-4f69-47be-9579-d38fcc3431f5 (via localhost:5003): OK|Shipped 9 orange(s)|1978af9a-4f69-47be-9579-d38fcc3431f5
+10.12.2024 23:18:34.505601 Seller 2: Attempting to sell 10 orange(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:34.506797 Seller 2: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:34.507058 Seller 2: Attempting to sell 10 orange(s) to trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:34.507654 Seller 2: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:34.507776 Seller 2: Switching to backup trader at localhost:5003
+10.12.2024 23:18:34.507806 Seller 2: Attempting to sell 10 orange(s) to trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:34.508246 Seller 2: Connected to trader at localhost:5003
+10.12.2024 23:18:34.508564 Trader 2: Received from ('127.0.0.1', 53343): sell|orange|10|9ec94099-81aa-43a8-873e-c1454d5ac763
+10.12.2024 23:18:34.508769 Warehouse: DatabaseServer received: sell|orange|10|9ec94099-81aa-43a8-873e-c1454d5ac763 from ('127.0.0.1', 53113)
+10.12.2024 23:18:34.509861 Seller 2: Sell complete for request 9ec94099-81aa-43a8-873e-c1454d5ac763 (via localhost:5003): OK|Stocked 10 orange(s)|9ec94099-81aa-43a8-873e-c1454d5ac763
+10.12.2024 23:18:34.581759 Buyer 2: Attempting to buy 7 apple(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:34.582597 Buyer 2: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:34.582745 Buyer 2: Attempting to buy 7 apple(s) from trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:34.583047 Buyer 2: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:34.583105 Buyer 2: Switching to backup trader at localhost:5003
+10.12.2024 23:18:34.583129 Buyer 2: Attempting to buy 7 apple(s) from trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:34.583424 Buyer 2: Connected to trader at localhost:5003
+10.12.2024 23:18:34.583587 Trader 2: Received from ('127.0.0.1', 53346): buy|apple|7|c942cc2f-f817-4533-8e23-a8888e467482
+10.12.2024 23:18:34.583713 Warehouse: DatabaseServer received: buy|apple|7|c942cc2f-f817-4533-8e23-a8888e467482 from ('127.0.0.1', 53113)
+10.12.2024 23:18:34.585064 Buyer 2: Buy complete for request c942cc2f-f817-4533-8e23-a8888e467482 (via localhost:5003): OK|Shipped 7 apple(s)|c942cc2f-f817-4533-8e23-a8888e467482
+10.12.2024 23:18:35.034323 Seller 3: Attempting to sell 10 apple(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:35.035261 Seller 3: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:35.035365 Seller 3: Attempting to sell 10 apple(s) to trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:35.035655 Seller 3: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:35.035712 Seller 3: Switching to backup trader at localhost:5003
+10.12.2024 23:18:35.035734 Seller 3: Attempting to sell 10 apple(s) to trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:35.036004 Seller 3: Connected to trader at localhost:5003
+10.12.2024 23:18:35.036134 Trader 2: Received from ('127.0.0.1', 53349): sell|apple|10|1241fe15-cbbc-4df1-8e52-ef9cd64b7f69
+10.12.2024 23:18:35.036241 Warehouse: DatabaseServer received: sell|apple|10|1241fe15-cbbc-4df1-8e52-ef9cd64b7f69 from ('127.0.0.1', 53113)
+10.12.2024 23:18:35.036840 Seller 3: Sell complete for request 1241fe15-cbbc-4df1-8e52-ef9cd64b7f69 (via localhost:5003): OK|Stocked 10 apple(s)|1241fe15-cbbc-4df1-8e52-ef9cd64b7f69
+10.12.2024 23:18:35.078948 Buyer 3: Attempting to buy 10 orange(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:35.079516 Buyer 3: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:35.079602 Buyer 3: Attempting to buy 10 orange(s) from trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:35.079894 Buyer 3: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:35.079942 Buyer 3: Switching to backup trader at localhost:5003
+10.12.2024 23:18:35.079968 Buyer 3: Attempting to buy 10 orange(s) from trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:35.080312 Buyer 3: Connected to trader at localhost:5003
+10.12.2024 23:18:35.080463 Trader 2: Received from ('127.0.0.1', 53352): buy|orange|10|2d47f885-baa0-4285-bd0c-ecf960ab33fc
+10.12.2024 23:18:35.080589 Warehouse: DatabaseServer received: buy|orange|10|2d47f885-baa0-4285-bd0c-ecf960ab33fc from ('127.0.0.1', 53113)
+10.12.2024 23:18:35.081903 Buyer 3: Buy complete for request 2d47f885-baa0-4285-bd0c-ecf960ab33fc (via localhost:5003): OK|Shipped 10 orange(s)|2d47f885-baa0-4285-bd0c-ecf960ab33fc
+10.12.2024 23:18:35.540610 Seller 4: Attempting to sell 10 banana(s) to trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:35.541824 Seller 4: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:35.542016 Seller 4: Attempting to sell 10 banana(s) to trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:35.542482 Seller 4: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:35.542602 Seller 4: Switching to backup trader at localhost:5003
+10.12.2024 23:18:35.542642 Seller 4: Attempting to sell 10 banana(s) to trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:35.543150 Seller 4: Connected to trader at localhost:5003
+10.12.2024 23:18:35.543440 Trader 2: Received from ('127.0.0.1', 53355): sell|banana|10|7b4dd598-b31a-4364-95ec-5344df0b7fff
+10.12.2024 23:18:35.543626 Warehouse: DatabaseServer received: sell|banana|10|7b4dd598-b31a-4364-95ec-5344df0b7fff from ('127.0.0.1', 53113)
+10.12.2024 23:18:35.544851 Seller 4: Sell complete for request 7b4dd598-b31a-4364-95ec-5344df0b7fff (via localhost:5003): OK|Stocked 10 banana(s)|7b4dd598-b31a-4364-95ec-5344df0b7fff
+10.12.2024 23:18:35.587610 Buyer 4: Attempting to buy 1 banana(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:35.588238 Buyer 4: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:35.588381 Buyer 4: Attempting to buy 1 banana(s) from trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:35.588695 Buyer 4: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:35.588789 Buyer 4: Switching to backup trader at localhost:5003
+10.12.2024 23:18:35.588844 Buyer 4: Attempting to buy 1 banana(s) from trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:35.589264 Buyer 4: Connected to trader at localhost:5003
+10.12.2024 23:18:35.589496 Trader 2: Received from ('127.0.0.1', 53358): buy|banana|1|e3e89b00-f1e1-4ddb-b21b-77670003ccc6
+10.12.2024 23:18:35.589609 Warehouse: DatabaseServer received: buy|banana|1|e3e89b00-f1e1-4ddb-b21b-77670003ccc6 from ('127.0.0.1', 53113)
+10.12.2024 23:18:35.590548 Buyer 4: Buy complete for request e3e89b00-f1e1-4ddb-b21b-77670003ccc6 (via localhost:5003): OK|Shipped 1 banana(s)|e3e89b00-f1e1-4ddb-b21b-77670003ccc6
+10.12.2024 23:18:36.057449 Seller 5: Attempting to sell 10 orange(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:36.058369 Seller 5: Connected to trader at localhost:5003
+10.12.2024 23:18:36.058594 Trader 2: Received from ('127.0.0.1', 53359): sell|orange|10|5a95af95-c64a-408e-8995-a0b547908f41
+10.12.2024 23:18:36.058741 Warehouse: DatabaseServer received: sell|orange|10|5a95af95-c64a-408e-8995-a0b547908f41 from ('127.0.0.1', 53113)
+10.12.2024 23:18:36.060913 Seller 5: Sell complete for request 5a95af95-c64a-408e-8995-a0b547908f41 (via localhost:5003): OK|Stocked 10 orange(s)|5a95af95-c64a-408e-8995-a0b547908f41
+10.12.2024 23:18:36.100186 Buyer 5: Attempting to buy 10 banana(s) from trader at localhost:5002 (Retry 1)
+10.12.2024 23:18:36.101200 Buyer 5: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:36.101340 Buyer 5: Attempting to buy 10 banana(s) from trader at localhost:5002 (Retry 2)
+10.12.2024 23:18:36.101665 Buyer 5: Failed to connect to the trader at localhost:5002: [Errno 61] Connection refused
+10.12.2024 23:18:36.101734 Buyer 5: Switching to backup trader at localhost:5003
+10.12.2024 23:18:36.101756 Buyer 5: Attempting to buy 10 banana(s) from trader at localhost:5003 (Retry 3)
+10.12.2024 23:18:36.102113 Buyer 5: Connected to trader at localhost:5003
+10.12.2024 23:18:36.102406 Trader 2: Received from ('127.0.0.1', 53362): buy|banana|10|13215187-76d4-41b1-aa53-8f95cf5f1af5
+10.12.2024 23:18:36.102591 Warehouse: DatabaseServer received: buy|banana|10|13215187-76d4-41b1-aa53-8f95cf5f1af5 from ('127.0.0.1', 53113)
+10.12.2024 23:18:36.104085 Buyer 5: Buy complete for request 13215187-76d4-41b1-aa53-8f95cf5f1af5 (via localhost:5003): OK|Shipped 10 banana(s)|13215187-76d4-41b1-aa53-8f95cf5f1af5
+10.12.2024 23:18:36.562972 Seller 6: Attempting to sell 10 orange(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:36.564529 Seller 6: Connected to trader at localhost:5003
+10.12.2024 23:18:36.564863 Trader 2: Received from ('127.0.0.1', 53363): sell|orange|10|730eb65a-86c3-4a78-b76b-7c4196b08849
+10.12.2024 23:18:36.565127 Warehouse: DatabaseServer received: sell|orange|10|730eb65a-86c3-4a78-b76b-7c4196b08849 from ('127.0.0.1', 53113)
+10.12.2024 23:18:36.566666 Seller 6: Sell complete for request 730eb65a-86c3-4a78-b76b-7c4196b08849 (via localhost:5003): OK|Stocked 10 orange(s)|730eb65a-86c3-4a78-b76b-7c4196b08849
+10.12.2024 23:18:36.599057 Buyer 6: Attempting to buy 6 apple(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:36.600181 Buyer 6: Connected to trader at localhost:5003
+10.12.2024 23:18:36.600456 Trader 2: Received from ('127.0.0.1', 53364): buy|apple|6|7729aed0-4183-4165-945a-7d376ac01440
+10.12.2024 23:18:36.600653 Warehouse: DatabaseServer received: buy|apple|6|7729aed0-4183-4165-945a-7d376ac01440 from ('127.0.0.1', 53113)
+10.12.2024 23:18:36.602325 Buyer 6: Buy complete for request 7729aed0-4183-4165-945a-7d376ac01440 (via localhost:5003): OK|Shipped 6 apple(s)|7729aed0-4183-4165-945a-7d376ac01440
+10.12.2024 23:18:37.060182 Seller 7: Attempting to sell 10 apple(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:37.061611 Seller 7: Connected to trader at localhost:5003
+10.12.2024 23:18:37.062099 Trader 2: Received from ('127.0.0.1', 53365): sell|apple|10|2e7ff5e6-fd7c-4f34-8521-1f9243ba879f
+10.12.2024 23:18:37.062334 Warehouse: DatabaseServer received: sell|apple|10|2e7ff5e6-fd7c-4f34-8521-1f9243ba879f from ('127.0.0.1', 53113)
+10.12.2024 23:18:37.063803 Seller 7: Sell complete for request 2e7ff5e6-fd7c-4f34-8521-1f9243ba879f (via localhost:5003): OK|Stocked 10 apple(s)|2e7ff5e6-fd7c-4f34-8521-1f9243ba879f
+10.12.2024 23:18:37.099300 Buyer 7: Attempting to buy 7 apple(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:37.100190 Buyer 7: Connected to trader at localhost:5003
+10.12.2024 23:18:37.100405 Trader 2: Received from ('127.0.0.1', 53366): buy|apple|7|134e3386-dfb9-4639-a117-00447aa038a7
+10.12.2024 23:18:37.100568 Warehouse: DatabaseServer received: buy|apple|7|134e3386-dfb9-4639-a117-00447aa038a7 from ('127.0.0.1', 53113)
+10.12.2024 23:18:37.101574 Buyer 7: Buy complete for request 134e3386-dfb9-4639-a117-00447aa038a7 (via localhost:5003): OK|Shipped 7 apple(s)|134e3386-dfb9-4639-a117-00447aa038a7
+10.12.2024 23:18:37.566534 Seller 8: Attempting to sell 10 apple(s) to trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:37.567249 Seller 8: Connected to trader at localhost:5003
+10.12.2024 23:18:37.567424 Trader 2: Received from ('127.0.0.1', 53367): sell|apple|10|b2d07987-84ef-4380-82ba-346c4a7babfd
+10.12.2024 23:18:37.567550 Warehouse: DatabaseServer received: sell|apple|10|b2d07987-84ef-4380-82ba-346c4a7babfd from ('127.0.0.1', 53113)
+10.12.2024 23:18:37.568224 Seller 8: Sell complete for request b2d07987-84ef-4380-82ba-346c4a7babfd (via localhost:5003): OK|Stocked 10 apple(s)|b2d07987-84ef-4380-82ba-346c4a7babfd
+10.12.2024 23:18:37.604732 Buyer 8: Attempting to buy 2 apple(s) from trader at localhost:5003 (Retry 1)
+10.12.2024 23:18:37.607290 Buyer 8: Connected to trader at localhost:5003
+10.12.2024 23:18:37.607448 Trader 2: Received from ('127.0.0.1', 53368): buy|apple|2|35ce7e49-c56f-4511-8f9d-8bf1903ca26f
+10.12.2024 23:18:37.607555 Warehouse: DatabaseServer received: buy|apple|2|35ce7e49-c56f-4511-8f9d-8bf1903ca26f from ('127.0.0.1', 53113)
+10.12.2024 23:18:37.608431 Buyer 8: Buy complete for request 35ce7e49-c56f-4511-8f9d-8bf1903ca26f (via localhost:5003): OK|Shipped 2 apple(s)|35ce7e49-c56f-4511-8f9d-8bf1903ca26f
+^C10.12.2024 23:18:38.067297 Buyer 10: Shutting down.
+10.12.2024 23:18:38.068058 Buyer 8: Shutting down.
+10.12.2024 23:18:38.068247 Buyer 7: Shutting down.
+10.12.2024 23:18:38.068256 Buyer 6: Shutting down.
+10.12.2024 23:18:38.068275 Buyer 5: Shutting down.
+10.12.2024 23:18:38.068888 Buyer 4: Shutting down.
+10.12.2024 23:18:38.068967 Buyer 2: Shutting down.
+10.12.2024 23:18:38.069645 Buyer 3: Shutting down.
+10.12.2024 23:18:38.069843 Buyer 1: Shutting down.
+10.12.2024 23:18:38.069878 Seller 6: Shutting down.
+10.12.2024 23:18:38.069900 Seller 7: Shutting down.
+10.12.2024 23:18:38.069941 Seller 3: Shutting down.
+10.12.2024 23:18:38.070078 Seller 2: Shutting down.
+10.12.2024 23:18:38.070121 Seller 1: Shutting down.
+Shutting down trading post network...
+10.12.2024 23:18:38.070981 Trader 2: Shutting down.
+10.12.2024 23:18:38.071489 Seller 5: Shutting down.
+10.12.2024 23:18:38.071593 Seller 4: Shutting down.
+10.12.2024 23:18:38.068139 Buyer 9: Shutting down.
+10.12.2024 23:18:38.077638 Seller 8: Shutting down.
+Trading post network shutdown complete.

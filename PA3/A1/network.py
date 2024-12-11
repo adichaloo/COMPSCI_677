@@ -10,9 +10,9 @@ import math
 
 N_B = 10
 N_T = 2
-N_S = 8
+N_S =1
 N_G = 10
-T_G = 5
+T_G = 50
 
 BUY_PROBABILITY = 1
 MAX_TRANSACTIONS = math.inf

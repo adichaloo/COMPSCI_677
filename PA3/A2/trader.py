@@ -138,7 +138,7 @@ class Trader:
             else:
                 # Under-sell scenario: cache says not enough inventory.
                 # We choose to trust cache and reject immediately for performance.
-                response = f"ERROR|Insufficient inventory for {product}|{request_id}"
+                response = f"[UNDER-SELL DETECTED] for {product}|{request_id}"
                 self.forward_to_client(client_address, response)
 
         elif action == "sell":
