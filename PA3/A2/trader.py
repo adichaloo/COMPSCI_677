@@ -34,6 +34,11 @@ class Trader:
         self.shipped_goods = shipped_goods
         if self.use_cache:
             threading.Thread(target=self.periodic_cache_sync, daemon=True).start()
+
+        self.total_buy_requests = 0
+        self.oversell_detected = 0
+        self.report_host = 'localhost'
+        self.report_port = 8888
         print(f"Trader {self.trader_id} listening on {self.host}:{self.port}")
 
     def connect_to_database(self):
@@ -108,11 +113,33 @@ class Trader:
                 self.forward_to_client(client_address, response)
             else:
                 self.forward_to_client(client_address, "ERROR|No DB connection")
+    
+    def compute_oversell_rate(self):
+        """Compute the oversell rate."""
+        return 0.0 if self.total_buy_requests == 0 else self.oversell_detected / self.total_buy_requests
+
+    def report_oversell_rate(self):
+        """Send oversell rate to the central collector."""
+        rate = self.compute_oversell_rate()
+        report_message = f"Trader {self.trader_id}|Oversell Rate: {rate:.2%}|{self.oversell_detected}|{self.total_buy_requests}"
+        try:
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as report_socket:
+                report_socket.connect((self.report_host, self.report_port))
+                report_socket.send(report_message.encode())
+        except Exception as e:
+            self.timestamped_print(f"Error reporting oversell rate: {e}")
+
+    def periodic_reporting(self, interval=10):
+        """Periodically report oversell rate."""
+        while True:
+            time.sleep(interval)
+            self.report_oversell_rate()
 
     def handle_caching_logic(self, action, product, quantity, request_id, client_address):
         """Handle buy/sell requests with caching logic to reduce load on warehouse."""
         if action == "buy":
             # Check cache first
+            self.total_buy_requests += 1
             with self.cache_lock:
                 current_stock = self.cache.get(product, 0)
 
@@ -130,6 +157,7 @@ class Trader:
                         self.forward_to_client(client_address, response)
                     else:
                         # Over-sell occurred, refresh cache
+                        self.oversell_detected += 1
                         self.timestamped_print(f"[OVER-SELL DETECTED] Warehouse rejected buy request for {quantity} {product}(s). Refreshing cache.")
                         self.refresh_entire_inventory()
                         self.forward_to_client(client_address, response)
