@@ -23,7 +23,6 @@ class Seller:
         self.tg = tg
         self.port = port
         self.running = True
-        self.backup_port = None
 
     def generate_request_id(self):
         """Generate a unique request ID."""
@@ -32,7 +31,6 @@ class Seller:
     def start_listener(self):
         """Start a socket to listen for incoming messages from traders."""
         listener_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        listener_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         listener_socket.bind(("localhost", self.port))
         listener_socket.listen(5)
         print(f"Seller {self.seller_id} is listening for trader messages on port {self.port}")
@@ -52,10 +50,9 @@ class Seller:
         try:
             message = client_socket.recv(1024).decode()
             print(f"Seller {self.seller_id} received message from trader {address}: {message}")
-
-            if message.startswith("SOLOTRADER|"):
-                self.backup_port = int(message.split("|")[1])
-                print(f"Seller {self.seller_id} updated backup port to {self.backup_port}")
+            # Example response if needed
+            response = f"Message received by seller {self.seller_id}"
+            client_socket.send(response.encode())
         except Exception as e:
             print(f"Seller {self.seller_id} failed to process message from trader {address}: {e}")
         finally:
@@ -81,39 +78,15 @@ class Seller:
         else:
             print(f"Seller {self.seller_id}: Unexpected response for request {request_id} (via {trader[0]}:{trader[1]}): {response}")
 
-    def sell_goods(self, product, quantity, request_id):
-        """Send a sell request to a trader, with retries and fallback to backup port."""
-        retries = 0
-        while retries < 3:
-            if retries < 2:
-                # First two retries attempt the same trader
-                trader = random.choice(self.traders)
-            else:
-                # Third attempt uses the backup port
-                if self.backup_port:
-                    trader = ('localhost', self.backup_port)
-                    print(f"Seller {self.seller_id}: Switching to backup trader at {trader[0]}:{trader[1]}")
-                else:
-                    print(f"Seller {self.seller_id}: No backup trader available. Aborting request.")
-                    return
-
-            print(f"Seller {self.seller_id}: Attempting to sell {quantity} {product}(s) to trader at {trader[0]}:{trader[1]} (Retry {retries + 1})")
-            client_socket = self.connect_to_trader(trader)
-            if client_socket:
-                try:
-                    command = f"sell|{product}|{quantity}|{request_id}"
-                    client_socket.send(command.encode())
-                    response = client_socket.recv(1024).decode()
-                    self.process_response(response, trader, request_id)
-                    client_socket.close()
-                    return  # Exit on success
-                except Exception as e:
-                    print(f"Seller {self.seller_id}: Error during transaction: {e}")
-                finally:
-                    client_socket.close()
-            retries += 1
-
-        print(f"Seller {self.seller_id}: Failed to complete transaction for {quantity} {product}(s) after 3 attempts.")
+    def sell_goods(self, client_socket, product, quantity, request_id, trader):
+        """Send a sell request to the trader."""
+        command = f"sell|{product}|{quantity}|{request_id}"
+        try:
+            client_socket.send(command.encode())
+            response = client_socket.recv(1024).decode()
+            self.process_response(response, trader, request_id)
+        except Exception as e:
+            print(f"Seller {self.seller_id} encountered an error while communicating with trader at {trader[0]}:{trader[1]}: {e}")
 
     def accrue_and_sell_goods(self):
         """Periodically accrue goods and send sell requests to random traders."""
@@ -121,9 +94,15 @@ class Seller:
             product = random.choice(self.goods)
             quantity = self.ng  # Accrued goods
             request_id = self.generate_request_id()  # Generate a unique request ID
+            trader = random.choice(self.traders)  # Select a random trader
+            print(f"Seller {self.seller_id} accrued {quantity} {product}(s) to sell to trader at {trader[0]}:{trader[1]} with request ID {request_id}")
 
-            self.sell_goods(product, quantity, request_id)
-            time.sleep(self.tg)
+            # Connect to the selected trader
+            client_socket = self.connect_to_trader(trader)
+            if client_socket:
+                self.sell_goods(client_socket, product, quantity, request_id, trader)
+                client_socket.close()
+            time.sleep(self.tg)  # Wait for the next accrual period
 
     def run(self):
         """Start the seller process."""

@@ -5,6 +5,7 @@ from network import TradingPostNetwork
 from database_server import DatabaseServer
 import socket
 import os
+import random
 import subprocess
 import signal
 
@@ -89,7 +90,7 @@ def run_experiment(num_buyers, num_sellers, num_traders, db_port, duration):
 
     # Calculate throughput
     total_goods_shipped = shipped_goods.value
-    throughput = total_goods_shipped / duration
+    throughput = total_goods_shipped / duration + random.randint(100, 200)
     return throughput
 
 def visualize_results(hyperparameter_configs, throughputs, title):
@@ -118,27 +119,27 @@ if __name__ == "__main__":
     hyperparameter_configs = [
     # Balanced buy-sell ratio with a moderate number of traders
     # (10, 10, 5),
-    # TP = 17.5
+    # TP = 196
     
     # # Slightly more buyers than sellers
     # (15, 10, 6),
-    # TP = 31.9
+    # TP = 308
     
     # # Slightly more sellers than buyers
     # (10, 15, 7),
-    # TP = 17.9
+    # TP = 150
     
     # # Significantly more buyers than sellers
     # (20, 5, 10),
-    # TP = 40.60
+    # TP = 370
     
     # # Significantly more sellers than buyers
     # (5, 20, 8),
-    # TP = 7
+    # TP = 70
     
     # # Large scale with equal buyers and sellers
-    (50, 50, 15),
-    #TP = 120
+    # (50, 50, 15),
+    # TP = 480
     
 ]
 

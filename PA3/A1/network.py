@@ -33,13 +33,13 @@ def run_trader(db_host, db_port, trader_host, trader_port, trader_id):
 
 def run_seller(trader, seller_id, ng, tg, port):
     """Top-level function to run a seller."""
-    seller = Seller(traders=[trader], seller_id=seller_id, ng=ng, tg=tg, port=port)
+    seller = Seller(traders=trader, seller_id=seller_id, ng=ng, tg=tg, port=port)
     seller.run()
 
 
 def run_buyer(trader, buyer_id, max_transactions, buy_probability):
     """Top-level function to run a buyer."""
-    buyer = Buyer(traders=[trader], buyer_id=buyer_id, max_transactions=max_transactions, p = buy_probability)
+    buyer = Buyer(traders=trader, buyer_id=buyer_id, max_transactions=max_transactions, p = buy_probability)
     buyer.run()
 
 
@@ -56,6 +56,7 @@ class TradingPostNetwork:
         self.trader_start_port = db_port + 1
         self.seller_start_port = 6000
         self.trading_posts = []
+        self.traders_address = []
 
     def start_database_server(self):
         """Start the central warehouse database server."""
@@ -82,6 +83,9 @@ class TradingPostNetwork:
     def start_traders(self):
         """Start traders for each trading post."""
         trader_processes = []
+        trader_addresses = []
+        manager = Manager()
+        shipped_goods = manager.Value("i", 0)
         for i in range(self.num_traders):
             trader_port = self.trader_start_port + i
             self.trading_posts.append({"trader": (self.db_host, trader_port), "buyers": [], "sellers": []})
@@ -93,6 +97,7 @@ class TradingPostNetwork:
             )
             trader_process.start()
             trader_processes.append(trader_process)
+            self.traders_address.append(('localhost', trader_port))
             print(f"Trader {i + 1} (Post {i + 1}) started on {self.db_host}:{trader_port}")
             time.sleep(0.5)
         return trader_processes
@@ -109,13 +114,13 @@ class TradingPostNetwork:
 
                 seller_process = multiprocessing.Process(
                     target=run_seller,
-                    args=(post["trader"], seller_id, N_G, T_G, seller_port),
+                    args=(self.traders_address, seller_id, N_G, T_G, seller_port),
                     daemon=True
                 )
                 seller_process.start()
                 seller_processes.append(seller_process)
                 post["sellers"].append(seller_id)
-                print(f"Seller {seller_id} started in Trading Post {i + 1} with listener on port {seller_port}.")
+                print(f"Seller {seller_id} started with listener on port {seller_port}.")
                 seller_id += 1
                 time.sleep(0.5)
         return seller_processes
@@ -130,13 +135,13 @@ class TradingPostNetwork:
             for _ in range(distribution[i]):
                 buyer_process = multiprocessing.Process(
                     target=run_buyer,
-                    args=(post["trader"], buyer_id, MAX_TRANSACTIONS, BUY_PROBABILITY),
+                    args=(self.traders_address, buyer_id, MAX_TRANSACTIONS, BUY_PROBABILITY),
                     daemon=True
                 )
                 buyer_process.start()
                 buyer_processes.append(buyer_process)
                 post["buyers"].append(buyer_id)
-                print(f"Buyer {buyer_id} started in Trading Post {i + 1}.")
+                print(f"Buyer {buyer_id} started")
                 buyer_id += 1
                 time.sleep(0.5)
         return buyer_processes
@@ -155,8 +160,8 @@ class TradingPostNetwork:
         time.sleep(1)
 
         print("Trading post network setup complete. All components are running.")
-        for i, post in enumerate(self.trading_posts):
-            print(f"Trading Post {i + 1}: Trader={post['trader']}, Buyers={post['buyers']}, Sellers={post['sellers']}")
+        # for i, post in enumerate(self.trading_posts):
+        #     print(f"Trading Post {i + 1}: Trader={post['trader']}, Buyers={post['buyers']}, Sellers={post['sellers']}")
 
         return db_process, trader_processes, seller_processes, buyer_processes, shipped_goods
 

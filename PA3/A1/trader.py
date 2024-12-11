@@ -63,7 +63,7 @@ class Trader:
 
     def handle_client(self, client_socket, address):
         """Handle a connection from a buyer or seller."""
-        print(f"Trader {self.trader_id} connected to client at {address}")
+        # print(f"Trader {self.trader_id} connected to client at {address}")
         self.client_queues[address] = Queue()
 
         try:
@@ -87,7 +87,7 @@ class Trader:
         finally:
             client_socket.close()
             del self.client_queues[address]
-            print(f"Trader {self.trader_id} disconnected from client at {address}")
+            # print(f"Trader {self.trader_id} disconnected from client at {address}")
 
     def run(self):
         """Start the trader process."""

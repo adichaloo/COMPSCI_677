@@ -21,8 +21,10 @@ class DatabaseServer:
         self.inventory = {}
         self.locks = {}
         self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        self.processed_requests = set()
-        # self.shipped_goods_lock = threading.Lock()
+        self.shipped_goods_lock = threading.Lock()
+        self.inventory = {}
+        self.locks = {}
+        self.inventory_lock = threading.Lock()  # A global lock for reading full inventory safely
 
     def load_inventory(self):
         """Load inventory from the JSON file."""
@@ -52,7 +54,7 @@ class DatabaseServer:
         :param client_socket: The client socket.
         :param address: The address of the client.
         """
-        # print(f"DatabaseServer: Connected to trader at {address}")
+        print(f"DatabaseServer: Connected to trader at {address}")
         try:
             while True:
                 data = client_socket.recv(1024).decode()
@@ -81,19 +83,27 @@ class DatabaseServer:
 
             action, product, quantity, request_id = parts
             quantity = int(quantity)
-            if request_id not in self.processed_requests:
-                self.processed_requests.add(request_id)
 
-                if action == "buy":
-                    return self.process_buy(product, quantity, request_id)
-                elif action == "sell":
-                    return self.process_sell(product, quantity, request_id)
-                else:
-                    return "ERROR|Unknown action"
-            elif request_id in self.processed_requests:
-                print("Duplicate Buy/Sell request, ignoring.")
+            if action == "buy":
+                return self.process_buy(product, quantity, request_id)
+            elif action == "sell":
+                return self.process_sell(product, quantity, request_id)
+            elif action == "fetch" and product == "inventory":
+                # Return entire inventory as JSON
+                return self.process_fetch(request_id)
+            else:
+                return "ERROR|Unknown action"
         except ValueError:
             return "ERROR|Invalid quantity"
+
+    def process_fetch(self, request_id):
+        """Return the full inventory as a JSON string."""
+        with self.inventory_lock:
+            # Make a copy of the current inventory to avoid issues if someone else modifies it while encoding.
+            current_inv = dict(self.inventory)
+        import json
+        inv_json = json.dumps(current_inv)
+        return f"OK|{inv_json}|{request_id}"
 
     def process_buy(self, product, quantity, request_id):
         """
@@ -109,8 +119,8 @@ class DatabaseServer:
         with self.locks[product]:
             if self.inventory[product] >= quantity:
                 self.inventory[product] -= quantity
-                # with self.shipped_goods_lock:
-                self.shipped_goods.value += quantity    
+                with self.shipped_goods_lock:
+                    self.shipped_goods.value += quantity    
                 self.save_inventory()
                 return f"OK|Shipped {quantity} {product}(s)|{request_id}"
             else:
